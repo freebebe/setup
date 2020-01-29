@@ -26,9 +26,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'honza/vim-snippets'
 call plug#end()
 
-"-----------------------------------------------------
-"------------------------vim-------------------------|
-"-----------------------------------------------------
+"----------------------------------------------------\
+"------------------------vim--------------------------|
+"----------------------------------------------------/
 
 "文件代码形式utf-8
 set encoding=utf-8
@@ -46,7 +46,11 @@ set fileencodings=utf-8,ucs-bom,gb18030,big5,euc-jp,euc-kr
 "source $VIMRUNTIME/menu.vim
 
 
+"turn bakcup off, since most stuff is in SVN, etc.aanyway
+set nowritebackup
+set noswapfile
 set nobackup
+
 set autoread        "外部检测auto
 set nocompatible            "KILL-VI一致性
 " 折叠
@@ -130,9 +134,9 @@ set t_Co=256
 
 
 
-"-------------------------------------------------------
+"------------------------------------------------------\
 "--------------------vim-plug---------------------------|
-"-------------------------------------------------------
+"------------------------------------------------------/
 
 "Nerdtree==================
 "启动时自动打开
@@ -145,12 +149,10 @@ autocmd vimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 "打开的同时链接其历史记录(open tree automatically when vim starts up on
 "opening a directory)
 autocmd StdinReadPre * let s:std_in=1
-autocmd vimEnter * if argc() == 1 && isdirectory(argv()[0]) &&
-!exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+autocmd vimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 "close vim if the only windows left open is a nerdtree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") &&
-b:NERDTree.isTabTree()) | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "F2启动/关闭
 map <F2> :NERDTreeToggle<CR>   
@@ -164,6 +166,8 @@ set nocompatible
 ":Goyo            "toggle Goyo
 ":Goyo[demension]
 ":Goyo!            "off
+let	go:goyo_margin_top = 2
+let	go:goyo_margin_bottom = 2
 
 "indentline=======================
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
