@@ -1,10 +1,9 @@
 "vim-plug>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree'                "目录树
+	Plug 'preservim/nerdcommenter'				"注释
     Plug 'vimwiki/vimwiki'                   
-    Plug 'Lokaltog/vim-powerline'            "状态栏增强
-    Plug 'vim-airline/vim-airline'            "状态列增强
-"    Plug 'vim-airline/vim-airline-themes'            "状态列增强
+	Plug 'itchyny/lightline.vim'			"状态
     Plug 'tpope/vim-surround'
     Plug 'ctrlpvim/ctrlp.vim'                "模糊搜索
     Plug 'junegunn/goyo.vim'                "简化阅读
@@ -13,6 +12,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-syntastic/syntastic'            "语法检查
     Plug 'Yggdroot/indentLine'            "缩进线
 "    Plug 'davidhalter/jedi-vim'                "python不全
+	Plug 'aklt/plantuml-syntax'				"mind map
+	Plug 'terryma/vim-multiple-cursors'			"批量修改
 "WEB
     Plug 'mattn/emmet-vim'                "html不全
     Plug 'hail2u/vim-css3-syntax'            "css高亮
@@ -118,6 +119,10 @@ autocmd InsertLeave,WinEnter * set nocursorline
 set complete-=i                "disable scanning included files
 set complete-=t                "disable searching tags
 
+"改键
+imap <c-[> <ESC>
+
+
 "colorscheme desert
 syntax on
 set t_Co=256
@@ -157,6 +162,13 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "F2启动/关闭
 map <F2> :NERDTreeToggle<CR>   
 
+"nerdcommenter=============================
+let g:NERDSpaceDelims = 1			"空格
+let g:NERDCompactSexyComs = 1		"简约
+let g:NERDCommentEmptyLines = 1		"倒~空
+let g:NERDTrimTrailingWhitespace = 1	"收尾
+"let g:NERDToggleCheckAllLines = 1	"chack
+
 "wiki============================
 set nocompatible
     filetype plugin on
@@ -166,8 +178,8 @@ set nocompatible
 ":Goyo            "toggle Goyo
 ":Goyo[demension]
 ":Goyo!            "off
-let	go:goyo_margin_top = 2
-let	go:goyo_margin_bottom = 2
+"let	go:goyo_margin_top = 2
+"let	go:goyo_margin_bottom = 2
 
 "indentline=======================
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
