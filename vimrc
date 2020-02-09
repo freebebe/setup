@@ -125,8 +125,7 @@ set complete-=t                "disable searching tags
 imap <c-,> <ESC>
 imap ,, <ESC>la
 imap <TAB> <C-N>
-imap <S-TAB> <C-P>
-
+imap <S-TAB> <C-P> 
 
 "colorscheme desert
 syntax on
