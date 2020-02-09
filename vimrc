@@ -124,6 +124,8 @@ set complete-=t                "disable searching tags
 "改键
 imap <c-,> <ESC>
 imap ,, <ESC>la
+imap <TAB> <C-N>
+imap <S-TAB> <C-P>
 
 
 "colorscheme desert
