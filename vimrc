@@ -63,6 +63,7 @@ set fdm=manual            "手动
 
 
 set novisualbell            "no闪烁
+set vb t_vb=                 "消警告提声
 set number                    "行号
 
 "=========================set relativenumber            "相对行号
@@ -124,7 +125,7 @@ set complete-=t                "disable searching tags
 
 "=========================改键
 imap <c-,> <ESC>
-imap ,, <ESC>la
+imap 20 <ESC>la
 imap <TAB> <C-N>
 imap <S-TAB> <C-P> 
 
@@ -203,20 +204,20 @@ let g:Powerline_colorscheme='solarzed256'
 
 
 "================emmet-html&css->deful        (C=ctrl-)=====================
-let g:user_emmet_leader_key='C-y'
-autocmd filetype *html* imap <c-_> <c-y>/
-autocmd filetype *html* map <c-_> <c-y>/
+" let g:user_emmet_leader_key='C-y'
+" autocmd filetype *html* imap <c-_> <c-y>/
+" autocmd filetype *html* map <c-_> <c-y>/
 
 "================ultisnips==============================
 let g:UltiSnipsUsePythonVersion =2
 let g:UltiSnipsExpandTrigger    ="<c-tab>"
-let g:UltiSnipsListSnippets        ="<c-l>"
+let g:UltiSnipsListSnippets          ="<c-l>"
 let g:UltiSnipsJumpForwardTrigger    =    "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger    =    "<c-k>"
+let g:UltiSnipsJumpBackwardTrigger   =    "<c-k>"
 
 "================syntastic====================
 let g:syntastic_java_javac_classpath=$CLASS_PATH
 
 "================emmet================
-map <F3> <C-\>
+"map <F3> <C-\>
 let g:user_emmet_leader_key='<C-\>'
