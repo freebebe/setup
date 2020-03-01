@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vimwiki/vimwiki'                   
 	Plug 'itchyny/lightline.vim'			"状态
     Plug 'tpope/vim-surround'
-"    Plug 'ctrlpvim/ctrlp.vim'                "模糊搜索
+    Plug 'ctrlpvim/ctrlp.vim'                "模糊搜索
     Plug 'junegunn/goyo.vim'                "简化阅读
     Plug 'terryma/vim-multiple-cursors'            "V增强
     "Plug 'jreybert/vimagit'
@@ -14,7 +14,6 @@ call plug#begin('~/.vim/plugged')
 "	Plug 'aklt/plantuml-syntax'				"mind map
 	Plug 'terryma/vim-multiple-cursors'			"批量修改
 "WEB
-    Plug 'mattn/emmet-vim'                "html不全
     Plug 'hail2u/vim-css3-syntax'            "css高亮
     Plug 'Raimondi/delimitMate'                "前后括制对齐
 "    Plug 'pangloss/vim-javascript'            "java高亮
@@ -24,14 +23,15 @@ call plug#begin('~/.vim/plugged')
 "them
     Plug 'morhetz/gruvbox'
 "补全
-    Plug 'ycm-core/YouCompleteMe'        "多线项补全
+     Plug 'ycm-core/YouCompleteMe'
+     Plug 'mattn/emmet-vim'
 "    Plug 'SirVer/ultisnips'                "PYTHON补全
     Plug 'honza/vim-snippets'
 "    Plug 'davidhalter/jedi-vim'                "python不全
 "主题
-    Plug 'altercation/solarized'    
     Plug 'tomasr/molokai'
     Plug 'cormacrelf/vim-colors-github'
+    Plug 'rakr/vim-two-firewatch'
 call plug#end()
 
 "----------------------------------------------------\
@@ -40,6 +40,8 @@ call plug#end()
 
 "配置同步
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
+"网页同步
+nnoremap ,v :exec '!exec firefox %'<CR>
 
 "=========================文件代码形式utf-8
 set encoding=utf-8
@@ -64,6 +66,7 @@ set nobackup
 
 set autoread        "外部检测auto
 set nocompatible            "KILL-VI一致性
+set wildmenu            
 
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
@@ -108,6 +111,10 @@ set showmatch
 set smartindent
 set cindent
 
+"======================十字定位线
+set cursorline
+set cursorcolumn
+
 "=========================代码折叠
 set foldenable
 set nowrap            "禁止折行
@@ -142,7 +149,6 @@ set complete-=i                "disable scanning included files
 set complete-=t                "disable searching tags
 
 "=========================改键
-imap <c-,> <ESC>
 imap ,, <ESC>la
 imap <TAB> <C-N>
 imap <S-TAB> <C-P> 
@@ -158,15 +164,16 @@ set t_Co=256
 "
 "        "enable true color
 "        set termguicolors
-"----------------插件
 "endif
 
 "配色
-set background=dark
-"colorscheme solarized
-"colorscheme molokai
-colorscheme github
-let g:lightline = {'colorscheme': 'github'}
+        " colorscheme molokai
+        colorscheme github
+                let g:lightline = {'colorscheme': 'github'}
+                let g:github_colors_soft = 1               "background
+        set background=light
+        " colorscheme two-firewatch
+
 
 "------------------------------------------------------\
 "--------------------vim-plug---------------------------|
@@ -206,11 +213,11 @@ set nocompatible
     syntax on
 
 "================goyo=============================
-":Goyo            "toggle Goyo
-":Goyo[demension]
-":Goyo!            "off
-"let	go:goyo_margin_top = 2
-"let	go:goyo_margin_bottom = 2
+" :Goyo            "toggle Goyo
+" :Goyo[demension]
+" :Goyo!            "off
+" let	go:goyo_margin_top = 2
+" let	go:goyo_margin_bottom = 2
 
 "================indentline=======================
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
@@ -246,6 +253,7 @@ let g:syntastic_java_javac_classpath=$CLASS_PATH
 let g:user_emmet_leader_key='<C-\>'
 
 "===============YCM=====================
+let g:ycm_clangd_binary_path = "~/Progm-plug/clang+llvm"
 " YCM 补全菜单配色
 " 菜单
 highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
