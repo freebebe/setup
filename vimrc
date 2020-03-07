@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'preservim/nerdcommenter'				"注释
     Plug 'vimwiki/vimwiki'                   
 	Plug 'itchyny/lightline.vim'			"状态
-    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-surround'       "hello world! >>>>> [hello] world!
     Plug 'ctrlpvim/ctrlp.vim'                "模糊搜索
     Plug 'junegunn/goyo.vim'                "简化阅读
     Plug 'terryma/vim-multiple-cursors'            "V增强
@@ -16,22 +16,19 @@ call plug#begin('~/.vim/plugged')
 "WEB
     Plug 'hail2u/vim-css3-syntax'            "css高亮
     Plug 'Raimondi/delimitMate'                "前后括制对齐
-"    Plug 'pangloss/vim-javascript'            "java高亮
-"	Plug 'turbio/bracey.vim'				"h+c+j 补全
+    Plug 'pangloss/vim-javascript'            "java高亮
+    Plug 'turbio/bracey.vim'				"h+c+j 补全
 	Plug 'ap/vim-css-color'			"css-color
     " Plug 'suan/vim-instant-markdown'        "markdown
-"them
-    Plug 'morhetz/gruvbox'
 "补全
      Plug 'ycm-core/YouCompleteMe'
      Plug 'mattn/emmet-vim'
 "    Plug 'SirVer/ultisnips'                "PYTHON补全
-    Plug 'honza/vim-snippets'
+    " Plug 'honza/vim-snippets'
 "    Plug 'davidhalter/jedi-vim'                "python不全
-"主题
-    Plug 'tomasr/molokai'
+"scheme
     Plug 'cormacrelf/vim-colors-github'
-    Plug 'rakr/vim-two-firewatch'
+    Plug 'cocopon/iceberg.vim'
 call plug#end()
 
 "----------------------------------------------------\
@@ -167,12 +164,14 @@ set t_Co=256
 "endif
 
 "配色
-        " colorscheme molokai
+        " colorscheme iceberg
+                 " let g:lightline = {'colorscheme': 'iceberg'}
         colorscheme github
                 let g:lightline = {'colorscheme': 'github'}
                 let g:github_colors_soft = 1               "background
-        set background=light
+         " set background=light
         " colorscheme two-firewatch
+    
 
 
 "------------------------------------------------------\
@@ -198,6 +197,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "F2启动/关闭
 map <F2> :NERDTreeToggle<CR>   
 
+"位设
+let g:NERDTreeWinPos='right'
+
+"行号
+let g:NERDTreeShowLineNumbers=1
 "================nerdcommenter=============================
 let g:NERDSpaceDelims = 1			"空格
 let g:NERDCompactSexyComs = 1		"简约
@@ -259,6 +263,8 @@ let g:ycm_clangd_binary_path = "~/Progm-plug/clang+llvm"
 highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
 " 选中项
 highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
+"IDE同化
+set completeopt=longest,menu
 " 补全功能在注释中同样有效
 let g:ycm_complete_in_comments=1
 " 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
@@ -272,8 +278,12 @@ inoremap <leader>; <C-x><C-o>
 " 补全内容不以分割子窗口形式出现，只显示补全列表
 set completeopt-=preview
 " 从第一个键入字符就开始罗列匹配项
-let g:ycm_min_num_of_chars_for_completion=1
+let g:ycm_min_num_of_chars_for_completion=2
 " 禁止缓存匹配项，每次都重新生成匹配项
 let g:ycm_cache_omnifunc=0
 " 语法关键字补全			
 let g:ycm_seed_identifiers_with_syntax=1
+" 禁用语法
+" let g:ycm_filepath_blacklist = {}
+"语法白名单
+let g:ycm_filepath_whitelist = {'html': 1, 'jsx': 1, 'xml': 1, 'css': 1}
