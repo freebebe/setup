@@ -1,34 +1,43 @@
 "vim-plug>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 call plug#begin('~/.vim/plugged')
-    Plug 'scrooloose/nerdtree'                "目录树
-	Plug 'preservim/nerdcommenter'				"注释
-    Plug 'vimwiki/vimwiki'                   
-	Plug 'itchyny/lightline.vim'			"状态
-    Plug 'tpope/vim-surround'       "hello world! >>>>> [hello] world!
-    Plug 'ctrlpvim/ctrlp.vim'                "模糊搜索
+"格式
+    Plug 'Yggdroot/indentLine'              "缩进线
+    Plug 'sheerun/vim-polyglot'             "字典
+"是巴拿
+	Plug 'preservim/nerdcommenter'			"注释
+	Plug 'terryma/vim-multiple-cursors'		"批量修改: https://github.com/terryma/vim-multiple-cursors/blob/master/README.md
+    Plug 'tpope/vim-surround'               "hello world! >>>>> [hello] world!:     https://gist.github.com/wilon/ac1fc66f4a79e7b0c161c80877c75c94
+     " Plug 'vimwiki/vimwiki'
+"螺丝
+    Plug 'scrooloose/nerdtree'              "目录树
+	" Plug 'itchyny/lightline.vim'			"状态
     Plug 'junegunn/goyo.vim'                "简化阅读
-    Plug 'terryma/vim-multiple-cursors'            "V增强
-    "Plug 'jreybert/vimagit'
-    Plug 'vim-syntastic/syntastic'            "语法检查
-    Plug 'Yggdroot/indentLine'            "缩进线
+    Plug 'jreybert/vimagit'
 "	Plug 'aklt/plantuml-syntax'				"mind map
-	Plug 'terryma/vim-multiple-cursors'			"批量修改
 "WEB
-    Plug 'hail2u/vim-css3-syntax'            "css高亮
-    Plug 'Raimondi/delimitMate'                "前后括制对齐
-    Plug 'pangloss/vim-javascript'            "java高亮
-    Plug 'turbio/bracey.vim'				"h+c+j 补全
-	Plug 'ap/vim-css-color'			"css-color
-    " Plug 'suan/vim-instant-markdown'        "markdown
-"补全
+    Plug 'hail2u/vim-css3-syntax'           "css高亮
+    Plug 'Raimondi/delimitMate'             "前后括制对齐
+    Plug 'pangloss/vim-javascript'          "java高亮
+    " Plug 'turbio/bracey.vim'				"h+c+j 补全
+	Plug 'ap/vim-css-color'			        "css-color
+     " Plug 'suan/vim-instant-markdown'     "markdown
+"热熔胶
      Plug 'ycm-core/YouCompleteMe'
-     Plug 'mattn/emmet-vim'
-"    Plug 'SirVer/ultisnips'                "PYTHON补全
+     Plug 'mattn/emmet-vim'                 "htXml5-backnotes
+   " Plug 'SirVer/ultisnips'                "PYTHON补全
     " Plug 'honza/vim-snippets'
-"    Plug 'davidhalter/jedi-vim'                "python不全
-"scheme
+   " Plug 'davidhalter/jedi'                "python不全/字典:    https://github.com/davidhalter/jedi
+"油漆
     Plug 'cormacrelf/vim-colors-github'
-    Plug 'cocopon/iceberg.vim'
+    " Plug 'cocopon/iceberg.vim'
+    Plug 'sjl/badwolf'
+    Plug 'morhetz/gruvbox'
+"规程
+    " Plug 'vim-syntastic/syntastic'        "语法检查
+      Plug 'dense-analysis/ale'             "异步:https://github.com/dense-analysis/ale
+"兔子洞
+    Plug 'ctrlpvim/ctrlp.vim'               "模糊搜索
+    Plug 'FelikZ/ctrlp-py-matcher'          "ctrlp-python插件 : https://github.com/FelikZ/ctrlp-py-matcher
 call plug#end()
 
 "----------------------------------------------------\
@@ -164,13 +173,17 @@ set t_Co=256
 "endif
 
 "配色
+" set background=dark
         " colorscheme iceberg
                  " let g:lightline = {'colorscheme': 'iceberg'}
-        colorscheme github
-                let g:lightline = {'colorscheme': 'github'}
-                let g:github_colors_soft = 1               "background
-         " set background=light
+        " colorscheme github
+                " let g:lightline = {'colorscheme': 'github'}
+                " let g:github_colors_soft = 1               "background
         " colorscheme two-firewatch
+        colorscheme badwolf
+            let g:badowlf_html_link_underline=1
+            let g:badwolf_css_props_highlight=1
+        " colorscheme gruvbox
     
 
 
@@ -195,10 +208,10 @@ autocmd vimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "F2启动/关闭
-map <F2> :NERDTreeToggle<CR>   
+map <F9> :NERDTreeToggle<CR>   
 
 "位设
-let g:NERDTreeWinPos='right'
+" let g:NERDTreeWinPos='right'
 
 "行号
 let g:NERDTreeShowLineNumbers=1
@@ -227,8 +240,8 @@ set nocompatible
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
 
 "================jedi============================
-let g:jedi#auto_initialization = 1
-autocmd FileType python setlocal omnifunc=jedi#completions
+" let g:jedi#auto_initialization = 1
+" autocmd FileType python setlocal omnifunc=jedi#completions
 
 "================javascript-highlight=================
 let javascript_enable_domhtmlcss = 1
@@ -246,11 +259,14 @@ let g:Powerline_colorscheme='solarzed256'
 let g:UltiSnipsUsePythonVersion =2
 let g:UltiSnipsExpandTrigger    ="<c-tab>"
 let g:UltiSnipsListSnippets          ="<c-l>"
-let g:UltiSnipsJumpForwardTrigger    =    "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger   =    "<c-k>"
+let g:UltiSnipsJumpForwardTrigger    ="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger   ="<c-k>"
 
 "================syntastic====================
 let g:syntastic_java_javac_classpath=$CLASS_PATH
+
+"================ctrl-plug=====================
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 "================emmet================
 "map <F3> <C-\>
@@ -287,3 +303,22 @@ let g:ycm_seed_identifiers_with_syntax=1
 " let g:ycm_filepath_blacklist = {}
 "语法白名单
 let g:ycm_filepath_whitelist = {'html': 1, 'jsx': 1, 'xml': 1, 'css': 1}
+"电动是巴拿
+let g:ycm_auto_trigger=1
+let g:ycm_semantic_triggers = {
+    \   'css': [ 're!^', 're!^\s+', ': ' ],
+    \   'scss': [ 're!^', 're!^\s+', ': ' ],
+    \ }
+        " let g:ycm_semantic_triggers = {
+        " \'c' : ['->', '    ', '.', ' ', '(', '[', '&'],
+        " \'cpp,objcpp' : ['->', '.', ' ', '(', '[', '&', '::'],
+        " \'perl' : ['->', '::', ' '],
+        " \'php' : ['->', '::', '.'],
+        " \'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
+        " \'ruby' : ['.', '::'],
+        " \'lua' : ['.', ':'],
+        " \'scss,css': [ 're!^\s{2,4}', 're!:\s+' ],
+        " \'html': ['<', '"', '</', ' '],
+        " \'javascript': ['.', 're!(?=[a-zA-Z]{3,4})'],
+        " \}
+
