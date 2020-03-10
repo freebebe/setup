@@ -48,6 +48,13 @@ call plug#end()
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 "网页同步
 nnoremap ,v :exec '!exec firefox %'<CR>
+"保存
+nnoremap <C-s> :<CR>
+inoremap <C-s> <ESC>:w<CR>
+" 默认标题
+set title
+"Auto reload if file was changed somewhere else (for autoread)
+au CursorHold * checktime
 
 "=========================文件代码形式utf-8
 set encoding=utf-8
@@ -71,8 +78,11 @@ set noswapfile
 set nobackup
 
 set autoread        "外部检测auto
-set nocompatible            "KILL-VI一致性
-set wildmenu            
+set nocompatible    "KILL-VI一致性
+set nomodeline      "modeline漏洞
+
+set wildmenu        "c-n & c-p
+set display+=lastline
 
 " 设置快捷键将选中文本块复制至系统剪贴板
 vnoremap <Leader>y "+y
@@ -83,18 +93,37 @@ nmap <Leader>p "+p
 set foldenable            "允许折叠
 set fdm=syntax            " 按语法折叠
 set fdm=manual            "手动
+set foldmethod=indent
+set foldnestmax=3
+set nofoldenable
 
 
 set novisualbell            "no闪烁
+
 set vb t_vb=                 "消警告提声
+set noerrorbells
+set visualbell
+
 set number                    "行号
+
+" Use dash as word separator.
+set iskeyword+=-
+
+" show mode in statusbar, not separately.
+set noshowmode
+
+" Enable mouse for scrolling and window resizing.
+" set mouse=a
+
+" Save up to 100 marks, enable capital marks.
+set viminfo='100,f1
 
 "=========================set relativenumber            "相对行号
 set laststatus=2            "显示状态行
 set ruler            "总是显示下行数
 set showcmd                "显示输入命令
 
-"=========================语法高亮
+"=========================语法高亮-字典
 syntax enable
 syntax on
 
@@ -107,9 +136,8 @@ set expandtab
 filetype indent on            "自适应语言的智能缩进
 
 set autoindent
-set cursorline
 
-set hlsearch
+set hlsearch                "Enable search highlighting.
 set incsearch
 set ignorecase
 set showmatch
@@ -146,6 +174,27 @@ set so=7
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 autocmd BufWritePost ~/.Xdefaults call system('xrdb ~/.Xdefaults')
 
+" Use Silver Searcher for CtrlP plugin (if available) Fallback to git ls-files for fast listing. Because we use fast strategies, disable caching.
+let g:ctrlp_use_caching = 0
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+  let g:ctrlp_user_command = ['.git',
+    \ 'cd %s && git ls-files . -co --exclude-standard',
+    \ 'find %s -type f' ]
+
+" Make sure pasting in visual mode doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
+
 "=========================智能当前行高亮
 autocmd InsertLeave,WinEnter * set cursorline
 autocmd InsertLeave,WinEnter * set nocursorline
@@ -154,25 +203,33 @@ autocmd InsertLeave,WinEnter * set nocursorline
 set complete-=i                "disable scanning included files
 set complete-=t                "disable searching tags
 
+"=========================向上游
+if has('path_extra')
+  setglobal tags-=./tags tags^=./tags;
+endif
+
 "=========================改键
 imap ,, <ESC>la
 imap <TAB> <C-N>
 imap <S-TAB> <C-P> 
+inoremap <C-U> <C-G>u<C-U>          "挡c-U
 
-"colorscheme desert
-syntax on
+"Set minimum window size to 79x5.
+" set winwidth=79
+" set winheight=5
+" set winminheight=5
+
+"Wrap lines by default
+set wrap linebreak
+set showbreak=" "
+
+"======================加亮不加粗
+if &t_Co == 8 && $TERM !~# '^linux'
+  set t_Co=16
+endif
+
+"======================配色
 set t_Co=256
-"colorscheme jellybeans
-"if has("termguicolors")
-"        "fix bug for vim"
-"        set t_8f=[38;2;%lu;%lu;%lum
-"        set t_8b=[48;2;%lu;%lu;%lum
-"
-"        "enable true color
-"        set termguicolors
-"endif
-
-"配色
 " set background=dark
         " colorscheme iceberg
                  " let g:lightline = {'colorscheme': 'iceberg'}
@@ -321,4 +378,4 @@ let g:ycm_semantic_triggers = {
         " \'html': ['<', '"', '</', ' '],
         " \'javascript': ['.', 're!(?=[a-zA-Z]{3,4})'],
         " \}
-
+endif
