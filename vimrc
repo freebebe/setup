@@ -48,9 +48,6 @@ call plug#end()
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 "网页同步
 nnoremap ,v :exec '!exec firefox %'<CR>
-"保存
-nnoremap <C-s> :<CR>
-inoremap <C-s> <ESC>:w<CR>
 " 默认标题
 set title
 "Auto reload if file was changed somewhere else (for autoread)
@@ -70,6 +67,7 @@ set fileencodings=utf-8,ucs-bom,gb18030,big5,euc-jp,euc-kr
 "=========================vim list debug ifx
 "source $VIMRUNTIME/delmenu.vim
 "source $VIMRUNTIME/menu.vim
+set nomodeline      "modeline漏洞
 
 
 "turn bakcup off, since most stuff is in SVN, etc.aanyway
@@ -79,7 +77,6 @@ set nobackup
 
 set autoread        "外部检测auto
 set nocompatible    "KILL-VI一致性
-set nomodeline      "modeline漏洞
 
 set wildmenu        "c-n & c-p
 set display+=lastline
@@ -127,11 +124,14 @@ set showcmd                "显示输入命令
 syntax enable
 syntax on
 
-"=========================进退x**
+"=========================进退x***
 set tabstop=4
 set softtabstop=4
 set backspace=2
 set expandtab
+
+"Use 'shiftwidth' when using <Tab> in front of a line. By default it's used only for shift commands (<, >).
+set smarttab
 
 filetype indent on            "自适应语言的智能缩进
 
@@ -209,10 +209,12 @@ if has('path_extra')
 endif
 
 "=========================改键
-imap ,, <ESC>la
 imap <TAB> <C-N>
 imap <S-TAB> <C-P> 
 inoremap <C-U> <C-G>u<C-U>          "挡c-U
+"保存
+nnoremap <C-s> :<CR>
+inoremap <C-s> <ESC>:w<CR>
 
 "Set minimum window size to 79x5.
 " set winwidth=79
@@ -230,17 +232,17 @@ endif
 
 "======================配色
 set t_Co=256
-" set background=dark
+set background=dark
         " colorscheme iceberg
                  " let g:lightline = {'colorscheme': 'iceberg'}
         " colorscheme github
                 " let g:lightline = {'colorscheme': 'github'}
                 " let g:github_colors_soft = 1               "background
         " colorscheme two-firewatch
-        colorscheme badwolf
-            let g:badowlf_html_link_underline=1
-            let g:badwolf_css_props_highlight=1
-        " colorscheme gruvbox
+        " colorscheme badwolf
+            " let g:badowlf_html_link_underline=1
+            " let g:badwolf_css_props_highlight=1
+        colorscheme gruvbox
     
 
 
@@ -308,13 +310,19 @@ let g:Powerline_colorscheme='solarzed256'
 
 
 "================emmet-html&css->deful        (C=ctrl-)=====================
+" let g:user_emmet_install_global = 0
+" autocmd FileType html,css EmmetInstall      只在html,css作用  
+"
 " let g:user_emmet_leader_key='C-y'
 " autocmd filetype *html* imap <c-_> <c-y>/
 " autocmd filetype *html* map <c-_> <c-y>/
+"
+let g:user_emmet_expandabbr_key = '<F2>'
+let g:user_emmet_leader_key= '<C-e>'
 
 "================ultisnips==============================
 let g:UltiSnipsUsePythonVersion =2
-let g:UltiSnipsExpandTrigger    ="<c-tab>"
+let g:UltiSnipsExpandTrigger    ="<c-p>"
 let g:UltiSnipsListSnippets          ="<c-l>"
 let g:UltiSnipsJumpForwardTrigger    ="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger   ="<c-k>"
@@ -327,7 +335,6 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 "================emmet================
 "map <F3> <C-\>
-let g:user_emmet_leader_key='<C-\>'
 
 "===============YCM=====================
 let g:ycm_clangd_binary_path = "~/Progm-plug/clang+llvm"
@@ -359,7 +366,7 @@ let g:ycm_seed_identifiers_with_syntax=1
 " 禁用语法
 " let g:ycm_filepath_blacklist = {}
 "语法白名单
-let g:ycm_filepath_whitelist = {'html': 1, 'jsx': 1, 'xml': 1, 'css': 1}
+" let g:ycm_filepath_whitelist = {'html': 1, 'jsx': 1, 'xml': 1, 'css': 1}
 "电动是巴拿
 let g:ycm_auto_trigger=1
 let g:ycm_semantic_triggers = {
