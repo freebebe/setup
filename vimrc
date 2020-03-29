@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'sheerun/vim-polyglot'             "字典
 "是巴拿
 	Plug 'preservim/nerdcommenter'			"注释
-	Plug 'terryma/vim-multiple-cursors'		"批量修改: https://github.com/terryma/vim-multiple-cursors/blob/master/README.md
+	Plug 'terryma/vim-multiple-cursors'		"{v-block+[C-N]}批量修改: https://github.com/terryma/vim-multiple-cursors/blob/master/README.md
     Plug 'tpope/vim-surround'               "hello world! >>>>> [hello] world!:     https://gist.github.com/wilon/ac1fc66f4a79e7b0c161c80877c75c94
      " Plug 'vimwiki/vimwiki'
 "螺丝
@@ -28,14 +28,15 @@ call plug#begin('~/.vim/plugged')
     " Plug 'honza/vim-snippets'
    " Plug 'davidhalter/jedi'                "python不全/字典:    https://github.com/davidhalter/jedi
 "油漆
-    Plug 'cormacrelf/vim-colors-github'
+    Plug 'cormacrelf/vim-colors-github'     "为何用浅色背景:https://www.zhihu.com/question/20215618
     " Plug 'cocopon/iceberg.vim'
     Plug 'sjl/badwolf'
     Plug 'morhetz/gruvbox'
+    Plug 'yuttie/inkstained-vim'
 "规程
     " Plug 'vim-syntastic/syntastic'        "语法检查
       Plug 'dense-analysis/ale'             "异步:https://github.com/dense-analysis/ale
-"兔子洞
+"兔洞
     Plug 'ctrlpvim/ctrlp.vim'               "模糊搜索
     Plug 'FelikZ/ctrlp-py-matcher'          "ctrlp-python插件 : https://github.com/FelikZ/ctrlp-py-matcher
 call plug#end()
@@ -119,6 +120,7 @@ set viminfo='100,f1
 set laststatus=2            "显示状态行
 set ruler            "总是显示下行数
 set showcmd                "显示输入命令
+set list                "显示Tab和空格
 
 "=========================语法高亮-字典
 syntax enable
@@ -149,6 +151,8 @@ set cindent
 set cursorline
 set cursorcolumn
 
+highlight CursorLine cterm=none ctermbg=236
+highlight CursorColumn cterm=none ctermbg=236
 "=========================代码折叠
 set foldenable
 set nowrap            "禁止折行
@@ -168,7 +172,6 @@ set foldcolumn=4
 
 "=========================7行上下滚动始终在中间
 set so=7
-
 
 "=========================重载保存文件
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -209,8 +212,8 @@ if has('path_extra')
 endif
 
 "=========================改键
-imap <TAB> <C-N>
-imap <S-TAB> <C-P> 
+" imap <TAB> <C-N>
+" imap <S-TAB> <C-P>
 inoremap <C-U> <C-G>u<C-U>          "挡c-U
 "保存
 nnoremap <C-s> :<CR>
@@ -222,7 +225,6 @@ inoremap <C-s> <ESC>:w<CR>
 " set winminheight=5
 
 "Wrap lines by default
-set wrap linebreak
 set showbreak=" "
 
 "======================加亮不加粗
@@ -235,14 +237,16 @@ set t_Co=256
 set background=dark
         " colorscheme iceberg
                  " let g:lightline = {'colorscheme': 'iceberg'}
+        colorscheme inkstained
         " colorscheme github
                 " let g:lightline = {'colorscheme': 'github'}
                 " let g:github_colors_soft = 1               "background
-        " colorscheme two-firewatch
-        " colorscheme badwolf
+        "colorscheme two-firewatch
+         " colorscheme badwolf
             " let g:badowlf_html_link_underline=1
             " let g:badwolf_css_props_highlight=1
-        colorscheme gruvbox
+         " colorscheme gruvbox
+        "colorscheme solarized
     
 
 
