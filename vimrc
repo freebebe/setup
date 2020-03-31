@@ -120,7 +120,7 @@ set viminfo='100,f1
 set laststatus=2            "显示状态行
 set ruler            "总是显示下行数
 set showcmd                "显示输入命令
-set list                "显示Tab和空格
+" set list                "显示Tab和空格
 
 "=========================语法高亮-字典
 syntax enable
@@ -146,7 +146,7 @@ set showmatch
 
 set smartindent
 set cindent
-
+"
 "======================十字定位线
 set cursorline
 set cursorcolumn
@@ -370,7 +370,7 @@ let g:ycm_seed_identifiers_with_syntax=1
 " 禁用语法
 " let g:ycm_filepath_blacklist = {}
 "语法白名单
-" let g:ycm_filepath_whitelist = {'html': 1, 'jsx': 1, 'xml': 1, 'css': 1}
+let g:ycm_filepath_whitelist = {'html': 1, 'jsx': 1, 'xml': 1, 'css': 1}
 "电动是巴拿
 let g:ycm_auto_trigger=1
 let g:ycm_semantic_triggers = {
