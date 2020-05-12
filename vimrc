@@ -5,8 +5,12 @@ call plug#begin('~/.vim/plugged')
     Plug 'sheerun/vim-polyglot'             "字典
 "是巴拿
 	Plug 'preservim/nerdcommenter'			"注释
-	Plug 'terryma/vim-multiple-cursors'		"{v-block+[C-N]}批量修改: https://github.com/terryma/vim-multiple-cursors/blob/master/README.md
-    Plug 'tpope/vim-surround'               "hello world! >>>>> [hello] world!:     https://gist.github.com/wilon/ac1fc66f4a79e7b0c161c80877c75c94
+	Plug 'terryma/vim-multiple-cursors'		
+    "{v-block+[C-N]}批量修改: 
+    "(https://github.com/terryma/vim-multiple-cursors/blob/master/README.md)
+    Plug 'tpope/vim-surround'               
+    "hello world! >>>>> [hello] world!:     
+    "(https://gist.github.com/wilon/ac1fc66f4a79e7b0c161c80877c75c94)
      " Plug 'vimwiki/vimwiki'
 "螺丝
     Plug 'scrooloose/nerdtree'              "目录树
@@ -22,28 +26,38 @@ call plug#begin('~/.vim/plugged')
 	"Plug 'ap/vim-css-color'			        "css-color
      " Plug 'suan/vim-instant-markdown'     "markdown
 "热熔胶
-     "Plug 'ycm-core/YouCompleteMe'
+     Plug 'ycm-core/YouCompleteMe'
      Plug 'mattn/emmet-vim'                 "htXml5-backnotes
    " Plug 'SirVer/ultisnips'                "PYTHON补全
     " Plug 'honza/vim-snippets'
-   " Plug 'davidhalter/jedi'                "python不全/字典:    https://github.com/davidhalter/jedi
+   " Plug 'davidhalter/jedi'                
+   " "python不全/字典:    https://github.com/davidhalter/jedi
 "油漆
-    "Plug 'cormacrelf/vim-colors-github'     "为何用浅色背景:https://www.zhihu.com/question/20215618
+    "Plug 'cormacrelf/vim-colors-github'     
+    ""为何用浅色背景:https://www.zhihu.com/question/20215618
     "Plug 'morhetz/gruvbox'
     Plug 'yuttie/inkstained-vim'
     Plug 'atelierbram/Base2Tone-vim'        
     Plug 'altercation/vim-colors-solarized'
 "规程
-    " Plug 'vim-syntastic/syntastic'        "语法检查
-      Plug 'dense-analysis/ale'             "异步:https://github.com/dense-analysis/ale
+    " Plug 'vim-syntastic/syntastic'        
+    " "语法检查
+      Plug 'dense-analysis/ale'             
+      "异步:https://github.com/dense-analysis/ale
 "兔洞
-    Plug 'ctrlpvim/ctrlp.vim'               "模糊搜索
-    Plug 'FelikZ/ctrlp-py-matcher'          "ctrlp-python插件 : https://github.com/FelikZ/ctrlp-py-matcher
+    Plug 'ctrlpvim/ctrlp.vim'               
+    "模糊搜索
+    Plug 'FelikZ/ctrlp-py-matcher'          
+    "ctrlp-python插件 : https://github.com/FelikZ/ctrlp-py-matcher
 call plug#end()
 
 "----------------------------------------------------\
 "------------------------vim--------------------------|
 "----------------------------------------------------/
+"setKey
+nnoremap tn :tabnew<Space>
+nnoremap tg :tabfirst<CR>
+nnoremap tG :tablast<CR>
 
 "配置同步
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -103,6 +117,7 @@ set noerrorbells
 set visualbell
 
 set number                    "行号
+set relativenumber            "递进行号
 
 " Use dash as word separator.
 set iskeyword+=-
@@ -233,9 +248,10 @@ if &t_Co == 8 && $TERM !~# '^linux'
 endif
 
 "======================配色
+set colorcolumn=80
 set t_Co=256
 set background=dark
-        " colorscheme inkstained
+        colorscheme inkstained
         " colorscheme github
                 " let g:lightline = {'colorscheme': 'github'}
                 " let g:github_colors_soft = 1               "background
@@ -267,7 +283,7 @@ set background=dark
 " Light
         " colorscheme Base2Tone_SeaLight
         " colorscheme Base2Tone_FieldLight
-        colorscheme Base2Tone_ForestLight
+        " colorscheme Base2Tone_ForestLight
         " colorscheme Base2Tone_MorningLight
         " colorscheme Base2Tone_MeadowLight
 " backList
@@ -383,7 +399,7 @@ highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
 "IDE同化
 set completeopt=longest,menu
 " 补全功能在注释中同样有效
-let g:ycm_complete_in_comments=1
+let g:ycm_complete_in_comments=0
 " 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
 let g:ycm_confirm_extra_conf=0
 " 开启 YCM 标签补全引擎
