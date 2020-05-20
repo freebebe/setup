@@ -393,9 +393,9 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ycm_clangd_binary_path = "~/Progm-plug/clang+llvm"
 " YCM 补全菜单配色
 " 菜单
-highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
+" highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
 " 选中项
-highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
+" highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
 "IDE同化
 set completeopt=longest,menu
 " 补全功能在注释中同样有效
