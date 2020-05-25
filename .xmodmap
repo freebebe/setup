@@ -4,5 +4,5 @@ keysym l = l L Right
 keysym k = k K Up
 keysym j = j J Down
 
-keysym 0 = 0 0 Home
-keysym 6 = 6 6 End
+! keysym 0 = 0 0 Home
+! keysym 6 = 6 6 End

@@ -26,28 +26,28 @@ call plug#begin('~/.vim/plugged')
 	"Plug 'ap/vim-css-color'			        "css-color
      " Plug 'suan/vim-instant-markdown'     "markdown
 "热熔胶
-     Plug 'ycm-core/YouCompleteMe'
+     " Plug 'ycm-core/YouCompleteMe'
      Plug 'mattn/emmet-vim'                 "htXml5-backnotes
    " Plug 'SirVer/ultisnips'                "PYTHON补全
     " Plug 'honza/vim-snippets'
-   " Plug 'davidhalter/jedi'                
+   " Plug 'davidhalter/jedi'                "PYTHON
    " "python不全/字典:    https://github.com/davidhalter/jedi
 "油漆
     "Plug 'cormacrelf/vim-colors-github'     
     ""为何用浅色背景:https://www.zhihu.com/question/20215618
     "Plug 'morhetz/gruvbox'
     Plug 'yuttie/inkstained-vim'
-    Plug 'atelierbram/Base2Tone-vim'        
-    Plug 'altercation/vim-colors-solarized'
+    " Plug 'atelierbram/Base2Tone-vim'
+    " Plug 'altercation/vim-colors-solarized'
 "规程
     " Plug 'vim-syntastic/syntastic'        
     " "语法检查
       Plug 'dense-analysis/ale'             
       "异步:https://github.com/dense-analysis/ale
 "兔洞
-    Plug 'ctrlpvim/ctrlp.vim'               
+    " Plug 'ctrlpvim/ctrlp.vim'
     "模糊搜索
-    Plug 'FelikZ/ctrlp-py-matcher'          
+    " Plug 'FelikZ/ctrlp-py-matcher'
     "ctrlp-python插件 : https://github.com/FelikZ/ctrlp-py-matcher
 call plug#end()
 
@@ -257,51 +257,6 @@ set background=dark
                 " let g:github_colors_soft = 1               "background
     
 ">>>>>>>>>>Base2Tone
-"" or any of the other schemes:
-" Dark
-" backList
-        " colorscheme Base2Tone_MorningDark
-        " colorscheme Base2Tone_SeaDark
-        " colorscheme Base2Tone_SpaceDark
-        " colorscheme Base2Tone_EarthDark
-        " colorscheme Base2Tone_ForestDark
-        " colorscheme Base2Tone_FieldDark
-        " colorscheme Base2Tone_GardenDark
-        " colorscheme Base2Tone_DesertDark
-        " colorscheme Base2Tone_LakeDark
-        " colorscheme Base2Tone_MeadowDark
-        " colorscheme Base2Tone_DrawbridgeDark
-        " colorscheme Base2Tone_MallDark
-        " colorscheme Base2Tone_SuburbDark
-        " colorscheme Base2Tone_LavenderDark
-        " colorscheme Base2Tone_PoolDark
-        " colorscheme Base2Tone_PorchDark
-        " colorscheme Base2Tone_HeathDark
-        " colorscheme Base2Tone_CaveDark
-        " colorscheme Base2Tone_MotelDark
-
-" Light
-        " colorscheme Base2Tone_SeaLight
-        " colorscheme Base2Tone_FieldLight
-        " colorscheme Base2Tone_ForestLight
-        " colorscheme Base2Tone_MorningLight
-        " colorscheme Base2Tone_MeadowLight
-" backList
-        " colorscheme Base2Tone_EveningLight
-        " colorscheme Base2Tone_SpaceLight
-        " colorscheme Base2Tone_EarthLight
-        " colorscheme Base2Tone_GardenLight
-        " colorscheme Base2Tone_DesertLight
-        " colorscheme Base2Tone_LakeLight
-        " colorscheme Base2Tone_DrawbridgeLight
-        " colorscheme Base2Tone_MallLight
-        " colorscheme Base2Tone_SuburbLight
-        " colorscheme Base2Tone_LavenderLight
-        " colorscheme Base2Tone_PoolLight
-        " colorscheme Base2Tone_PorchLight
-        " colorscheme Base2Tone_HeathLight
-        " colorscheme Base2Tone_CaveLight
-        " colorscheme Base2Tone_MotelLight
 
 "------------------------------------------------------\
 "--------------------vim-plug---------------------------|
