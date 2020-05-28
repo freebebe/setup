@@ -11,7 +11,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-surround'               
     "hello world! >>>>> [hello] world!:     
     "(https://gist.github.com/wilon/ac1fc66f4a79e7b0c161c80877c75c94)
-     " Plug 'vimwiki/vimwiki'
+    Plug 'airblade/vim-gitgutter'           "git修改记录-异步
+     Plug 'vimwiki/vimwiki'
 "螺丝
     Plug 'scrooloose/nerdtree'              "目录树
 	" Plug 'itchyny/lightline.vim'			"状态
@@ -26,19 +27,20 @@ call plug#begin('~/.vim/plugged')
 	"Plug 'ap/vim-css-color'			        "css-color
      " Plug 'suan/vim-instant-markdown'     "markdown
 "热熔胶
-     " Plug 'ycm-core/YouCompleteMe'
+     Plug 'ycm-core/YouCompleteMe'
      Plug 'mattn/emmet-vim'                 "htXml5-backnotes
    " Plug 'SirVer/ultisnips'                "PYTHON补全
     " Plug 'honza/vim-snippets'
    " Plug 'davidhalter/jedi'                "PYTHON
    " "python不全/字典:    https://github.com/davidhalter/jedi
 "油漆
-    "Plug 'cormacrelf/vim-colors-github'     
+    " Plug 'cormacrelf/vim-colors-github'
     ""为何用浅色背景:https://www.zhihu.com/question/20215618
     "Plug 'morhetz/gruvbox'
     Plug 'yuttie/inkstained-vim'
     " Plug 'atelierbram/Base2Tone-vim'
     " Plug 'altercation/vim-colors-solarized'
+    " Plug 'atelierbram/Base2Tone-vim'
 "规程
     " Plug 'vim-syntastic/syntastic'        
     " "语法检查
@@ -91,7 +93,6 @@ set noswapfile
 set nobackup
 
 set autoread        "外部检测auto
-set nocompatible    "KILL-VI一致性
 
 set wildmenu        "c-n & c-p
 set display+=lastline
@@ -163,11 +164,12 @@ set smartindent
 set cindent
 "
 "======================十字定位线
-set cursorline
-set cursorcolumn
-
-highlight CursorLine cterm=none ctermbg=236
-highlight CursorColumn cterm=none ctermbg=236
+"set colorcolumn=80             "警示線
+" set cursorline
+" set cursorcolumn
+"
+" highlight CursorLine cterm=none ctermbg=236
+" highlight CursorColumn cterm=none ctermbg=236
 "=========================代码折叠
 set foldenable
 set nowrap            "禁止折行
@@ -248,15 +250,59 @@ if &t_Co == 8 && $TERM !~# '^linux'
 endif
 
 "======================配色
-set colorcolumn=80
 set t_Co=256
-set background=dark
         colorscheme inkstained
         " colorscheme github
                 " let g:lightline = {'colorscheme': 'github'}
                 " let g:github_colors_soft = 1               "background
     
 ">>>>>>>>>>Base2Tone
+" syntax enable
+set background=light
+" Base2Tone Dark
+" colorscheme Base2Tone_EveningDark
+" or any of the other schemes:
+" colorscheme Base2Tone_MorningDark
+" colorscheme Base2Tone_SeaDark
+" colorscheme Base2Tone_SpaceDark
+" colorscheme Base2Tone_EarthDark
+" colorscheme Base2Tone_ForestDark
+" colorscheme Base2Tone_FieldDark
+" colorscheme Base2Tone_GardenDark
+" colorscheme Base2Tone_DesertDark
+" colorscheme Base2Tone_LakeDark
+" colorscheme Base2Tone_MeadowDark
+" colorscheme Base2Tone_DrawbridgeDark
+" colorscheme Base2Tone_MallDark
+" colorscheme Base2Tone_SuburbDark
+" colorscheme Base2Tone_LavenderDark
+" colorscheme Base2Tone_PoolDark
+" colorscheme Base2Tone_PorchDark
+" colorscheme Base2Tone_HeathDark
+" colorscheme Base2Tone_CaveDark
+" colorscheme Base2Tone_MotelDark
+
+" Base2Tone Light
+" colorscheme Base2Tone_EveningLight
+" colorscheme Base2Tone_MorningLight
+" colorscheme Base2Tone_SeaLight
+" colorscheme Base2Tone_SpaceLight
+" colorscheme Base2Tone_EarthLight
+" colorscheme Base2Tone_ForestLight
+" colorscheme Base2Tone_FieldLight
+" colorscheme Base2Tone_GardenLight
+" colorscheme Base2Tone_DesertLight
+" colorscheme Base2Tone_LakeLight
+" colorscheme Base2Tone_MeadowLight
+" colorscheme Base2Tone_DrawbridgeLight
+" colorscheme Base2Tone_MallLight
+" colorscheme Base2Tone_SuburbLight
+" colorscheme Base2Tone_LavenderLight
+" colorscheme Base2Tone_PoolLight
+" colorscheme Base2Tone_PorchLight
+" colorscheme Base2Tone_HeathLight
+" colorscheme Base2Tone_CaveLight
+" colorscheme Base2Tone_MotelLight
 
 "------------------------------------------------------\
 "--------------------vim-plug---------------------------|
@@ -296,7 +342,7 @@ let g:NERDTrimTrailingWhitespace = 1	"收尾
 "\-c-space 正反注释
 
 "================wiki============================
-set nocompatible
+set nocompatible            "kill-vim一致性
     filetype plugin on
     syntax on
 
@@ -394,3 +440,10 @@ let g:ycm_semantic_triggers = {
         " \'javascript': ['.', 're!(?=[a-zA-Z]{3,4})'],
         " \}
 endif
+
+"============================vim-gitgutter
+function! GitStatus()
+  let [a,m,r] = GitGutterGetHunkSummary()
+  return printf('+%d ~%d -%d', a, m, r)
+endfunction
+set statusline+=%{GitStatus()}
