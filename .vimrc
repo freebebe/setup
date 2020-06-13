@@ -13,12 +13,13 @@ call plug#begin('~/.vim/plugged')
     "(https://gist.github.com/wilon/ac1fc66f4a79e7b0c161c80877c75c94)
     Plug 'airblade/vim-gitgutter'           "git修改记录-异步
      Plug 'vimwiki/vimwiki'
+     Plug 'tyru/open-browser.vim'           "browser
 "螺丝
     Plug 'scrooloose/nerdtree'              "目录树
 	" Plug 'itchyny/lightline.vim'			"状态
     "Plug 'junegunn/goyo.vim'                "简化阅读
     "Plug 'jreybert/vimagit'
-"	Plug 'aklt/plantuml-syntax'				"mind map
+    Plug 'aklt/plantuml-syntax'				"mind map
 "WEB
     "Plug 'hail2u/vim-css3-syntax'           "css高亮
     Plug 'Raimondi/delimitMate'             "前后括制对齐
@@ -27,7 +28,7 @@ call plug#begin('~/.vim/plugged')
 	"Plug 'ap/vim-css-color'			        "css-color
      " Plug 'suan/vim-instant-markdown'     "markdown
 "热熔胶
-     Plug 'ycm-core/YouCompleteMe'
+     " Plug 'ycm-core/YouCompleteMe'
      Plug 'mattn/emmet-vim'                 "htXml5-backnotes
    " Plug 'SirVer/ultisnips'                "PYTHON补全
     " Plug 'honza/vim-snippets'
@@ -251,7 +252,7 @@ endif
 
 "======================配色
 set t_Co=256
-        colorscheme inkstained
+        " colorscheme inkstained
         " colorscheme github
                 " let g:lightline = {'colorscheme': 'github'}
                 " let g:github_colors_soft = 1               "background
@@ -442,8 +443,8 @@ let g:ycm_semantic_triggers = {
 endif
 
 "============================vim-gitgutter
-function! GitStatus()
-  let [a,m,r] = GitGutterGetHunkSummary()
-  return printf('+%d ~%d -%d', a, m, r)
-endfunction
-set statusline+=%{GitStatus()}
+"function! GitStatus()
+"  let [a,m,r] = GitGutterGetHunkSummary()
+"  return printf('+%d ~%d -%d', a, m, r)
+"endfunction
+"set statusline+=%{GitStatus()}
