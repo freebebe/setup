@@ -8,4 +8,7 @@ sudo apt install vim curl wget aria2 tree tmux bspwm dmenu thefuck Firejail Fail
 ###theFuck
 sudo pip3 install thefuck
 
-
+####wifi
+  sudo service network-manager restart
+  nmcli dev wifi list
+  nmcli dev wifi con 'SSID' password 'wifi-passwd'

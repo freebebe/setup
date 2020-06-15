@@ -255,9 +255,9 @@ ramp-coreload-7-foreground = #ff5555
 
 [module/memory]
 type = internal/memory
-interval = 2
+interval = 3
 ; format-underline = #4bffdc
-label =  %percentage_used%%
+label = Memory: %percentage_used%%
 
 [module/network]
 type = internal/network
@@ -290,31 +290,12 @@ date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
 
 [module/volume]
 type = internal/alsa
+format-volume = <ramp-volume> <label-volume>
+format-muted = 0% 
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
@@ -324,8 +305,8 @@ format-charging = <animation-charging> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 format-full = <ramp-capacity> <label-full>
 
-label-charging = %percentage%% %time%h
-label-discharging = %percentage%% %time%h 
+; label-charging = %percentage%% %time%h
+; label-discharging = %percentage%% %time%h
 ramp-capacity-0 = 
 ramp-capacity-0-foreground = #f53c3c
 ramp-capacity-1 = 
