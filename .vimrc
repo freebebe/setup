@@ -26,7 +26,7 @@ call plug#begin('~/.vim/plugged')
     "Plug 'pangloss/vim-javascript'          "java高亮
     " Plug 'turbio/bracey.vim'				"h+c+j 补全
 	"Plug 'ap/vim-css-color'			        "css-color
-     " Plug 'suan/vim-instant-markdown'     "markdown
+     Plug 'suan/vim-instant-markdown'     "markdown
 "热熔胶
      " Plug 'ycm-core/YouCompleteMe'
      Plug 'mattn/emmet-vim'                 "htXml5-backnotes
@@ -35,13 +35,16 @@ call plug#begin('~/.vim/plugged')
    " Plug 'davidhalter/jedi'                "PYTHON
    " "python不全/字典:    https://github.com/davidhalter/jedi
 "油漆
-    " Plug 'cormacrelf/vim-colors-github'
+    "Plug 'cormacrelf/vim-colors-github'
     ""为何用浅色背景:https://www.zhihu.com/question/20215618
-    "Plug 'morhetz/gruvbox'
-    Plug 'yuttie/inkstained-vim'
+     "Plug 'morhetz/gruvbox'
+    " Plug 'yuttie/inkstained-vim'
     " Plug 'atelierbram/Base2Tone-vim'
     " Plug 'altercation/vim-colors-solarized'
     " Plug 'atelierbram/Base2Tone-vim'
+    " Plug 'mswift42/themecreator'
+    " Plug 'mswift42/vim-themes'
+        Plug 'arcticicestudio/nord-vim'
 "规程
     " Plug 'vim-syntastic/syntastic'        
     " "语法检查
@@ -224,7 +227,7 @@ autocmd InsertLeave,WinEnter * set nocursorline
 set complete-=i                "disable scanning included files
 set complete-=t                "disable searching tags
 
-"=========================向上游
+"=========================向,上游
 if has('path_extra')
   setglobal tags-=./tags tags^=./tags;
 endif
@@ -252,8 +255,12 @@ endif
 
 "======================配色
 set t_Co=256
+set background=dark " or light if you prefer the light version
+colo nord
+" set termguicolors
+" colorscheme soft-stone
         " colorscheme inkstained
-        " colorscheme github
+        "colorscheme github
                 " let g:lightline = {'colorscheme': 'github'}
                 " let g:github_colors_soft = 1               "background
     
@@ -443,8 +450,23 @@ let g:ycm_semantic_triggers = {
 endif
 
 "============================vim-gitgutter
-"function! GitStatus()
-"  let [a,m,r] = GitGutterGetHunkSummary()
-"  return printf('+%d ~%d -%d', a, m, r)
-"endfunction
-"set statusline+=%{GitStatus()}
+function! GitStatus()
+ let [a,m,r] = GitGutterGetHunkSummary()
+ return printf('+%d ~%d -%d', a, m, r)
+endfunction
+set statusline+=%{GitStatus()}
+
+"============================markdown
+filetype plugin on
+"Uncomment to override defaults:
+""let g:instant_markdown_slow = 1
+"let g:instant_markdown_autostart = 0
+""let g:instant_markdown_open_to_the_world = 1
+"let g:instant_markdown_allow_unsafe_content = 1
+""let g:instant_markdown_allow_external_content = 0
+"let g:instant_markdown_mathjax = 1
+""let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+"let g:instant_markdown_autoscroll = 0
+""let g:instant_markdown_port = 8888
+"let g:instant_markdown_python = 1
+let g:instant_markdown_browser = "chromium --new-window"

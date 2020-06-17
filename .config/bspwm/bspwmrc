@@ -9,7 +9,7 @@ polybar_config="$CURRENT_THEME/polybar"
 polybar_bars=top
 
 #每个屏幕工作区分配
-bspc monitor -d A B C D E F G H 
+bspc monitor -d 1 2 3 4 5 6 7 8
 bspc monitor LVDS1 -d 1 2 3 4 5
 bspc monitor VGA1 -d 6 7 8 9 0
 # bspc monitor -d I II III IV V VI VII VIII IX X
@@ -19,7 +19,8 @@ bspc monitor VGA1 -d 6 7 8 9 0
 
 # bspc config border_width         2
 # bspc config window_gap          12
-bspc config border_width         1
+# bspc config top_padding_color #01010F
+bspc config border_width         0.5
 bspc config window_gap          1
 bspc config border_color    #1C1C1C
 bspc config border              5
