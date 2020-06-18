@@ -35,7 +35,7 @@ call plug#begin('~/.vim/plugged')
    " Plug 'davidhalter/jedi'                "PYTHON
    " "python不全/字典:    https://github.com/davidhalter/jedi
 "油漆
-    "Plug 'cormacrelf/vim-colors-github'
+    Plug 'cormacrelf/vim-colors-github'
     ""为何用浅色背景:https://www.zhihu.com/question/20215618
      "Plug 'morhetz/gruvbox'
     " Plug 'yuttie/inkstained-vim'
@@ -255,8 +255,9 @@ endif
 
 "======================配色
 set t_Co=256
-set background=dark " or light if you prefer the light version
-colo nord
+" set background=light " or light if you prefer the light version
+        colo github
+" colo nord
 " set termguicolors
 " colorscheme soft-stone
         " colorscheme inkstained
