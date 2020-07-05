@@ -3,7 +3,20 @@
 default-bascs
 ==========
 ```
-sudo apt install vim curl wget aria2 tree tmux bspwm dmenu thefuck Firejail Fail2ban python3 python3-dev python3-pip python3-setuptools fail2ban eog thunar tlp fonts-font-awesome ruby-full ruby-sass xsecurelock xss-lock net-tools xfce4-terminal 
+sudo apt update && apt upgrade
+sudo apt install vim curl wget aria2 tree tmux thefuck python3 python3-dev python3-pip python3-setuptools fail2ban eog tlp ruby-full ruby-sass net-tools 
+sudo apt install -y fonts-font-awesome 
+
+third-tools
+```
+sudo apt install firejail
+sudo apt install fail2ban
+```
+```
+wm-install
+```
+sudo apt update && apt upgrade
+sudo apt install bspwm dmenu xsecurelock xss-lock xfce4-terminal thunar 
 ```
 
  <strong>lockscreen-xsecurelock</strong>
