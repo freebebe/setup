@@ -4,7 +4,7 @@ default-bascs
 ==========
 ```
 sudo apt update && apt upgrade
-sudo apt install vim curl wget aria2 tree tmux thefuck python3 python3-dev python3-pip python3-setuptools fail2ban eog tlp ruby-full ruby-sass net-tools zathura psensor
+sudo apt install vim curl wget aria2 tree tmux thefuck python3 python3-dev python3-pip python3-setuptools fail2ban eog tlp ruby-full ruby-sass net-tools zathura psensor ncdu
 sudo apt install -y fonts-font-awesome 
 
 third-tools
