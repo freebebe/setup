@@ -72,4 +72,20 @@ handleLidSwitch-setup
 
 HandleLidSwitch=suspend		#stop
 HandleLidSwitch=hibernate		#sleep
+--------------------------------
+```
+/etc/default/acpi-support
+```
+
+Looked for this line:
+
+~~~
+SUSPEND_METHODS="dbus-pm dbus-hal pm-utils"
+~~~
+
+Changed it to this:
+
+~~~
+SUSPEND_METHODS="pm-utils"
+~~~
 
