@@ -88,8 +88,12 @@ Changed it to this:
 ~~~
 SUSPEND_METHODS="pm-utils"
 or
-SUSPEND_METHODS="dbus-hal pm-utils"
+SUSPEND_METHODS="dbus-pm pm-utils"
 
+~~~
+###the problem is 
+~~~
+dbus-hal 
 ~~~
 
 ```
