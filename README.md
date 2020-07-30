@@ -4,8 +4,7 @@ default-bascs
 ==========
 ```
 sudo apt update && apt upgrade
-sudo apt install vim curl wget aria2 tree tmux thefuck python3 python3-dev python3-pip python3-setuptools eog tlp ruby-full ruby-sass net-tools zathura psensor ncdu
-sudo apt install -y fonts-font-awesome 
+sudo apt install vim curl wget aria2 tree tmux thefuck python3 python3-dev python3-pip python3-setuptools eog tlp ruby-full ruby-sass net-tools zathura psensor ncdu fonts-font-awesome 
 
 third-tools
 ```
@@ -69,7 +68,7 @@ Show battery info : sudo tlp-stat -b
 Show refreshing battery info : watch sudo tlp-stat -b
 
 handleLidSwitch-setup
-==============
+==============================>>>>>>don't choose anymroe
 
 HandleLidSwitch=suspend		#stop
 HandleLidSwitch=hibernate		#sleep

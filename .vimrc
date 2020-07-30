@@ -35,8 +35,8 @@ call plug#begin('~/.vim/plugged')
    " Plug 'davidhalter/jedi'                "PYTHON
    " "python不全/字典:    https://github.com/davidhalter/jedi
 "油漆
-    Plug 'cormacrelf/vim-colors-github'
-    ""为何用浅色背景:https://www.zhihu.com/question/20215618
+    " Plug 'cormacrelf/vim-colors-github'
+  "----------------------"为何用浅色背景:https://www.zhihu.com/question/20215618
      "Plug 'morhetz/gruvbox'
     " Plug 'yuttie/inkstained-vim'
     " Plug 'atelierbram/Base2Tone-vim'
@@ -44,7 +44,7 @@ call plug#begin('~/.vim/plugged')
     " Plug 'atelierbram/Base2Tone-vim'
     " Plug 'mswift42/themecreator'
     " Plug 'mswift42/vim-themes'
-        Plug 'arcticicestudio/nord-vim'
+    " Plug 'arcticicestudio/nord-vim'
 "规程
     " Plug 'vim-syntastic/syntastic'        
     " "语法检查
@@ -256,7 +256,7 @@ endif
 "======================配色
 set t_Co=256
 " set background=light " or light if you prefer the light version
-        colo github
+" colo github
 " colo nord
 " set termguicolors
 " colorscheme soft-stone
@@ -267,7 +267,7 @@ set t_Co=256
     
 ">>>>>>>>>>Base2Tone
 " syntax enable
-set background=light
+"set background=light
 " Base2Tone Dark
 " colorscheme Base2Tone_EveningDark
 " or any of the other schemes:
