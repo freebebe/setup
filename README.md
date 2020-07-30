@@ -87,5 +87,11 @@ Changed it to this:
 
 ~~~
 SUSPEND_METHODS="pm-utils"
+or
+SUSPEND_METHODS="dbus-hal pm-utils"
+
 ~~~
 
+```
+sudo /etc/init.d/acpid restart
+```
