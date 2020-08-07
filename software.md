@@ -11,3 +11,4 @@
 * Bitwarden     >       AES-256 加密技术来存储所有的登录细节
 * MyPaint       >       光栅图形编辑器，专于数字绘画而不是图像操作和相片处理。
 * Anbox         >       Android 模拟器
+* firejail      >       沙箱
