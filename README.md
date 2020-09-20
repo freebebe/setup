@@ -15,7 +15,8 @@ sudo apt install fail2ban
 wm-install
 ```
 sudo apt update && apt upgrade
-sudo apt install bspwm dmenu xsecurelock xss-lock xfce4-terminal thunar 
+sudo apt install bspwm i3 dmenu rofi xsecurelock xss-lock xfce4-terminal thunar 
+
 ```
 
  <strong>lockscreen-xsecurelock</strong>
@@ -23,6 +24,18 @@ sudo apt install bspwm dmenu xsecurelock xss-lock xfce4-terminal thunar
 xset s 300 5
 xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
 ```
+#sys manage
+###cpu
+只针对intel处理器中SandyBridge（含IvyBridge）及更新的构架的CPU。intel构架列表：List of Intel CPU microarchitectures。援引：
+```
+sudo vim /etc/default/grub
+```
+```
+GRUB_CMDLINE_LINUX_DEFAULT=”quiet” ---> GRUB_CMDLINE_LINUX_DEFAULT=”quiet intel_pstate=enable”
+```
+然后执行sudo grub-mkconfig -o /boot/grub/grub.cfg ，重启生效。
+检查：执行cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_driver，如果显示intel_pstate则表示启用成功，否则是未启用成功或不支持该功能。
+
 
  <strong>ranger-setup--config-edtior</strong>
  >指定默认编辑器
