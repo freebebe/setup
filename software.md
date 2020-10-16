@@ -12,3 +12,4 @@
 * MyPaint       >       光栅图形编辑器，专于数字绘画而不是图像操作和相片处理。
 * Anbox         >       Android 模拟器
 * firejail      >       沙箱
+* gimp          >       photoshop
