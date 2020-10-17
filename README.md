@@ -4,9 +4,9 @@ default-bascs
 ==========
 ```
 sudo apt update && apt upgrade
-sudo apt install vim curl wget aria2 tree tmux python3 python3-dev python3-pip python3-setuptools eog tlp ruby-full ruby-sass net-tools zathura psensor ncdu fonts-font-awesome preload ranger uget flameshot
+sudo apt install vim curl wget aria2 tree tmux python3 python3-dev python3-pip python3-setuptools eog tlp ruby-full ruby-sass net-tools zathura psensor ncdu fonts-font-awesome preload ranger uget flameshot xfburn
 
-third-tools
+tird-tools
 ```
 sudo apt install firejail
 sudo apt install fail2ban
@@ -15,7 +15,10 @@ sudo apt install fail2ban
 wm-install
 ```
 sudo apt update && apt upgrade
-sudo apt install bspwm i3 dmenu rofi xsecurelock xss-lock terminator thunar 
+sudo apt install bspwm i3 dmenu rofi xsecurelock xss-lock terminator thunar blueman pm-utils xfce4-notifyd xfce4-power-manager
+
+/*for_touchpad*/
+sudo apt install sy***(version && -dev)
 
 ```
 

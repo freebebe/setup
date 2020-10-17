@@ -12,14 +12,17 @@ call plug#begin('~/.vim/plugged')
     "hello world! >>>>> [hello] world!:     
     "(https://gist.github.com/wilon/ac1fc66f4a79e7b0c161c80877c75c94)
     Plug 'airblade/vim-gitgutter'           "git修改记录-异步
-     Plug 'vimwiki/vimwiki'
-     Plug 'tyru/open-browser.vim'           "browser
+    Plug 'vimwiki/vimwiki'
+    Plug 'tyru/open-browser.vim'           "browser
 "螺丝
     Plug 'scrooloose/nerdtree'              "目录树
 	" Plug 'itchyny/lightline.vim'			"状态
     "Plug 'junegunn/goyo.vim'                "简化阅读
     "Plug 'jreybert/vimagit'
     Plug 'aklt/plantuml-syntax'				"mind map
+"new tag
+	Plug 'junegunn/fzf.vim'
+	Plug 'liuchengxu/vim-clap'
 "WEB
     "Plug 'hail2u/vim-css3-syntax'           "css高亮
     Plug 'Raimondi/delimitMate'             "前后括制对齐
@@ -44,7 +47,7 @@ call plug#begin('~/.vim/plugged')
     " Plug 'atelierbram/Base2Tone-vim'
     " Plug 'mswift42/themecreator'
     " Plug 'mswift42/vim-themes'
-    " Plug 'arcticicestudio/nord-vim'
+	Plug 'arcticicestudio/nord-vim'
 "规程
     " Plug 'vim-syntastic/syntastic'        
     " "语法检查
@@ -255,9 +258,9 @@ endif
 
 "======================配色
 set t_Co=256
-" set background=light " or light if you prefer the light version
+set background=dark " or light if you prefer the light version
 " colo github
-" colo nord
+colo nord
 " set termguicolors
 " colorscheme soft-stone
         " colorscheme inkstained
