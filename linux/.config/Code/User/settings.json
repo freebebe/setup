@@ -1,0 +1,10 @@
+{
+    "window.menuBarVisibility": "toggle"
+    "workbench.colorTheme": "Blackboard",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "keyboard.dispatch": "keyCode",
+    "plantuml.commandArgs": [
+
+    ]    
+}

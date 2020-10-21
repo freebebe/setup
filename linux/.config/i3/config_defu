@@ -335,15 +335,25 @@ bar {
 # exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 # nitrogen sleep keyForPower
 # exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id pamac-tray
 # exec --no-startup-id clipit       #copy_data
 exec --no-startup-id flameshot      #take_your_face_your_screen_face
 # exec --no-startup-id megasync
 # exec --no-startup-id dropbox
 # #exec --no-startup-id albert
-exec --no-startup-id blueman-applet
-exec --no-startup-id xmodmap ~/.xmodmap
+# exec --no-startup-id blueman-applet
+exec --no-startup-id xmodmap ~/.Xmodmap
+
+#>>>>>>plama--list
+exec --no-startup-id powerdevilactivitiesconfig
+exec --no-startup-id powerdevilglobalconfig
+exec --no-startup-id powerdevilprofilesconfig
+exec --no-startup-id bluedeviladapters
+exec --no-startup-id bluedevildevices
+exec --no-startup-id bluedevilglobal
+# exec --no-startup-id
+# exec --no-startup-id
 
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
@@ -359,18 +369,18 @@ exec --no-startup-id xmodmap ~/.xmodmap
 #########################
 ## Plasma Integration
 # Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
-exec --no-startup-id wmctrl -c Plasma
-for_window [title="Desktop — Plasma"] kill, floating enable, border none
-for_window [title="Bureau — Plasma"] kill, floating enable, border none
+# exec --no-startup-id wmctrl -c Plasma
+# for_window [title="Desktop — Plasma"] kill, floating enable, border none
+# for_window [title="Bureau — Plasma"] kill, floating enable, border none
 
 ## Avoid tiling popups, dropdown windows from plasma
 # for the first time, manually resize them, i3 will remember the setting for floating windows
-for_window [class="plasmashell"] floating enable
-for_window [class="Plasma"] floating enable, border none
-for_window [title="plasma-desktop"] floating enable, border none
-for_window [title="win7"] floating enable, border none
-for_window [class="krunner"] floating enable, border none
-for_window [class="Kmix"] floating enable, border none
-for_window [class="Klipper"] floating enable, border none
-for_window [class="Plasmoidviewer"] floating enable, border none
+# for_window [class="plasmashell"] floating enable
+# for_window [class="Plasma"] floating enable, border none
+# for_window [title="plasma-desktop"] floating enable, border none
+# for_window [title="win7"] floating enable, border none
+# for_window [class="krunner"] floating enable, border none
+# for_window [class="Kmix"] floating enable, border none
+# for_window [class="Klipper"] floating enable, border none
+# for_window [class="Plasmoidviewer"] floating enable, border none
 
