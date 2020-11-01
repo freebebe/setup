@@ -20,13 +20,6 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
-#alacritty
-# exec --no-startup-id "alacritty"
-# for_window [class="Alacritty"] move scratchpad, move position 150 150, resize set 1700 800;
-# bindsym Mod1+space [class="Alacritty"] scratchpad show;
-
-# (No) Title Bars
-for_window [class="^.*"] border pixel 0
 
 # i3 config file (v4)
 #
@@ -34,8 +27,22 @@ for_window [class="^.*"] border pixel 0
 
 # $mod = super
 # mod1 = alt
+#
 
 set $mod Mod4
+
+#--------------autostart
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+#exec --no-startup-id nm-applet
+#exec --no-startup-id xfce4-power-manager
+#exec --no-startup-id pamac-tray
+#exec --no-startup-id clipit
+#exec --no-startup-id flameshot
+#exec --no-startup-id megasync
+#exec --no-startup-id dropbox
+##exec --no-startup-id albert
+
 
 #windows border
 new_window none
@@ -51,15 +58,14 @@ hide_edge_borders both
 # bindsym $mod+o border 1pixel
  bindsym $mod+b border toggle
 
-#lock screen
-# bindsym $mod+l exec --no-startup-id xsecurelock
-
 # foucus follows mouse(cursor)
 #focus_follows_mouse yes
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+c layout toggle split
 
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -74,21 +80,21 @@ bindsym $mod+c layout toggle split
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 #exec --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock -- xset dpms 333 555
 # screen off | sleep | shutdown(time unit: seconds)
-#exec --no-startup-id xset dpms 365 1357 6789
-# exec --no-startup-id xset dpms 365 1357
-# exec --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
+exec --no-startup-id xset dpms 365 1357 6789
+exec --no-startup-id xset dpms 365 1357
+exec --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-# exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -99,7 +105,7 @@ exec --no-startup-id feh --bg-fill ~/Pictures/background.png
 floating_modifier mod1
 
 #toupad
-# exec --no-startup-id synclient TapButton0=0
+exec --no-startup-id synclient TapButton1=1
 
 
 # Applications behaving as "pop ups" are set to be always floating
@@ -108,23 +114,7 @@ floating_modifier mod1
 for_window [class="yakuake"] floating enable
 for_window [class="systemsettings"] floating enable
 for_window [class="keepassxc"] floating enable
-# for_window [class="VirtualBox"] floating enable
-for_window [class="Thunar"] floating enable 
-for_window [class="uget"] floating enable
-# for_window [class="konsole"] floating enable
-# for_window [class="konsole"] resize set 600 400
-for_window [class="Blueman-manager"] floating enable 
-for_window [class="vlc"] floating enable 
-for_window [class="eog"] floating enable 
-for_window [class="Timeset-gui"] floating enable border normal
-
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-for_window [class="GParted"] floating enable border normal
-for_window [class="Pavucontrol"] floating enable
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-for_window [class="Pamac-manager"] floating enable 
-for_window [class="Xfburn"] floating enable
-for_window [class="Zotero"] floating enable 
+for_window [class="virtualbox"] floating enable
 
 ##############################
 ####    applications      ####
@@ -139,17 +129,11 @@ bindsym $mod+Shift+w kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
-# bindsym $mod+d exec rofi -show run
-bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "DarkBlue" -font "mono 15"
-# bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "glue_pro_blue" -font "mono 16"
+bindsym $mod+d exec rofi -show run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-#
-#
-# launch categorized menu
-bindsym $mod+z exec --no-startup-id morc_menu
 
 # change focus
 # bindsym $mod+Shift+h focus left
@@ -202,14 +186,6 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>WorkSpace_virtual
-
-# switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
-
-# Move workspace to another display
-bindsym $mod+x move workspace to output right
-
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -254,8 +230,6 @@ bindsym $mod+Shift+Tab workspace prev
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>WorkSpace_virtual
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -265,22 +239,24 @@ bindsym $mod+shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 
 # Set shut down, restart and locking features
-# bindsym $mod+mod1+0 mode "$mode_system"
-# set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-# mode "$mode_system" {
-        # bindsym l exec --no-startup-id i3exit lock, mode "default"
-        # bindsym s exec --no-startup-id i3exit suspend, mode "default"
-        # bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-        # bindsym e exec --no-startup-id i3exit logout, mode "default"
-        # bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-        # bindsym r exec --no-startup-id i3exit reboot, modevim "default"
-        # bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-#
-# # exit system mode: "Enter" or "Escape"
-        # bindsym Return mode "default"
-        # bindsym Escape mode "default"
-        # }
+bindsym $mod+mod1+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+        bindsym l exec --no-startup-id i3exit lock, mode "default"
+        bindsym s exec --no-startup-id i3exit suspend, mode "default"
+        bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+        bindsym e exec --no-startup-id i3exit logout, mode "default"
+        bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+        bindsym r exec --no-startup-id i3exit reboot, modevim "default"
+        bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
+# exit system mode: "Enter" or "Escape"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        }
+
+#lock screen
+bindsym $mod+l exec --no-startup-id xsecurelock
 
 ## i3lock
  # mode "xsecurelock: Return to lock/Escape to Cancel" {
@@ -317,9 +293,6 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-##############################
-####  quick_applications   ###
-##############################
 # GUI file manager -- thunar
 bindsym $mod+e exec --no-startup-id thunar
 #flameshot
@@ -336,10 +309,6 @@ bindsym $mod+F2 exec firefox
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 #xpad
 bindsym $mod+F1 --no-startup-id xpad
-#ranger->file
-# bindsym $mod+F3 exec konsole  -- ranger path/to/Documents/uni2019-20
-# bindsym $mod+F4 exec thunar path/to/Documents/uni2019-20
-# bindsym $mod+F1 exec thunar ~/Downloads
 
 ##############################
 #### settings for i3-gaps: ###
@@ -349,9 +318,9 @@ bindsym $mod+F1 --no-startup-id xpad
 #gaps inner 7
 #gaps outer -2
 
-# bar {
-       # status_command i3status
-# }
+bar {
+        status_command i3status
+}
 
 ##############################
 #### bar                : ####
@@ -359,23 +328,32 @@ bindsym $mod+F1 --no-startup-id xpad
 
 
 ##############################
-#### autostart_app            : ######
+#### autoR            : ######
 ##############################
+# Autostart applications
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id xmodmap ~/.Xmodmap
-#nitrogen sleep keyForPower
-# exec --no-startup-id pamac-tray
+# exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+# nitrogen sleep keyForPower
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pamac-tray
+# exec --no-startup-id clipit       #copy_data
+exec --no-startup-id flameshot      #take_your_face_your_screen_face
 # exec --no-startup-id megasync
 # exec --no-startup-id dropbox
 # #exec --no-startup-id albert
+exec --no-startup-id blueman-applet
+exec --no-startup-id xmodmap ~/.Xmodmap
 
-# for no Plasma-KDE
-# exec --no-startup-id nm-applet
-# exec --no-startup-id blueman-applet
-# exec --no-startup-id xfce4-power-manager
-# exec --no-startup-id clipit       #copy_data
-# exec --no-startup-id flameshot      #take_your_face_your_screen_face
+#>>>>>>plama--list
+# exec --no-startup-id powerdevilactivitiesconfig
+# exec --no-startup-id powerdevilglobalconfig
+# exec --no-startup-id powerdevilprofilesconfig
+# exec --no-startup-id bluedeviladapters
+# exec --no-startup-id bluedevildevices
+# exec --no-startup-id bluedevilglobal
+# exec --no-startup-id
+# exec --no-startup-id
 
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
@@ -384,27 +362,25 @@ exec --no-startup-id xmodmap ~/.Xmodmap
 # exec_always --no-startup-id ff-theme-util
 # exec_always --no-startup-id fix_xcursor
 # exec --no-startup-id  xinput set-prop 16 'libinput Accel Speed' 0.5
+#
 
 #########################
 ####    i3+kde      #####
 #########################
 ## Plasma Integration
 # Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
-exec --no-startup-id wmctrl -c Plasma
-for_window [title="Desktop — Plasma"] kill, floating enable, border none
-for_window [title="Bureau — Plasma"] kill, floating enable, border none
+# exec --no-startup-id wmctrl -c Plasma
+# for_window [title="Desktop — Plasma"] kill, floating enable, border none
+# for_window [title="Bureau — Plasma"] kill, floating enable, border none
 
 ## Avoid tiling popups, dropdown windows from plasma
 # for the first time, manually resize them, i3 will remember the setting for floating windows
-for_window [class="plasmashell"] floating enable
-for_window [class="Plasma"] floating enable, border none
-for_window [title="plasma-desktop"] floating enable, border none
-for_window [title="win7"] floating enable, border none
-for_window [class="krunner"] floating enable, border none
-for_window [class="Kmix"] floating enable, border none
-for_window [class="Klipper"] floating enable, border none
-for_window [class="Plasmoidviewer"] floating enable, border none
+# for_window [class="plasmashell"] floating enable
+# for_window [class="Plasma"] floating enable, border none
+# for_window [title="plasma-desktop"] floating enable, border none
+# for_window [title="win7"] floating enable, border none
+# for_window [class="krunner"] floating enable, border none
+# for_window [class="Kmix"] floating enable, border none
+# for_window [class="Klipper"] floating enable, border none
+# for_window [class="Plasmoidviewer"] floating enable, border none
 
-##workspace_vitual
-force_display_urgency_hint 0 ms
-focus_on_window_activation urgent
