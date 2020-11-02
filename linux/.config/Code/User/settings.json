@@ -5,7 +5,23 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "keyboard.dispatch": "keyCode",
     "editor.minimap.enabled": false
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "window.zoomLevel": 0,
+    "explorer.confirmDelete": false,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "/disk/css"
+        }
+    ],
+    "liveSassCompile.settings.generateMap": false,
     "plantuml.commandArgs": [
-
-    ]    
+    ]
+    "prettier.jsxSingleQuote": true ,
+    "editor.formatOnSave": true
+    "turboConsoleLog.logMessagePrefix": "OUTPUT"
 }
