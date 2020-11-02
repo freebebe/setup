@@ -11,6 +11,8 @@
     "window.zoomLevel": 0,
     "explorer.confirmDelete": false,
     "liveServer.settings.donotShowInfoMsg": true,
+    "liveServer.settings.CustomBrowser": "chromium:PrivateMod",
+    // "liveServer.settings.CustomBrowser": "chrome:PrivateMode",
     "liveSassCompile.settings.formats": [
         {
             "format": "compressed",
