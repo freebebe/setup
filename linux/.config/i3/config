@@ -136,7 +136,7 @@ for_window [class="Zotero"] floating enable
 bindsym $mod+Ctrl+t exec konsole
 
 # kill focused window
-bindsym $Ctrl+Shift+w kill
+bindsym $mod+Ctrl+w kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
