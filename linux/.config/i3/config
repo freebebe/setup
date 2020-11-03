@@ -117,6 +117,7 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="vlc"] floating enable 
 for_window [class="eog"] floating enable 
 for_window [class="Timeset-gui"] floating enable border normal
+for_window [class="xpad"] floating enable border normal
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 for_window [class="GParted"] floating enable border normal
@@ -135,7 +136,7 @@ for_window [class="Zotero"] floating enable
 bindsym $mod+Ctrl+t exec konsole
 
 # kill focused window
-bindsym $mod+Shift+w kill
+bindsym $Ctrl+Shift+w kill
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec dmenu_run
@@ -186,9 +187,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+mod1+s layout stacking
-bindsym $mod+mod1+w layout tabbed
-bindsym $mod+mod1+e layout toggle split
+bindsym $mod+Shift+s layout stacking
+bindsym $mod+Shift+w layout tabbed
+bindsym $mod+Shift+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
