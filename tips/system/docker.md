@@ -10,3 +10,21 @@ $ sudo groupadd docker
 ```
 $ sudo usermod -aG docker $USER
 ```
+
+
+# socks5>>>>>>>>docker_pull
+```
+mkdir /lib/systemd/system/docker.service.d
+vim > /lib/systemd/system/docker.service.d/socks5-proxy.conf
+```
+>   vim socks-proxy.conf
+```
+[Service]
+Environment="ALL_PROXY=socks5://192.168.1.21:1083"
+```
+>   restart
+
+```
+systemctl daemon-reload
+systemctl restart docker
+```
