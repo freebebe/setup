@@ -93,8 +93,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 #bakcground
-exec --no-startup-id feh --bg-fill ~/Pictures/background.png
-
+exec --no-startup-id feh --bg-fill ~/Pictures/bkground/background.png
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier mod1
 
@@ -117,7 +116,8 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="vlc"] floating enable 
 for_window [class="eog"] floating enable 
 for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="xpad"] floating enable border normal
+for_window [class="xpad"] floating enable 
+for_window [class="Zathura"] floating enable 
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 for_window [class="GParted"] floating enable border normal
@@ -322,7 +322,7 @@ mode "resize" {
 ####  quick_applications   ###
 ##############################
 # GUI file manager -- thunar
-bindsym $mod+e exec --no-startup-id thunar
+bindsym $mod+e exec --no-startup-id dolphin
 #flameshot
 bindsym Print exec --no-startup-id flameshot gui
 #
@@ -365,10 +365,12 @@ bindsym $mod+F1 --no-startup-id xpad
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id xmodmap ~/.Xmodmap
+exec --no-startup-id xpad
+# exec --no-startup-id conky
 #nitrogen sleep keyForPower
 # exec --no-startup-id pamac-tray
 # exec --no-startup-id megasync
-# exec --no-startup-id dropbox
+exec --no-startup-id dropbox
 # #exec --no-startup-id albert
 
 # for no Plasma-KDE
@@ -405,6 +407,7 @@ for_window [class="krunner"] floating enable, border none
 for_window [class="Kmix"] floating enable, border none
 for_window [class="Klipper"] floating enable, border none
 for_window [class="Plasmoidviewer"] floating enable, border none
+for_window [class="dolphin"] floating enable, border none
 
 ##workspace_vitual
 force_display_urgency_hint 0 ms
