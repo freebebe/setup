@@ -1,23 +1,21 @@
 "vim-plug>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 call plug#begin('~/.vim/plugged')
 "格式
-    Plug 'Yggdroot/indentLine'              "缩进线
-    Plug 'sheerun/vim-polyglot'             "字典
+    Plug 'Yggdroot/indentLine'                  "缩进线
+    Plug 'sheerun/vim-polyglot'                 "字典
 "是巴拿
-    Plug 'preservim/nerdcommenter'			"注释
-    Plug 'terryma/vim-multiple-cursors'		
-    "{v+[C-N]}批量修改: 
-    "(https://github.com/terryma/vim-multiple-cursors/blob/master/README.md)
-    Plug 'tpope/vim-surround'               
-    "hello world! >>>>> [hello] world!:     
-    "(https://gist.github.com/wilon/ac1fc66f4a79e7b0c161c80877c75c94)
-    Plug 'airblade/vim-gitgutter'           "git修改记录-异步
+    Plug 'preservim/nerdcommenter'			    "注释
+    Plug 'terryma/vim-multiple-cursors'		    "{v+[C-N]}批量修改: 
+                                                "(https://github.com/terryma/vim-multiple-cursors/blob/master/README.md)
+    Plug 'tpope/vim-surround'                   "hello world! >>>>> [hello] world!:     
+                                                "(https://gist.github.com/wilon/ac1fc66f4a79e7b0c161c80877c75c94)
+    Plug 'airblade/vim-gitgutter'               "git修改记录-异步
     Plug 'vimwiki/vimwiki'
-    Plug 'tyru/open-browser.vim'           "browser
+    Plug 'tyru/open-browser.vim'                "browser
 "螺丝
-    Plug 'scrooloose/nerdtree'              "目录树
-    Plug 'itchyny/lightline.vim'			"状态
-    "Plug 'junegunn/goyo.vim'                "简化阅读
+    Plug 'scrooloose/nerdtree'                  "目录树
+    Plug 'itchyny/lightline.vim'			    "状态
+    "Plug 'junegunn/goyo.vim'                   "简化阅读
     "Plug 'jreybert/vimagit'
     " Plug 'aklt/plantuml-syntax'				"mind map
     Plug 'wannesm/wmgraphviz.vim'				"mind map
@@ -25,22 +23,21 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf.vim'
     Plug 'liuchengxu/vim-clap'
 "WEB
-    "Plug 'hail2u/vim-css3-syntax'           "css高亮
-    Plug 'Raimondi/delimitMate'             "前后括制对齐
-    "Plug 'pangloss/vim-javascript'          "java高亮
-    "Plug 'turbio/bracey.vim'				"h+c+j 补全
+    "Plug 'hail2u/vim-css3-syntax'              "css高亮
+    Plug 'Raimondi/delimitMate'                 "前后括制对齐
+    "Plug 'pangloss/vim-javascript'             "java高亮
+    "Plug 'turbio/bracey.vim'				    "h+c+j 补全
     "Plug 'ap/vim-css-color'			        "css-color
-     Plug 'suan/vim-instant-markdown'     "markdown
+     Plug 'suan/vim-instant-markdown'           "markdown
 "热熔胶
     "Plug 'ycm-core/YouCompleteMe'
-    Plug 'mattn/emmet-vim'                 "htXml5-backnotes
-   "Plug 'SirVer/ultisnips'                "PYTHON补全
+    Plug 'mattn/emmet-vim'                      "htXml5-backnotes
+   "Plug 'SirVer/ultisnips'                     "PYTHON补全
     " Plug 'honza/vim-snippets'
-   " Plug 'davidhalter/jedi'                "PYTHON
-   " "python不全/字典:    https://github.com/davidhalter/jedi
+   " Plug 'davidhalter/jedi'                    "PYTHON     
+                                                "python不全/字典:    https://github.com/davidhalter/jedi
 "油漆
-	" Plug 'cormacrelf/vim-colors-github'
-  "----------------------"为何用浅色背景:https://www.zhihu.com/question/20215618
+    Plug 'cormacrelf/vim-colors-github'       "----------------------"为何用浅色背景:https://www.zhihu.com/question/20215618
 	" Plug 'morhetz/gruvbox'
 	" Plug 'yuttie/inkstained-vim'
 	" Plug 'atelierbram/Base2Tone-vim'
@@ -55,25 +52,21 @@ call plug#begin('~/.vim/plugged')
 	" Plug 'cseelus/vim-colors-lucid'
 	Plug 'cocopon/iceberg.vim'
 "规程
-    " Plug 'vim-syntastic/syntastic'        
-    " "语法检查
-      Plug 'dense-analysis/ale'             
-      "异步:https://github.com/dense-analysis/ale
+    " Plug 'vim-syntastic/syntastic'            "语法检查
+      Plug 'dense-analysis/ale'                 "异步:https://github.com/dense-analysis/ale
 "兔洞
-    Plug 'ctrlpvim/ctrlp.vim'
-    "模糊搜索
-    Plug 'FelikZ/ctrlp-py-matcher'
-    "ctrlp-python插件 : https://github.com/FelikZ/ctrlp-py-matcher
+    Plug 'ctrlpvim/ctrlp.vim'                   "模糊搜索
+    Plug 'FelikZ/ctrlp-py-matcher'              "ctrlp-python插件 : https://github.com/FelikZ/ctrlp-py-matcher
 call plug#end()
 
 "----------------------------------------------------\
 "------------------------vim--------------------------|
 "----------------------------------------------------/
 "color
+set background=dark
+" colo github
 colo iceberg
-
-" colo evening
-	let g:lightline = {'colorscheme': 'iceberg'}
+  let g:lightline = {'colorscheme': 'iceberg'}
 
 "setKey
 nnoremap tn :tabnew<Space>
@@ -86,7 +79,6 @@ nnoremap tG :tablast<CR>
 
 "配置同步
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
-"IDE同化
 
 "文件代码形式utf-8
 set encoding=utf-8
@@ -119,6 +111,8 @@ set nocompatible            "设置不兼容
 set showcmd                 "显示输入命令
 set title                   "设置顶题
 set nobackup                "不备份
+  set nowritebackup
+  set noswapfile
 
 set complete-=i             "disable scanning included files
 set complete-=t             "disable searching tags
@@ -131,6 +125,7 @@ set showmatch
 set smartindent             "smart when using tabs
 set cindent
 set so=7                    "7行上下滚动始终在中间
+
 
 "缩进
 filetype indent on          "自适应语言的智能缩进
@@ -179,6 +174,13 @@ set nowrap            "禁止折行
 " set fooldmethod=syntax		"基于缩进或语法进行代码折叠
 set nofoldenable			"启动vim时关闭折叠代码
 set foldmethod=syntax
+    "manual        手工折叠
+    "indent        缩进表示
+    "expr        表达式折叠
+    "syntax        语法定义折叠
+    "diff        没有更改的文本折叠
+    "maraker    标记折叠，默认：{{{和}}}
+
 
 "=========================重载保存文件
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -233,6 +235,7 @@ map <F9> :NERDTreeToggle<CR>
 
 "行号
 let g:NERDTreeShowLineNumbers=1
+
 "================nerdcommenter=============================
 let g:NERDSpaceDelims = 1			"空格
 let g:NERDCompactSexyComs = 1		"简约
@@ -274,13 +277,15 @@ let javascript_enable_domhtmlcss = 1
 "
 let g:user_emmet_expandabbr_key = '<F2>'
 let g:user_emmet_leader_key= '<C-e>'
+    "================emmet================
+"map <F3> <C-\>
 
 "================ultisnips==============================
-let g:UltiSnipsUsePythonVersion =2
-let g:UltiSnipsExpandTrigger    ="<c-p>"
-let g:UltiSnipsListSnippets          ="<c-l>"
-let g:UltiSnipsJumpForwardTrigger    ="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger   ="<c-k>"
+" let g:UltiSnipsUsePythonVersion =2
+" let g:UltiSnipsExpandTrigger    ="<c-p>"
+" let g:UltiSnipsListSnippets          ="<c-l>"
+" let g:UltiSnipsJumpForwardTrigger    ="<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger   ="<c-k>"
 
 "================syntastic====================
 let g:syntastic_java_javac_classpath=$CLASS_PATH
@@ -306,63 +311,62 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+endif
 
 "================ctrlp-plug-python=====================
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
-"================emmet================
-"map <F3> <C-\>
 
 "===============YCM=====================
-let g:ycm_clangd_binary_path = "~/Progm-plug/clang+llvm"
-" YCM 补全菜单配色
-" 菜单
-" highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
-" 选中项
-" highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
-"IDE同化
-set completeopt=longest,menu
-" 补全功能在注释中同样有效
-let g:ycm_complete_in_comments=0
-" 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
-let g:ycm_confirm_extra_conf=0
-" 开启 YCM 标签补全引擎
-let g:ycm_collect_identifiers_from_tags_files=1
-" 引入 C++ 标准库tags
-set tags+=/data/misc/software/misc./vim/stdcpp.tags
-" YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
-inoremap <leader>; <C-x><C-o>
-" 补全内容不以分割子窗口形式出现，只显示补全列表
-set completeopt-=preview
-" 从第一个键入字符就开始罗列匹配项
-let g:ycm_min_num_of_chars_for_completion=2
-" 禁止缓存匹配项，每次都重新生成匹配项
-let g:ycm_cache_omnifunc=0
-" 语法关键字补全			
-let g:ycm_seed_identifiers_with_syntax=1
-" 禁用语法
-" let g:ycm_filepath_blacklist = {}
-"语法白名单
-let g:ycm_filepath_whitelist = {'html': 1, 'jsx': 1, 'xml': 1, 'css': 1}
-"电动是巴拿
-let g:ycm_auto_trigger=1
-let g:ycm_semantic_triggers = {
-    \   'css': [ 're!^', 're!^\s+', ': ' ],
-    \   'scss': [ 're!^', 're!^\s+', ': ' ],
-    \ }
-        " let g:ycm_semantic_triggers = {
-        " \'c' : ['->', '    ', '.', ' ', '(', '[', '&'],
-        " \'cpp,objcpp' : ['->', '.', ' ', '(', '[', '&', '::'],
-        " \'perl' : ['->', '::', ' '],
-        " \'php' : ['->', '::', '.'],
-        " \'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
-        " \'ruby' : ['.', '::'],
-        " \'lua' : ['.', ':'],
-        " \'scss,css': [ 're!^\s{2,4}', 're!:\s+' ],
-        " \'html': ['<', '"', '</', ' '],
-        " \'javascript': ['.', 're!(?=[a-zA-Z]{3,4})'],
-        " \}
-endif
+" let g:ycm_clangd_binary_path = "~/Progm-plug/clang+llvm"
+" " YCM 补全菜单配色
+" " 菜单
+" " highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
+" " 选中项
+" " highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
+" "IDE同化
+" set completeopt=longest,menu
+" " 补全功能在注释中同样有效
+" let g:ycm_complete_in_comments=0
+" " 允许 vim 加载 .ycm_extra_conf.py 文件，不再提示
+" let g:ycm_confirm_extra_conf=0
+" " 开启 YCM 标签补全引擎
+" let g:ycm_collect_identifiers_from_tags_files=1
+" " 引入 C++ 标准库tags
+" set tags+=/data/misc/software/misc./vim/stdcpp.tags
+" " YCM 集成 OmniCppComplete 补全引擎，设置其快捷键
+" inoremap <leader>; <C-x><C-o>
+" " 补全内容不以分割子窗口形式出现，只显示补全列表
+" set completeopt-=preview
+" " 从第一个键入字符就开始罗列匹配项
+" let g:ycm_min_num_of_chars_for_completion=2
+" " 禁止缓存匹配项，每次都重新生成匹配项
+" let g:ycm_cache_omnifunc=0
+" " 语法关键字补全
+" let g:ycm_seed_identifiers_with_syntax=1
+" " 禁用语法
+" " let g:ycm_filepath_blacklist = {}
+" "语法白名单
+" let g:ycm_filepath_whitelist = {'html': 1, 'jsx': 1, 'xml': 1, 'css': 1}
+" "电动是巴拿
+" let g:ycm_auto_trigger=1
+" let g:ycm_semantic_triggers = {
+    " \   'css': [ 're!^', 're!^\s+', ': ' ],
+    " \   'scss': [ 're!^', 're!^\s+', ': ' ],
+    " \ }
+        " " let g:ycm_semantic_triggers = {
+        " " \'c' : ['->', '    ', '.', ' ', '(', '[', '&'],
+        " " \'cpp,objcpp' : ['->', '.', ' ', '(', '[', '&', '::'],
+        " " \'perl' : ['->', '::', ' '],
+        " " \'php' : ['->', '::', '.'],
+        " " \'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
+        " " \'ruby' : ['.', '::'],
+        " " \'lua' : ['.', ':'],
+        " " \'scss,css': [ 're!^\s{2,4}', 're!:\s+' ],
+        " " \'html': ['<', '"', '</', ' '],
+        " " \'javascript': ['.', 're!(?=[a-zA-Z]{3,4})'],
+        " " \}
+" endif
 
 "============================vim-gitgutter
 function! GitStatus()
