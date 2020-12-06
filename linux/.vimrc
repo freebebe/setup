@@ -4,9 +4,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'Yggdroot/indentLine'              "缩进线
     Plug 'sheerun/vim-polyglot'             "字典
 "是巴拿
-	Plug 'preservim/nerdcommenter'			"注释
-	Plug 'terryma/vim-multiple-cursors'		
-    "{v-block+[C-N]}批量修改: 
+    Plug 'preservim/nerdcommenter'			"注释
+    Plug 'terryma/vim-multiple-cursors'		
+    "{v+[C-N]}批量修改: 
     "(https://github.com/terryma/vim-multiple-cursors/blob/master/README.md)
     Plug 'tpope/vim-surround'               
     "hello world! >>>>> [hello] world!:     
@@ -16,138 +16,129 @@ call plug#begin('~/.vim/plugged')
     Plug 'tyru/open-browser.vim'           "browser
 "螺丝
     Plug 'scrooloose/nerdtree'              "目录树
-	" Plug 'itchyny/lightline.vim'			"状态
+    Plug 'itchyny/lightline.vim'			"状态
     "Plug 'junegunn/goyo.vim'                "简化阅读
     "Plug 'jreybert/vimagit'
-    Plug 'aklt/plantuml-syntax'				"mind map
+    " Plug 'aklt/plantuml-syntax'				"mind map
+    Plug 'wannesm/wmgraphviz.vim'				"mind map
 "new tag
-	Plug 'junegunn/fzf.vim'
-	Plug 'liuchengxu/vim-clap'
+    Plug 'junegunn/fzf.vim'
+    Plug 'liuchengxu/vim-clap'
 "WEB
     "Plug 'hail2u/vim-css3-syntax'           "css高亮
     Plug 'Raimondi/delimitMate'             "前后括制对齐
     "Plug 'pangloss/vim-javascript'          "java高亮
-    " Plug 'turbio/bracey.vim'				"h+c+j 补全
-	"Plug 'ap/vim-css-color'			        "css-color
+    "Plug 'turbio/bracey.vim'				"h+c+j 补全
+    "Plug 'ap/vim-css-color'			        "css-color
      Plug 'suan/vim-instant-markdown'     "markdown
 "热熔胶
-     " Plug 'ycm-core/YouCompleteMe'
-     Plug 'mattn/emmet-vim'                 "htXml5-backnotes
-   " Plug 'SirVer/ultisnips'                "PYTHON补全
+    "Plug 'ycm-core/YouCompleteMe'
+    Plug 'mattn/emmet-vim'                 "htXml5-backnotes
+   "Plug 'SirVer/ultisnips'                "PYTHON补全
     " Plug 'honza/vim-snippets'
    " Plug 'davidhalter/jedi'                "PYTHON
    " "python不全/字典:    https://github.com/davidhalter/jedi
 "油漆
-    " Plug 'cormacrelf/vim-colors-github'
+	" Plug 'cormacrelf/vim-colors-github'
   "----------------------"为何用浅色背景:https://www.zhihu.com/question/20215618
-     "Plug 'morhetz/gruvbox'
-    " Plug 'yuttie/inkstained-vim'
-    " Plug 'atelierbram/Base2Tone-vim'
-    " Plug 'altercation/vim-colors-solarized'
-    " Plug 'atelierbram/Base2Tone-vim'
-    " Plug 'mswift42/themecreator'
-    " Plug 'mswift42/vim-themes'
-	Plug 'arcticicestudio/nord-vim'
+	" Plug 'morhetz/gruvbox'
+	" Plug 'yuttie/inkstained-vim'
+	" Plug 'atelierbram/Base2Tone-vim'
+	" Plug 'altercation/vim-colors-solarized'
+	" Plug 'atelierbram/Base2Tone-vim'
+	" Plug 'ayu-theme/ayu-vim'
+	" Plug 'sjl/badwolf'
+	" Plug 'mswift42/themecreator'
+	" Plug 'mswift42/vim-themes'
+	" Plug 'arcticicestudio/nord-vim'
+	" Plug 'co1ncidence/mountaineer.vim'
+	" Plug 'cseelus/vim-colors-lucid'
+	Plug 'cocopon/iceberg.vim'
 "规程
     " Plug 'vim-syntastic/syntastic'        
     " "语法检查
       Plug 'dense-analysis/ale'             
       "异步:https://github.com/dense-analysis/ale
 "兔洞
-    " Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'ctrlpvim/ctrlp.vim'
     "模糊搜索
-    " Plug 'FelikZ/ctrlp-py-matcher'
+    Plug 'FelikZ/ctrlp-py-matcher'
     "ctrlp-python插件 : https://github.com/FelikZ/ctrlp-py-matcher
 call plug#end()
 
 "----------------------------------------------------\
 "------------------------vim--------------------------|
 "----------------------------------------------------/
+"color
+colo iceberg
+
+" colo evening
+	let g:lightline = {'colorscheme': 'iceberg'}
+
 "setKey
 nnoremap tn :tabnew<Space>
 nnoremap tg :tabfirst<CR>
 nnoremap tG :tablast<CR>
+  inoremap <C-U> <C-G>u<C-U>          "挡c-U
+  "保存
+  nnoremap <C-s> :<CR>
+  inoremap <C-s> <ESC>:w<CR>
 
 "配置同步
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
-"网页同步
-nnoremap ,v :exec '!exec firefox %'<CR>
-" 默认标题
-set title
-"Auto reload if file was changed somewhere else (for autoread)
-au CursorHold * checktime
+"IDE同化
 
-"=========================文件代码形式utf-8
+"文件代码形式utf-8
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,big5,euc-jp,euc-kr
+"文件格式
+set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
+autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+  " JavaScript
+  au BufNewFile,BufRead *.es6 setf javascript
+  " TypeScript
+  au BufNewFile,BufRead *.tsx setf typescript
+  " Markdown
+  au BufNewFile,BufRead *.md set filetype=markdown
+  " Flow
+  au BufNewFile,BufRead *.flow set filetype=javascript
 
-
-"=========================提示乱码
-"language messages zh_CN.utf-8
-
-
-"=========================vim list debug ifx
-"source $VIMRUNTIME/delmenu.vim
-"source $VIMRUNTIME/menu.vim
-set nomodeline      "modeline漏洞
-
-
-"turn bakcup off, since most stuff is in SVN, etc.aanyway
-set nowritebackup
-set noswapfile
-set nobackup
-
-set autoread        "外部检测auto
-
-set wildmenu        "c-n & c-p
-set display+=lastline
-
-" 设置快捷键将选中文本块复制至系统剪贴板
-vnoremap <Leader>y "+y
-" 设置快捷键将系统剪贴板内容粘贴至 vim
-nmap <Leader>p "+p
-
-"========================= 折叠
-set foldenable            "允许折叠
-set fdm=syntax            " 按语法折叠
-set fdm=manual            "手动
-set foldmethod=indent
-set foldnestmax=3
-set nofoldenable
-
-
-set novisualbell            "no闪烁
-
-set vb t_vb=                 "消警告提声
-set noerrorbells
-set visualbell
-
-set number                    "行号
-set relativenumber            "递进行号
-
-" Use dash as word separator.
-set iskeyword+=-
-
-" show mode in statusbar, not separately.
-set noshowmode
-
-" Enable mouse for scrolling and window resizing.
-" set mouse=a
-
-" Save up to 100 marks, enable capital marks.
-set viminfo='100,f1
-
-"=========================set relativenumber            "相对行号
+"格式
+set smarttab                "Use 'shiftwidth' when using <Tab> in front of a line. By default it's used only for shift commands (<, >).
+set autoindent
+set number                  "行号
+set relativenumber          "递进行号
+set vb t_vb=                "消警告提声
 set laststatus=2            "显示状态行
-set ruler            "总是显示下行数
-set showcmd                "显示输入命令
-" set list                "显示Tab和空格
+set ruler                   "总是显示下行数
+set nocompatible            "设置不兼容
+set showcmd                 "显示输入命令
+set title                   "设置顶题
+set nobackup                "不备份
 
-"=========================语法高亮-字典
-syntax enable
-syntax on
+set complete-=i             "disable scanning included files
+set complete-=t             "disable searching tags
+
+set hlsearch                "Enable search highlighting.
+set incsearch
+set ignorecase              "搜索忽略大小写
+set showmatch
+
+set smartindent             "smart when using tabs
+set cindent
+set so=7                    "7行上下滚动始终在中间
+
+"缩进
+filetype indent on          "自适应语言的智能缩进
+set shiftwidth=2
+set tabstop=2
+set ai "Auto indent
+set si "Smart indent
+set backspace=start,eol,indent
 
 "=========================进退x***
 set tabstop=4
@@ -155,166 +146,64 @@ set softtabstop=4
 set backspace=2
 set expandtab
 
-"Use 'shiftwidth' when using <Tab> in front of a line. By default it's used only for shift commands (<, >).
-set smarttab
+"=========================语法高亮-字典
+syntax enable
+syntax on
+  autocmd InsertLeave,WinEnter * set cursorline
+  autocmd InsertLeave,WinEnter * set nocursorline
 
-filetype indent on            "自适应语言的智能缩进
-
-set autoindent
-
-set hlsearch                "Enable search highlighting.
-set incsearch
-set ignorecase
-set showmatch
-
-set smartindent
-set cindent
-"
 "======================十字定位线
-"set colorcolumn=80             "警示線
-" set cursorline
-" set cursorcolumn
-"
-" highlight CursorLine cterm=none ctermbg=236
-" highlight CursorColumn cterm=none ctermbg=236
+set colorcolumn=80          "警示線
+set cursorline
+set cursorcolumn
+  "colo
+  highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
+
+  highlight LineNr       cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
+ 
+  augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * set cul
+    autocmd WinLeave * set nocul
+  augroup END
+
+  if &term =~ "screen"
+    autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
+    autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
+  endif
+
 "=========================代码折叠
 set foldenable
 set nowrap            "禁止折行
 " set fooldmethod=indent
 " set fooldmethod=syntax		"基于缩进或语法进行代码折叠
 set nofoldenable			"启动vim时关闭折叠代码
-"=========================折叠方法
-"manual        手工折叠
-"indent        缩进表示
-"expr        表达式折叠
-"syntax        语法定义折叠
-"diff        没有更改的文本折叠
-"maraker    标记折叠，默认：{{{和}}}
 set foldmethod=syntax
-"=========================在左侧显示
-set foldcolumn=4
-
-"=========================7行上下滚动始终在中间
-set so=7
 
 "=========================重载保存文件
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 autocmd BufWritePost ~/.Xdefaults call system('xrdb ~/.Xdefaults')
 
-" Use Silver Searcher for CtrlP plugin (if available) Fallback to git ls-files for fast listing. Because we use fast strategies, disable caching.
-let g:ctrlp_use_caching = 0
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-else
-  let g:ctrlp_user_command = ['.git',
-    \ 'cd %s && git ls-files . -co --exclude-standard',
-    \ 'find %s -type f' ]
+" stop loading config if it's on tiny or small太小停滞加载
+if !1 | finish | endif
 
-" Make sure pasting in visual mode doesn't replace paste buffer
-function! RestoreRegister()
-  let @" = s:restore_reg
-  return ''
-endfunction
-function! s:Repl()
-  let s:restore_reg = @"
-  return "p@=RestoreRegister()\<cr>"
-endfunction
-vmap <silent> <expr> p <sid>Repl()
-
-"=========================智能当前行高亮
-autocmd InsertLeave,WinEnter * set cursorline
-autocmd InsertLeave,WinEnter * set nocursorline
-
-"=========================关键字补全
-set complete-=i                "disable scanning included files
-set complete-=t                "disable searching tags
-
-"=========================向,上游
-if has('path_extra')
-  setglobal tags-=./tags tags^=./tags;
+" incremental substitution 增值替代 (neovim)
+if has('nvim')
+  set inccommand=split
 endif
 
-"=========================改键
-" imap <TAB> <C-N>
-" imap <S-TAB> <C-P>
-inoremap <C-U> <C-G>u<C-U>          "挡c-U
-"保存
-nnoremap <C-s> :<CR>
-inoremap <C-s> <ESC>:w<CR>
+" Turn off paste mode when leaving insert离开状态关闭粘贴
+autocmd InsertLeave * set nopaste
 
-"Set minimum window size to 79x5.
-" set winwidth=79
-" set winheight=5
-" set winminheight=5
-
-"Wrap lines by default
-set showbreak=" "
-
-"======================加亮不加粗
-if &t_Co == 8 && $TERM !~# '^linux'
-  set t_Co=16
+" For conceal markers.对隐藏标记
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
 endif
 
-"======================配色
-set t_Co=256
-set background=dark " or light if you prefer the light version
-" colo github
-colo nord
-" set termguicolors
-" colorscheme soft-stone
-        " colorscheme inkstained
-        "colorscheme github
-                " let g:lightline = {'colorscheme': 'github'}
-                " let g:github_colors_soft = 1               "background
-    
-">>>>>>>>>>Base2Tone
-" syntax enable
-"set background=light
-" Base2Tone Dark
-" colorscheme Base2Tone_EveningDark
-" or any of the other schemes:
-" colorscheme Base2Tone_MorningDark
-" colorscheme Base2Tone_SeaDark
-" colorscheme Base2Tone_SpaceDark
-" colorscheme Base2Tone_EarthDark
-" colorscheme Base2Tone_ForestDark
-" colorscheme Base2Tone_FieldDark
-" colorscheme Base2Tone_GardenDark
-" colorscheme Base2Tone_DesertDark
-" colorscheme Base2Tone_LakeDark
-" colorscheme Base2Tone_MeadowDark
-" colorscheme Base2Tone_DrawbridgeDark
-" colorscheme Base2Tone_MallDark
-" colorscheme Base2Tone_SuburbDark
-" colorscheme Base2Tone_LavenderDark
-" colorscheme Base2Tone_PoolDark
-" colorscheme Base2Tone_PorchDark
-" colorscheme Base2Tone_HeathDark
-" colorscheme Base2Tone_CaveDark
-" colorscheme Base2Tone_MotelDark
+" Add asterisks in block comments 块标记*号
+set formatoptions+=r
 
-" Base2Tone Light
-" colorscheme Base2Tone_EveningLight
-" colorscheme Base2Tone_MorningLight
-" colorscheme Base2Tone_SeaLight
-" colorscheme Base2Tone_SpaceLight
-" colorscheme Base2Tone_EarthLight
-" colorscheme Base2Tone_ForestLight
-" colorscheme Base2Tone_FieldLight
-" colorscheme Base2Tone_GardenLight
-" colorscheme Base2Tone_DesertLight
-" colorscheme Base2Tone_LakeLight
-" colorscheme Base2Tone_MeadowLight
-" colorscheme Base2Tone_DrawbridgeLight
-" colorscheme Base2Tone_MallLight
-" colorscheme Base2Tone_SuburbLight
-" colorscheme Base2Tone_LavenderLight
-" colorscheme Base2Tone_PoolLight
-" colorscheme Base2Tone_PorchLight
-" colorscheme Base2Tone_HeathLight
-" colorscheme Base2Tone_CaveLight
-" colorscheme Base2Tone_MotelLight
+
 
 "------------------------------------------------------\
 "--------------------vim-plug---------------------------|
@@ -396,7 +285,29 @@ let g:UltiSnipsJumpBackwardTrigger   ="<c-k>"
 "================syntastic====================
 let g:syntastic_java_javac_classpath=$CLASS_PATH
 
-"================ctrl-plug=====================
+"================ctrlp=====================
+" Use Silver Searcher for CtrlP plugin (if available) Fallback to git ls-files for fast listing. Because we use fast strategies, disable caching.
+let g:ctrlp_use_caching = 0
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+else
+  let g:ctrlp_user_command = ['.git',
+    \ 'cd %s && git ls-files . -co --exclude-standard',
+    \ 'find %s -type f' ]
+
+" Make sure pasting in visual mode doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
+
+"================ctrlp-plug-python=====================
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 "================emmet================
@@ -474,3 +385,5 @@ filetype plugin on
 ""let g:instant_markdown_port = 8888
 "let g:instant_markdown_python = 1
 let g:instant_markdown_browser = "chromium --new-window"
+
+"=============================graphviz
