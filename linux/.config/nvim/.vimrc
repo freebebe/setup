@@ -58,6 +58,8 @@ set nocompatible            "设置不兼容
 set showcmd                 "显示输入命令
 set title                   "设置顶题
 set nobackup                "不备份
+  set nowritebackup
+  set noswapfile
 
 set complete-=i             "disable scanning included files
 set complete-=t             "disable searching tags
@@ -70,6 +72,7 @@ set showmatch
 set smartindent             "smart when using tabs
 set cindent
 set so=7                    "7行上下滚动始终在中间
+
 
 "缩进
 filetype indent on          "自适应语言的智能缩进
@@ -118,6 +121,13 @@ set nowrap            "禁止折行
 " set fooldmethod=syntax		"基于缩进或语法进行代码折叠
 set nofoldenable			"启动vim时关闭折叠代码
 set foldmethod=syntax
+    "manual        手工折叠
+    "indent        缩进表示
+    "expr        表达式折叠
+    "syntax        语法定义折叠
+    "diff        没有更改的文本折叠
+    "maraker    标记折叠，默认：{{{和}}}
+
 
 "=========================重载保存文件
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
@@ -141,5 +151,3 @@ endif
 
 " Add asterisks in block comments 块标记*号
 set formatoptions+=r
-
-

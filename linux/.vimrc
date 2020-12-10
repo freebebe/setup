@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'scrooloose/nerdtree'                  "目录树
     Plug 'itchyny/lightline.vim'			    "状态
     "Plug 'junegunn/goyo.vim'                   "简化阅读
-    "Plug 'jreybert/vimagit'
+    Plug 'jreybert/vimagit'
     " Plug 'aklt/plantuml-syntax'				"mind map
     Plug 'wannesm/wmgraphviz.vim'				"mind map
 "new tag
@@ -37,19 +37,7 @@ call plug#begin('~/.vim/plugged')
    " Plug 'davidhalter/jedi'                    "PYTHON     
                                                 "python不全/字典:    https://github.com/davidhalter/jedi
 "油漆
-    Plug 'cormacrelf/vim-colors-github'       "----------------------"为何用浅色背景:https://www.zhihu.com/question/20215618
-	" Plug 'morhetz/gruvbox'
-	" Plug 'yuttie/inkstained-vim'
-	" Plug 'atelierbram/Base2Tone-vim'
-	" Plug 'altercation/vim-colors-solarized'
-	" Plug 'atelierbram/Base2Tone-vim'
-	" Plug 'ayu-theme/ayu-vim'
-	" Plug 'sjl/badwolf'
-	" Plug 'mswift42/themecreator'
-	" Plug 'mswift42/vim-themes'
-	" Plug 'arcticicestudio/nord-vim'
-	" Plug 'co1ncidence/mountaineer.vim'
-	" Plug 'cseelus/vim-colors-lucid'
+    " Plug 'cormacrelf/vim-colors-github'       为何用浅色背景:https://www.zhihu.com/question/20215618
 	Plug 'cocopon/iceberg.vim'
 "规程
     " Plug 'vim-syntastic/syntastic'            "语法检查
@@ -61,7 +49,9 @@ call plug#end()
 
 "----------------------------------------------------\
 "------------------------vim--------------------------|
+"------------------------:set-------------------------|
 "----------------------------------------------------/
+set shell=fish
 "color
 set background=dark
 " colo github
@@ -100,6 +90,7 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
   au BufNewFile,BufRead *.flow set filetype=javascript
 
 "格式
+"inside_be_wiki-PLUG   |  set nocompatible            "设置不兼容
 set smarttab                "Use 'shiftwidth' when using <Tab> in front of a line. By default it's used only for shift commands (<, >).
 set autoindent
 set number                  "行号
@@ -107,7 +98,6 @@ set relativenumber          "递进行号
 set vb t_vb=                "消警告提声
 set laststatus=2            "显示状态行
 set ruler                   "总是显示下行数
-set nocompatible            "设置不兼容
 set showcmd                 "显示输入命令
 set title                   "设置顶题
 set nobackup                "不备份
@@ -148,7 +138,7 @@ syntax on
   autocmd InsertLeave,WinEnter * set nocursorline
 
 "======================十字定位线
-set colorcolumn=80          "警示線
+set colorcolumn=79          "警示線
 set cursorline
 set cursorcolumn
   "colo
@@ -209,6 +199,7 @@ set formatoptions+=r
 
 "------------------------------------------------------\
 "--------------------vim-plug---------------------------|
+"--------------------:let-------------------------------|
 "------------------------------------------------------/
 
 "================Nerdtree==================
@@ -318,7 +309,8 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 
 "===============YCM=====================
-" let g:ycm_clangd_binary_path = "~/Progm-plug/clang+llvm"
+" let g:ycm_clangd_binary_path = 
+       "~/Progm-plug/clang+llvm"
 " " YCM 补全菜单配色
 " " 菜单
 " " highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5

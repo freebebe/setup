@@ -33,6 +33,6 @@ call plug#begin('~/.config/nvim/plug')
 	Plug 'airblade/vim-gitgutter'           "git修改记录-异步
 
 "markdown
-	Plug 'suan/vim-instant-markdown'     		"markdown
+	Plug 'suan/vim-instant-markdown', {'for': 'markdown'}     		"markdown
 
 call plug#end()
