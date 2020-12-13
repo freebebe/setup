@@ -1,3 +1,21 @@
+"------------------------------
+"---------plug-backup----------
+"------------------------------
+    "Plug 'cormacrelf/vim-colors-github'       为何用浅色背景:https://www.zhihu.com/question/20215618
+    "Plug 'tyru/open-browser.vim'                "browser
+    "Plug 'junegunn/goyo.vim'                   "简化阅读
+    "Plug 'SirVer/ultisnips'                     "PYTHON补全
+    "Plug 'honza/vim-snippets'
+    "Plug 'davidhalter/jedi'                    "PYTHON     
+                                                "python不全/字典:    https://github.com/davidhalter/jedi
+    "Plug 'pangloss/vim-javascript'             "java高亮
+    "Plug 'turbio/bracey.vim'				    "h+c+j 补全
+    "Plug 'aklt/plantuml-syntax'				"mind map
+    "Plug 'ap/vim-css-color'			        "css-color
+    "Plug 'hail2u/vim-css3-syntax'              "css高亮
+    "Plug 'ycm-core/YouCompleteMe'
+    "Plug 'vim-syntastic/syntastic'             "语法检查
+    "Plug 'suan/vim-instant-markdown'           "markdown
 "vim-plug>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 call plug#begin('~/.vim/plugged')
 "格式
@@ -6,43 +24,35 @@ call plug#begin('~/.vim/plugged')
 "是巴拿
     Plug 'preservim/nerdcommenter'			    "注释
     Plug 'terryma/vim-multiple-cursors'		    "{v+[C-N]}批量修改: 
-                                                "(https://github.com/terryma/vim-multiple-cursors/blob/master/README.md)
     Plug 'tpope/vim-surround'                   "hello world! >>>>> [hello] world!:     
                                                 "(https://gist.github.com/wilon/ac1fc66f4a79e7b0c161c80877c75c94)
     Plug 'airblade/vim-gitgutter'               "git修改记录-异步
     Plug 'vimwiki/vimwiki'
-    Plug 'tyru/open-browser.vim'                "browser
+    Plug 'editorconfig/editorconfig-vim'        "team统一风格
+    Plug 'tpope/vim-fugitive'                   "git
 "螺丝
     Plug 'scrooloose/nerdtree'                  "目录树
+    Plug 'tpope/vim-eunuch'                     "filemanger ->  /:move//:mkdir//:rename//:delete//
     Plug 'itchyny/lightline.vim'			    "状态
-    "Plug 'junegunn/goyo.vim'                   "简化阅读
     Plug 'jreybert/vimagit'
-    " Plug 'aklt/plantuml-syntax'				"mind map
     Plug 'wannesm/wmgraphviz.vim'				"mind map
+    Plug 'lervag/vimtex'
+    "Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }         "online
 "new tag
     Plug 'junegunn/fzf.vim'
     Plug 'liuchengxu/vim-clap'
 "WEB
-    "Plug 'hail2u/vim-css3-syntax'              "css高亮
     Plug 'Raimondi/delimitMate'                 "前后括制对齐
-    "Plug 'pangloss/vim-javascript'             "java高亮
-    "Plug 'turbio/bracey.vim'				    "h+c+j 补全
-    "Plug 'ap/vim-css-color'			        "css-color
-     Plug 'suan/vim-instant-markdown'           "markdown
+    Plug 'plasticboy/vim-markdown'
 "热熔胶
-    "Plug 'ycm-core/YouCompleteMe'
+    Plug 'rhysd/vim-clang-format'               "pinkup the function be it just function
     Plug 'mattn/emmet-vim'                      "htXml5-backnotes
-   "Plug 'SirVer/ultisnips'                     "PYTHON补全
-    " Plug 'honza/vim-snippets'
-   " Plug 'davidhalter/jedi'                    "PYTHON     
-                                                "python不全/字典:    https://github.com/davidhalter/jedi
 "油漆
-    " Plug 'cormacrelf/vim-colors-github'       为何用浅色背景:https://www.zhihu.com/question/20215618
 	Plug 'cocopon/iceberg.vim'
 "规程
-    " Plug 'vim-syntastic/syntastic'            "语法检查
-      Plug 'dense-analysis/ale'                 "异步:https://github.com/dense-analysis/ale
+    Plug 'dense-analysis/ale'                   "异步语法检查:https://github.com/dense-analysis/ale
 "兔洞
+    Plug 'mileszs/ack.vim'                      "文本搜索：设置里并用t.s.s
     Plug 'ctrlpvim/ctrlp.vim'                   "模糊搜索
     Plug 'FelikZ/ctrlp-py-matcher'              "ctrlp-python插件 : https://github.com/FelikZ/ctrlp-py-matcher
 call plug#end()
@@ -51,6 +61,7 @@ call plug#end()
 "------------------------vim--------------------------|
 "------------------------:set-------------------------|
 "----------------------------------------------------/
+filetype plugin on
 set shell=fish
 "color
 set background=dark
@@ -139,13 +150,13 @@ syntax on
 
 "======================十字定位线
 set colorcolumn=79          "警示線
-set cursorline
 set cursorcolumn
+set cursorline
   "colo
   highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 
-  highlight LineNr       cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
- 
+  highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
+
   augroup BgHighlight
     autocmd!
     autocmd WinEnter * set cul
@@ -195,6 +206,29 @@ endif
 " Add asterisks in block comments 块标记*号
 set formatoptions+=r
 
+"=========================Highlight all instances of word under cursor, when idle.
+" http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
+" Useful when studying strange source code.
+" Type z/ to toggle highlighting on/off.
+nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+function! AutoHighlightToggle()
+  let @/ = ''
+  if exists('#auto_highlight')
+    au! auto_highlight
+    augroup! auto_highlight
+    setl updatetime=4000
+    echo 'Highlight current word: off'
+    return 0
+  else
+    augroup auto_highlight
+      au!
+      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+    augroup end
+    setl updatetime=300
+    echo 'Highlight current word: ON'
+    return 1
+  endif
+endfunction
 
 
 "------------------------------------------------------\
@@ -251,10 +285,6 @@ set nocompatible            "kill-vim一致性
 "================indentline=======================
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
 
-"================jedi============================
-" let g:jedi#auto_initialization = 1
-" autocmd FileType python setlocal omnifunc=jedi#completions
-
 "================javascript-highlight=================
 let javascript_enable_domhtmlcss = 1
 
@@ -270,16 +300,6 @@ let g:user_emmet_expandabbr_key = '<F2>'
 let g:user_emmet_leader_key= '<C-e>'
     "================emmet================
 "map <F3> <C-\>
-
-"================ultisnips==============================
-" let g:UltiSnipsUsePythonVersion =2
-" let g:UltiSnipsExpandTrigger    ="<c-p>"
-" let g:UltiSnipsListSnippets          ="<c-l>"
-" let g:UltiSnipsJumpForwardTrigger    ="<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger   ="<c-k>"
-
-"================syntastic====================
-let g:syntastic_java_javac_classpath=$CLASS_PATH
 
 "================ctrlp=====================
 " Use Silver Searcher for CtrlP plugin (if available) Fallback to git ls-files for fast listing. Because we use fast strategies, disable caching.
@@ -368,18 +388,20 @@ endfunction
 set statusline+=%{GitStatus()}
 
 "============================markdown
-filetype plugin on
-"Uncomment to override defaults:
-""let g:instant_markdown_slow = 1
-"let g:instant_markdown_autostart = 0
-""let g:instant_markdown_open_to_the_world = 1
-"let g:instant_markdown_allow_unsafe_content = 1
-""let g:instant_markdown_allow_external_content = 0
-"let g:instant_markdown_mathjax = 1
-""let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
-"let g:instant_markdown_autoscroll = 0
-""let g:instant_markdown_port = 8888
-"let g:instant_markdown_python = 1
-let g:instant_markdown_browser = "chromium --new-window"
 
 "=============================graphviz
+"=============================surround
+"可视模式
+"-----------------------------------------------------------------------------------------------|
+"|    | 命令            | 说明 + 示例                                                           |
+"|---:|:----------------|:----------------------------------------------------------------------|
+"|    | S               | 选中的括起来                                                          |
+"| 例 | 选中world: S(   | Hello world! => Hello (world)!                                        |
+"|---:|:----------------|:----------------------------------------------------------------------|
+"|    | gS              | 选中的括起来，括号内文本做新一行                                      |
+"| 例 | 选中world: gS{  | Hello world! => Hello { world }!                                      |
+"|-----------------------------------------------------------------------------------------------|
+
+"=============================ack
+let g:ackprg = 'ag --nogroup --nocolor --column'
+"let g:ackprg = 'ag --vimgrep'  (相同作用)

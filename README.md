@@ -4,7 +4,7 @@ default-bascs
 ==========
 ```
 sudo apt update && apt upgrade
-sudo apt install vim curl wget aria2 tree tmux python3 python3-dev python3-pip python3-gpg python3-setuptools eog tlp ruby-full ruby-sass net-tools zathura psensor ncdu fonts-font-awesome preload ranger uget flameshot xfburn wmctrl fzf rclone testdisk shellcheck qrencode peek dolphin fish
+sudo apt install vim curl wget aria2 tree tmux python3 python3-dev python3-pip python3-gpg python3-setuptools eog tlp ruby-full ruby-sass net-tools zathura psensor ncdu fonts-font-awesome preload ranger uget flameshot xfburn wmctrl fzf rclone testdisk shellcheck qrencode peek dolphin fish proxychains4
 
 tird-tools
 ```
@@ -27,20 +27,20 @@ sudo apt install sy***(version && -dev)
 xset s 300 5
 xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
 ```
-#sys manage
+#sys manage (for_gnome_blackscreen)
 ###cpu
-只针对intel处理器中SandyBridge（含IvyBridge）及更新的构架的CPU。intel构架列表：List of Intel CPU microarchitectures。援引：
-```
-sudo vim /etc/default/grub
-```
-```
-GRUB_CMDLINE_LINUX_DEFAULT=”quiet” ---> GRUB_CMDLINE_LINUX_DEFAULT=”quiet intel_pstate=enable”
-```
-然后执行sudo grub-mkconfig -o /boot/grub/grub.cfg ，重启生效。
-检查：执行cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_driver，如果显示intel_pstate则表示启用成功，否则是未启用成功或不支持该功能。
+  只针对intel处理器中SandyBridge（含IvyBridge）及更新的构架的CPU。intel构架列表：List of Intel CPU microarchitectures。援引：
+  ```
+  sudo vim /etc/default/grub
+  ```
+  ```
+  GRUB_CMDLINE_LINUX_DEFAULT=”quiet” ---> GRUB_CMDLINE_LINUX_DEFAULT=”quiet intel_pstate=enable”
+  ```
+  然后执行sudo grub-mkconfig -o /boot/grub/grub.cfg ，重启生效。
+  检查：执行cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_driver，如果显示intel_pstate则表示启用成功，否则是未启用成功或不支持该功能。
 
 
- <strong>ranger-setup--config-edtior</strong>
+ **ranger-setup--config-edtior**
  >指定默认编辑器
  (ubuntu默认为nano)
 ```
@@ -56,7 +56,7 @@ third-bascs
 polybar
 
 ->theFuck
-pip3 install thefuck
+`pip3 install thefuck`
 
 settingup
 ========
