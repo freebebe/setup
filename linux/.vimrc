@@ -1,7 +1,6 @@
 "------------------------------
 "---------plug-backup----------
 "------------------------------
-    "Plug 'cormacrelf/vim-colors-github'       为何用浅色背景:https://www.zhihu.com/question/20215618
     "Plug 'tyru/open-browser.vim'                "browser
     "Plug 'junegunn/goyo.vim'                   "简化阅读
     "Plug 'SirVer/ultisnips'                     "PYTHON补全
@@ -37,7 +36,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'jreybert/vimagit'
     Plug 'wannesm/wmgraphviz.vim'				"mind map
     Plug 'lervag/vimtex'
-    "Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }         "online
+    Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }         "online
 "new tag
     Plug 'junegunn/fzf.vim'
     Plug 'liuchengxu/vim-clap'
@@ -48,7 +47,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'rhysd/vim-clang-format'               "pinkup the function be it just function
     Plug 'mattn/emmet-vim'                      "htXml5-backnotes
 "油漆
-	Plug 'cocopon/iceberg.vim'
+	" Plug 'cocopon/iceberg.vim'
+    " Plug 'cormacrelf/vim-colors-github'         为何用浅色背景:https://www.zhihu.com/question/20215618
 "规程
     Plug 'dense-analysis/ale'                   "异步语法检查:https://github.com/dense-analysis/ale
 "兔洞
@@ -64,10 +64,10 @@ call plug#end()
 filetype plugin on
 set shell=fish
 "color
-set background=dark
+set background=light
 " colo github
-colo iceberg
-  let g:lightline = {'colorscheme': 'iceberg'}
+" colo iceberg
+  " let g:lightline = {'colorscheme': 'iceberg'}
 
 "setKey
 nnoremap tn :tabnew<Space>
@@ -153,7 +153,7 @@ set colorcolumn=79          "警示線
 set cursorcolumn
 set cursorline
   "colo
-  highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
+  " highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 
   highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 
@@ -170,11 +170,9 @@ set cursorline
 
 "=========================代码折叠
 set foldenable
-set nowrap            "禁止折行
-" set fooldmethod=indent
-" set fooldmethod=syntax		"基于缩进或语法进行代码折叠
-set nofoldenable			"启动vim时关闭折叠代码
-set foldmethod=syntax
+set nowrap                  "禁止折行
+" set nofoldenable			"启动vim时关闭折叠代码
+set foldmethod=manual       "z-f   
     "manual        手工折叠
     "indent        缩进表示
     "expr        表达式折叠
@@ -405,3 +403,7 @@ set statusline+=%{GitStatus()}
 "=============================ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
 "let g:ackprg = 'ag --vimgrep'  (相同作用)
+
+"=============================latex_live
+let g:livepreview_previewer = 'zathura'
+let g:livepreview_cursorhold_recompile = 0

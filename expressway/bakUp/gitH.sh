@@ -25,3 +25,4 @@ git commit -m 'auto_time_line'
 git pull origin master
 git push -u origin master
 #
+cd
