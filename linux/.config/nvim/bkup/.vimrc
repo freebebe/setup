@@ -15,22 +15,20 @@
     "Plug 'ycm-core/YouCompleteMe'
     "Plug 'vim-syntastic/syntastic'             "语法检查
     "Plug 'suan/vim-instant-markdown'           "markdown
-"vim-plug>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+"vim-plug>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 call plug#begin('~/.vim/plugged')
 "格式
     Plug 'Yggdroot/indentLine'                  "缩进线
     Plug 'sheerun/vim-polyglot'                 "字典
-    Plug 'iamcco/markdown-preview.nvim', {'do': { -> mkdp#util#install()}}
 "是巴拿
     Plug 'preservim/nerdcommenter'			    "注释
     Plug 'terryma/vim-multiple-cursors'		    "{v+[C-N]}批量修改: 
     Plug 'tpope/vim-surround'                   "hello world! >>>>> [hello] world!:     
                                                 "(https://gist.github.com/wilon/ac1fc66f4a79e7b0c161c80877c75c94)
     Plug 'airblade/vim-gitgutter'               "git修改记录-异步
-    " Plug 'vimwiki/vimwiki'
+    Plug 'vimwiki/vimwiki'
     Plug 'editorconfig/editorconfig-vim'        "team统一风格
     Plug 'tpope/vim-fugitive'                   "git
-      Plug 'tpope/vim-rhubarb'                  "if fugitive is git, rhubarb is hub
 "螺丝
     Plug 'scrooloose/nerdtree'                  "目录树
     Plug 'tpope/vim-eunuch'                     "filemanger ->  /:move//:mkdir//:rename//:delete//
@@ -39,53 +37,37 @@ call plug#begin('~/.vim/plugged')
     Plug 'wannesm/wmgraphviz.vim'				"mind map
     Plug 'lervag/vimtex'
     Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }         "online
-    Plug '907th/vim-auto-save'                  "自动保存
 "new tag
     Plug 'junegunn/fzf.vim'
     Plug 'liuchengxu/vim-clap'
 "WEB
-    Plug 'godlygeek/tabular'                    "useful to line up text
     Plug 'Raimondi/delimitMate'                 "前后括制对齐
-    Plug 'AndrewRadev/splitjoin.vim'            
-          "gS to split a one-liner into multiple lines
-          "gJ (with the cursor on the first line of a block) to join a block into a single-line statement.
+    Plug 'plasticboy/vim-markdown'
 "热熔胶
     Plug 'rhysd/vim-clang-format'               "pinkup the function be it just function
     Plug 'mattn/emmet-vim'                      "htXml5-backnotes
 "油漆
-    Plug 'cocopon/iceberg.vim'
-    " Plug 'cormacrelf/vim-colors-github'         "为何用浅色背景:https://www.zhihu.com/question/20215618
-    Plug 'DNonov/light-delight'
+	" Plug 'cocopon/iceberg.vim'
+    " Plug 'cormacrelf/vim-colors-github'         为何用浅色背景:https://www.zhihu.com/question/20215618
 "规程
     Plug 'dense-analysis/ale'                   "异步语法检查:https://github.com/dense-analysis/ale
 "兔洞
     Plug 'mileszs/ack.vim'                      "文本搜索：设置里并用t.s.s
     Plug 'ctrlpvim/ctrlp.vim'                   "模糊搜索
     Plug 'FelikZ/ctrlp-py-matcher'              "ctrlp-python插件 : https://github.com/FelikZ/ctrlp-py-matcher
-"only nervim
-    Plug 'Shougo/defx.nvim'
-    Plug 'Shougo/denite.nvim'
 call plug#end()
 
 "----------------------------------------------------\
 "------------------------vim--------------------------|
 "------------------------:set-------------------------|
 "----------------------------------------------------/
-set rtp+=~/.fzf
-filetype off
 filetype plugin on
 set shell=fish
-set t_Co=256
-
 "color
-" set background=dark
+set background=light
 " colo github
-colo light-delight
-" colo  iceberg
-  let g:lightline = {'colorscheme': 'iceberg'}
-
-"Preserves indentation while pasting text from the clipboard
-nnoremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
+" colo iceberg
+  " let g:lightline = {'colorscheme': 'iceberg'}
 
 "setKey
 nnoremap tn :tabnew<Space>
@@ -121,9 +103,9 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 "格式
 "inside_be_wiki-PLUG   |  set nocompatible            "设置不兼容
 set smarttab                "Use 'shiftwidth' when using <Tab> in front of a line. By default it's used only for shift commands (<, >).
-set smartindent             "smart when using tabs
 set autoindent
-set expandtab
+set number                  "行号
+set relativenumber          "递进行号
 set vb t_vb=                "消警告提声
 set laststatus=2            "显示状态行
 set ruler                   "总是显示下行数
@@ -141,6 +123,7 @@ set incsearch
 set ignorecase              "搜索忽略大小写
 set showmatch
 
+set smartindent             "smart when using tabs
 set cindent
 set so=7                    "7行上下滚动始终在中间
 
@@ -149,26 +132,24 @@ set so=7                    "7行上下滚动始终在中间
 filetype indent on          "自适应语言的智能缩进
 set shiftwidth=2
 set tabstop=2
-set ai                      "Auto indent
-set si                      "Smart indent
+set ai "Auto indent
+set si "Smart indent
 set backspace=start,eol,indent
-set number                  "行号
-set relativenumber          "递进行号
 
 "=========================进退x***
 set tabstop=4
 set softtabstop=4
 set backspace=2
+set expandtab
 
 "=========================语法高亮-字典
 syntax enable
 syntax on
-  " autocmd InsertLeave,WinEnter * set cursorline
-  " autocmd InsertLeave,WinEnter * set nocursorline
+  autocmd InsertLeave,WinEnter * set cursorline
+  autocmd InsertLeave,WinEnter * set nocursorline
 
 "======================十字定位线
-set colorcolumn=80          "警示線
-set nofixendofline
+set colorcolumn=79          "警示線
 set cursorcolumn
 set cursorline
   "colo
@@ -188,10 +169,10 @@ set cursorline
   endif
 
 "=========================代码折叠
-" set foldenable
+set foldenable
 set nowrap                  "禁止折行
-set nofoldenable			"启动vim时关闭折叠代码
-" set foldmethod=indent       "z-f
+" set nofoldenable			"启动vim时关闭折叠代码
+set foldmethod=manual       "z-f   
     "manual        手工折叠
     "indent        缩进表示
     "expr        表达式折叠
@@ -215,7 +196,7 @@ endif
 " Turn off paste mode when leaving insert离开状态关闭粘贴
 autocmd InsertLeave * set nopaste
 
-">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>For conceal markers.对隐藏标记
+" For conceal markers.对隐藏标记
 " if has('conceal')
   " set conceallevel=2 concealcursor=niv
 " endif
@@ -224,9 +205,9 @@ autocmd InsertLeave * set nopaste
 set formatoptions+=r
 
 "=========================Highlight all instances of word under cursor, when idle.
-                          " http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
-                          " Useful when studying strange source code.
-                          " Type z/ to toggle highlighting on/off.
+" http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
+" Useful when studying strange source code.
+" Type z/ to toggle highlighting on/off.
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
   let @/ = ''
@@ -247,20 +228,6 @@ function! AutoHighlightToggle()
   endif
 endfunction
 
-"========================" Clean all useless whitespace清理所有无用空白
-autocmd BufWritePre *
-  \ if !exists('g:skip_clean_whitespace') && !exists('b:skip_clean_whitespace')|
-  \   call lib#WithSavedState('%s/\s\+$//e')|
-  \ endif
-
-"========================" Speed up transition from modes
-if ! has('gui_running')
-  set ttimeoutlen=10
-  augroup FastEscape
-    autocmd InsertEnter * set timeoutlen=0
-    autocmd InsertLeave * set timeoutlen=1000
-  augroup END
-endif
 
 "------------------------------------------------------\
 "--------------------vim-plug---------------------------|
@@ -444,24 +411,3 @@ let g:livepreview_previewer = 'zathura'
 let g:livepreview_cursorhold_recompile = 0
 let g:vimtex_fold_enabled = 1
 let g:livepreview_engine = 'pdflatex'
-"
-"==============================auto_save
-let g:auto_save = 1  " enable AutoSave on Vim startup
-let g:auto_save_events = ["InsertLeave", "TextChanged"]
-let g:auto_save_silent = 1
-
-"==============================Polyglot
-let g:python_highlight_all           = 1
-let g:python_highlight_indent_errors = 0
-let g:python_highlight_space_errors  = 0
-
-"==============================Markdown
-let g:mkdp_preview_options = {'content_editable': v:true}
-let g:vim_markdown_math    = 1
-nnoremap <leader>o :MarkdownPreview<CR>
-
-"==============================Wiki
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-let g:vimwiki_conceallevel = 0
-let g:vimwiki_global_ext   = 0
