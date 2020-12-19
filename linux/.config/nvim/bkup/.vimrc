@@ -49,6 +49,7 @@ call plug#begin('~/.vim/plugged')
 "油漆
 	" Plug 'cocopon/iceberg.vim'
     " Plug 'cormacrelf/vim-colors-github'         为何用浅色背景:https://www.zhihu.com/question/20215618
+    Plug 'DNonov/light-delight'
 "规程
     Plug 'dense-analysis/ale'                   "异步语法检查:https://github.com/dense-analysis/ale
 "兔洞
@@ -65,6 +66,7 @@ filetype plugin on
 set shell=fish
 "color
 set background=light
+colo light-delight
 " colo github
 " colo iceberg
   " let g:lightline = {'colorscheme': 'iceberg'}

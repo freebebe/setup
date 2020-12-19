@@ -15,6 +15,7 @@
     "Plug 'ycm-core/YouCompleteMe'
     "Plug 'vim-syntastic/syntastic'             "语法检查
     "Plug 'suan/vim-instant-markdown'           "markdown
+    " Plug 'cormacrelf/vim-colors-github'         "为何用浅色背景:https://www.zhihu.com/question/20215618
 "vim-plug>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 call plug#begin('~/.vim/plugged')
 "格式
@@ -27,14 +28,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-surround'                   "hello world! >>>>> [hello] world!:     
                                                 "(https://gist.github.com/wilon/ac1fc66f4a79e7b0c161c80877c75c94)
     Plug 'airblade/vim-gitgutter'               "git修改记录-异步
-    " Plug 'vimwiki/vimwiki'
+    Plug 'vimwiki/vimwiki'
     Plug 'editorconfig/editorconfig-vim'        "team统一风格
     Plug 'tpope/vim-fugitive'                   "git
       Plug 'tpope/vim-rhubarb'                  "if fugitive is git, rhubarb is hub
 "螺丝
     Plug 'scrooloose/nerdtree'                  "目录树
     Plug 'tpope/vim-eunuch'                     "filemanger ->  /:move//:mkdir//:rename//:delete//
-    Plug 'itchyny/lightline.vim'			    "状态
     Plug 'jreybert/vimagit'
     Plug 'wannesm/wmgraphviz.vim'				"mind map
     Plug 'lervag/vimtex'
@@ -54,8 +54,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'mattn/emmet-vim'                      "htXml5-backnotes
 "油漆
     Plug 'cocopon/iceberg.vim'
-    " Plug 'cormacrelf/vim-colors-github'         "为何用浅色背景:https://www.zhihu.com/question/20215618
-    Plug 'DNonov/light-delight'
+    Plug 'DNonov/light-delight'                 
+    Plug 'itchyny/lightline.vim'			    "状态
 "规程
     Plug 'dense-analysis/ale'                   "异步语法检查:https://github.com/dense-analysis/ale
 "兔洞
@@ -63,8 +63,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'ctrlpvim/ctrlp.vim'                   "模糊搜索
     Plug 'FelikZ/ctrlp-py-matcher'              "ctrlp-python插件 : https://github.com/FelikZ/ctrlp-py-matcher
 "only nervim
-    Plug 'Shougo/defx.nvim'
-    Plug 'Shougo/denite.nvim'
+    " Plug 'Shougo/defx.nvim'                     "need pynvim
+    " Plug 'Shougo/denite.nvim'
 call plug#end()
 
 "----------------------------------------------------\
@@ -72,7 +72,7 @@ call plug#end()
 "------------------------:set-------------------------|
 "----------------------------------------------------/
 set rtp+=~/.fzf
-filetype off
+" filetype off
 filetype plugin on
 set shell=fish
 set t_Co=256
@@ -85,7 +85,7 @@ colo light-delight
   let g:lightline = {'colorscheme': 'iceberg'}
 
 "Preserves indentation while pasting text from the clipboard
-nnoremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
+" nnoremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
 
 "setKey
 nnoremap tn :tabnew<Space>
@@ -163,18 +163,19 @@ set backspace=2
 "=========================语法高亮-字典
 syntax enable
 syntax on
-  " autocmd InsertLeave,WinEnter * set cursorline
-  " autocmd InsertLeave,WinEnter * set nocursorline
+  autocmd InsertLeave,WinEnter * set cursorline
+  autocmd InsertLeave,WinEnter * set nocursorline
 
 "======================十字定位线
 set colorcolumn=80          "警示線
 set nofixendofline
 set cursorcolumn
 set cursorline
+
   "colo
   " highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 
-  highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
+  " highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 
   augroup BgHighlight
     autocmd!
@@ -247,11 +248,11 @@ function! AutoHighlightToggle()
   endif
 endfunction
 
-"========================" Clean all useless whitespace清理所有无用空白
-autocmd BufWritePre *
-  \ if !exists('g:skip_clean_whitespace') && !exists('b:skip_clean_whitespace')|
-  \   call lib#WithSavedState('%s/\s\+$//e')|
-  \ endif
+"======!!!error!!========" Clean all useless whitespace清理所有无用空白
+" autocmd BufWritePre *
+  " \ if !exists('g:skip_clean_whitespace') && !exists('b:skip_clean_whitespace')|
+  " \   call lib#WithSavedState('%s/\s\+$//e')|
+  " \ endif
 
 "========================" Speed up transition from modes
 if ! has('gui_running')
