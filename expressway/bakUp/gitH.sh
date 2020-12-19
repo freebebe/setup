@@ -22,7 +22,9 @@ cd ~/git/system/setup/
 
 git add . 
 git commit -m 'auto_time_line'
-git pull origin master
-git push -u origin master
+# git pull origin master
+git pull origin main
+# git push -u origin master
+git push -u origin main
 #
 cd
