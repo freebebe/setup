@@ -15,7 +15,7 @@
     "Plug 'ycm-core/YouCompleteMe'
     "Plug 'vim-syntastic/syntastic'             "语法检查
     "Plug 'suan/vim-instant-markdown'           "markdown
-    " Plug 'cormacrelf/vim-colors-github'         "为何用浅色背景:https://www.zhihu.com/question/20215618
+    "Plug 'cormacrelf/vim-colors-github'         "为何用浅色背景:https://www.zhihu.com/question/20215618
 "vim-plug>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 call plug#begin('~/.vim/plugged')
 "格式
@@ -40,6 +40,15 @@ call plug#begin('~/.vim/plugged')
     Plug 'lervag/vimtex'
     Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }         "online
     Plug '907th/vim-auto-save'                  "自动保存
+                                                "不全
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }           
+          " if has('nvim')
+            " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+          " else
+            " Plug 'Shougo/deoplete.nvim'
+            " Plug 'roxma/nvim-yarp'
+            " Plug 'roxma/vim-hug-neovim-rpc'
+          " endif
 "new tag
     Plug 'junegunn/fzf.vim'
     Plug 'liuchengxu/vim-clap'
@@ -466,3 +475,6 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_conceallevel = 0
 let g:vimwiki_global_ext   = 0
+
+"==============================deoplete
+let g:deoplete#enable_at_startup = 1
