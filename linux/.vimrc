@@ -3,8 +3,6 @@
 "------------------------------
     "Plug 'tyru/open-browser.vim'                "browser
     "Plug 'junegunn/goyo.vim'                   "简化阅读
-    "Plug 'SirVer/ultisnips'                     "PYTHON补全
-      "Plug 'honza/vim-snippets'
     "Plug 'davidhalter/jedi'                    "PYTHON     
                                                 "python不全/字典:    https://github.com/davidhalter/jedi
     "Plug 'pangloss/vim-javascript'             "java高亮
@@ -16,12 +14,22 @@
     "Plug 'vim-syntastic/syntastic'             "语法检查
     "Plug 'suan/vim-instant-markdown'           "markdown
     "Plug 'cormacrelf/vim-colors-github'         "为何用浅色背景:https://www.zhihu.com/question/20215618
+    "---------->Plug 'Shougo/deoplete.nvim'                
+    "---------->if use vim8
+              " if has('nvim')
+                " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+              " else
+                " Plug 'Shougo/deoplete.nvim'
+                " Plug 'roxma/nvim-yarp'
+                " Plug 'roxma/vim-hug-neovim-rpc'
+    "---------->endif
 "vim-plug>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 call plug#begin('~/.vim/plugged')
 "格式
     Plug 'Yggdroot/indentLine'                  "缩进线
     Plug 'sheerun/vim-polyglot'                 "字典
     Plug 'iamcco/markdown-preview.nvim', {'do': { -> mkdp#util#install()}}
+    Plug 'hail2u/vim-css3-syntax'               "css
 "是巴拿
     Plug 'preservim/nerdcommenter'			    "注释
     Plug 'terryma/vim-multiple-cursors'		    "{v+[C-N]}批量修改: 
@@ -32,6 +40,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'editorconfig/editorconfig-vim'        "team统一风格
     Plug 'tpope/vim-fugitive'                   "git
       Plug 'tpope/vim-rhubarb'                  "if fugitive is git, rhubarb is hub
+    Plug 'Vimjas/vim-python-pep8-indent'        "自动/定义缩进
 "螺丝
     Plug 'scrooloose/nerdtree'                  "目录树
     Plug 'tpope/vim-eunuch'                     "filemanger ->  /:move//:mkdir//:rename//:delete//
@@ -41,14 +50,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }         "online
     Plug '907th/vim-auto-save'                  "自动保存
                                                 "不全
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-          " if has('nvim')
-            " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-          " else
-            " Plug 'Shougo/deoplete.nvim'
-            " Plug 'roxma/nvim-yarp'
-            " Plug 'roxma/vim-hug-neovim-rpc'
-          " endif
+    " Plug 'SirVer/ultisnips'                     "PYTHON补全
+      " Plug 'honza/vim-snippets'
 "new tag
     Plug 'junegunn/fzf.vim'
     Plug 'liuchengxu/vim-clap'
@@ -73,7 +76,14 @@ call plug#begin('~/.vim/plugged')
     Plug 'FelikZ/ctrlp-py-matcher'              "ctrlp-python插件 : https://github.com/FelikZ/ctrlp-py-matcher
 "only nervim
     " Plug 'Shougo/defx.nvim'                     "need pynvim
-    " Plug 'Shougo/denite.nvim'
+    Plug 'Shougo/denite.nvim'
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+        " Plug 'deoplete-plugins/deoplete-jedi'   "python
+        " Plug 'mhartington/nvim-typescript'      "typescript
+        " Plug 'lvht/phpcd.vim'
+        " Plug 'racer-rust/vim-racer'
+        " Plug 'carlitux/deoplete-ternjs'       "js
+
 call plug#end()
 
 "----------------------------------------------------\
@@ -138,6 +148,7 @@ set laststatus=2            "显示状态行
 set ruler                   "总是显示下行数
 set showcmd                 "显示输入命令
 set title                   "设置顶题
+set titlelen=95             "顶标间距
 set nobackup                "不备份
   set nowritebackup
   set noswapfile
@@ -153,19 +164,38 @@ set showmatch
 set cindent
 set so=7                    "7行上下滚动始终在中间
 
+set virtualedit=block       "eab virtualedit in block mode
+
+" Disable modeline.
+" set modelines=0
+" set nomodeline
+" autocmd MyAutoCmd BufRead, BufWritePost *.txt setlocal modelines=5 modeline
+
+
 
 "缩进
 filetype indent on          "自适应语言的智能缩进
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+" set tabstop=2
+
+"=========================smart indent
 set ai                      "Auto indent
 set si                      "Smart indent
+  set autoindent smartindent
+  
+  function! GnuIndent()
+    setlocal cinptions=4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
+    setlocal shiftwidth=2
+    setlocal tabstop=8
+    setlocal noexpandtab
+  endfunction
+
 set backspace=start,eol,indent
 set number                  "行号
 set relativenumber          "递进行号
 
 "=========================进退x***
-set tabstop=4
+" set tabstop=4     requiet->:180
 set softtabstop=4
 set backspace=2
 
@@ -198,16 +228,31 @@ set cursorline
   endif
 
 "=========================代码折叠
-" set foldenable
+set foldenable
 set nowrap                  "禁止折行
-set nofoldenable			"启动vim时关闭折叠代码
-" set foldmethod=indent       "z-f
+" set nofoldenable			"启动vim时关闭折叠代码
+set foldmethod=manual       "z-f = all packup
     "manual        手工折叠
     "indent        缩进表示
     "expr        表达式折叠
     "syntax        语法定义折叠
     "diff        没有更改的文本折叠
     "maraker    标记折叠，默认：{{{和}}}
+
+  "Show folding level
+  if has('neovim')
+    set foldcolumn=auto:1
+  else
+    set foldcolumn=1
+  endif
+  set fillchars=vert:\|
+  set commentstring=%s
+
+  if exists('*FoldCCtext')
+    " use FoldCCtext
+    set foldtext=FoldCCtext()
+  endif
+
 
 
 "=========================重载保存文件
@@ -218,7 +263,7 @@ autocmd BufWritePost ~/.Xdefaults call system('xrdb ~/.Xdefaults')
 if !1 | finish | endif
 
 " incremental substitution 增值替代 (neovim)
-if has('nvim')
+if has('neovim')
   set inccommand=split
 endif
 
@@ -485,5 +530,6 @@ let g:vimwiki_global_ext   = 0
 
 "==============================deoplete
 let g:deoplete#enable_at_startup = 1
+" source ~/.config/nvim/gogo/finger/deoplete.rc.vim
+" source ~/.config/nvim/gogo/finger/denite.vim
 
-runtime ~/.config/nvim/gogo/finger/lightline.vim

@@ -1,3 +1,4 @@
+# i3-desktop
 * Blueman-manger (blueman-applet)
 * xfce4-power-manager
 * pcmanfm (gksu)

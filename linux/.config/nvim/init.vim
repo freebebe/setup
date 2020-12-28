@@ -2,6 +2,7 @@
  source ~/.vimrc
 " source ~/.config/nvim/bkup/.vimrc
 
+"====================deo
 "====================O
 "runtime ~/.config/nvim/gogo/brain.vim
 "runtime ~/.config/nvim/gogo/hands.vim
