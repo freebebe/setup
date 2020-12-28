@@ -93,7 +93,7 @@ call plug#end()
 set rtp+=~/.fzf
 " filetype off
 filetype plugin on
-set shell=fish
+set shell=zsh
 set t_Co=256
 
 "color
