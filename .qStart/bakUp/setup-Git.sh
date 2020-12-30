@@ -11,6 +11,7 @@ cp -r ~/.config/fish/ ~/git/system/setup/linux/.config
 cp -r ~/.config/zathura/ ~/git/system/setup/linux/.config
 cp -r ~/.config/rclone/ ~/git/system/setup/linux/.config
 cp -r ~/.config/i3/ ~/git/system/setup/linux/.config
+cp -r ~/.config/i3status/ ~/git/system/setup/linux/.config
 cp -r ~/.config/autostart/ ~/git/system/setup/linux/.config
 cp -r ~/.config/nvim/ ~/git/system/setup/linux/.config
 #

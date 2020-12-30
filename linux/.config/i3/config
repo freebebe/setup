@@ -40,7 +40,9 @@ set $mod Mod4
 #windows border
 new_window none
 new_float normal
+
 hide_edge_borders both
+# hide_edge_borders none
 
 #new_window_option
 #default_orientation horizontal|vertical|auto
@@ -90,12 +92,6 @@ bindsym $mod+c layout toggle split
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 # exec --no-startup-id nm-applet
 
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 #bakcground
 exec --no-startup-id feh --bg-fill ~/Pictures/bkground/background.png
@@ -106,38 +102,6 @@ floating_modifier mod1
 # exec --no-startup-id synclient TapButton0=0
 
 
-# Applications behaving as "pop ups" are set to be always floating
-#  i.e. popup, do stuff, close
-# To get WM_CLASS and WM_TITLE values, on X run "xprop"
-# for_window [class="VirtualBox"] floating enable
-# for_window [class="konsole"] floating enable
-# for_window [class="konsole"] resize set 600 400
-for_window [class="yakuake"] floating enable
-for_window [class="systemsettings"] floating enable
-for_window [class="keepassxc"] floating enable
-for_window [class="Thunar"] floating enable 
-for_window [class="uget"] floating enable
-for_window [class="Blueman-manager"] floating enable 
-for_window [class="vlc"] floating enable 
-for_window [class="mpv"] floating enable 
-for_window [class="mpv"] resize set 600 400
-for_window [class="eog"] floating enable 
-for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="xpad"] floating enable 
-for_window [class="Zathura"] floating enable 
-for_window [class="feh"] floating enable
-for_window [class="feh"] resize set 600 400
-for_window [class="eog"] floating enable 
-for_window [class="chromium"] floating enable 
-
-
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-for_window [class="GParted"] floating enable border normal
-for_window [class="Pavucontrol"] floating enable
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-# for_window [class="Pamac-manager"] floating enable                            #for arch&&manjaro system softeware manager
-for_window [class="Xfburn"] floating enable
-for_window [class="Zotero"] floating enable 
 
 ##############################
 ####    applications      ####
@@ -160,6 +124,12 @@ bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -m
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 #
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 #
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -292,7 +262,7 @@ bindsym $mod+shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # # exit system mode: "Enter" or "Escape"
         # bindsym Return mode "default"
         # bindsym Escape mode "default"
-        # }
+# }
 
 
 ## i3lock
@@ -335,14 +305,17 @@ mode "resize" {
 ##############################
 # GUI file manager -- thunar
 bindsym $mod+e exec --no-startup-id dolphin
-#flameshot
-bindsym Print exec --no-startup-id flameshot gui
+# ranger with konsole
+# bindsym $mod+Shift+e konsole -e ranger
+#image_key
+bindsym Print exec --no-startup-id flameshot gui    #flameshot
 #
 bindsym $mod+alt+t exec --no-startup-id compton -b
+#
 #WMonky
 bindsym $mod+F6 exec /opt/writemonkey3/nw
 #firefox
-bindsym $mod+F2 exec firefox
+bindsym $mod+F2 exec ~/.qStart/firefox_firejail.sh
 #dmenu(backup) 
 # bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 #kill_GUI
@@ -368,30 +341,39 @@ bindsym $mod+F1 --no-startup-id xpad
 #### bar                : ####
 ##############################
 
-# bar {
-       # status_command i3status
-# }
+bar {
+        i3bar_command i3bar
+        status_command i3status
+        tray_output eDP-1
+        position bottom
+        font pango:DejaVu Sans Mono, Icons 8
+
+}
 
 ##############################
 #### autostart_app            : ######
 ##############################
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-exec --no-startup-id xmodmap ~/.Xmodmap
+# exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id xpad
 exec --no-startup-id dropbox
+exec --no-startup-id flameshot                    #take_your_face_your_screen_face
+exec --no-startup-id i3-confg-wizard
 # exec --no-startup-id conky
+# exec --no-startup-id volumeicon
+# exec --no-startup-id pamac-tray
+
 #nitrogen sleep keyForPower
 # exec --no-startup-id pamac-tray
 # exec --no-startup-id megasync
 # #exec --no-startup-id albert
 
-# for no Plasma-KDE(only i3&&bspwm)
+# for no Plasma-KDE(only for i3&&bspwm)
 # exec --no-startup-id nm-applet
 # exec --no-startup-id blueman-applet
 # exec --no-startup-id xfce4-power-manager
 # exec --no-startup-id clipit                       #copy_data
-# exec --no-startup-id flameshot                    #take_your_face_your_screen_face
 
 # exec_always --no-startup-id sbxkb
 # exec --no-startup-id start_conky_maia
@@ -401,6 +383,55 @@ exec --no-startup-id dropbox
 # exec_always --no-startup-id fix_xcursor
 # exec --no-startup-id  xinput set-prop 16 'libinput Accel Speed' 0.5
 
+
+# Applications behaving as "pop ups" are set to be always floating
+#  i.e. popup, do stuff, close
+# To get WM_CLASS and WM_TITLE values, on X run "xprop"
+# for_window [class="VirtualBox"] floating enable
+# for_window [class="konsole"] floating enable
+# for_window [class="konsole"] resize set 600 400
+for_window [class="yakuake"] floating enable
+for_window [class="systemsettings"] floating enable
+for_window [class="keepassxc"] floating enable
+for_window [class="Thunar"] floating enable 
+for_window [class="uget"] floating enable
+for_window [class="Blueman-manager"] floating enable 
+for_window [class="vlc"] floating enable 
+for_window [class="mpv"] floating enable 
+for_window [class="mpv"] resize set 600 400
+for_window [class="eog"] floating enable 
+for_window [class="Timeset-gui"] floating enable border normal
+for_window [class="xpad"] floating enable 
+for_window [class="Zathura"] floating enable 
+for_window [class="feh"] floating enable
+for_window [class="feh"] resize set 600 400
+for_window [class="eog"] floating enable 
+for_window [class="chromium"] floating enable 
+for_window [class="Okular"] floating enable 
+
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+for_window [class="GParted"] floating enable border normal
+for_window [class="Pavucontrol"] floating enable
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# for_window [class="Pamac-manager"] floating enable                            #for arch&&manjaro system softeware manager
+for_window [class="Xfburn"] floating enable
+for_window [class="Zotero"] floating enable 
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# i3    +   KDE-Plasma
+## Avoid tiling popups, dropdown windows from plasma
+# for the first time, manually resize them, i3 will remember the setting for floating windows
+for_window [class="plasmashell"] floating enable
+for_window [class="Plasma"] floating enable, border none
+for_window [title="plasma-desktop"] floating enable, border none
+for_window [title="plasma-desktop-appletsrc"] floating enable, border none
+for_window [title="win7"] floating enable, border none
+for_window [class="krunner"] floating enable, border none
+for_window [class="Kmix"] floating enable, border none
+for_window [class="Klipper"] floating enable, border none
+for_window [class="Plasmoidviewer"] floating enable, border none
+for_window [class="dolphin"] floating enable, border none
+for_window [class="KWin"] floating enable, border none
+
 #########################
 ####    i3+kde      #####
 #########################
@@ -409,18 +440,6 @@ exec --no-startup-id dropbox
 exec --no-startup-id wmctrl -c Plasma
 for_window [title="Desktop — Plasma"] kill, floating enable, border none
 for_window [title="Bureau — Plasma"] kill, floating enable, border none
-
-## Avoid tiling popups, dropdown windows from plasma
-# for the first time, manually resize them, i3 will remember the setting for floating windows
-for_window [class="plasmashell"] floating enable
-for_window [class="Plasma"] floating enable, border none
-for_window [title="plasma-desktop"] floating enable, border none
-for_window [title="win7"] floating enable, border none
-for_window [class="krunner"] floating enable, border none
-for_window [class="Kmix"] floating enable, border none
-for_window [class="Klipper"] floating enable, border none
-for_window [class="Plasmoidviewer"] floating enable, border none
-for_window [class="dolphin"] floating enable, border none
 
 ##workspace_vitual
 force_display_urgency_hint 0 ms

@@ -318,14 +318,16 @@ bindsym $mod+F1 --no-startup-id xpad
 #gaps inner 7
 #gaps outer -2
 
-bar {
-        status_command i3status
-}
 
 ##############################
 #### bar                : ####
 ##############################
 
+bar {
+        i3bar_command i3bar
+            position bottom
+        status_command i3status
+}
 
 ##############################
 #### autoR            : ######
@@ -340,7 +342,7 @@ exec --no-startup-id pamac-tray
 # exec --no-startup-id clipit       #copy_data
 exec --no-startup-id flameshot      #take_your_face_your_screen_face
 # exec --no-startup-id megasync
-# exec --no-startup-id dropbox
+exec --no-startup-id dropbox
 # #exec --no-startup-id albert
 exec --no-startup-id blueman-applet
 exec --no-startup-id xmodmap ~/.Xmodmap
