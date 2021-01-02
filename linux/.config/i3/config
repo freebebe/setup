@@ -160,10 +160,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+Shift+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Shift+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -425,7 +425,7 @@ for_window [class="Plasma"] floating enable, border none
 for_window [title="plasma-desktop"] floating enable, border none
 for_window [title="plasma-desktop-appletsrc"] floating enable, border none
 for_window [title="win7"] floating enable, border none
-for_window [class="krunner"] floating enable, border none
+for_window [class="krunner"] floating enable, border no
 for_window [class="Kmix"] floating enable, border none
 for_window [class="Klipper"] floating enable, border none
 for_window [class="Plasmoidviewer"] floating enable, border none
@@ -440,6 +440,7 @@ for_window [class="KWin"] floating enable, border none
 exec --no-startup-id wmctrl -c Plasma
 for_window [title="Desktop — Plasma"] kill, floating enable, border none
 for_window [title="Bureau — Plasma"] kill, floating enable, border none
+for_window [class="plasmashell"] kill, floating enable,  border none
 
 ##workspace_vitual
 force_display_urgency_hint 0 ms

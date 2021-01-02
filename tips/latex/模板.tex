@@ -1,0 +1,118 @@
+\documentclass[12pt,a4paper]{article}
+
+%開啟設定字體
+%\usepackage{fontspect}
+
+\usepackage{xcolor}
+\usepackage{listings}
+
+%使用xeCJK package
+\usepackage{xeCJK}
+
+%用來打logo的package
+\usepackage{metalogo}
+
+%table of content
+\usepackage{outline}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{中文\XeLaTeX 教學}
+\rhead{\thepage}
+%英文字型
+\setmainfont{Times New Roman}
+
+%設定中文字型
+\setCJKmainfont{Droid Sans Fallback}
+
+%---------------------------------------------------------%
+%中文自動換行
+\XeTeXlinebreaklocale "zh"
+
+%文字的彈性間距
+\XeTeXlinebreakskip = 0pt plus 1pt
+
+%設定段落之間的距離
+\setlength{\parskip}{0.3cm}
+
+%設定行距
+\linespread{1.5}\selectfont
+%---------------------------------------------------------%
+
+
+
+\title{中文 \XeLaTeX 教學}
+
+\author{GGJason 吳軒竹}
+
+\date{\today}
+
+\lstset
+{
+    language=[LaTeX]TeX,
+    breaklines=true,
+    basicstyle=\tt\scriptsize,
+    keywordstyle=\color{blue},
+    identifierstyle=\color{magenta},
+}
+
+
+\begin{document}
+	\maketitle
+	\newpage
+	\begin{abstract}
+		這份教學的主要目的是希望提供中文 \LaTeX 及 \XeLaTeX 使用者更方便使用的指導，並且在最後附上快速查詢表，提供已經熟悉的使用者能夠快速的查到想要使用的功能。主要參考的是 TUG\footnote{\TeX  User Group}的資料以及我個人在各個部落格裡面翻出來的資訊，希望讓 \LaTeX 的門檻降低，提昇使用的人口。
+	\end{abstract}
+	\newpage
+	\tableofcontents
+	\newpage
+	\part{ \XeLaTeX 基本使用教學}
+
+		\section{ \XeLaTeX 簡介}
+			\subsection{\TeX 與 \LaTeX}
+				\TeX 是Donald Ervin Knuth教授所設計出來的排版軟體\footnote{中文維基百科} ，
+			\subsection{\XeLaTeX}
+		\section{ \XeLaTeX 環境設定}
+			我在這邊所使用的是 Ubuntu 16.04 LTS，並且純粹以TeXworks(http://www.tug.org/texworks/)進行環境整合與編譯。後續有機會的話我會逐步補充Windows跟Mac OS的使用方法，不過除了安裝之外其實大多部份視差不多的。	
+			Ubuntu 可以藉由 Ubuntu 軟體中心進行安裝，僅需在裡面搜尋，便會自動下載及安裝。
+			\subsection{中文環境設置}
+			$\backslash$usepackage $\{$xeCJK$\}$
+		
+		\section{基礎操作}
+			\subsection{ Hello World }
+			\begin{lstlisting}
+\documentclass{article}
+\begin{doucument}
+Hello World!
+\end{document}
+			\end{lstlisting}
+			\subsection{設定作者、日期、標題頁面}
+			\begin{lstlisting} 
+\title{標題}
+\author{作者名稱}
+\date{\today}
+\maketitle
+			\end{lstlisting}
+			\subsection{段落}
+				\begin{lstlisting}
+\section{大段落}
+\subsection{中段落}
+\subsubsection{小段落}
+				\end{lstlisting}
+					\subsubsection{小段落}
+				沒有更小的段落了
+			\subsection{項目}
+				\begin{itemize}
+					\item 項目一 
+					\item 項目二
+				\end{itemize}
+				\begin{enumerate}
+					\item 項目一 
+					\item 項目二
+				\end{enumerate}
+				\begin{description}
+					\item [Ant] 螞蟻
+					\item [Elephant]大象
+				\end{description}
+		\section{數學算式}
+\end{document}
