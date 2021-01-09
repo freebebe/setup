@@ -1,8 +1,9 @@
+" 调色器
 " Default GUI Colours
 let s:foreground = "222222"
 let s:background = "ffffff"
 let s:selection  = "f8f8f8"
-let s:line       = "efefef"
+let s:line       = "6D6D6D"
 let s:comment    = "858585"
 let s:red        = "731718"
 let s:orange     = "b3520e"

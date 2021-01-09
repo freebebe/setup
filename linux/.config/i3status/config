@@ -1,14 +1,14 @@
-### Configuration file for i3status
-## http://i3wm.org/i3status/
-# Modified: 15.11.2011 : mseed : http://www.fastlinux.eu
-
 ###################
 # GENERAL OPTIONS #
 ###################
 
 general {
+    output_format = "i3bar"
     colors = true
     interval = 1
+    # color_good = "#BBBBBB"
+    # color_bad = "#CC1616"
+    # color_degraded = "#55858E"
 }
 
 ###################
@@ -33,28 +33,29 @@ order += "time"
 # SENSORS SETTING #
 ###################
 
-
 ##CPU temperature
 cpu_temperature 0 {
-        format = "Temp: %degrees °C"
+        format = "TempC: %degrees °C"
         path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp2_input"
         # path = "/sys/devices/platform/coretemp.0/hwmon/hwmon6/temp2_input"
 }
 
 ## CPU sensor
 cpu_usage {
-    format = " Cpu %usage "
+    # format = "Cpu: %usage {%cpu0/%cpu1/%cpu2}"
+    format = "Cpu: %usage {%cpu0/%cpu1/%cpu2/%cpu3/%cpu4/%cpu5/%cpu6/%cpu7}"
+    # format = " Cpu: %usage "
 }
 
 ## system load sensor
 load {
-    format = "%1min"
+    # format = "Load: %1min>%5min>%15min"
+    format = "Load: %1min"
 }
 
-## Mem
-
+## Mem 
 memory {
-        format = "%used | %available"
+        format = "RAM-Usage: %used | RAM: %available"
         threshold_degraded = "1G"
         format_degraded = "MEMORY < %available"
 }
@@ -78,7 +79,7 @@ battery 0 {
     status_chr = "⚡"                                                
     status_bat = ""
     status_full = "☻"
-        low_threshold = 15
+        low_threshold = 18
     threshold_type = time
 }
 
@@ -87,7 +88,7 @@ battery 0 {
 disk "/" {
 #forma = " hdd %avail "
     # format  = " ℃ %avail "
-    format  = " '/' %avail "
+    format  = "Disk: %avail "
 }
 disk "/home" {
     format  = " '/home' %avail "
@@ -103,7 +104,9 @@ disk "/home" {
 
 ## audio volume sensor
 volume master {
-    format = "♪: %volume"
+    # format = "♪: %volume"
+    format = "Vol: %volume"
+    format_muted = "Vol:muted(%volume)"
     device = "default"
     mixer = "Master"
     mixer_idx = 0
@@ -111,7 +114,8 @@ volume master {
 
 ## time format
 time {
-    format = "%d.%m.%Y %H:%M"
+    # format = "%d.%m.%Y %H:%M"
+    format = "%Y-%m-%d %a %H:%M"
 }
 
 ########################################################################
@@ -138,10 +142,10 @@ wireless wlan0 {
 
 
 ## battery sensor
-battery 0 {
-    format = "%status %percentage %remaining"
-    last_full_capacity = true
-}
+# battery 0 {
+    # format = "%status %percentage %remaining"
+    # last_full_capacity = true
+# }
 
 ## DHCP sensor
 run_watch DHCP {

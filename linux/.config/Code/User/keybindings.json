@@ -15,5 +15,19 @@
     {
         "key": "ctrl+shift+e",
         "command": "-workbench.view.explorer"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-editor.action.selectAll"
+    },
+    {
+        "key": "shift+w shift+e",
+        "command": "list.selectAll",
+        "when": "listFocus && listSupportsMultiselect && !inputFocus"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-list.selectAll",
+        "when": "listFocus && listSupportsMultiselect && !inputFocus"
     }
 ]

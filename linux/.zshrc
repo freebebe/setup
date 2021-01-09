@@ -21,6 +21,29 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 # improved less option
 export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case --quit-if-one-screen --RAW-CONTROL-CHARS'
 
+# ワード単位移動の挙動
+export WORDCHARS=
+
+if [ -d $HOME/.cargo/bin ]; then
+    export PATH=$HOME/.cargo/bin:$PATH
+fi
+
+if [ -d $HOME/.opam ]; then
+    export PATH=$HOME/.opam/system/bin:$PATH
+    # OPAM configuration
+    source ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+fi
+
+export DOTZSH=$HOME/.zsh
+if [ ! -d $DOTZSH ]; then
+    mkdir -p $DOTZSH
+fi
+
+# デフォルトで venv 以外で pip install できないようにする
+# グローバルでインストールしたい時は PIP_REQUIRE_VENV= pip install を使う
+export PIP_REQUIRE_VENV=true
+# }}}
+
 #####################################################################
 # completions
 #####################################################################
@@ -60,6 +83,30 @@ autoload -U compinit
 cdpath=($HOME)
 
 zstyle ':completion:*:processes' command "ps -u $USER -o pid,stat,%cpu,%mem,cputime,command"
+
+# {{{
+# 補完に使うソース
+zstyle ':completion:*' completer _complete _expand _list _match _prefix
+
+# 補完候補の色付け
+zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+
+# スマートケースで補完
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'
+
+# 補完を選択できるように
+zstyle ':completion:*' menu select=2
+
+# sudo を含めても保管できるようにする
+zstyle ':completion:*:sudo:*' command-path $sudo_path $path
+
+# キャッシュ
+zstyle ':completion:*' use-cache true
+
+# git をエイリアス時にも補完できるようにする
+compdef _git g=git
+compdef _docker d=docker
+# }}}
 
 #####################################################################
 # colors
@@ -118,6 +165,84 @@ bindkey "^n" history-beginning-search-forward-end
 # Like bash
 bindkey "^u" backward-kill-line
 
+#turn left or right 
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word 
+
+# ^J で parent directory に移動
+function _parent() {
+    pushd .. > /dev/null
+    zle reset-prompt
+}
+zle -N _parent
+bindkey -M viins "^J" _parent
+
+# ^O で popd する
+function _pop_hist(){
+    popd > /dev/null
+    zle reset-prompt
+}
+zle -N _pop_hist
+bindkey -M viins "^O" _pop_hist
+
+# 前のコマンドで最後に打った単語の挿入
+zle -N insert-last-word smart-insert-last-word
+zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
+bindkey -M viins '^]' insert-last-word
+
+# 1つ前の単語をシングルクォートで囲む
+_quote-previous-word-in-single() {
+    modify-current-argument '${(qq)${(Q)ARG}}'
+    zle vi-forward-blank-word
+}
+zle -N _quote-previous-word-in-single
+bindkey -M viins '^Q' _quote-previous-word-in-single
+
+# 1つ前の単語をダブルクォートで囲む
+_quote-previous-word-in-double() {
+    modify-current-argument '${(qqq)${(Q)ARG}}'
+    zle vi-forward-blank-word
+}
+zle -N _quote-previous-word-in-double
+bindkey -M viins '^Xq' _quote-previous-word-in-double
+
+# Shift + Tab で逆順選択
+bindkey -M viins "$terminfo[kcbt]" reverse-menu-complete
+
+# ファイルを確認する
+function _ls_files() {
+    echo
+    local -a opt_ls
+    case "${OSTYPE}" in
+        freebsd*|darwin*)
+            opt_ls=('-ACFG')
+            ;;
+        *)
+            opt_ls=('-ACF' '--color=always')
+            ;;
+    esac
+
+    command ls ${opt_ls[@]}
+    zle reset-prompt
+}
+zle -N _ls_files
+# }}}
+
+#######################
+#   Histroy setting   #
+#######################
+# {{{
+HISTFILE=$DOTZSH/zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+# ワーキングディレクトリ履歴
+#add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':completion:*:*:cdr:*:*' menu selection
+zstyle ':chpwd:*' recent-dirs-max 5000
+# }}}
+
+
 #####################################################################
 # alias
 ######################################################################
@@ -140,8 +265,6 @@ alias vim='TERM=xterm-256color nvim'
 alias goneovim='~/Downloads/goneovim/goneovim &>/dev/null &'
 alias gn=goneovim
 alias lock='i3exit lock'
-
-
 
 #####################################################################
 # options
@@ -272,3 +395,433 @@ zmodload zsh/mathfunc
                                         # if ( which zprof > /dev/null ); then
                                             # zprof | less
                                         # fi
+
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+# フロー制御の無効化
+stty -ixon
+
+# rbenv
+if hash rbenv 2> /dev/null; then
+    # initialize rbenv
+    eval "$(rbenv init -)"
+    # rehash rbenv executable file database at [un]installation
+    function gem(){
+        "$HOME/.rbenv/shims/gem" $*
+        if [ "$1" = "install" ] || [ "$1" = "i" ] || [ "$1" = "uninstall" ] || [ "$1" = "uni" ]
+        then
+            rbenv rehash
+            rehash
+        fi
+    }
+fi
+
+# PWD を移動するごとにディレクトリ内のファイルを表示
+# ただし，ファイルが多すぎるときは省略する
+_ls_abbrev() {
+    if [[ $- != *i* ]]; then
+        # インタラクティブシェル以外ではスキップする
+        return
+    fi
+
+    # -a : Do not ignore entries starting with ..
+    # -C : Force multi-column output.
+    # -F : Append indicator (one of */=>@|) to entries.
+    local cmd_ls='ls'
+    local -a opt_ls
+    case "${OSTYPE}" in
+        freebsd*|darwin*)
+            opt_ls=('-ACFG')
+            ;;
+        *)
+            opt_ls=('-ACF' '--color=always')
+            ;;
+    esac
+
+    local ls_result
+    ls_result=$(CLICOLOR_FORCE=1 COLUMNS=$COLUMNS command $cmd_ls ${opt_ls[@]} | sed $'/^\e\[[0-9;]*m$/d')
+
+    local ls_lines=$(echo "$ls_result" | wc -l | tr -d ' ')
+
+    if [ $ls_lines -gt 8 ]; then
+        echo "$ls_result" | head -n 3
+        echo '...'
+        echo "$ls_result" | tail -n 3
+        echo "$(command ls -1 -A | wc -l | tr -d ' ') files exist"
+    else
+        echo "$ls_result"
+    fi
+}
+#add-zsh-hook chpwd _ls_abbrev
+
+# Go
+if hash go 2> /dev/null; then
+    if [ ! -d "$HOME/.go" ]; then
+        mkdir -p $HOME/.go
+    fi
+    export GOPATH=$HOME/.go
+    export PATH=$GOPATH/bin:$PATH
+fi
+
+###############
+#   FILTER    #
+###############
+export FILTER_CMD=fzf
+export FILTER_OPTS="--layout=reverse"
+if hash "$FILTER_CMD" 2> /dev/null; then
+# {{{
+alias -g F="| $FILTER_CMD $FILTER_OPTS"
+alias -g FX="| $FILTER_CMD $FILTER_OPTS $FILTER_OPTS | xargs"
+
+function filter-pgrep() {
+    if [[ $1 == "" ]]; then
+        filter="$FILTER_CMD $FILTER_OPTS"
+    else
+        filter="$FILTER_CMD $FILTER_OPTS --query \"$1\""
+    fi
+    ps aux | eval $FILTER_CMD $FILTER_OPTS --prompt "\"pgrep> \"" | awk '{ print $2 }'
+}
+zle -N filter-pgrep
+
+function filter-pkill() {
+    if [[ $1 =~ "^-" ]]; then
+        QUERY=""            # options only
+    else
+        QUERY=$1            # with a query
+        [[ $# > 0 ]] && shift
+    fi
+    filter-pgrep $QUERY | xargs kill $*
+}
+zle -N filter-pkill
+
+function filter-history-insert() {
+    local tac
+    hash gtac 2> /dev/null && tac="gtac" || { hash tac 2> /dev/null && tac="tac" || { tac="tail -r" } }
+    BUFFER=$(fc -l -n 1 | eval $tac | $FILTER_CMD $FILTER_OPTS  --prompt 'history-insert> ' --query "$LBUFFER")
+    CURSOR=$#BUFFER         # move cursor
+    zle -R -c               # refresh
+}
+zle -N filter-history-insert
+
+function filter-history() {
+    local tac
+    hash gtac 2> /dev/null && tac="gtac" || { hash tac 2> /dev/null && tac="tac" || { tac="tail -r" } }
+    BUFFER=$(fc -l -n 1 | eval $tac | $FILTER_CMD $FILTER_OPTS --prompt 'history> ' --query "$LBUFFER")
+    zle clear-screen
+    zle accept-line
+}
+zle -N filter-history
+bindkey -M viins '^ h' filter-history
+
+function filter-cdr-impl() {
+    cdr -l | \
+        sed -e 's/^[[:digit:]]*[[:blank:]]*//' | \
+        $FILTER_CMD $FILTER_OPTS --prompt 'cdr> ' --query "$LBUFFER"
+}
+function filter-cdr-insert() {
+    local selected
+    selected=$(cdr -l | sed -e 's/^[[:digit:]]*[[:blank:]]*//' | $FILTER_CMD $FILTER_OPTS --prompt 'cdr-insert> ')
+    BUFFER=${BUFFER}${selected}
+    CURSOR=$#BUFFER
+    zle redisplay
+}
+zle -N filter-cdr-insert
+
+function filter-cdr() {
+    local destination="$(filter-cdr-impl)"
+    if [ -n "$destination" ]; then
+        BUFFER="cd $destination"
+        zle accept-line
+    else
+        zle reset-prompt
+    fi
+}
+zle -N filter-cdr
+
+function _advanced_tab(){
+if [[ $#BUFFER == 0 ]]; then
+    filter-cdr
+    zle redisplay
+else
+    zle expand-or-complete
+fi
+}
+zle -N _advanced_tab
+
+bindkey -M viins '^I' _advanced_tab
+bindkey -M viins '^ r' filter-cdr
+
+if hash ghq 2> /dev/null; then
+    function filter-ghq() {
+        local selected_dir=$(ghq list | $FILTER_CMD $FILTER_OPTS --prompt 'ghq> ' --query "$LBUFFER")
+        if [ -n "$selected_dir" ]; then
+            BUFFER="cd $(ghq root)/${selected_dir}"
+            zle accept-line
+        fi
+        zle clear-screen
+    }
+    zle -N filter-ghq
+    bindkey -M viins '^ ^g' filter-ghq
+fi
+
+if [[ "$GOPATH" != "" ]]; then
+    function filter-gopath() {
+        local selected=$(find "$GOPATH/src" -maxdepth 3 -mindepth 3 -name "*" -type d | $FILTER_CMD $FILTER_OPTS --prompt 'GOPATH> ' --query "$LBUFFER")
+        if [ -n "$selected" ]; then
+            BUFFER="cd $selected"
+            zle accept-line
+        else
+            zle reset-prompt
+        fi
+    }
+    zle -N filter-gopath
+    bindkey -M viins '^ p' filter-gopath
+fi
+
+function filter-repos() {
+    local input go vim
+
+    input="$(ghq list | sed "s#^#$(ghq root)/#")"
+    go="$(find "$GOPATH/src" -maxdepth 3 -mindepth 3 -name "*" -type d)"
+    if [ -n "$go" ]; then
+        input="${input}\n${go}"
+    fi
+    vim="$(ls -1 -d "$HOME/.vim/bundle/"*)"
+    if [ -n "$vim" ]; then
+        input="${input}\n${vim}"
+    fi
+    input="$(echo "$input" | sed "s#^$HOME#~#g")"
+
+    local selected_dir=$(echo "${input}" | $FILTER_CMD $FILTER_OPTS --prompt 'repos> ' --query "$LBUFFER")
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle clear-screen
+}
+zle -N filter-repos
+bindkey -M viins '^ ^ ' filter-repos
+
+function filter-git-log() {
+    local sed
+    case $OSTYPE in
+    darwin*)
+        sed="gsed"
+        ;;
+    linux*)
+        sed="sed"
+        ;;
+    esac
+
+    local commit
+    commit=$(git log --no-color --oneline --graph --all --decorate | $FILTER_CMD $FILTER_OPTS --prompt 'git-log> ' | $sed -e "s/^\W\+\([0-9A-Fa-f]\+\).*$/\1/")
+    BUFFER="${BUFFER}${commit}"
+    CURSOR=$#BUFFER
+    zle redisplay
+}
+zle -N filter-git-log
+bindkey -M viins '^ o' filter-git-log
+
+function filter-ls-l-insert(){
+    local selected
+    selected=$(ls -l | grep -v ^total | $FILTER_CMD $FILTER_OPTS --prompt 'ls-l-insert> ' | awk '{print $(NF)}')
+    BUFFER="${BUFFER}$selected"
+    CURSOR=$#BUFFER
+    zle redisplay
+}
+zle -N filter-ls-l-insert
+bindkey -M viins '^ l' filter-ls-l-insert
+
+function filter-find-insert(){
+    local selected
+    selected=$(find ./* | $FILTER_CMD $FILTER_OPTS --prompt 'find-insert> ')
+    BUFFER="${BUFFER}${selected}"
+    CURSOR=$#BUFFER
+    zle redisplay
+}
+zle -N filter-find-insert
+bindkey -M viins '^ f' filter-find-insert
+
+function filter-directory-entries() {
+    if ! [ -d "$1" ]; then
+        return
+    fi
+
+    local selected
+    selected=$(ls -1 "$1" | $FILTER_CMD $FILTER_OPTS --prompt "$(basename "$1")> ")
+    if [[ "$selected" != "" ]]; then
+        echo "$1/$selected"
+    fi
+}
+
+function filter-neobundle(){
+    BUFFER="cd $(filter-directory-entries "$HOME/.vim/bundle")"
+    zle accept-line
+}
+zle -N filter-neobundle
+bindkey -M viins '^ b' filter-neobundle
+
+function filter-man-list-all() {
+    local parent dir file
+    local paths=("${(s/:/)$(man -aw)}")
+    for parent in $paths; do
+        for dir in $(/bin/ls -1 $parent); do
+            local p="${parent}/${dir}"
+            if [ -d "$p" ]; then
+                IFS=$'\n' local lines=($(/bin/ls -1 "$p"))
+                for file in $lines; do
+                    echo "${p}/${file}"
+                done
+            fi
+        done
+    done
+}
+
+function filter-man() {
+    local selected=$(filter-man-list-all | $FILTER_CMD $FILTER_OPTS --prompt 'man> ')
+    if [[ "$selected" != "" ]]; then
+        man "$selected"
+    fi
+}
+zle -N filter-man
+bindkey -M viins '^ m' filter-man
+
+function filter-git-cd() {
+    local cdup
+    cdup="$(git rev-parse --show-cdup 2>/dev/null)"
+    if [[ $? != 0 ]]; then
+        zle accept-line
+        return
+    fi
+
+    local selected="$(git ls-files "$cdup" | grep '/' | sed 's/\/[^\/]*$//g' | sort | uniq | $FILTER_CMD $FILTER_OPTS --prompt 'git-cd> ')"
+    if [[ "$selected" != "" ]]; then
+        BUFFER="cd $selected"
+        zle accept-line
+    fi
+}
+zle -N filter-git-cd
+bindkey -M viins '^ g' filter-git-cd
+
+function filter-source(){
+    local sources
+    local selected_source
+    sources=( \
+        pgrep \
+        pkill \
+        history \
+        history-insert \
+        cdr \
+        cdr-insert \
+        ghq \
+        git-log \
+        git-cd \
+        gopath \
+        ls-l-insert \
+        find-insert \
+        locate \
+        man \
+        neobundle \
+        repos \
+    )
+    selected_source=$(echo ${(j/\n/)sources} | $FILTER_CMD $FILTER_OPTS --prompt 'source> ')
+    zle clear-screen
+    if [[ "$selected_source" != "" ]]; then
+        zle filter-${selected_source}
+    fi
+}
+zle -N filter-source
+bindkey -M viins '^ ' filter-source
+# }}}
+fi
+
+##########################################
+#   source platform-dependant settings   #
+##########################################
+
+case $OSTYPE in
+    darwin*)
+        # Mac OS {{{
+        unalias ls
+        alias ls='ls -G'
+        alias top='sudo htop'
+
+        if hash grm 2> /dev/null; then
+            alias rm=grm
+            alias tar=gtar
+        fi
+
+        # suffix aliases
+        alias -s pdf='open -a Preview'
+        alias -s html='open -a Google\ Chrome'
+
+        # global aliases
+        alias -g C='| pbcopy'
+
+        #Homebrew
+        export HOMEBREW_VERBOSE=true
+        export HOMEBREW_EDITOR=vim
+        export HOMEBREW_NO_ANALYTICS=1
+
+        # Git
+        export PATH=$PATH:/usr/local/opt/git/share/git-core/contrib/diff-highlight
+
+        # emscripten
+        if [ -f ~/.emscripten ]; then
+            export LLVM=/usr/local/opt/emscripten/libexec/llvm/bin
+            export BINARYEN=/usr/local/opt/binaryen
+        fi
+        # }}}
+        ;;
+    linux*)
+        # Linux {{{
+        export PACMAN=pacman-color
+        export BROWSER=google-chrome:firefox:$BROWSER
+
+        # for Tmux 256 bit color
+        if [[ $TERM == "xterm" ]]; then
+            export TERM=xterm-256color
+        fi
+
+        if hash awesome 2> /dev/null; then
+            alias configawesome='vim $HOME/.config/awesome/rc.lua'
+        fi
+
+        alias xo=xdg-open
+
+        # suffix alias
+        alias -s html=xdg-open
+
+        # global alias
+        if hash notify-send 2> /dev/null; then
+            alias -g BG=' 2>&1 | notify-send &'
+        fi
+
+        if hash xsel 2> /dev/null; then
+            alias -g C='| xsel --input --clipboard'
+        fi
+
+        # cleverer umount command
+        if ! hash um 2> /dev/null; then
+            function um(){
+                local dirs_in_media
+                dirs_in_media=$(ls -l /media/ | grep -e ^d)
+                if [[ "$(echo "$dirs_in_media" | wc -l)" == 1 ]]; then
+                    local media_dir
+                    media_dir=${"$(echo "$dirs_in_media" | head -n 1)"##* }
+                    echo -n "unmounting ${media_dir}... "
+                    umount $@ /media/"$media_dir"
+                    $? && echo "done."
+                else
+                    umount $@
+                fi
+            }
+        fi
+        # }}}
+        ;;
+esac
+
+# source-file $HOME/.local.zshrc
+
+# Prevent a dog from crying at start up!
+true

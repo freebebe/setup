@@ -24,9 +24,10 @@
 # exec --no-startup-id "alacritty"
 # for_window [class="Alacritty"] move scratchpad, move position 150 150, resize set 1700 800;
 # bindsym Mod1+space [class="Alacritty"] scratchpad show;
+#U*-terminal->shell
 
 # (No) Title Bars
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 
 # i3 config file (v4)
 #
@@ -40,9 +41,11 @@ set $mod Mod4
 #windows border
 new_window none
 new_float normal
-
 hide_edge_borders both
 # hide_edge_borders none
+default_border pixel 2 
+# default_floating_border none
+# workspace_layout stacking
 
 #new_window_option
 #default_orientation horizontal|vertical|auto
@@ -57,7 +60,7 @@ hide_edge_borders both
 # bindsym $mod+l exec --no-startup-id xsecurelock
 
 # foucus follows mouse(cursor)
-#focus_follows_mouse yes
+focus_follows_mouse yes
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+c layout toggle split
@@ -66,10 +69,11 @@ bindsym $mod+c layout toggle split
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # font pango:monospace 13
+# font pango:Droid Sans Mono 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:DejaVu Sans Mono 8
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -94,14 +98,14 @@ bindsym $mod+c layout toggle split
 
 
 #bakcground
-exec --no-startup-id feh --bg-fill ~/Pictures/bkground/background.png
+# exec --no-startup-id feh --bg-fill ~/Pictures/bkground/background.png
+exec --no-startup-id feh --bg-fill ~/Pictures/art/Joaquín_Sorolla_y_Bastida_-_The_Little_Sailing_Boat_-_Google_Art_Project.jpeg
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier mod1
 
-#toupad
-# exec --no-startup-id synclient TapButton0=0
-
-
+#toupad -> at more size with someGithub link setup
+# exec --no-startup-id synclient TapButton0=0 
 
 ##############################
 ####    applications      ####
@@ -117,19 +121,27 @@ bindsym $mod+Ctrl+w kill
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec rofi -show run
-bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "DarkBlue" -font "mono 15"
-# bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "glue_pro_blue" -font "mono 16"
+# bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "DarkBlue" -font "mono 10"
+bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "glue_pro_blue" -font "mono 12"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 #
 # Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+# set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Media player controls
+# playerctl source: https://github.com/acrisci/playerctl
+# more info: https://faq.i3wm.org/question/3747/enabling-multimedia-keys.1.html
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
 #
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
@@ -187,11 +199,12 @@ bindsym $mod+a focus parent
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>WorkSpace_virtual
 
-# switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
-
 # Move workspace to another display
 bindsym $mod+x move workspace to output right
+
+#move workspace next & prev 
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -230,9 +243,6 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-#move workspace next & prev 
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -328,30 +338,7 @@ bindsym $mod+F1 --no-startup-id xpad
 # bindsym $mod+F1 exec thunar ~/Downloads
 
 ##############################
-#### settings for i3-gaps: ###
-#### request with ubuntu #####
-##############################
-#
-# Set inner/outer gaps
-#gaps inner 7
-#gaps outer -2
-
-
-##############################
-#### bar                : ####
-##############################
-
-bar {
-        i3bar_command i3bar
-        status_command i3status
-        tray_output eDP-1
-        position bottom
-        font pango:DejaVu Sans Mono, Icons 8
-
-}
-
-##############################
-#### autostart_app            : ######
+#####   autostart_app:  ######
 ##############################
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
@@ -362,7 +349,7 @@ exec --no-startup-id flameshot                    #take_your_face_your_screen_fa
 exec --no-startup-id i3-confg-wizard
 # exec --no-startup-id conky
 # exec --no-startup-id volumeicon
-# exec --no-startup-id pamac-tray
+exec --no-startup-id dunst
 
 #nitrogen sleep keyForPower
 # exec --no-startup-id pamac-tray
@@ -399,15 +386,18 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="vlc"] floating enable 
 for_window [class="mpv"] floating enable 
 for_window [class="mpv"] resize set 600 400
+for_window [class="mpv"] $FLOAT-noborder
 for_window [class="eog"] floating enable 
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="xpad"] floating enable 
 for_window [class="Zathura"] floating enable 
 for_window [class="feh"] floating enable
+for_window [class="feh"] $FLOAT-noborder
 for_window [class="feh"] resize set 600 400
 for_window [class="eog"] floating enable 
 for_window [class="chromium"] floating enable 
 for_window [class="Okular"] floating enable 
+for_window [class="Gpick"] floating enable 
 
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 for_window [class="GParted"] floating enable border normal
@@ -440,66 +430,31 @@ for_window [class="KWin"] floating enable, border none
 exec --no-startup-id wmctrl -c Plasma
 for_window [title="Desktop — Plasma"] kill, floating enable, border none
 for_window [title="Bureau — Plasma"] kill, floating enable, border none
-for_window [class="plasmashell"] kill, floating enable,  border none
 
 ##workspace_vitual
 force_display_urgency_hint 0 ms
 focus_on_window_activation urgent
 
+##############################
+#### bar                : ####
+##############################
 
-#############################
-### settings for i3-gaps: ###
-#############################
+bar {
+        i3bar_command i3bar
+        status_command i3status
+        tray_output eDP-1
+        # position top
+        font pango:DejaVu Sans Mono 8, Icons 8
+        # separator_symbol ⁞
+        colors {
+            background       #111111
+            urgent_workspace #ffffff #ff0000
+        }
 
-# Set inner/outer gaps
-# gaps inner 7
-# gaps outer -2
-#
-# # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
-# # gaps inner|outer current|all set|plus|minus <px>
-# # gaps inner all set 10
-# # gaps outer all plus 5
-#
-# # Smart gaps (gaps used if only more than one container on the workspace)
-# smart_gaps on
-#
-# # Smart borders (draw borders around container only if it is not the only container on this workspace)
-# # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
-# smart_borders on
-#
-# # Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
-# set $mode_gaps Gaps: (o) outer, (i) inner
-# set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-# set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-# bindsym $mod+Shift+g mode "$mode_gaps"
-# bindsym $mod+T exec --no-startup-id crow
-# mode "$mode_gaps" {
-        # bindsym o      mode "$mode_gaps_outer"
-        # bindsym i      mode "$mode_gaps_inner"
-        # bindsym Return mode "default"
-        # bindsym Escape mode "default"
-# }
-# mode "$mode_gaps_inner" {
-        # bindsym plus  gaps inner current plus 5
-        # bindsym minus gaps inner current minus 5
-        # bindsym 0     gaps inner current set 0
-#
-        # bindsym Shift+plus  gaps inner all plus 5
-        # bindsym Shift+minus gaps inner all minus 5
-        # bindsym Shift+0     gaps inner all set 0
-#
-        # bindsym Return mode "default"
-        # bindsym Escape mode "default"
-# }
-# mode "$mode_gaps_outer" {
-        # bindsym plus  gaps outer current plus 5
-        # bindsym minus gaps outer current minus 5
-        # bindsym 0     gaps outer current set 0
-#
-        # bindsym Shift+plus  gaps outer all plus 5
-        # bindsym Shift+minus gaps outer all minus 5
-        # bindsym Shift+0     gaps outer all set 0
-#
-        # bindsym Return mode "default"
-        # bindsym Escape mode "default"
-# }
+}
+
+#theme colors
+#class                  border |backgr.| text  |indicator
+client.focused         #383838 #383838 #CCCCCC #2ECC71
+client.unfocused       #16404B #16404B #2ECC71 #222222
+client.urgent          #274D01 #900000 #FFFFFF #900000

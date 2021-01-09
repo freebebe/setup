@@ -1,11 +1,9 @@
 [Desktop Entry]
-Type=Application
+Comment=
 Exec=xmodmap ~/.xmodmap
-Comment=xmodmap ~/.xmodmap
-Hidden=false
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
+Hidden=true
 Name[en_AU]=xmod
 Name=xmod
-Comment[en_AU]=
-Comment=
+NoDisplay=false
+Type=Application
+X-GNOME-Autostart-enabled=true

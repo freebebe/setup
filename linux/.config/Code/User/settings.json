@@ -1,5 +1,5 @@
 {
-    "terminal.integrated.shell.linux": "/usr/bin/fish",
+    "terminal.integrated.shell.linux": "/usr/bin/zsh",
     "editor.fontSize": 13,
     "editor.tabSize": 3
     "files.autoSave": "onWindowsChange",
@@ -17,7 +17,7 @@
     "window.zoomLevel": 0,
     "explorer.confirmDelete": false,
     "liveServer.settings.donotShowInfoMsg": true,
-    "liveServer.settings.CustomBrowser": "chromium:PrivateMod",
+    "liveServer.settings.CustomBrowser": "chromium/~:PrivateMod",
     // "liveServer.settings.CustomBrowser": "chrome:PrivateMode",
     "liveSassCompile.settings.formats": [
         {
