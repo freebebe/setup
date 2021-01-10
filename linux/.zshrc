@@ -1,4 +1,29 @@
 # Created by newuser for 5.8
+#
+#####################################################################
+# Plug
+#####################################################################
+source ~/.zplug/init.zsh
+
+## Packgage with third
+zplug "zsh-users/zsh-autosuggestions"              
+## Packgage with ohMyZsh                            
+# zplug "plugins/git",                from:oh-my-zsh
+zplug "plugins/vi-mode",            from:oh-my-zsh 
+zplug "plugins/autojump",           from:oh-my-zsh 
+zplug "plugins/safe-paste",         from:oh-my-zsh 
+zplug "plugins/alias-finder",       from:oh-my-zsh 
+                                                  
+# Install plugins if there are plugins that have no
+if ! zplug check --verbose; then                   
+   printf "Install? [y/N]: "                      
+   if read -q; then                               
+        echo; zplug install                        
+   fi                                             
+fi                                                 
+                                                  
+# Then, source plugins and add commands to $PATH   
+zplug load --verbose
 
 #####################################################################
 # environment
