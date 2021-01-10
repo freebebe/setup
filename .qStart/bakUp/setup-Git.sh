@@ -14,7 +14,8 @@ cp -r ~/.config/i3/ ~/git/system/setup/linux/.config
 cp -r ~/.config/i3status/ ~/git/system/setup/linux/.config
 cp -r ~/.config/autostart/ ~/git/system/setup/linux/.config
 cp -r ~/.config/nvim/ ~/git/system/setup/linux/.config
-#
+cp -r ~/.config/kitty/ ~/git/system/setup/linux/.config
+
 # #filepacker ->  /home/
 # cp -r ~/bkup/ ~/git/system/setup/
 cp -r ~/.qStart ~/git/system/setup/

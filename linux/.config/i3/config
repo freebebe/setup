@@ -113,7 +113,7 @@ floating_modifier mod1
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Ctrl+t exec konsole
+bindsym $mod+Ctrl+t exec kitty
 
 # kill focused window
 bindsym $mod+Ctrl+w kill

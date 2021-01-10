@@ -52,6 +52,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }         "online
     Plug '907th/vim-auto-save'                  "自动保存
     Plug 'tyru/open-browser.vim'                "browser
+    Plug 'ap/vim-css-color'                     "css highlighting
     "Plug 'neomake/neomake'                       " Asynchronous linting and make framework for Neovim/Vim 
                                                 "不全
     Plug 'SirVer/ultisnips'                     "PYTHON补全
