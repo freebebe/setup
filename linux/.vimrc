@@ -44,6 +44,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-fugitive'                   "git
       Plug 'tpope/vim-rhubarb'                  "if fugitive is git, rhubarb is hub
     Plug 'Vimjas/vim-python-pep8-indent'        "自动/定义缩进
+    Plug 'easymotion/vim-easymotion'            "'/'标签字母快速跳转
 "螺丝
     Plug 'tpope/vim-eunuch'                     "filemanger ->  /:move//:mkdir//:rename//:delete//
     Plug 'jreybert/vimagit'
@@ -82,9 +83,8 @@ call plug#begin('~/.vim/plugged')
         Plug 'kristijanhusak/defx-git'
     Plug 'Shougo/denite.nvim'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-        " Plug 'deoplete-plugins/deoplete-jedi'   "python
-        " Plug 'mhartington/nvim-typescript'      "typescript
-        " Plug 'lvht/phpcd.vim'
+        Plug 'deoplete-plugins/deoplete-jedi'   "python
+        Plug 'mhartington/nvim-typescript'      "typescript
         " Plug 'racer-rust/vim-racer'
         " Plug 'carlitux/deoplete-ternjs'       "js
 
@@ -440,7 +440,9 @@ call deoplete#custom#source('_',
             \ )
     " 补全结束或离开插入模式时，关闭预览窗口
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif 
-
+    " deoplete-ternjs
+" let g:tern#command = ["tern"]
+" let g:tern#arguments = ["--persistent"]
 "==============================ShouGo-Defx
 
 "==============================ShouGo-Link

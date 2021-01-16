@@ -430,6 +430,7 @@ for_window [class="KWin"] floating enable, border none
 exec --no-startup-id wmctrl -c Plasma
 for_window [title="Desktop — Plasma"] kill, floating enable, border none
 for_window [title="Bureau — Plasma"] kill, floating enable, border none
+for_window [title="plasmashell"] kill, floating enable, border none
 
 ##workspace_vitual
 force_display_urgency_hint 0 ms
@@ -443,7 +444,7 @@ bar {
         i3bar_command i3bar
         status_command i3status
         tray_output eDP-1
-        # position top
+        position top
         font pango:DejaVu Sans Mono 8, Icons 8
         # separator_symbol ⁞
         colors {
