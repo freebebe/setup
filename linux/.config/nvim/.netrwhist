@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =5
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/goy0/.config/nvim/gogo/finger'
 let g:netrw_dirhist_5='/home/goy0/.zsh'
 let g:netrw_dirhist_4='/home/goy0/.zplug'
 let g:netrw_dirhist_3='/home/goy0/.config/nvim/gogo/finger'

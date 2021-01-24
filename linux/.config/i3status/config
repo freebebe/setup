@@ -90,7 +90,7 @@ battery 0 {
 disk / {
 #forma = " hdd %avail "
     # format  = " ℃ %avail "
-    format  = "SDD: %avail"
+    format  = "SSD: %avail"
     # format  = " '/home' %avail "
 }
 # disk "/" {

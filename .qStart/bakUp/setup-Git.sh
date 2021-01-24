@@ -1,13 +1,13 @@
 #home_vim*1 tmux*1 zsh*1 Xmodmap*1
 cp ~/.vimrc ~/git/system/setup/linux 
-cp ~/.tmux.conf ~/git/system/setup/linux/ && cp ~/.tmux.powerline.conf ~/git/system/setup/linux/ 
+cp ~/.tmux.conf ~/git/system/setup/linux/ 
 cp ~/.Xmodmap ~/git/system/setup/linux
 cp ~/.gitconfig ~/git/system/setup/linux
 cp ~/.zshrc ~/git/system/setup/linux
+cp ~/.curl ~/git/system/setup/linux
 #filepacker ->  /home/.config/
 ##-rf && r : skip question
 cp -r ~/.config/Code/User/ ~/git/system/setup/linux/.config/Code
-cp -r ~/.config/fish/ ~/git/system/setup/linux/.config
 cp -r ~/.config/zathura/ ~/git/system/setup/linux/.config
 cp -r ~/.config/rclone/ ~/git/system/setup/linux/.config
 cp -r ~/.config/i3/ ~/git/system/setup/linux/.config

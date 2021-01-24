@@ -31,11 +31,10 @@ call plug#begin('~/.vim/plugged')
 "格式
     Plug 'Yggdroot/indentLine'                  "缩进线
     Plug 'sheerun/vim-polyglot'                 "字典
-    Plug 'iamcco/markdown-preview.nvim', {'do': { -> mkdp#util#install()}}
     Plug 'hail2u/vim-css3-syntax'               "css
 "是巴拿
     Plug 'preservim/nerdcommenter'			        "注释
-    Plug 'terryma/vim-multiple-cursors'		      "{v+[C-N]}批量修改: 
+    Plug 'terryma/vim-multiple-cursors'		      "批量修改: {v+[C-N]} 
     Plug 'tpope/vim-surround'                   "hello world! >>>>> [hello] world!:     
                                                 "(https://gist.github.com/wilon/ac1fc66f4a79e7b0c161c80877c75c94)
     Plug 'airblade/vim-gitgutter'               "git修改记录-异步
@@ -46,6 +45,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'Vimjas/vim-python-pep8-indent'        "自动/定义缩进
     Plug 'easymotion/vim-easymotion'            "'/'标签字母快速跳转
 "螺丝
+    Plug 'mbbill/undotree'                      "undo history: [F5]
     Plug 'tpope/vim-eunuch'                     "filemanger ->  /:move//:mkdir//:rename//:delete//
     Plug 'jreybert/vimagit'
     Plug 'wannesm/wmgraphviz.vim'				        "mind map
@@ -54,6 +54,7 @@ call plug#begin('~/.vim/plugged')
     Plug '907th/vim-auto-save'                  "自动保存
     Plug 'tyru/open-browser.vim'                "browser
     Plug 'ap/vim-css-color'                     "css highlighting
+    " Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
     "Plug 'neomake/neomake'                       " Asynchronous linting and make framework for Neovim/Vim 
                                                 "不全
     Plug 'SirVer/ultisnips'                     "PYTHON补全
@@ -71,7 +72,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'rhysd/vim-clang-format'               "pinkup the function be it just function
     Plug 'mattn/emmet-vim'                      "htXml5-backnotes
 "油漆
-    Plug 'cocopon/iceberg.vim'
+    " Plug 'cocopon/iceberg.vim'
     Plug 'DNonov/light-delight'                 
     Plug 'itchyny/lightline.vim'			          "状态
 "规程
@@ -85,8 +86,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
         Plug 'deoplete-plugins/deoplete-jedi'   "python
         Plug 'mhartington/nvim-typescript'      "typescript
-        " Plug 'racer-rust/vim-racer'
+        Plug 'racer-rust/vim-racer'
         " Plug 'carlitux/deoplete-ternjs'       "js
+        Plug 'deoplete-plugins/deoplete-go'     "go
 
 call plug#end()
 
@@ -102,10 +104,8 @@ set t_Co=256
 
 "color
 " set background=dark
-" colo github
 colo whiteBlue
-" colo  iceberg
-  let g:lightline = {'colorscheme': 'iceberg'}
+  " let g:lightline = {'colorscheme': 'iceberg'}
 
 "Preserves indentation while pasting text from the clipboard
 " nnoremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
@@ -128,10 +128,12 @@ set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,big5,euc-jp,euc-kr
 "文件格式
-set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md
+set matchpairs=(:),[:],{:}
+set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md,.rb,.tsx,.jpg,.jpeg,.gif,.png,.vim
 autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+
   " JavaScript
   au BufNewFile,BufRead *.es6 setf javascript
   " TypeScript
@@ -331,6 +333,7 @@ let g:NERDTrimTrailingWhitespace = 1	  "收尾
 "let g:NERDToggleCheckAllLines = 1	    "chack
 "learder=\
 "\-c-space 正反注释
+nnoremap <silent> :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
 
 "================wiki============================
 set nocompatible            "kill-vim一致性
@@ -369,10 +372,6 @@ function! GitStatus()
  return printf('+%d ~%d -%d', a, m, r)
 endfunction
 set statusline+=%{GitStatus()}
-
-"============================markdown
-let g:vim_markdown_math = 0
-let g:vim_markdown_auto_insert_bullets = 0
 
 "=============================graphviz
 "=============================surround
@@ -417,9 +416,8 @@ let g:python_highlight_indent_errors = 0
 let g:python_highlight_space_errors  = 0
 
 "==============================Markdown
-let g:mkdp_preview_options = {'content_editable': v:true}
-let g:vim_markdown_math    = 1
-nnoremap <leader>o :MarkdownPreview<CR>
+let g:instant_markdown_slow = 1
+let g:instant_markdown_autostart = 0            "':InstantMarkdownPreview' or 'InstantMarkdownStop'
 
 "==============================Wiki
 let g:vimwiki_list = [{'path': '~/vimwiki/',
@@ -440,12 +438,27 @@ call deoplete#custom#source('_',
             \ )
     " 补全结束或离开插入模式时，关闭预览窗口
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif 
-    " deoplete-ternjs
+"============== deoplete-ternjs
 " let g:tern#command = ["tern"]
 " let g:tern#arguments = ["--persistent"]
+let g:deoplete#sources#ternjs#types = 1
+" Whether to include the types of the completions in the result data. Default: 0
+let g:deoplete#sources#ternjs#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'vue'
+                \ ]
+"============== deoplete-Rust
+let g:racer_cmd = "/home/user/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
 "==============================ShouGo-Defx
+"autocmd vimenter * Defx
 
 "==============================ShouGo-Link
 source ~/.config/nvim/gogo/finger/deoplete.rc.vim
 source ~/.config/nvim/gogo/finger/denite.vim
 source ~/.config/nvim/gogo/finger/defx.vim
+
+"==============================undotree
+nnoremap <F5> :UndotreeToggle<CR>
+
