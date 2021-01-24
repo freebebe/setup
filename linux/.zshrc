@@ -855,6 +855,15 @@ true
 # TheFuck
 eval $(thefuck --alias)
 
+# npm
+export NPM_CONFIG_PREFIX=~/.npm-global
+export PATH=$PATH:~/.npm-global/bin
+
+# Ruby & rbenv                                                                   
+export PATH="$HOME/.rbenv/bin:$PATH"                                             
+eval "$(rbenv init -)"                                                           
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+
 ##########################################
 #   Vi------mod                          #
 ##########################################

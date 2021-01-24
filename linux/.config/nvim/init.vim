@@ -1,8 +1,8 @@
  " source ~/.config/nvim/.vimrc
 source ~/.vimrc
 " source ~/.config/nvim/bkup/.vimrc
-"
-" source ~/.config/nvim/gogo/foot/quickKeys.vim
+
+source ~/.config/nvim/gogo/foot/quickKeys.vim
 
 if exists("&termguicolors") && exists("&winblend")
   let g:neosolarized_termtrans=1

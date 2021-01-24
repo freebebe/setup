@@ -3,7 +3,6 @@
 "------------------------------
     "Plug 'scrooloose/nerdtree'                  "目录树
     "Plug 'tyru/open-browser.vim'                "browser
-    "Plug 'junegunn/goyo.vim'                   "简化阅读
     "Plug 'davidhalter/jedi'                    "PYTHON     
                                                 "python不全/字典:    https://github.com/davidhalter/jedi
     "Plug 'ctrlpvim/ctrlp.vim'                   "模糊搜索
@@ -32,6 +31,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'Yggdroot/indentLine'                  "缩进线
     Plug 'sheerun/vim-polyglot'                 "字典
     Plug 'hail2u/vim-css3-syntax'               "css
+    Plug 'leafgarland/typescript-vim'           "typescript
+    Plug 'pangloss/vim-javascript'              "javascript
 "是巴拿
     Plug 'preservim/nerdcommenter'			        "注释
     Plug 'terryma/vim-multiple-cursors'		      "批量修改: {v+[C-N]} 
@@ -45,6 +46,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'Vimjas/vim-python-pep8-indent'        "自动/定义缩进
     Plug 'easymotion/vim-easymotion'            "'/'标签字母快速跳转
 "螺丝
+    Plug 'junegunn/goyo.vim'                   "简化阅读
     Plug 'mbbill/undotree'                      "undo history: [F5]
     Plug 'tpope/vim-eunuch'                     "filemanger ->  /:move//:mkdir//:rename//:delete//
     Plug 'jreybert/vimagit'
@@ -79,13 +81,15 @@ call plug#begin('~/.vim/plugged')
     Plug 'dense-analysis/ale'                   "异步语法检查:https://github.com/dense-analysis/ale
 "兔洞
     Plug 'mileszs/ack.vim'                      "文本搜索：设置里并用t.s.s
+"server
+    Plug 'Quramy/tsuquyomi'
 "only nervim
     Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }                    "目录树
         Plug 'kristijanhusak/defx-git'
     Plug 'Shougo/denite.nvim'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
         Plug 'deoplete-plugins/deoplete-jedi'   "python
-        Plug 'mhartington/nvim-typescript'      "typescript
+        " Plug 'mhartington/nvim-typescript'      "typescript
         Plug 'racer-rust/vim-racer'
         " Plug 'carlitux/deoplete-ternjs'       "js
         Plug 'deoplete-plugins/deoplete-go'     "go
@@ -129,7 +133,7 @@ set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,big5,euc-jp,euc-kr
 "文件格式
 set matchpairs=(:),[:],{:}
-set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md,.rb,.tsx,.jpg,.jpeg,.gif,.png,.vim
+set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md,.rb,.tsx,.ts,.jpg,.jpeg,.gif,.png,.vim
 autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2

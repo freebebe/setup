@@ -99,8 +99,8 @@ font pango:DejaVu Sans Mono 8
 
 #bakcground
 # exec --no-startup-id feh --bg-fill ~/Pictures/bkground/background.png
-# exec --no-startup-id feh --bg-fill ~/Pictures/art/Joaquín_Sorolla_y_Bastida_-_The_Little_Sailing_Boat_-_Google_Art_Project.jpeg
-exec --no-startup-id feh --bg-fill ~/Pictures/art/Vincent_van_Gogh_-_Wheatfield_under_thunderclouds_-_Google_Art_Project.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/art/Joaquín_Sorolla_y_Bastida_-_The_Little_Sailing_Boat_-_Google_Art_Project.jpeg
+# exec --no-startup-id feh --bg-fill ~/Pictures/art/Vincent_van_Gogh/Vincent_van_Gogh_-_Wheatfield_under_thunderclouds_-_Google_Art_Project.jpg
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier mod1
