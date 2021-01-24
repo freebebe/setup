@@ -5,7 +5,7 @@ cp ~/.zshrc ~/git/vag_setup/setup
 cp ~/.curlrc ~/git/vag_setup/setup
 
 #bak packge
-cp -r ~/.config/nvim/gogo/finger/* ~/git/vag_setup/setup/.config/nvim/finger
+cp -r ~/.config/nvim/gogo/ ~/git/vag_setup/setup/.config/nvim/
 cp -r ~/.config/nvim/colors ~/git/vag_setup/setup/.config/nvim/
 
 #Up
