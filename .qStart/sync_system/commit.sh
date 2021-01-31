@@ -7,5 +7,5 @@ git clone https://github.com/freebebe/setup.git
 
 #
 cd setup && cd linux
-cp .vimrc ~/ && cp .tmux.conf && cp .tmux.powerline.conf ~/
+cp .vimrc ~/ && cp .tmux.conf ~/ && cp .tmux.powerline.conf ~/
 

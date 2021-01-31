@@ -1,7 +1,6 @@
 # create js file
 `npx create-next-app`
-
-## package in TS
+# package with TS
 yarn add typescript @types/node @types/react --dev
 
 # --
