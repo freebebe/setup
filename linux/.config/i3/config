@@ -99,7 +99,8 @@ font pango:DejaVu Sans Mono 8
 
 #bakcground
 # exec --no-startup-id feh --bg-fill ~/Pictures/bkground/background.png
-exec --no-startup-id feh --bg-fill ~/Pictures/art/Joaquín_Sorolla_y_Bastida_-_The_Little_Sailing_Boat_-_Google_Art_Project.jpeg
+# exec --no-startup-id feh --bg-fill ~/Pictures/art/Joaquín_Sorolla_y_Bastida_-_The_Little_Sailing_Boat_-_Google_Art_Project.jpeg
+exec --no-startup-id feh --bg-fill ~/Pictures/art/Vincent_van_Gogh/Vincent_van_Gogh_-_Wheatfield_under_thunderclouds_-_Google_Art_Project.jpg
 # exec --no-startup-id feh --bg-fill ~/Pictures/art/Vincent_van_Gogh/Vincent_van_Gogh_-_Wheatfield_under_thunderclouds_-_Google_Art_Project.jpg
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -123,7 +124,7 @@ bindsym $mod+Ctrl+w kill
 # bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec rofi -show run
 # bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "DarkBlue" -font "mono 10"
-bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "glue_pro_blue" -font "mono 15"
+bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "glue_pro_blue" -font "mono 12"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.

@@ -214,6 +214,7 @@ syntax enable
 syntax on
   autocmd InsertLeave,WinEnter * set cursorline
   autocmd InsertLeave,WinEnter * set nocursorline
+au BufNewFile,BufRead *.ejs set filetype=html
 
 "======================十字定位线
 set colorcolumn=80          "警示線
