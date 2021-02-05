@@ -100,7 +100,7 @@ font pango:DejaVu Sans Mono 8
 #bakcground
 # exec --no-startup-id feh --bg-fill ~/Pictures/bkground/background.png
 # exec --no-startup-id feh --bg-fill ~/Pictures/art/Joaquín_Sorolla_y_Bastida_-_The_Little_Sailing_Boat_-_Google_Art_Project.jpeg
-exec --no-startup-id feh --bg-fill ~/Pictures/art/Vincent_van_Gogh/Vincent_van_Gogh_-_Wheatfield_under_thunderclouds_-_Google_Art_Project.jpg
+exec --no-startup-id feh --bg-fill ~/Pictures/art/Vincent_van_Gogh/Van_Gogh_The_Olive_Trees..jpg
 # exec --no-startup-id feh --bg-fill ~/Pictures/art/Vincent_van_Gogh/Vincent_van_Gogh_-_Wheatfield_under_thunderclouds_-_Google_Art_Project.jpg
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -124,7 +124,7 @@ bindsym $mod+Ctrl+w kill
 # bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec rofi -show run
 # bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "DarkBlue" -font "mono 10"
-bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "glue_pro_blue" -font "mono 12"
+bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "glue_pro_blue" -font "mono 15"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -260,21 +260,21 @@ bindsym $mod+shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 
 # Set shut down, restart and locking features
-# bindsym $mod+mod1+0 mode "$mode_system"
-# set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-# mode "$mode_system" {
-        # bindsym l exec --no-startup-id i3exit lock, mode "default"
-        # bindsym s exec --no-startup-id i3exit suspend, mode "default"
-        # bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-        # bindsym e exec --no-startup-id i3exit logout, mode "default"
-        # bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-        # bindsym r exec --no-startup-id i3exit reboot, modevim "default"
-        # bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+bindsym $mod+mod1+0 mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+        bindsym l exec --no-startup-id i3exit lock, mode "default"
+        bindsym s exec --no-startup-id i3exit suspend, mode "default"
+        bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+        bindsym e exec --no-startup-id i3exit logout, mode "default"
+        bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+        bindsym r exec --no-startup-id i3exit reboot, modevim "default"
+        bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 #
 # # exit system mode: "Enter" or "Escape"
-        # bindsym Return mode "default"
-        # bindsym Escape mode "default"
-# }
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
 
 
 ## i3lock
@@ -379,6 +379,8 @@ exec --no-startup-id dunst
 # for_window [class="VirtualBox"] floating enable
 # for_window [class="konsole"] floating enable
 # for_window [class="konsole"] resize set 600 400
+for_window [class="kitty"] floating enable
+for_window [class="kitty"] resize set 800 480
 for_window [class="yakuake"] floating enable
 for_window [class="systemsettings"] floating enable
 for_window [class="keepassxc"] floating enable
@@ -447,7 +449,8 @@ bar {
         status_command i3status
         tray_output eDP-1
         position top
-        font pango:DejaVu Sans Mono 7, Icons 7
+        # font pango:DejaVu Sans Mono 7, Icons 7
+        font pango:Ubuntu Nomo 7, Icons 7
         # separator_symbol ⁞
         colors {
             background       #111111
