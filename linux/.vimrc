@@ -115,6 +115,10 @@ colo whiteBlue
 " nnoremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
 
 "setKey
+nnoremap vs :vs<CR>
+            \:<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+nnoremap sp :sp<CR>
+            \:<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
 nnoremap tn :tabnew<Space>
 nnoremap tg :tabfirst<CR>
 nnoremap tG :tablast<CR>

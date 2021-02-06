@@ -2,19 +2,21 @@
 " sf = tree
 "    > h = backspace
 "    > enter = open
+" 'vertical'
 " Define mappings
-"cnoreabbrev sf Defx -listed -new
-"      \ -columns=indent:mark:icon:icons:filename:git:size
-"      \ -buffer-name=tab`tabpagenr()`<CR>
-" call defx#custom#option('_',{
-      " \ 'split'     : 'vertical',
-      " \ 'winwidth'  : 30,
-      " \ 'show_ignored_files': 0,
-      " \ 'buffer_name': '',
-      " \ 'toggle': 1,
-      " \ 'resume': 1,
-      " \ 'ignored_files': '*.pyc,*.pyd,*~,*.swo,*.swp,.git,.hg,.svn,.bzr,.DS_Store',
-      " \ })
+cnoreabbrev sf Defx -listed -new
+     \ -columns=indent:mark:icon:icons:filename:git:size
+     \ -buffer-name=tab`tabpagenr()`<CR>
+call defx#custom#option('_',{
+      \ 'winwidth'  : 30,
+      \ 'show_ignored_files': 0,
+      \ 'buffer_name': '',
+      \ 'toggle': 1,
+      \ 'resume': 1,
+      \ 'ignored_files': '*.pyc,*.pyd,*~,*.swo,*.swp,.git,.hg,.svn,.bzr,.DS_Store',
+      \ })
+      " \ 'split'     : 'center',
+"                       'vertical',
 
 nnoremap <silent>sf :<C-u>Defx -listed -resume
       \ -columns=indent:mark:icon:icons:filename:git:size
