@@ -46,7 +46,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'Vimjas/vim-python-pep8-indent'        "自动/定义缩进
     Plug 'easymotion/vim-easymotion'            "'/'标签字母快速跳转
 "螺丝
-    Plug 'junegunn/goyo.vim'                   "简化阅读
+    Plug 'junegunn/goyo.vim'                    "简化阅读
     Plug 'mbbill/undotree'                      "undo history: [F5]
     Plug 'tpope/vim-eunuch'                     "filemanger ->  /:move//:mkdir//:rename//:delete//
     Plug 'jreybert/vimagit'
@@ -363,8 +363,8 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
 let javascript_enable_domhtmlcss = 1
 
 "================emmet-html&css->deful        (C=ctrl-)=====================
-" let g:user_emmet_install_global = 0
-" autocmd FileType html,css EmmetInstall      只在html,css作用  
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall          "只在html,css作用
 "
 " let g:user_emmet_leader_key='C-y'
 " autocmd filetype *html* imap <c-_> <c-y>/
@@ -372,6 +372,11 @@ let javascript_enable_domhtmlcss = 1
 "
 let g:user_emmet_expandabbr_key = '<F2>'
 let g:user_emmet_leader_key= '<C-e>'
+
+let g:user_emmet_mode='n'    "only enable normal mode functions.
+let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+let g:user_emmet_mode='a'    "enable all function in all mode.
+
     "================emmet================
 "map <F3> <C-\>
 

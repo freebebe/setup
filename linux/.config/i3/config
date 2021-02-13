@@ -27,7 +27,7 @@
 #U*-terminal->shell
 
 # (No) Title Bars
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 5
 
 # i3 config file (v4)
 #
@@ -100,7 +100,7 @@ font pango:DejaVu Sans Mono 8
 #bakcground
 # exec --no-startup-id feh --bg-fill ~/Pictures/bkground/background.png
 # exec --no-startup-id feh --bg-fill ~/Pictures/art/Joaquín_Sorolla_y_Bastida_-_The_Little_Sailing_Boat_-_Google_Art_Project.jpeg
-exec --no-startup-id feh --bg-fill ~/Pictures/art/Vincent_van_Gogh/Van_Gogh_The_Olive_Trees..jpg
+exec --no-startup-id feh --bg-fill /home/goy0/Pictures/bkground/background_bg2.png
 # exec --no-startup-id feh --bg-fill ~/Pictures/art/Vincent_van_Gogh/Vincent_van_Gogh_-_Wheatfield_under_thunderclouds_-_Google_Art_Project.jpg
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -377,10 +377,11 @@ exec --no-startup-id dunst
 #  i.e. popup, do stuff, close
 # To get WM_CLASS and WM_TITLE values, on X run "xprop"
 # for_window [class="VirtualBox"] floating enable
+# for_window [class="VirtualBox"] resize set 800 600
 # for_window [class="konsole"] floating enable
 # for_window [class="konsole"] resize set 600 400
-for_window [class="kitty"] floating enable
-for_window [class="kitty"] resize set 800 480
+# for_window [class="kitty"] floating enable
+# for_window [class="kitty"] resize set 800 480
 for_window [class="yakuake"] floating enable
 for_window [class="systemsettings"] floating enable
 for_window [class="keepassxc"] floating enable
@@ -446,11 +447,13 @@ focus_on_window_activation urgent
 
 bar {
         i3bar_command i3bar
-        status_command i3status
+        status_command i3status --config ~/.config/i3status/config
+            status_command exec ~/.config/i3status/contrib/net-speed.sh
         tray_output eDP-1
         position top
-        # font pango:DejaVu Sans Mono 7, Icons 7
-        font pango:Ubuntu Nomo 7, Icons 7
+        font pango:Source Code Pro 8, Icons 8
+            # font pango:DejaVu Sans Mono 8, Icons 8
+            # font pango:Ubuntu Nomo 8, Icons 8
         # separator_symbol ⁞
         colors {
             background       #111111

@@ -27,12 +27,11 @@ order += "volume master"
 order += "battery 0"
 order += "time"
 
-
 ###################
 # SENSORS SETTING #
 ###################
 
-##CPU temperature
+## CPU temperature
 cpu_temperature 0 {
         format = "TempC: %degrees °C"
         path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp2_input"
@@ -41,8 +40,8 @@ cpu_temperature 0 {
 
 ## CPU sensor
 cpu_usage {
-    # format = "Cpu: %usage {%cpu0/%cpu1/%cpu2}"
-    format = "Cpu: %usage [%cpu0-%cpu1-%cpu2-%cpu3-%cpu4-%cpu5-%cpu6-%cpu7]"
+    format = "Cpu: %usage"
+    # format = "Cpu: %usage [%cpu0-%cpu1-%cpu2-%cpu3-%cpu4-%cpu5-%cpu6-%cpu7]"
     # format = " Cpu: %usage "
 }
 
