@@ -1,0 +1,247 @@
+{
+    "coc.preferences.format0nType": false,
+    "coc.preferences.extensiouUpdateCheck": "weekly",
+    "coc.preferences.currentFunctionsSymbolAutoUpdate": true,
+    "coc.preferences.snippets.enable": false,
+    
+    "diagnostic.errorSign": "✗",                                               
+    "diagnostic.warningSign": "∆",                                             
+    "diagnostic.infoSign": "▸",                                                
+    "diagnostic.hintSign": "▪︎",                                                
+    "diagnostic.virtualText": false,
+    
+    "suggest.preferCompleteThanJumpPlaceholder": true,
+
+    "list.normalMappings": {
+        "<C-j>":    "do:defaultaction",
+        "<C-c>":    "do:exit",
+        "/":        "do:toggleMode",
+        "<C-n>":    "normal:j",
+        "<C-p>":    "normal:k"
+    },
+    "list.insertMappings":  {
+        "<C-j>":    "do:defaultaction",
+        "<C-v>":    "eval:@@",
+        "<C-c>":    "do:exit",                      //  "do:toggleMode"
+        "/":        "do:toggleMode",
+        "<C-n>":    "normal:j",
+        "<C-p>":    "normal:k",
+        "<C-f>":    "feedkeys:\\<Right>",
+        "<C-b>":    "feedkeys:\\<Left>"
+    },
+    "list.source.diagnostics.defaultOptions":   ["--normal", "--no-sort"],
+
+    "javascript.preferences.useAliasesForRenames":  false,
+    "typescript.preferences.useAliasesForRenames":  false,
+
+    "languageserver":   {
+        "efm":  {
+            "command":  "efm-langserver",
+            "args":     [],
+            //  custom config path,
+            //  "args": ["-c", "/path/to/your/config.yaml"],
+            "filetypes":    ["vim", "eruby", "markdown", "yaml"]
+        },
+        //"gopls":    {
+            //"command":                  "gopls",
+            //"rootPatterns":             ["go.mod"],
+            //"disableWorkspaceFolders":  true,
+        //},
+        "bash": {
+            "command":          "bash-language-server",
+            "args":             ["start"],
+            "filetypes":        ["bash"],
+            "ignoredRootPaths": ["~"]
+        },
+        "kotlin":   {
+            "command":      "kotlin-language-server",
+            "filetypes":    ["kotlin"],
+            "rootPatterns": ["gradle.properties"]
+        },
+        "graphql":  {
+            "enable":           false,
+            "command":          "graphql-lsp",
+            "args":             ["server", "-m", "stream"],
+            "rootPatterns": [
+                ".graphqlrc",
+                ".graphqlrc.yml",
+                ".graphql.yaml",
+                ".graphqlrc.json",
+                ".graphql.config.js",
+                ".graphqlrc.js"
+            ],
+            "filetypes":    [
+                "graphql",
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact"
+            ]
+        }
+    },
+
+    "tabnine.priority":             90,
+    "tabnine.disable_filetypes":    ["markdown"],
+
+    "diagnostic-languageserver.filetypes":  {
+        "bash": ["shellcheck"],
+        "sh":   ["shellcheck"],
+        "vim":  ["vint"],
+        "go":   ["golangci-lint"]
+    },
+    "diagnostic-languageserver.linters":    {
+        "shellcheck":   {
+            "command":      "shellcheck",
+            "debounce":     100,
+            "args":         ["--format=gcc", "-"],
+            "offsetLine":   0,
+            "sourceName":   "shellcheck",
+            "formatLines":  1,
+            "formatPattern":    [
+                "^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$",
+                {
+                    "line":     1,
+                    "column":   2,
+                    "message":  4,
+                    "security": 3
+                }
+            ],
+            "securities":   {
+                "error":    "error",
+                "warning":  "warning",
+                "note":     "info"
+            },
+            "vint": {
+                "command":  "vint",
+                "debounce": 100,
+                "args": ["--enable-neovim", "-"],
+                "offsetLine":   0,
+                "offsetColumn": 0,
+                "sourceName":   "vint",
+                "formatLines":  1,
+                "formatPattern":    [
+                    "^[^:]+:(\\d+):(\\d+):\\s+([^:]+):\\s+(.*)$",
+                    {
+                        "lint":     1,
+                        "column":   2,
+                        "message":  3
+                    }
+                ]
+            },
+            "golangci-lint":    {
+                "command":  "golangci-lint",
+                "rootPatterns": [".git", "go.mod"],
+                "debounce": 100,
+                "args": [
+                    "run",
+                    "--out-format",
+                    "json",
+                    "--disable",
+                    "deadcode, unused",
+                    "%file"
+                ],
+                "sourceName":           "golangci-lint",
+                "parseJson":    {
+                    "errorsRoot":       "Issues",
+                    "line":             "Pos.Line",
+                    "column":           "Pos.column",
+                    "message":          "${Text} [${FromLinter}]"
+                }
+            }
+        },
+
+    "cSpell.fixSpellingWithRenameProvider":         true,
+    "cSpell.enabledLanguageIds":    [
+        "vim",
+        "asciidoc",
+        "c",
+        "cpp",
+        "csharp",
+        "css",
+        "git-commit",
+        "go",
+        "html",
+        "java",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "jsonc",
+        "latex",
+        "less",
+        "markdown",
+        "php",
+        "python",
+        "rut",
+        "scss",
+        "text",
+        "typescript",
+        "typescriptreact",
+        "yaml",
+        "yml",
+        "vue"
+    ],
+    "cSpell.userWords": [
+        "CSRF",                                                                                                                                                       
+        "Calculatable",                                                                                                                                               
+        "Debounced",                                                                                                                                                  
+        "Droppable",                                                                                                                                                  
+        "Fullscreen",                                                                                                                                                 
+        "Hookable",                                                                                                                                                   
+        "Keybind",                                                                                                                                                    
+        "Overridable",                                                                                                                                                
+        "Promisified",                                                                                                                                                
+        "Readonly",                                                                                                                                                   
+        "Schemafile",                                                                                                                                                 
+        "Scrollable",                                                                                                                                                 
+        "Strikethrough",                                                                                                                                              
+        "Typeahead",                                                                                                                                                  
+        "Unmount",                                                                                                                                                    
+        "Webview",                                                                                                                                                    
+        "antialiased",                                                                                                                                                
+        "autosave",                                                                                                                                                   
+        "bitflag",                                                                                                                                                    
+        "circleci",                                                                                                                                                   
+        "cloudbuild",                                                                                                                                                 
+        "cloudrun",                                                                                                                                                   
+        "commentable",                                                                                                                                                
+        "creasty",                                                                                                                                                    
+        "debouncing",                                                                                                                                                 
+        "dein",                                                                                                                                                       
+        "deserialize",                                                                                                                                                
+        "deserialized",                                                                                                                                               
+        "focusable",                                                                                                                                                  
+        "gradlew",                                                                                                                                                    
+        "graphql",                                                                                                                                                    
+        "grpc",                                                                                                                                                       
+        "iframe",                                                                                                                                                     
+        "macos",                                                                                                                                                      
+        "monospaced",                                                                                                                                                 
+        "nvim",                                                                                                                                                       
+        "openjdk",                                                                                                                                                    
+        "outdent",                                                                                                                                                    
+        "paleblue",                                                                                                                                                   
+        "pluggable",                                                                                                                                                  
+        "postgres",                                                                                                                                                   
+        "prefetch",                                                                                                                                                   
+        "preload",                                                                                                                                                    
+        "promisify",                                                                                                                                                  
+        "proto",                                                                                                                                                      
+        "protobuf",                                                                                                                                                   
+        "refetch",                                                                                                                                                    
+        "rgba",                                                                                                                                                       
+        "scrollbar",                                                                                                                                                  
+        "serializer",                                                                                                                                                 
+        "serializers",                                                                                                                                                
+        "struct",                                                                                                                                                     
+        "strval",                                                                                                                                                     
+        "timeframe",                                                                                                                                                  
+        "uint",                                                                                                                                                       
+        "unprocessable",                                                                                                                                              
+        "unstyled",                                                                                                                                                   
+        "upcase",                                                                                                                                                     
+        "uploader",                                                                                                                                                   
+        "upsert",                                                                                                                                                     
+        "uuid",                                                                                                                                                       
+        "uuids"                                                                                                                                                       
+    ]
+}

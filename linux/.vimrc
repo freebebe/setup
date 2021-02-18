@@ -88,10 +88,14 @@ call plug#begin('~/.vim/plugged')
         Plug 'kristijanhusak/defx-git'
     Plug 'Shougo/denite.nvim'
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+        Plug 'Shougo/neco-syntax'               "def
+        Plug 'Shougo/neco-vim'                  "VimLang
         Plug 'deoplete-plugins/deoplete-jedi'   "python
         " Plug 'mhartington/nvim-typescript'      "typescript
+            " Plug 'HerringtonDarkholme/yats.vim'   "for type: syntax file
         Plug 'racer-rust/vim-racer'
-        " Plug 'carlitux/deoplete-ternjs'       "js
+        Plug 'wokalski/autocomplete-flow'       "js
+        " Plug 'carlitux/deoplete-ternjs', { 'do': ':yarn add global tern'}       "js
         Plug 'deoplete-plugins/deoplete-go'     "go
 
 call plug#end()
@@ -363,8 +367,8 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
 let javascript_enable_domhtmlcss = 1
 
 "================emmet-html&css->deful        (C=ctrl-)=====================
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall          "只在html,css作用
+" let g:user_emmet_install_global = 0
+" autocmd FileType html,css EmmetInstall          "只在html,css作用
 "
 " let g:user_emmet_leader_key='C-y'
 " autocmd filetype *html* imap <c-_> <c-y>/
@@ -373,9 +377,9 @@ autocmd FileType html,css EmmetInstall          "只在html,css作用
 let g:user_emmet_expandabbr_key = '<F2>'
 let g:user_emmet_leader_key= '<C-e>'
 
-let g:user_emmet_mode='n'    "only enable normal mode functions.
-let g:user_emmet_mode='inv'  "enable all functions, which is equal to
-let g:user_emmet_mode='a'    "enable all function in all mode.
+" let g:user_emmet_mode='n'    "only enable normal mode functions.
+" let g:user_emmet_mode='inv'  "enable all functions, which is equal to
+" let g:user_emmet_mode='a'    "enable all function in all mode.
 
     "================emmet================
 "map <F3> <C-\>
@@ -439,7 +443,10 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 let g:vimwiki_conceallevel = 0
 let g:vimwiki_global_ext   = 0
 
+"=========================================================
 "==============================deoplete
+source ~/.config/nvim/gogo/finger/deoplete.rc.vim
+"=========================================================
 let g:deoplete#enable_at_startup = 1
 " let g:deoplete#enable_smart_case = 1
     " 用户输入至少两个字符时再开始提示补全
@@ -451,25 +458,24 @@ call deoplete#custom#source('_',
             \ 'disabled_syntaxes', ['String']
             \ )
     " 补全结束或离开插入模式时，关闭预览窗口
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif 
-"============== deoplete-ternjs
-" let g:tern#command = ["tern"]
-" let g:tern#arguments = ["--persistent"]
-let g:deoplete#sources#ternjs#types = 1
-" Whether to include the types of the completions in the result data. Default: 0
-let g:deoplete#sources#ternjs#filetypes = [
-                \ 'jsx',
-                \ 'javascript.jsx',
-                \ 'vue'
-                \ ]
-"============== deoplete-Rust
-let g:racer_cmd = "/home/user/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+    ">deoplete-ternjs==========================
+    " let g:tern#command = ["tern"]
+    " let g:tern#arguments = ["--persistent"]
+    " let g:deoplete#sources#ternjs#types = 1
+        " Whether to include the types of the completions in the result data. Default: 0
+    " let g:deoplete#sources#ternjs#filetypes = [
+                    " \ 'jsx',
+                    " \ 'javascript.jsx',
+                    " \ 'vue'
+                    " \ ]
+    ">deoplete-Rust===========================
+    let g:racer_cmd = "/home/user/.cargo/bin/racer"
+    let g:racer_experimental_completer = 1
 "==============================ShouGo-Defx
 "autocmd vimenter * Defx
 
 "==============================ShouGo-Link
-source ~/.config/nvim/gogo/finger/deoplete.rc.vim
 source ~/.config/nvim/gogo/finger/denite.vim
 source ~/.config/nvim/gogo/finger/defx.vim
 

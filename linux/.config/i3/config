@@ -351,7 +351,7 @@ exec --no-startup-id flameshot                    #take_your_face_your_screen_fa
 exec --no-startup-id i3-confg-wizard
 # exec --no-startup-id conky
 # exec --no-startup-id volumeicon
-exec --no-startup-id dunst
+# exec --no-startup-id dunst
 
 #nitrogen sleep keyForPower
 # exec --no-startup-id pamac-tray
@@ -449,17 +449,16 @@ bar {
         i3bar_command i3bar
         status_command i3status --config ~/.config/i3status/config
             status_command exec ~/.config/i3status/contrib/net-speed.sh
-        tray_output eDP-1
-        position top
-        font pango:Source Code Pro 8, Icons 8
-            # font pango:DejaVu Sans Mono 8, Icons 8
+        # tray_output eDP-1
+        # position top
+        # font pango:Source Code Pro 8, Icons 8
+            font pango:DejaVu Sans Mono 8, Icons 8
             # font pango:Ubuntu Nomo 8, Icons 8
         # separator_symbol ⁞
         colors {
             background       #111111
             urgent_workspace #ffffff #ff0000
         }
-
 }
 
 #theme colors

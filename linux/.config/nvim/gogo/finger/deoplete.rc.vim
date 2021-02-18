@@ -67,7 +67,6 @@ call deoplete#custom#source('_', 'converters', [
       \ 'converter_truncate_info',
       \ 'converter_truncate_menu',
       \ ])
-
 call deoplete#custom#source('tabnine', 'converters', [
       \ 'converter_remove_overlap',
       \ 'converter_truncate_info',
