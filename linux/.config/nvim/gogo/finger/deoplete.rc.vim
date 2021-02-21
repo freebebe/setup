@@ -116,3 +116,4 @@ function! s:tabnine_check() abort
   call deoplete#custom#buffer_option('ignore_sources', ['tabnine'])
 endfunction
 call s:tabnine_check()
+

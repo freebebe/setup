@@ -73,7 +73,9 @@ bindsym $mod+c layout toggle split
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+# font pango:DejaVu Sans Mono 8
+font pango:Source Code Pro 9
+
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -451,8 +453,8 @@ bar {
             status_command exec ~/.config/i3status/contrib/net-speed.sh
         # tray_output eDP-1
         # position top
-        # font pango:Source Code Pro 8, Icons 8
-            font pango:DejaVu Sans Mono 8, Icons 8
+        font pango:Source Code Pro 9, Icons 9
+            # font pango:DejaVu Sans Mono 8, Icons 8
             # font pango:Ubuntu Nomo 8, Icons 8
         # separator_symbol ⁞
         colors {

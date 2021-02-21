@@ -2,7 +2,7 @@
 " Default GUI Colours
 let s:foreground = "222222"
 let s:background = "ffffff"
-let s:selection  = "f8f8f8"
+let s:selection  = "DBDBDB"
 let s:line       = "6D6D6D"
 let s:comment    = "858585"
 let s:red        = "731718"
@@ -18,7 +18,8 @@ set background=light
 hi clear
 syntax reset
 
-let g:colors_name = "light-delight"
+" let g:colors_name = "light-delight"
+let g:colors_name = "whileBlue"
 
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	" Returns an approximate grey index for the given grey level

@@ -1,5 +1,5 @@
- " source ~/.config/nvim/.vimrc
-source ~/.vimrc
+ source ~/.config/nvim/.vimrc
+" source ~/.vimrc
 " source ~/.config/nvim/bkup/.vimrc
 
 source ~/.config/nvim/gogo/foot/quickKeys.vim
