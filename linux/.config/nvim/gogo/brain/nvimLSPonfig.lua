@@ -96,13 +96,32 @@ lspconfig.efm.setup {
       cmd = { "efm-langserver", "-c", [["$HOME/.config/efm-langserver/config.yaml"]] },
     },
     filetypes = {
+  -------------------------- nots
+      "json",
+        "jsonc",
+      "lua",
+      "yml"
+        "yaml",
+      "markdown",
+  -------------------------- backSever
+      "go",
+      "php",
+      "java",
+        "graphql",
+      "ruby",
+  -------------------------- web_dev
+      "css",
+      "scss",
+      "html",
       "javascript",
-      "javascriptreact",
-      "javascript.jsx",
+        "javascriptreact",
+        "javascript.jsx",
       "typescript",
-      "typescript.tsx",
-      "typescriptreact",
-      "ruby"
+        "typescript.tsx",
+        "typescriptreact",
+      "rust",
+      "vue"
+  -------------------------- 
     }
 }
 

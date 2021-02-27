@@ -21,11 +21,11 @@ order += "wireless wlan0"
 order += "cpu_temperature 0"
 order += "cpu_usage"
 order += "memory"
-order += "load"
 order += "disk /"
 order += "volume master"
 order += "battery 0"
 order += "time"
+order += "load"
 
 ###################
 # SENSORS SETTING #
@@ -60,7 +60,8 @@ memory {
 
 ## NET
 wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip"
+        # format_up = "W: (%quality at %essid) %ip"
+        format_up = "W: (%quality at %essid)"
         format_down = "W: down"
 }
 ethernet _first_ {
@@ -89,7 +90,7 @@ battery 0 {
 disk / {
 #forma = " hdd %avail "
     # format  = " ℃ %avail "
-    format  = "SSD: %avail"
+    format  = "Disk: %avail"
     # format  = " '/home' %avail "
 }
 # disk "/" {

@@ -1,0 +1,56 @@
+{
+  "coc.preferences.messageLevel": "error",
+  "diagnostic.enable": true,
+  "diagnostic.displayByAle": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "c",
+    "cpp",
+    "elixir",
+    "go",
+    "json",
+    "jsonc",
+    "rust",
+    "css",
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescript.tsx",
+    "typescriptreact",
+    "python"
+  ],
+  "solargraph.completion": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true,
+  "solargraph.rename": true,
+  "solargraph.useBundler": true,
+  "solargraph.symbols": true,
+  "solargraph.definitions": true,
+  "solargraph.references": true,
+  "suggest.enablePreselect": false,
+  "yaml.validate": false,
+  "go.goplsOptions": {
+    "completeUnimported": true
+  },
+  "go.goplsPath": "gopls",
+  "go.goplsArgs": [
+    "-remote=auto"
+  ],
+  "go.disable": {
+    "workspaceFolder": true
+  },
+  "snippets.ultisnips.directories": [
+    "UltiSnips",
+    "gosnippets/UltiSnips"
+  ],
+    // Python
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.lintOnSave": true,
+  "python.linting.pylintEnabled": false,
+  //"python.formatting.provider": "none",
+  "python.formatting.provider": "black",
+    // Rust
+  "rust-analyzer.updates.channel": "nightly"
+}
+

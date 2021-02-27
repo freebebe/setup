@@ -35,6 +35,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'jparise/vim-graphql'                  "gatsby
     Plug 'slim-template/vim-slim'               "sy for vim
     Plug 'rust-lang/rust.vim'                   "rust
+    Plug 'posva/vim-vue'                        "vue
     Plug 'aliou/bats.vim'                       "bash
     " Plug 'aklt/plantuml-syntax'                 "plantuml-----> mindMap
 "是巴拿
@@ -89,7 +90,8 @@ call plug#begin('~/.vim/plugged')
     " Plug 'DNonov/light-delight'
     Plug 'itchyny/lightline.vim'			          "状态
 "规程
-    Plug 'dense-analysis/ale'                   "异步语法检查: https://github.com/dense-analysis/ale
+    " Plug 'dense-analysis/ale'                   "异步语法检查: https://github.com/dense-analysis/ale
+    Plug 'neomake/neomake'                      " ale fastVersion
 "兔洞
     " Plug 'mileszs/ack.vim'                      "文本搜索：设置里并用t.s.s
 "server
@@ -116,8 +118,8 @@ call plug#begin('~/.vim/plugged')
         Plug 'Shougo/neco-syntax'                       "def
         Plug 'Shougo/neco-vim'                          "VimLang
         Plug 'deoplete-plugins/deoplete-jedi'           "python
-        Plug 'mhartington/nvim-typescript'              "typescript
-            " Plug 'HerringtonDarkholme/yats.vim'   "for type: syntax file
+        Plug 'mhartington/nvim-typescript', {'do': 'sh ~/.vim/plugged/nvim-typescript/install.sh'}              "typescript
+            Plug 'HerringtonDarkholme/yats.vim'   "for type: syntax file
         Plug 'racer-rust/vim-racer'                     "rust
         " Plug 'wokalski/autocomplete-flow'             "js
         Plug 'carlitux/deoplete-ternjs', { 'do': ':yarn add global tern'}       "js
@@ -129,7 +131,6 @@ call plug#end()
 "------------------------vim--------------------------|
 "------------------------:set-------------------------|
 "----------------------------------------------------/
-set rtp+=~/.fzf
 " filetype off
 filetype plugin on
 set shell=zsh
@@ -431,8 +432,11 @@ endfunction
 set statusline+=%{GitStatus()}
 
 "=============================graphviz
+"=============================neomake
+call neomake#configure#automake('w')            "保存校检
+call neomake#configure#automake('nw', 750)      "切换到NORMAL模式，延迟750ms检查
 "=============================ale
-source ~/.config/nvim/gogo/brain/ale.vim
+" source ~/.config/nvim/gogo/brain/ale.vim
 "
 "=============================MATCHU P
 augroup matchup_matchparen_highlight
@@ -514,8 +518,6 @@ call deoplete#custom#source('_',
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
     ">deoplete-ternjs==========================
-    " let g:tern#command = ["tern"]
-    " let g:tern#arguments = ["--persistent"]
     let g:deoplete#sources#ternjs#types = 1
         " Whether to include the types of the completions in the result data. Default: 0
     let g:deoplete#sources#ternjs#filetypes = [
@@ -543,4 +545,5 @@ nnoremap <F5> :UndotreeToggle<CR>
 " source ~/.config/nvim/gogo/brain/nvimLSPonfig.lua
 
 "==============================fzf
+set rtp+=~/.fzf
 source ~/.config/nvim/gogo/brain/fzf.vim

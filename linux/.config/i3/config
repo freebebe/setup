@@ -27,7 +27,7 @@
 #U*-terminal->shell
 
 # (No) Title Bars
-for_window [class="^.*"] border pixel 5
+for_window [class="^.*"] border pixel 3
 
 # i3 config file (v4)
 #
@@ -451,14 +451,14 @@ bar {
         i3bar_command i3bar
         status_command i3status --config ~/.config/i3status/config
             status_command exec ~/.config/i3status/contrib/net-speed.sh
-        # tray_output eDP-1
-        # position top
+        tray_output eDP-1
+        position top
         font pango:Source Code Pro 9, Icons 9
-            # font pango:DejaVu Sans Mono 8, Icons 8
+            # font pango:DejaVu Sans Mono 9, Icons 9
             # font pango:Ubuntu Nomo 8, Icons 8
         # separator_symbol ⁞
         colors {
-            background       #111111
+            # background       #01010F
             urgent_workspace #ffffff #ff0000
         }
 }

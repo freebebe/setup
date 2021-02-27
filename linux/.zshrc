@@ -70,6 +70,9 @@ export PIP_REQUIRE_VENV=true
 export PIP_REQUIRE_VIRTUALENV=false
 # }}}
 
+# for nvim-deoplete_tern
+ulimit -n 2048
+
 #####################################################################
 # completions
 #####################################################################
