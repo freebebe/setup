@@ -29,14 +29,14 @@ call plug#begin('~/.vim/plugged')
 "格式
     Plug 'Yggdroot/indentLine'                  "缩进线
     Plug 'sheerun/vim-polyglot'                 "字典
-    Plug 'hail2u/vim-css3-syntax'               "css
-    Plug 'leafgarland/typescript-vim'           "typescript
-    Plug 'pangloss/vim-javascript'              "javascript
-        Plug 'jparise/vim-graphql'                  "gatsby
-    Plug 'slim-template/vim-slim'               "sy for vim
-    Plug 'rust-lang/rust.vim'                   "rust
-    Plug 'posva/vim-vue'                        "vue
-    Plug 'aliou/bats.vim'                       "bash
+        " Plug 'hail2u/vim-css3-syntax'               "css
+        " Plug 'leafgarland/typescript-vim'           "typescript
+        " Plug 'pangloss/vim-javascript'              "javascript
+            " Plug 'jparise/vim-graphql'                  "gatsby
+        " Plug 'slim-template/vim-slim'               "sy for vim
+        " Plug 'rust-lang/rust.vim'                   "rust
+        " Plug 'posva/vim-vue'                        "vue
+        " Plug 'aliou/bats.vim'                       "bash
     " Plug 'aklt/plantuml-syntax'                 "plantuml-----> mindMap
 "是巴拿
     Plug 'wincent/ferret'                       " Enhanced Multi-file search and replace 光标下字符简易全局替换
@@ -53,24 +53,22 @@ call plug#begin('~/.vim/plugged')
       Plug 'tpope/vim-rhubarb'                  "if fugitive is git, rhubarb is hub
     Plug 'Vimjas/vim-python-pep8-indent'        "自动/定义缩进
     Plug 'easymotion/vim-easymotion'            "'/'标签字母快速跳转
+    Plug 'AndrewRadev/splitjoin.vim'
+          "gS to split a one-liner into multiple lines
+          "gJ (with the cursor on the first line of a block) to join a block into a single-line statement.
 "螺丝
     Plug 'andymass/vim-matchup'                 "Paren/def&end highlighting
     Plug 'christoomey/vim-tmux-navigator'       "tmux lunach
     Plug 'mbbill/undotree'                      "undo history: [F5]
     Plug 'tpope/vim-eunuch'                     "filemanger ->  /:move//:mkdir//:rename//:delete//
     " Plug 'jreybert/vimagit'
-    " Plug 'wannesm/wmgraphviz.vim'				        "mind map
+    Plug 'wannesm/wmgraphviz.vim'				        "mind map
     " Plug 'lervag/vimtex'
     " Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }         "online
     Plug '907th/vim-auto-save'                  "自动保存
     Plug 'RRethy/vim-illuminate'                "高亮方标所在目标全文位置
-    Plug 'ap/vim-css-color'                     "css highlighting
-        " Plug 'RRethy/vim-hexokinase'            "color
-    " Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown'}
-    "Plug 'neomake/neomake'                       " Asynchronous linting and make framework for Neovim/Vim
-                                                "不全
-    " Plug 'SirVer/ultisnips'                     "PYTHON补全
-      " Plug 'honza/vim-snippets'
+    " Plug 'itchyny/vim-cursorword'             "smpo
+    Plug 'norcalli/nvim-colorizer.lua'          "css color
 "new tag
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }           " File finder, text finder, buffer finder
     Plug 'junegunn/fzf.vim'
@@ -78,10 +76,7 @@ call plug#begin('~/.vim/plugged')
 "WEB
     Plug 'godlygeek/tabular'                    "useful to line up text
     Plug 'Raimondi/delimitMate'                 "前后括制对齐
-    Plug 'tyru/open-browser.vim'
-    Plug 'AndrewRadev/splitjoin.vim'
-          "gS to split a one-liner into multiple lines
-          "gJ (with the cursor on the first line of a block) to join a block into a single-line statement.
+    " Plug 'tyru/open-browser.vim'
 "热熔胶
     " Plug 'rhysd/vim-clang-format'               "pinkup the function be it just function 自动整理间距
     Plug 'mattn/emmet-vim'                      "htXml5-backnotes
@@ -92,10 +87,12 @@ call plug#begin('~/.vim/plugged')
 "规程
     " Plug 'dense-analysis/ale'                   "异步语法检查: https://github.com/dense-analysis/ale
     Plug 'neomake/neomake'                      " ale fastVersion
+    " Plug 'SirVer/ultisnips'                     "PYTHON补全
+      " Plug 'honza/vim-snippets'
 "兔洞
     " Plug 'mileszs/ack.vim'                      "文本搜索：设置里并用t.s.s
 "server
-    Plug 'Quramy/tsuquyomi'
+    " Plug 'Quramy/tsuquyomi'
 "shou
     Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }                    "目录树
         Plug 'kristijanhusak/defx-git'
@@ -124,6 +121,12 @@ call plug#begin('~/.vim/plugged')
         " Plug 'wokalski/autocomplete-flow'             "js
         Plug 'carlitux/deoplete-ternjs', { 'do': ':yarn add global tern'}       "js
         " Plug 'deoplete-plugins/deoplete-go'            "go
+
+" wait for version 0.5 -------------|
+
+    " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    " Plug 'neovim/nvim-lspconfig'                                                                                                            
+    " Plug 'nvim-lua/completion-nvim'
 
 call plug#end()
 
@@ -400,11 +403,15 @@ set nocompatible            "kill-vim一致性
 " let	go:goyo_margin_top = 2
 " let	go:goyo_margin_bottom = 2
 
+"================lightline========================
+source ~/.config/nvim/gogo/hands/lightline.vim
+
+
 "================indentline=======================
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
 
 "================javascript-highlight=================
-let javascript_enable_domhtmlcss = 1
+" let javascript_enable_domhtmlcss = 1
 
 "================emmet-html&css->deful        (C=ctrl-)=====================
 " let g:user_emmet_install_global = 0
@@ -501,7 +508,7 @@ let g:instant_markdown_autostart = 0            "':InstantMarkdownPreview' or 'I
 
 "=========================================================
 "==============================deoplete
-source ~/.config/nvim/gogo/finger/deoplete.rc.vim
+source ~/.config/nvim/gogo/finger/deoplete2.rc.vim
 source ~/.config/nvim/gogo/finger/deoplete-lsp.vim
 "=========================================================
 let g:deoplete#enable_at_startup = 1
@@ -528,6 +535,8 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
     ">deoplete-Rust===========================
     let g:racer_cmd = "/home/user/.cargo/bin/racer"
     let g:racer_experimental_completer = 1
+    ">deoplete-jedi==========================
+    " let g:deoplete#sources#jedi#show_docstring 1
     ">echodoc=================================
     let g:echodoc_enable_at_startup = 1
 "==============================ShouGo-Defx

@@ -453,9 +453,9 @@ bar {
             status_command exec ~/.config/i3status/contrib/net-speed.sh
         tray_output eDP-1
         position top
-        font pango:Source Code Pro 9, Icons 9
+            # font pango:Source Code Pro 9, Icons 9
             # font pango:DejaVu Sans Mono 9, Icons 9
-            # font pango:Ubuntu Nomo 8, Icons 8
+        font pango:Ubuntu Nomo 9, Icons 9
         # separator_symbol ⁞
         colors {
             # background       #01010F
