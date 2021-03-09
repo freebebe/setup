@@ -25,7 +25,7 @@ cp -r $HOME/.qStart $HOME/git/system/setup/
 # #upgrade_to_git_packge
 cd $HOME/git/system/setup/ 
 git add .  
-git commit -m 'auto_time_line' 
+git commit -m 'up' 
 git pull origin master 
 # git pull origin main
 git push -u origin master 
