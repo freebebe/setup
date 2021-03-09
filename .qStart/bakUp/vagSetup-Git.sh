@@ -10,6 +10,7 @@ cp $HOME/.curlrc $HOME/git/vag_setup/setup
 cp $HOME/.config/nvim/.vimrc $HOME/git/vag_setup/setup/.config/nvim/
 cp $HOME/.config/nvim/init.vim $HOME/git/vag_setup/setup/.config/nvim/
 cp -r $HOME/.config/nvim/gogo/ $HOME/git/vag_setup/setup/.config/nvim/
+cp -r $HOME/.config/nvim/function/ $HOME/git/vag_setup/setup/.config/nvim/
 cp -r $HOME/.config/nvim/colors $HOME/git/vag_setup/setup/.config/nvim/
 
 # config package
