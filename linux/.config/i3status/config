@@ -18,13 +18,13 @@ general {
 order += "wireless _first_"
 order += "ethernet _first_"
 order += "wireless wlan0"
+order += "time"
 order += "cpu_temperature 0"
 order += "cpu_usage"
 order += "memory"
 order += "disk /"
 order += "volume master"
 order += "battery 0"
-order += "time"
 order += "load"
 
 ###################
@@ -114,7 +114,7 @@ volume master {
 ## time format
 time {
     # format = "%d.%m.%Y %H:%M"
-    format = "%Y-%m-%d %a %H:%M"
+    format = "%Y-%m-%d %a %H:%M:%S"
 }
 
 ########################################################################

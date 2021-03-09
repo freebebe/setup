@@ -37,3 +37,23 @@ xnoremap zj 5L
 
 nnoremap gj J
 
+"Preserves indentation while pasting text from the clipboard
+" nnoremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
+
+"setKey
+" nnoremap <silent> :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+nnoremap vs :vs<CR>
+            \:<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+nnoremap sp :sp<CR>
+            \:<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+
+" nnoremap tn :tabnew<Space>
+nnoremap tn :tabnew<CR>
+            \:<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+
+nnoremap tg :tabfirst<CR>
+nnoremap tG :tablast<CR>
+    inoremap <C-U> <C-G>u<C-U>          "挡c-U
+    "保存
+    nnoremap <C-s> :<CR>
+    inoremap <C-s> <ESC>:w<CR>

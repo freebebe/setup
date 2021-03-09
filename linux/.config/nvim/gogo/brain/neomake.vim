@@ -15,7 +15,7 @@ let g:neomake_ansible_enabled_makers = ['yamllint']
 let g:neomake_ansible_yamllint_maker = neomake#makers#ft#yaml#yamllint()
 
 " cpp
-let g:neomake_cpp_enable_markers=['clang']
+let g:neomake_cpp_enable_markers=['clang, javascript']
 let g:neomake_cpp_clang_args = ["-std=c++11", "-pedantic", "-Wextra", "-Wall", "-O2", "-fsanitize=undefined", "-Wno-sign-compare"]
 
 " neomake errors

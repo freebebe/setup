@@ -71,7 +71,7 @@ export PIP_REQUIRE_VIRTUALENV=false
 # }}}
 
 # for nvim-deoplete_tern
-ulimit -n 2048
+# ulimit -n 2048
 
 #####################################################################
 # completions
@@ -99,12 +99,12 @@ zstyle ':completion:*' matcher-list \
     'm:{a-z}={A-Z}' \
     'l:|=* r:|[.,_-]=* r:|=* m:{a-z}={A-Z}'
 # sudo completions
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-    /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-zstyle ':completion:*' menu select
-zstyle ':completion:*' keep-prefix
-zstyle ':completion:*' completer _oldlist _complete _match _ignored \
-    _approximate _list _history
+# zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+    # /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+# zstyle ':completion:*' menu select
+# zstyle ':completion:*' keep-prefix
+# zstyle ':completion:*' completer _oldlist _complete _match _ignored \
+    # _approximate _list _history
 
 autoload -U compinit
 
@@ -127,7 +127,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'
 zstyle ':completion:*' menu select=2
 
 # sudo を含めても保管できるようにする
-zstyle ':completion:*:sudo:*' command-path $sudo_path $path
+# zstyle ':completion:*:sudo:*' command-path $sudo_path $path
 
 # キャッシュ
 zstyle ':completion:*' use-cache true
@@ -214,12 +214,12 @@ function _pop_hist(){
 zle -N _pop_hist
 bindkey -M viins "^O" _pop_hist
 
-# 前のコマンドで最後に打った単語の挿入
+# last word you typed with command
 zle -N insert-last-word smart-insert-last-word
 zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
 bindkey -M viins '^]' insert-last-word
 
-# 1つ前の単語をシングルクォートで囲む
+# end of single quote
 _quote-previous-word-in-single() {
     modify-current-argument '${(qq)${(Q)ARG}}'
     zle vi-forward-blank-word
@@ -227,7 +227,7 @@ _quote-previous-word-in-single() {
 zle -N _quote-previous-word-in-single
 bindkey -M viins '^Q' _quote-previous-word-in-single
 
-# 1つ前の単語をダブルクォートで囲む
+# end of double quote
 _quote-previous-word-in-double() {
     modify-current-argument '${(qqq)${(Q)ARG}}'
     zle vi-forward-blank-word
@@ -235,7 +235,7 @@ _quote-previous-word-in-double() {
 zle -N _quote-previous-word-in-double
 bindkey -M viins '^Xq' _quote-previous-word-in-double
 
-# Shift + Tab で逆順選択
+# search revech with [Shift + Tab]
 bindkey -M viins "$terminfo[kcbt]" reverse-menu-complete
 
 # ファイルを確認する
@@ -265,12 +265,11 @@ HISTFILE=$DOTZSH/zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-# ワーキングディレクトリ履歴
+# working history
 #add-zsh-hook chpwd chpwd_recent_dirs
 zstyle ':completion:*:*:cdr:*:*' menu selection
 zstyle ':chpwd:*' recent-dirs-max 5000
 # }}}
-
 
 #####################################################################
 # alias
@@ -483,14 +482,6 @@ _ls_abbrev() {
 }
 #add-zsh-hook chpwd _ls_abbrev
 
-# Go
-if hash go 2> /dev/null; then
-    if [ ! -d "$HOME/.go" ]; then
-        mkdir -p $HOME/.go
-    fi
-    export GOPATH=$HOME/.go
-    export PATH=$GOPATH/bin:$PATH
-fi
 
 ###############
 #   FILTER    #
@@ -770,64 +761,18 @@ fi
 
 case $OSTYPE in
     darwin*)
-        # Mac OS {{{
-        unalias ls
-        alias ls='ls -G'
-        alias top='sudo htop'
-
-        if hash grm 2> /dev/null; then
-            alias rm=grm
-            alias tar=gtar
-        fi
-
-        # suffix aliases
-        alias -s pdf='open -a Preview'
-        alias -s html='open -a Google\ Chrome'
-
-        # global aliases
-        alias -g C='| pbcopy'
-
-        #Homebrew
-        export HOMEBREW_VERBOSE=true
-        export HOMEBREW_EDITOR=vim
-        export HOMEBREW_NO_ANALYTICS=1
 
         # Git
         export PATH=$PATH:/usr/local/opt/git/share/git-core/contrib/diff-highlight
 
-        # emscripten
-        if [ -f ~/.emscripten ]; then
-            export LLVM=/usr/local/opt/emscripten/libexec/llvm/bin
-            export BINARYEN=/usr/local/opt/binaryen
-        fi
-        # }}}
-        ;;
-    linux*)
         # Linux {{{
-        export PACMAN=pacman-color
-        export BROWSER=google-chrome:firefox:$BROWSER
+        # export PACMAN=pacman-color
+        # export BROWSER=google-chrome:firefox:$BROWSER
+            # >> they only for arch && manjaro
 
         # for Tmux 256 bit color
         if [[ $TERM == "xterm" ]]; then
             export TERM=xterm-256color
-        fi
-
-        if hash awesome 2> /dev/null; then
-            alias configawesome='vim $HOME/.config/awesome/rc.lua'
-        fi
-
-        alias xo=xdg-open
-
-        # suffix alias
-        alias -s html=xdg-open
-
-        # global alias
-        if hash notify-send 2> /dev/null; then
-            alias -g BG=' 2>&1 | notify-send &'
-        fi
-
-        if hash xsel 2> /dev/null; then
-            alias -g C='| xsel --input --clipboard'
         fi
 
         # cleverer umount command
@@ -866,6 +811,9 @@ export PATH=$PATH:~/.npm-global/bin
 export PATH="$HOME/.rbenv/bin:$PATH"                                             
 eval "$(rbenv init -)"                                                           
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+
+# sway -> firefox == xwayland(windows manages)
+# export MOZ_ENABLE_WAYLAND=1
 
 ##########################################
 #   Vi------mod                          #

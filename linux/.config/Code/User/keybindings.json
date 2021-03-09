@@ -1,33 +1,41 @@
 // Place your key bindings in this file to override the defaults
 [
-    {
-        "key": "ctrl+shift+=",
-        "command": "editor.action.fontZoomIn"
-    },
-    {
-        "key": "ctrl+-",
-        "command": "editor.action.fontZoomOut"
-    },
-    {
-        "key": "ctrl+shift+f9",
-        "command": "workbench.view.explorer"
-    },
-    {
-        "key": "ctrl+shift+e",
-        "command": "-workbench.view.explorer"
-    },
-    {
-        "key": "ctrl+a",
-        "command": "-editor.action.selectAll"
-    },
-    {
-        "key": "shift+w shift+e",
-        "command": "list.selectAll",
-        "when": "listFocus && listSupportsMultiselect && !inputFocus"
-    },
-    {
-        "key": "ctrl+a",
-        "command": "-list.selectAll",
-        "when": "listFocus && listSupportsMultiselect && !inputFocus"
-    }
+  {
+    "key": "ctrl+shift+=",
+    "command": "editor.action.fontZoomIn"
+  },
+  {
+    "key": "ctrl+-",
+    "command": "editor.action.fontZoomOut"
+  },
+  {
+    "key": "v s",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "ctrl+shift+e",
+    "command": "-workbench.view.explorer"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "-editor.action.selectAll"
+  },
+  {
+    "key": "shift+w shift+e",
+    "command": "list.selectAll",
+    "when": "listFocus && listSupportsMultiselect && !inputFocus"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "-list.selectAll",
+    "when": "listFocus && listSupportsMultiselect && !inputFocus"
+  },
+  {
+    "key": "t n",
+    "command": "workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "-workbench.action.files.newUntitledFile"
+  }
 ]

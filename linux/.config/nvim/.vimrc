@@ -66,9 +66,10 @@ call plug#begin('~/.vim/plugged')
     " Plug 'lervag/vimtex'
     " Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }         "online
     Plug '907th/vim-auto-save'                  "自动保存
-    Plug 'RRethy/vim-illuminate'                "高亮方标所在目标全文位置
-    " Plug 'itchyny/vim-cursorword'             "smpo
-    Plug 'norcalli/nvim-colorizer.lua'          "css color
+    " Plug 'RRethy/vim-illuminate'                "高亮方标所在目标全文位置
+    Plug 'itchyny/vim-cursorword'             "smpo
+    " Plug 'norcalli/nvim-colorizer.lua'          "css color
+    Plug 'ap/vim-css-color'			        "css-color
 "new tag
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }           " File finder, text finder, buffer finder
     Plug 'junegunn/fzf.vim'
@@ -115,7 +116,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'Shougo/neco-syntax'                       "def
         Plug 'Shougo/neco-vim'                          "VimLang
         Plug 'deoplete-plugins/deoplete-jedi'           "python
-        Plug 'mhartington/nvim-typescript', {'do': 'sh ~/.vim/plugged/nvim-typescript/install.sh'}              "typescript
+        " Plug 'mhartington/nvim-typescript', {'do': 'sh ~/.vim/plugged/nvim-typescript/install.sh'}              "typescript
             Plug 'HerringtonDarkholme/yats.vim'   "for type: syntax file
         Plug 'racer-rust/vim-racer'                     "rust
         " Plug 'wokalski/autocomplete-flow'             "js
@@ -138,11 +139,12 @@ call plug#end()
 filetype plugin on
 set shell=zsh
 set t_Co=256
+" Z4-bit color
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
 
-"color
-" set background=dark
-colo whiteBlue
-  " let g:lightline = {'colorscheme': 'iceberg'}
+
 
 "Preserves indentation while pasting text from the clipboard
 " nnoremap <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
@@ -388,8 +390,6 @@ let g:NERDTrimTrailingWhitespace = 1	  "收尾
 "\-c-space 正反注释
 
 "================cursors=========================
-"----------------fix_deoplete
-source ~/.config/nvim/gogo/finger/fix_deoplete_in_cursors.vim
 
 "================wiki============================
 set nocompatible            "kill-vim一致性
@@ -403,8 +403,6 @@ set nocompatible            "kill-vim一致性
 " let	go:goyo_margin_top = 2
 " let	go:goyo_margin_bottom = 2
 
-"================lightline========================
-source ~/.config/nvim/gogo/hands/lightline.vim
 
 
 "================indentline=======================
@@ -442,8 +440,6 @@ set statusline+=%{GitStatus()}
 "=============================neomake
 call neomake#configure#automake('w')            "保存校检
 call neomake#configure#automake('nw', 750)      "切换到NORMAL模式，延迟750ms检查
-"=============================ale
-" source ~/.config/nvim/gogo/brain/ale.vim
 "
 "=============================MATCHU P
 augroup matchup_matchparen_highlight
@@ -508,8 +504,6 @@ let g:instant_markdown_autostart = 0            "':InstantMarkdownPreview' or 'I
 
 "=========================================================
 "==============================deoplete
-source ~/.config/nvim/gogo/finger/deoplete2.rc.vim
-source ~/.config/nvim/gogo/finger/deoplete-lsp.vim
 "=========================================================
 let g:deoplete#enable_at_startup = 1
 " let g:deoplete#enable_smart_case = 1
@@ -542,17 +536,32 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 "==============================ShouGo-Defx
 " autocmd vimenter * Defx
 
+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
+"               LINK                ||
+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
 "==============================ShouGo-Link
-source ~/.config/nvim/gogo/finger/denite.vim
-source ~/.config/nvim/gogo/finger/defx.vim
-source ~/.config/nvim/gogo/finger/deo-echodoc.vim
+source $HOME/.config/nvim/gogo/finger/deoplete2.rc.vim
+source $HOME/.config/nvim/gogo/finger/deoplete-lsp.vim
+source $HOME/.config/nvim/gogo/finger/denite.vim
+source $HOME/.config/nvim/gogo/finger/defx.vim
+source $HOME/.config/nvim/gogo/finger/deo-echodoc.vim
 
+"----------------fix_deoplete
+source $HOME/.config/nvim/gogo/finger/fix_deoplete_in_cursors.vim
+
+source $HOME/.config/nvim/gogo/brain/fzf.vim
+
+source $HOME/.config/nvim/gogo/hands/lightline.vim
+
+"=============================ale
+" source $HOME/.config/nvim/gogo/brain/ale.vim
 "==============================undotree
 nnoremap <F5> :UndotreeToggle<CR>
 
 "==============================lsp
-" source ~/.config/nvim/gogo/brain/nvimLSPonfig.lua
+" source $HOME/.config/nvim/gogo/brain/nvimLSPonfig.lua
 
 "==============================fzf
 set rtp+=~/.fzf
-source ~/.config/nvim/gogo/brain/fzf.vim
+"==============================css-color
+

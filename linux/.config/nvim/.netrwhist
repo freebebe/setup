@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =6
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/goy0/.config/i3status'
+let g:netrw_dirhist_7='/home/goy0/.ssh'
 let g:netrw_dirhist_6='/home/goy0/git/system/setup/tips'
 let g:netrw_dirhist_5='/home/goy0/.config/nvim/gogo'
 let g:netrw_dirhist_4='/home/goy0/.config/nvim/gogo/brain'
@@ -8,5 +10,3 @@ let g:netrw_dirhist_2='/home/goy0/Desktop/test/templates/77'
 let g:netrw_dirhist_1='/home/goy0/Desktop/test/templates/1'
 let g:netrw_dirhist_0='/home/goy0/git/test/js/lottie-web'
 let g:netrw_dirhist_9='/home/goy0/.virtualenvs'
-let g:netrw_dirhist_8='/home/goy0/git/system/setup/tips/vagrant/npm'
-let g:netrw_dirhist_7='/home/goy0/.config/nvim/gogo/finger'
