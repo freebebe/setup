@@ -24,12 +24,11 @@ cp -r $HOME/.qStart $HOME/git/system/setup/
 #
 # #upgrade_to_git_packge
 cd $HOME/git/system/setup/ 
-
-    git add .  
-    git commit -m 'auto_time_line' 
-    git pull origin master 
-    # git pull origin main
-    git push -u origin master 
-    # git push -u origin main
+git add .  
+git commit -m 'auto_time_line' 
+git pull origin master 
+# git pull origin main
+git push -u origin master 
+# git push -u origin main
 #
 cd
