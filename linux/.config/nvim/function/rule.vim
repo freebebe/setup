@@ -27,7 +27,7 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
     " TypeScript
     au BufNewFile,BufRead *.tsx setf typescript
     " Markdown
-    au BufNewFile,BufRead *.md set filetype=markdown
+    " au BufNewFile,BufRead *.md set filetype=markdown
     " Flow
     au BufNewFile,BufRead *.flow set filetype=javascript
 
@@ -70,6 +70,8 @@ set emoji
 " set modelines=0
 " set nomodeline
 " autocmd MyAutoCmd BufRead, BufWritePost *.txt setlocal modelines=5 modeline
+
+set updatetime=100          "异步时间
 
 
 

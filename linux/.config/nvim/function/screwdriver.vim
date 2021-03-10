@@ -42,8 +42,8 @@ let g:user_emmet_leader_key= '<C-e>'
 
 "============================vim-gitgutter
 function! GitStatus()
- let [a,m,r] = GitGutterGetHunkSummary()
- return printf('+%d ~%d -%d', a, m, r)
+    let [a,m,r] = GitGutterGetHunkSummary()
+    return printf('+%d ~%d -%d', a, m, r)
 endfunction
 set statusline+=%{GitStatus()}
 
@@ -84,7 +84,7 @@ let g:tex_flavor='latex'
     "Starting with Vim 7, the filetype of empty .tex files defaults to
     " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
     " The following changes the default filetype back to 'tex':
-let g:Tex_CustomTemplateDirectory="~/.config/nvim/gogo/laxModel/"
+let g:Tex_CustomTemplateDirectory="$HOME/.config/nvim/gogo/laxModel/"
 
 "=============================latex_live
 let g:livepreview_previewer = 'zathura'
@@ -104,11 +104,11 @@ let g:python_highlight_indent_errors = 0
 let g:python_highlight_space_errors  = 0
 
 "==============================Markdown
-let g:instant_markdown_slow = 1
-let g:instant_markdown_autostart = 0            "':InstantMarkdownPreview' or 'InstantMarkdownStop'
+" let g:instant_markdown_slow = 1
+" let g:instant_markdown_autostart = 0            "':InstantMarkdownPreview' or 'InstantMarkdownStop'
 
 "==============================Wiki
-let g:vimwiki_list = [{'path': '~/vimwiki/',
+let g:vimwiki_list = [{'path': '$HOME/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_conceallevel = 0
 let g:vimwiki_global_ext   = 0
@@ -138,7 +138,7 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
                     \ 'vue'
                     \ ]
     ">deoplete-Rust===========================
-    let g:racer_cmd = "/home/user/.cargo/bin/racer"
+    let g:racer_cmd = "$HOME/.cargo/bin/racer"
     let g:racer_experimental_completer = 1
     ">deoplete-jedi==========================
     " let g:deoplete#sources#jedi#show_docstring 1
@@ -159,4 +159,10 @@ let g:clang_format#style_options = {
             \ "AccessModifierOffset" : -4,
             \ "AllowShortIfStatementsOnASingleLine" : "true",
             \ "AlwaysBreakTemplateDeclarations" : "true",
-            \ "Standard" : "javascript, typerscript"}
+            \ "Standard" : "javascript, typerscript, html, css, scss, less, python"}
+
+"==============================vim-closetag
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+let g:closetag_filetypes = 'html,xhtml,phtml'
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'

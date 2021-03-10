@@ -11,18 +11,17 @@ npm config get prefix
 
 If /usr is returned, you can do the following:
 
-```python
-mkdir ~/.npm-global
-```python
-export NPM_CONFIG_PREFIX=~/.npm-global
-```python
-export PATH=$PATH:~/.npm-global/bin
+mkdir $HOME/.npm-global
+
+export NPM_CONFIG_PREFIX=$HOME/.npm-global
+
+export PATH=$PATH:$HOME/.npm-global/bin
 
 This create a npm-Directory in your Home-Directory and point npm to it.
 
 To got this changes permanent, you have to add the export-command to your .bashrc:
 
-```python
-echo -e "export NPM_CONFIG_PREFIX=~/.npm-global\nexport PATH=\$PATH:~/.npm-global/bin" >> ~/.bashrc
+echo -e "export NPM_CONFIG_PREFIX=$HOME/.npm-global\nexport PATH=\$PATH:$HOME/.npm-global/bin" >> $HOME/.bashrc
 
+```
 

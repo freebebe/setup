@@ -2,7 +2,7 @@
 " Default GUI Colours
 let s:foreground = "222222"
 let s:background = "ffffff"
-let s:selection  = "DBDBDB"
+let s:selection  = "F0F0F0"             "line-color
 let s:line       = "6D6D6D"
 let s:comment    = "858585"
 let s:red        = "731718"

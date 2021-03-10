@@ -10,4 +10,14 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 "==============================undotree
 nnoremap <F5> :UndotreeToggle<CR>
 
+"==============================accelerated-jk
+" nmap j <Plug>(accelerated_jk_gj)
+" nmap k <Plug>(accelerated_jk_gk)
+nmap j <Plug>(accelerated_jk_gj_position)
+nmap k <Plug>(accelerated_jk_gk_position)
 
+"==============================operator-surround
+" operator mappings
+map <silent>sa <Plug>(operator-surround-append)
+map <silent>sd <Plug>(operator-surround-delete)
+map <silent>sr <Plug>(operator-surround-replace)

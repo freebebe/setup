@@ -69,7 +69,7 @@ bindsym $mod+Ctrl+Shift+t exec i3-sensible-terminal
 bindsym $mod+Ctrl+w kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show drun -location 1 -width 100 -lines 5 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "Launch: " -font "Source Code Pro 9" -theme "$HOME/.config/rofi/nixpulvis.rasi" -show-icons
+bindsym $mod+d exec --no-startup-id rofi -show drun -location 1 -width 100 -lines 10 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Source Code Pro 9" -theme "$HOME/.config/rofi/nixpulvis.rasi" -show-icons
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
@@ -336,7 +336,7 @@ bar {
         # output eDP-1
         tray_output eDP-1
         # position top
-        font pango:Source Code Pro 9, Icons 9
+        font pango:Source Code Pro 8, Icons 8
             # font pango:DejaVu Sans Mono 9, Icons 9
         # font pango:Ubuntu Nomo 9, Icons 9
         colors {
