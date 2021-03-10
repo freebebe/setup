@@ -253,7 +253,7 @@ $ git co <branch>
 # 创建新的分支，并且切换过去
 $ git co -b <new_branch>
 
-# 基于branch创建新的new_branch
+# 基于branch创建新的new, branch
 $ git co -b <new_branch> <branch>
 
 # 把某次历史提交记录checkout出来，但无分支信息，切换到其他分支会自动删除
