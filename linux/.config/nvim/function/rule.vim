@@ -97,7 +97,7 @@ set number                  "行号
 set relativenumber          "递进行号
 
 "=========================进退x***
-" set tabstop=4     requiet->:180
+set tabstop=4     " requiet->:180
 set softtabstop=4
 set backspace=2
 

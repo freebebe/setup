@@ -1,5 +1,5 @@
 # (No) Title Bars
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 3
 
 # $mod = super
 # mod1 = alt
@@ -42,7 +42,7 @@ bindsym $mod+c layout toggle split
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:DejaVu Sans Mono 8
-font pango:Source Code Pro 9
+font pango:Source Code Pro 8
 
 #bakcground
 # exec --no-startup-id feh --bg-fill $HOME/Pictures/bkground/background.png
@@ -82,10 +82,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks 
 # bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
 # bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
-
-# Screen brightness controls with notification
-bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'" 
-bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
 
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
@@ -214,10 +210,10 @@ mode "resize" {
         bindsym semicolon resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 300 px or 10 ppt
+        bindsym Down resize grow height 300 px or 10 ppt
+        bindsym Up resize shrink height 300 px or 10 ppt
+        bindsym Right resize grow width 300 px or 10 ppt
 
         # exit resize mode: Enter or Escape
         bindsym Return mode "default"
@@ -246,7 +242,7 @@ bindsym $mod+F2 exec ~/.qStart/firefox_firejail.sh
 #kill_GUI
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 #xpad
-# bindsym $mod+F1 --no-startup-id xpad
+bindsym $mod+F1 --no-startup-id xpad
 #ranger->file
 # bindsym $mod+F3 exec konsole  -- ranger path/to/Documents/uni2019-20
 # bindsym $mod+F4 exec thunar path/to/Documents/uni2019-20
@@ -258,12 +254,10 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 # exec --no-startup-id xmodmap ~/.Xmodmap
-# exec --no-startup-id xpad
-# exec --no-startup-id dropbox
+exec --no-startup-id xpad
+exec --no-startup-id dropbox
 exec --no-startup-id flameshot                    #take_your_face_your_screen_face
 exec --no-startup-id i3-confg-wizard
-exec_always dropbox
-exec_always blueman-applet
 # exec --no-startup-id conky
 # exec --no-startup-id volumeicon
 # exec --no-startup-id dunst
@@ -306,10 +300,8 @@ for_window [class="Pavucontrol"] floating enable
 # for_window [class="Pamac-manager"] floating enable                            #for arch&&manjaro system softeware manager
 for_window [class="Xfburn"] floating enable
 for_window [class="Zotero"] floating enable 
-
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-# i3    +   KDE-Plasma     >>>>>>>>>>>
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# i3    +   KDE-Plasma
 ## Avoid tiling popups, dropdown windows from plasma
 # for the first time, manually resize them, i3 will remember the setting for floating windows
 for_window [class="plasmashell"] floating enable
@@ -325,26 +317,18 @@ for_window [class="dolphin"] floating enable, border none
 for_window [class="KWin"] floating enable, border none
 
 #########################
+####    i3+kde      #####
+#########################
 ## Plasma Integration
 # Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
 exec --no-startup-id wmctrl -c Plasma
 for_window [title="Desktop — Plasma"] kill, floating enable, border none
 for_window [title="Bureau — Plasma"] kill, floating enable, border none
-# for_window [title="plasmashell"] kill, floating enable, border none
+for_window [title="plasmashell"] kill, floating enable, border none
 
 ##workspace_vitual
 force_display_urgency_hint 0 ms
 focus_on_window_activation urgent
-#---( focus related )---)
-
-# focus_follows_mouse no        #鼠标窗口焦点跟踪
-
-no_focus [class="plasmashell"]
-no_focus [window_role="pop-up"]
-no_focus [window_type="notification"]
-
-focus_on_window_activation none
-
 
 ##############################
 ####        bar    :      ####
@@ -358,11 +342,11 @@ bar {
         # output eDP-1
         tray_output eDP-1
         # position top
-        font pango:Source Code Pro 7, Icons 7
-            # font pango:DejaVu Sans Mono 8, Icons 9
+        font pango:Source Code Pro 8, Icons 8
+            # font pango:DejaVu Sans Mono 9, Icons 9
         # font pango:Ubuntu Nomo 8, Icons 8
         colors {
-            background       #131313
+            # background       #01010F
             urgent_workspace #ffffff #ff0000
         }
 }

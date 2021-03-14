@@ -67,11 +67,11 @@ fi
 # デフォルトで venv 以外で pip install できないようにする
 # グローバルでインストールしたい時は PIP_REQUIRE_VENV= pip install を使う
 export PIP_REQUIRE_VENV=true
-export PIP_REQUIRE_VIRTUALENV=true
+# export PIP_REQUIRE_VIRTUALENV=true
 # }}}
 
 # for nvim-deoplete_tern
-# ulimit -n 2048
+ulimit -n 2048
 
 #####################################################################
 # completions

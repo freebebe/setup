@@ -9,10 +9,6 @@
     "command": "editor.action.fontZoomOut"
   },
   {
-    "key": "v s",
-    "command": "workbench.view.explorer"
-  },
-  {
     "key": "ctrl+shift+e",
     "command": "-workbench.view.explorer"
   },

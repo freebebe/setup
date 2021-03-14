@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'tbastos/vim-lua'                      , { 'for': 'lua' }
         Plug 'tpope/vim-liquid'                     , { 'for': 'html' }
         Plug 'rstacruz/sparkup'                     , { 'for': 'html', 'rtp': 'vim'}
-        Plug 'posva/vim-vue'                        , { 'for': 'vue' }                        "vue
+        Plug 'posva/vim-vue'                        "vue
         Plug 'hail2u/vim-css3-syntax'               , { 'for': ['css', 'sass', 'scss', 'less', 'styl'] }        "css
         Plug 'leafgarland/typescript-vim'           , { 'for': 'typescript' }           "typescript
         Plug 'pangloss/vim-javascript'              , { 'for': 'javascript' }              "javascript
@@ -77,7 +77,7 @@ call plug#begin('~/.vim/plugged')
     " Plug 'DNonov/light-delight'
     Plug 'itchyny/lightline.vim'			          "状态
 "规程
-    " Plug 'dense-analysis/ale'                 "异步语法检查: https://github.com/dense-analysis/ale
+    Plug 'dense-analysis/ale'                 "异步语法检查: https://github.com/dense-analysis/ale
     Plug 'neomake/neomake'                      " ale fastVersion
     " Plug 'SirVer/ultisnips'                     "PYTHON补全
       " Plug 'honza/vim-snippets'
@@ -111,11 +111,11 @@ call plug#begin('~/.vim/plugged')
         Plug 'Shougo/neco-syntax'                       "def
         Plug 'Shougo/neco-vim'                          "VimLang
         Plug 'deoplete-plugins/deoplete-jedi'           "python
-        " Plug 'mhartington/nvim-typescript', {'do': 'sh ~/.vim/plugged/nvim-typescript/install.sh'}              "typescript
+        Plug 'mhartington/nvim-typescript', {'do': 'sh ~/.vim/plugged/nvim-typescript/install.sh'}              "typescript
             " Plug 'HerringtonDarkholme/yats.vim'   "for type: syntax file
         Plug 'racer-rust/vim-racer'                     "rust
         " Plug 'wokalski/autocomplete-flow'             "js
-        Plug 'carlitux/deoplete-ternjs', { 'do': ':yarn add global tern'}       "js
+        Plug 'carlitux/deoplete-ternjs', { 'do': ':yarn add global tern', 'for': ['javascript', 'javascript.jsx']}       "js
         " Plug 'deoplete-plugins/deoplete-go'            "go
 
 " wait for version 0.5 -------------|

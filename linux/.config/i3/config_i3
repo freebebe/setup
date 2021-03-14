@@ -1,5 +1,5 @@
 # (No) Title Bars
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 3
 
 # $mod = super
 # mod1 = alt
@@ -24,9 +24,6 @@ default_border pixel 2
 # bindsym $mod+o border 1pixel
  bindsym $mod+b border toggle
 
-#lock screen
-# bindsym $mod+l exec --no-startup-id xsecurelock
-
 # foucus follows mouse(cursor)
 focus_follows_mouse yes
 
@@ -42,7 +39,7 @@ bindsym $mod+c layout toggle split
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:DejaVu Sans Mono 8
-font pango:Source Code Pro 9
+font pango:Source Code Pro 8
 
 #bakcground
 # exec --no-startup-id feh --bg-fill $HOME/Pictures/bkground/background.png
@@ -54,7 +51,7 @@ exec --no-startup-id feh --bg-fill $HOME/Pictures/bkground/background_bg2.png
 floating_modifier mod1
 
 #toupad -> at more size with someGithub link setup
-# exec --no-startup-id synclient TapButton0=0 
+exec --no-startup-id synclient TapButton0=0 
 
 ##############################
 ####    applications      ####
@@ -214,10 +211,10 @@ mode "resize" {
         bindsym semicolon resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 300 px or 10 ppt
+        bindsym Down resize grow height 300 px or 10 ppt
+        bindsym Up resize shrink height 300 px or 10 ppt
+        bindsym Right resize grow width 300 px or 10 ppt
 
         # exit resize mode: Enter or Escape
         bindsym Return mode "default"
@@ -229,18 +226,18 @@ mode "resize" {
 ##############################
 # GUI file manager -- thunar
 bindsym $mod+e exec --no-startup-id dolphin
-# ranger with konsole
-# bindsym $mod+Shift+e konsole -e ranger
+# drop down terminal
+bindsym $mod+Return exec --no-startup-id yakuake
+# ranger with terminal(kitty)
+# bindsym $mod+Shift+e kitty -e ranger
 #image_key
 bindsym Print exec --no-startup-id flameshot gui    #flameshot
 #
 bindsym $mod+alt+t exec --no-startup-id compton -b
-# drop down terminal
-bindsym $mod+Return exec --no-startup-id yakuake
 #WMonky
 bindsym $mod+F6 exec /opt/writemonkey3/nw
 #firefox
-bindsym $mod+F2 exec ~/.qStart/firefox_firejail.sh
+# bindsym $mod+F2 exec $HOME/.qStart/firefox_firejail.sh
 #dmenu(backup) 
 # bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 #kill_GUI
@@ -252,21 +249,42 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 # bindsym $mod+F4 exec thunar path/to/Documents/uni2019-20
 # bindsym $mod+F1 exec thunar ~/Downloads
 
+#lock screen
+bindsym $mod+l exec --no-startup-id xsecurelock
+
+#external screen
+
+#both
+bindsym $mod+Shift+b exec --no-startup-id ~/.config/i3/screenlayouts/externalRight.sh
+# #my
+bindsym $mod+Shift+m exec --no-startup-id ~/.config/i3/screenlayouts/only.sh 
+# #only ext
+bindsym $mod+Shift+n exec --no-startup-id ~/.config/i3/screenlayouts/only_top.sh
+
 ##############################
 #####   autostart_app:  ######
 ##############################
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id "kitty"
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-# exec --no-startup-id xmodmap ~/.Xmodmap
-# exec --no-startup-id xpad
-# exec --no-startup-id dropbox
+exec --no-startup-id xmodmap ~/.Xmodmap
+exec --no-startup-id xpad
+exec --no-startup-id dropbox
 exec --no-startup-id flameshot                    #take_your_face_your_screen_face
 exec --no-startup-id i3-confg-wizard
-exec_always dropbox
-exec_always blueman-applet
 # exec --no-startup-id conky
 # exec --no-startup-id volumeicon
 # exec --no-startup-id dunst
+
+# for no Plasma-KDE(only for i3&&bspwm)
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id clipit                       #copy_data
+# powermanager
+# exec --no-startup-id xfce4-power-manager
+exec_always xfce4-power-manager
+# exec_always mate-power-manager
+#
 
 # Applications behaving as "pop ups" are set to be always floating
 #  i.e. popup, do stuff, close
@@ -277,6 +295,7 @@ exec_always blueman-applet
 # for_window [class="konsole"] resize set 600 400
 # for_window [class="kitty"] floating enable
 # for_window [class="kitty"] resize set 800 480
+# for_window [class="kitty"] move scratchpad, move position 50 50, resize set 800 600;
 for_window [class="yakuake"] floating enable
 for_window [class="systemsettings"] floating enable
 for_window [class="keepassxc"] floating enable
@@ -306,10 +325,8 @@ for_window [class="Pavucontrol"] floating enable
 # for_window [class="Pamac-manager"] floating enable                            #for arch&&manjaro system softeware manager
 for_window [class="Xfburn"] floating enable
 for_window [class="Zotero"] floating enable 
-
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-# i3    +   KDE-Plasma     >>>>>>>>>>>
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# i3    +   KDE-Plasma
 ## Avoid tiling popups, dropdown windows from plasma
 # for the first time, manually resize them, i3 will remember the setting for floating windows
 for_window [class="plasmashell"] floating enable
@@ -324,27 +341,6 @@ for_window [class="Plasmoidviewer"] floating enable, border none
 for_window [class="dolphin"] floating enable, border none
 for_window [class="KWin"] floating enable, border none
 
-#########################
-## Plasma Integration
-# Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
-exec --no-startup-id wmctrl -c Plasma
-for_window [title="Desktop — Plasma"] kill, floating enable, border none
-for_window [title="Bureau — Plasma"] kill, floating enable, border none
-# for_window [title="plasmashell"] kill, floating enable, border none
-
-##workspace_vitual
-force_display_urgency_hint 0 ms
-focus_on_window_activation urgent
-#---( focus related )---)
-
-# focus_follows_mouse no        #鼠标窗口焦点跟踪
-
-no_focus [class="plasmashell"]
-no_focus [window_role="pop-up"]
-no_focus [window_type="notification"]
-
-focus_on_window_activation none
-
 
 ##############################
 ####        bar    :      ####
@@ -356,13 +352,13 @@ bar {
             status_command exec $HOME/.config/i3status/contrib/net-speed.sh
         # status_command py3status -c $HOME/.config/py3status/config
         # output eDP-1
-        tray_output eDP-1
+        # tray_output eDP-1
         # position top
-        font pango:Source Code Pro 7, Icons 7
-            # font pango:DejaVu Sans Mono 8, Icons 9
+        font pango:Source Code Pro 8, Icons 8
+            # font pango:DejaVu Sans Mono 9, Icons 9
         # font pango:Ubuntu Nomo 8, Icons 8
         colors {
-            background       #131313
+            # background       #01010F
             urgent_workspace #ffffff #ff0000
         }
 }

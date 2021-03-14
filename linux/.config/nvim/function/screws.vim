@@ -21,3 +21,8 @@ nmap k <Plug>(accelerated_jk_gk_position)
 map <silent>sa <Plug>(operator-surround-append)
 map <silent>sd <Plug>(operator-surround-delete)
 map <silent>sr <Plug>(operator-surround-replace)
+
+"==============================ale
+nnoremap <silent><f8> :ALEFix<cr>
+
+" nnoremap <silent><f8> :call AleFixResetView()<cr>
