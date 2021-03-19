@@ -42,35 +42,36 @@ if utils#hasPlugin('context_filetype') "{{{
 endif
 " }}}
 
-if utils#hasPlugin('deoplete-clang') "{{{
+" if utils#hasPlugin('deoplete-clang') "{{{
   " Required configuration:
   " - path to libclang.dylib
   " - path to clang headers
 
   " bundled llvm_path
-  let s:llvm_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr'
-  " prefer homebrew instalation of llvm (latest version)
-  if !empty(glob('/usr/local/opt/llvm'))
-    let s:llvm_path = '/usr/local/opt/llvm'
-  endif
+  " let s:llvm_path = '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr'
+  " " prefer homebrew instalation of llvm (latest version)
+  " if !empty(glob('/usr/local/opt/llvm'))
+  "   let s:llvm_path = '/usr/local/opt/llvm'
+  " endif
 
   " - llvm (installed with homebrew)
   " let g:deoplete#sources#clang#libclang_path = '/usr/local/opt/llvm/lib/libclang.dylib'
   " let g:deoplete#sources#clang#clang_header = '/usr/local/opt/llvm/lib/clang'
 
   " - llvm (command line tools)
-  let g:deoplete#sources#clang#libclang_path = s:llvm_path . '/lib/libclang.dylib'
-  let g:deoplete#sources#clang#clang_header = s:llvm_path . '/lib/clang'
-  let g:deoplete#sources#clang#sort_algo = 'priority'
-  let g:deoplete#sources#clang#std#cpp = 'c++11'
-endif
+"   let g:deoplete#sources#clang#libclang_path = s:llvm_path . '/lib/libclang.dylib'
+"   let g:deoplete#sources#clang#clang_header = s:llvm_path . '/lib/clang'
+"   let g:deoplete#sources#clang#sort_algo = 'priority'
+"   let g:deoplete#sources#clang#std#cpp = 'c++11'
+" endif
 "}}}
 
-if utils#hasPlugin('deoplete-go') "{{{
-  let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-  let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-  let g:deoplete#sources#go#use_cache = 1
-endif
+" >>>>>>>>>>>>>>>>>>>>>>>>>>>>>Go
+" if utils#hasPlugin('deoplete-go') "{{{
+"   let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+"   let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+"   let g:deoplete#sources#go#use_cache = 1
+" endif
 "}}}
 
 if utils#hasPlugin('deoplete-ternjs') "{{{

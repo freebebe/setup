@@ -108,11 +108,12 @@ inoremap <expr>G       pumvisible() ? deoplete#insert_candidate(4) : 'G'
 
 " autocmd MyAutoCmd BufEnter * call s:tabnine_check()
 function! s:tabnine_check() abort
-  if finddir('.git') !=# ''
-    return
-  endif
+    if finddir('.git') !=# ''
+        return
+      endif
 
   " Disable tabnine ource
   call deoplete#custom#buffer_option('ignore_sources', ['tabnine'])
 endfunction
+
 call s:tabnine_check()

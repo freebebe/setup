@@ -27,10 +27,6 @@
     "when": "listFocus && listSupportsMultiselect && !inputFocus"
   },
   {
-    "key": "t n",
-    "command": "workbench.action.files.newUntitledFile"
-  },
-  {
     "key": "ctrl+n",
     "command": "-workbench.action.files.newUntitledFile"
   }

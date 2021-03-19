@@ -263,7 +263,6 @@ exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id flameshot                    #take_your_face_your_screen_face
 exec --no-startup-id i3-confg-wizard
 exec_always dropbox
-exec_always blueman-applet
 # exec --no-startup-id conky
 # exec --no-startup-id volumeicon
 # exec --no-startup-id dunst
@@ -358,6 +357,8 @@ bar {
         # output eDP-1
         tray_output eDP-1
         # position top
+        # font Monaco:h10 noanti 6, icons 6
+        # font pango: 7, icons 7
         font pango:Source Code Pro 7, Icons 7
             # font pango:DejaVu Sans Mono 8, Icons 9
         # font pango:Ubuntu Nomo 8, Icons 8

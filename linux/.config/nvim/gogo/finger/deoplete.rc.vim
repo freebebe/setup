@@ -1,8 +1,9 @@
 "---------------------------------------------------------------------------
 " deoplete.nvim
-"
+"---------------------------------------------------------------------------
 
 " <TAB>: completion.
+"----------------------------
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -13,6 +14,7 @@ function! s:check_back_space() abort
 endfunction
 
 " <S-TAB>: completion back.
+"----------------------------
 inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
 
 inoremap <expr><C-g>       deoplete#refresh()
@@ -20,6 +22,7 @@ inoremap <expr><C-e>       deoplete#cancel_popup()
 inoremap <silent><expr><C-l>       deoplete#complete_common_string()
 
 " <CR>: close popup and save indent.
+"----------------------------
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function() abort
   return pumvisible() ? deoplete#close_popup()."\<CR>" : "\<CR>"
@@ -107,13 +110,30 @@ inoremap <expr>F       pumvisible() ? deoplete#insert_candidate(3) : 'F'
 inoremap <expr>G       pumvisible() ? deoplete#insert_candidate(4) : 'G'
 
 " autocmd MyAutoCmd BufEnter * call s:tabnine_check()
+"----------------------------
 function! s:tabnine_check() abort
   if finddir('.git') !=# ''
     return
   endif
 
   " Disable tabnine ource
+"----------------------------
   call deoplete#custom#buffer_option('ignore_sources', ['tabnine'])
 endfunction
 call s:tabnine_check()
 
+" call neocompletelock
+" Avoids conflicts with vim-multiple-cursors plugin
+" Called once right before you start selecting multiple cursors
+"---------------------------------------------------------------
+function! Multiple_cursors_before()
+  if exists(':NeoCompleteLock')==2
+    exe 'NeoCompleteLock'
+  endif
+endfunction
+" Called once only when the multiple selection is canceled (default <Esc>)
+function! Multiple_cursors_after()
+  if exists(':NeoCompleteUnlock')==2
+    exe 'NeoCompleteUnlock'
+  endif
+endfunction

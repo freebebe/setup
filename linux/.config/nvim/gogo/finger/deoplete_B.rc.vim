@@ -1,6 +1,6 @@
 let g:acp_enableAtStartup = 0
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_smart_case = 1
 let g:deoplete#sources#syntax#min_keyword_length = 3
 let g:deoplete#file#enable_buffer_path = 1
 
