@@ -1,22 +1,23 @@
 call plug#begin('~/.vim/plugged')
-    Plug 'sheerun/vim-polyglot'                 "字典 to heavy
+    " Plug 'sheerun/vim-polyglot'                 "字典 to heavy
 "--------syntax | language
     Plug 'jparise/vim-graphql'                  "gatsby
     Plug 'slim-template/vim-slim'               "sy for vim
     " Plug 'JuliaEditorSupport/julia-vim'         , { 'for': 'julia' }
-    " Plug 'tbastos/vim-lua'                      , { 'for': 'lua' }
-    " Plug 'tpope/vim-liquid'                     , { 'for': 'html' }
-    " Plug 'rstacruz/sparkup'                     , { 'for': 'html', 'rtp': 'vim'}
-    " Plug 'posva/vim-vue'                        "vue
-    " Plug 'hail2u/vim-css3-syntax'               , { 'for': ['css', 'sass', 'scss', 'less', 'styl'] }     " css
-    " Plug 'leafgarland/typescript-vim'           , { 'for': 'typescript' }               "typescript
-    " Plug 'pangloss/vim-javascript'              , { 'for': 'javascript' }              "javascript
-    " Plug 'rust-lang/rust.vim'                   , { 'for': 'rust' }                     "rust
-    " Plug 'tmhedberg/SimpylFold'                 , { 'for': 'python' }
+    Plug 'tbastos/vim-lua'                      , { 'for': 'lua' }
+    Plug 'tpope/vim-liquid'                     , { 'for': 'html' }
+    Plug 'rstacruz/sparkup'                     , { 'for': 'html', 'rtp': 'vim'}
+    Plug 'posva/vim-vue'                        "vue
+    Plug 'hail2u/vim-css3-syntax'               , { 'for': ['css', 'sass', 'scss', 'less', 'styl'] }     " css
+    Plug 'leafgarland/typescript-vim'           , { 'for': 'typescript' }               "typescript
+    Plug 'pangloss/vim-javascript'              , { 'for': 'javascript' }              "javascript
+    Plug 'rust-lang/rust.vim'                   , { 'for': 'rust' }                     "rust
+    Plug 'tmhedberg/SimpylFold'                 , { 'for': 'python' }
 
     " Plug 'aliou/bats.vim'                       "bash
     " Plug 'aklt/plantuml-syntax'                 "plantuml-----> mindMap
 " 士巴拿
+    Plug 'preservim/tagbar'                     "预览大纲
     Plug 'rhysd/accelerated-jk'                 " speed j, k
     Plug 'wincent/ferret'                       " Enhanced Multi-file search and replace 光标下字符简易全局替换
     Plug 'tommcdo/vim-lion'                     " Align characters across lines 对齐运算符
@@ -79,15 +80,15 @@ call plug#begin('~/.vim/plugged')
    "schemes
     " Plug '$HOME/.config/nvim/colors'
 "规程
-    Plug 'dense-analysis/ale'                   , {'for': ['javascript.jsx', 'javascript', 'jsx', 'rust', 'css']} "异步语法检查: https://github.com/dense-analysis/ale
-    " Plug 'neomake/neomake'                      " ale fastVersion
+    " Plug 'dense-analysis/ale'                   , {'for': ['javascript.jsx', 'javascript', 'jsx', 'rust', 'css']} "异步语法检查: https://github.com/dense-analysis/ale
+    Plug 'neomake/neomake'                 "Ale-fastVersion
     " Plug 'SirVer/ultisnips'                     "PYTHON补全
       " Plug 'honza/vim-snippets'
 "兔洞
     " Plug 'mileszs/ack.vim'                      "文本搜索：设置里并用t.s.s
 "server
     " Plug 'rust-lang/cargo'                      "rust
-    Plug 'Quramy/tsuquyomi'                     "ts
+    " Plug 'Quramy/tsuquyomi'                     "ts
     " Plug 'mxw/vim-jsx'                          "js
     " Plug 'jelera/vim-javascript-syntax'         "js
 "shou
@@ -107,10 +108,10 @@ call plug#begin('~/.vim/plugged')
     "
     " Plug 'Shougo/echodoc.vim'
     Plug 'Shougo/neocomplete.vim'
+    Plug 'Shougo/context_filetype.vim'
 "---------------------------pakage
         " Plug 'autozimu/LanguageClient-neovim'           "server
         " Plug 'deoplete-plugins/deoplete-lsp'          "server
-            " Plug 'neovim/nvim-lspconfig'              "server
         Plug 'Shougo/neco-syntax'                       "def
         Plug 'Shougo/neco-vim'                          "VimLang
         Plug 'deoplete-plugins/deoplete-jedi'           "python

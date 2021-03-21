@@ -1,4 +1,5 @@
-" filetype off
+"_______________________________________________________________________________
+"                                                               filetype off {{{
 filetype plugin on
 set shell=zsh
 set t_Co=256
@@ -34,7 +35,9 @@ autocmd FileType css,sass,scss setlocal omnifunc=csscomplete#CompleteCSS
 
 "格式
 "inside_be_wiki-PLUG   |  set nocompatible            "设置不兼容
-set smarttab                "Use 'shiftwidth' when using <Tab> in front of a line. By default it's used only for shift commands (<, >).
+set smarttab                "Use 'shiftwidth' when using <Tab> 
+                            "in front of a line. By default 
+                            "it's used only for shift commands (<, >).
 set smartindent             "smart when using tabs
 set autoindent
 set expandtab
@@ -80,8 +83,10 @@ set updatetime=100          "异步时间
 filetype indent on          "自适应语言的智能缩进
 set shiftwidth=4
 " set tabstop=2
+" }}}___________________________________________________________________________
 
-"=========================smart indent
+"_______________________________________________________________________________
+"                                                               smart indent {{{
 set ai                      "Auto indent
 set si                      "Smart indent
     set autoindent smartindent
@@ -96,13 +101,17 @@ set si                      "Smart indent
 set backspace=start,eol,indent
 set number                  "行号
 set relativenumber          "递进行号
+" }}}___________________________________________________________________________
 
-"=========================进退x***
+"_______________________________________________________________________________
+"                                                           run 'turanx'*** {{{
 set tabstop=4     " requiet->:180
 set softtabstop=4
 set backspace=2
+" }}}___________________________________________________________________________
 
-"=========================语法高亮-字典
+"_______________________________________________________________________________
+"                                                               语法高亮-字典 {{{
 syntax enable
 syntax on
   autocmd InsertLeave,WinEnter * set cursorline
@@ -114,8 +123,10 @@ set colorcolumn=80          "警示線
 set nofixendofline
 set cursorcolumn
 set cursorline
+" }}}___________________________________________________________________________
 
-  "colo
+"_______________________________________________________________________________
+"                                                                       colo {{{
   " highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
 
   " highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
@@ -130,8 +141,10 @@ set cursorline
         autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
         autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
     endif
+" }}}___________________________________________________________________________
 
-"=========================代码折叠
+"_______________________________________________________________________________
+"                                                                   代码折叠 {{{
 set foldenable
 set nowrap                  "禁止折行
 " set nofoldenable			"启动vim时关闭折叠代码
@@ -157,7 +170,10 @@ set foldmethod=manual       "z-f = all packup
         set foldtext=FoldCCtext()
     endif
 
-"=========================重载保存文件
+" }}}___________________________________________________________________________
+
+"_______________________________________________________________________________
+"                                                               重载保存文件 {{{
 autocmd BufWritePost $MYVIMRC source $MYVIMRC
 autocmd BufWritePost ~/.Xdefaults call system('xrdb ~/.Xdefaults')
 
@@ -172,7 +188,10 @@ endif
 " Turn off paste mode when leaving insert离开状态关闭粘贴
 autocmd InsertLeave * set nopaste
 
-">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>For conceal markers.对隐藏标记
+" }}}___________________________________________________________________________
+
+"_______________________________________________________________________________
+"                                            For conceal markers.对隐藏标记 {{{
 " if has('conceal')
   " set conceallevel=2 concealcursor=niv
 " endif
@@ -180,10 +199,15 @@ autocmd InsertLeave * set nopaste
 " Add asterisks in block comments 块标记*号
 set formatoptions+=r
 
-"=========================Highlight all instances of word under cursor, when idle.
-                          " http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
-                          " Useful when studying strange source code.
-                          " Type z/ to toggle highlighting on/off.
+" }}}___________________________________________________________________________
+
+"_______________________________________________________________________________
+        "                                    Highlight all instances of 
+        "                                    word under cursor, when idle. {{{
+"
+                    " Useful when studying strange source code.
+                " Type z/ to toggle highlighting on/off.
+            " http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
     let @/ = ''
@@ -204,13 +228,17 @@ function! AutoHighlightToggle()
         endif
     endfunction
 
-"======!!!error!!========" Clean all useless whitespace清理所有无用空白
+"                                                                   !!!error!!
+"                               " Clean all useless whitespace清理所有无用空白
 autocmd BufWritePre *
     \ if !exists('g:skip_clean_whitespace') && !exists('b:skip_clean_whitespace')|
     \   call lib#WithSavedState('%s/\s\+$//e')|
     \ endif
 
-"========================" Speed up transition from modes
+" }}}___________________________________________________________________________
+
+"_______________________________________________________________________________
+"                                           Speed up transition from modes {{{
 if ! has('gui_running')
     set ttimeoutlen=10
     augroup FastEscape
@@ -218,3 +246,4 @@ if ! has('gui_running')
         autocmd InsertLeave * set timeoutlen=1000
     augroup END
 endif
+" }}}___________________________________________________________________________

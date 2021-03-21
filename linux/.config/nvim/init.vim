@@ -22,19 +22,21 @@ colo whiteBlue      "local color
 source $HOME/.config/nvim/function/screwdriver.vim
 source $HOME/.config/nvim/function/screws.vim
 "==============================ShouGo-Link
-source $HOME/.config/nvim/gogo/finger/deoplete.rc.vim
-" source $HOME/.config/nvim/gogo/finger/deoXcomplete.vim
-" source $HOME/.config/nvim/gogo/finger/deoplete-lsp.vim
+" source $HOME/.config/nvim/gogo/finger/deoplete_rc.vim
+source $HOME/.config/nvim/gogo/finger/deoRc.vim
+source $HOME/.config/nvim/gogo/finger/deo-neo.vim
 source $HOME/.config/nvim/gogo/finger/denite.vim
 source $HOME/.config/nvim/gogo/finger/defx.vim
+" source $HOME/.config/nvim/gogo/finger/deoXcomplete.vim
+" source $HOME/.config/nvim/gogo/finger/deoplete-lsp.vim
 " source $HOME/.config/nvim/gogo/finger/deo-echodoc.vim
 
 "----------------fix_deoplete
 " source $HOME/.config/nvim/gogo/finger/fix_deoplete_in_cursors.vim
 
 source $HOME/.config/nvim/gogo/brain/fzf.vim
-source $HOME/.config/nvim/gogo/brain/ale.vim
-" source $HOME/.config/nvim/gogo/brain/neomake.vim
+" source $HOME/.config/nvim/gogo/brain/ale.vim
+source $HOME/.config/nvim/gogo/brain/neomake.vim
 
 source $HOME/.config/nvim/gogo/hands/lightline.vim
 

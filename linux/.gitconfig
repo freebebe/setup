@@ -1,7 +1,7 @@
-# [http]
-#     proxy=socks5://127.0.0.3:6612
-# [https]
-#     proxy=socks5://127.0.0.3:6612
+[http]
+    proxy=socks5://127.0.0.3:6612
+[https]
+    proxy=socks5://127.0.0.3:6612
 
 
 [user]
