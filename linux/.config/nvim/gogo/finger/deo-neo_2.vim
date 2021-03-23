@@ -1,5 +1,6 @@
 "__________________________________________________________
 "                                               For neovim
+let g:neosnippet#enable_completed_snippet = 1                       
 
 if has('vim_starting') && empty(argv())
   syntax off

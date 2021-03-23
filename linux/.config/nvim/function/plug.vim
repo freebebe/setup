@@ -1,18 +1,18 @@
 call plug#begin('~/.vim/plugged')
-    " Plug 'sheerun/vim-polyglot'                 "字典 to heavy
+    Plug 'sheerun/vim-polyglot'                 "字典 to heavy
 "--------syntax | language
-    Plug 'jparise/vim-graphql'                  "gatsby
-    Plug 'slim-template/vim-slim'               "sy for vim
-    " Plug 'JuliaEditorSupport/julia-vim'         , { 'for': 'julia' }
-    Plug 'tbastos/vim-lua'                      , { 'for': 'lua' }
-    Plug 'tpope/vim-liquid'                     , { 'for': 'html' }
-    Plug 'rstacruz/sparkup'                     , { 'for': 'html', 'rtp': 'vim'}
-    Plug 'posva/vim-vue'                        "vue
-    Plug 'hail2u/vim-css3-syntax'               , { 'for': ['css', 'sass', 'scss', 'less', 'styl'] }     " css
-    Plug 'leafgarland/typescript-vim'           , { 'for': 'typescript' }               "typescript
-    Plug 'pangloss/vim-javascript'              , { 'for': 'javascript' }              "javascript
-    Plug 'rust-lang/rust.vim'                   , { 'for': 'rust' }                     "rust
-    Plug 'tmhedberg/SimpylFold'                 , { 'for': 'python' }
+    " Plug 'jparise/vim-graphql'                  "gatsby
+    " Plug 'slim-template/vim-slim'               "sy for vim
+    " " Plug 'JuliaEditorSupport/julia-vim'         , { 'for': 'julia' }
+    " Plug 'tbastos/vim-lua'                      , { 'for': 'lua' }
+    " Plug 'tpope/vim-liquid'                     , { 'for': 'html' }
+    " Plug 'rstacruz/sparkup'                     , { 'for': 'html', 'rtp': 'vim'}
+    " Plug 'posva/vim-vue'                        "vue
+    " Plug 'hail2u/vim-css3-syntax'               , { 'for': ['css', 'sass', 'scss', 'less', 'styl'] }     " css
+    " Plug 'leafgarland/typescript-vim'           , { 'for': 'typescript' }               "typescript
+    " Plug 'pangloss/vim-javascript'              , { 'for': 'javascript' }              "javascript
+    " Plug 'rust-lang/rust.vim'                   , { 'for': 'rust' }                     "rust
+    " Plug 'tmhedberg/SimpylFold'                 , { 'for': 'python' }
 
     " Plug 'aliou/bats.vim'                       "bash
     " Plug 'aklt/plantuml-syntax'                 "plantuml-----> mindMap
@@ -67,7 +67,8 @@ call plug#begin('~/.vim/plugged')
 "WEB
     Plug 'godlygeek/tabular'                    "useful to line up text
     Plug 'Raimondi/delimitMate'                 "前后括制对齐
-    " Plug 'tyru/open-browser.vim'
+    Plug 'tyru/open-browser.vim'
+        Plug 'tyru/open-browser-github.vim'                    
     Plug 'turbio/bracey.vim'                    "live local-server
     " Plug 'jaxbot/browserlink.vim'
 "热熔胶
@@ -81,7 +82,7 @@ call plug#begin('~/.vim/plugged')
     " Plug '$HOME/.config/nvim/colors'
 "规程
     " Plug 'dense-analysis/ale'                   , {'for': ['javascript.jsx', 'javascript', 'jsx', 'rust', 'css']} "异步语法检查: https://github.com/dense-analysis/ale
-    Plug 'neomake/neomake'                 "Ale-fastVersion
+    Plug 'neomake/neomake'                      "Ale-fastVersion
     " Plug 'SirVer/ultisnips'                     "PYTHON补全
       " Plug 'honza/vim-snippets'
 "兔洞
@@ -92,19 +93,20 @@ call plug#begin('~/.vim/plugged')
     " Plug 'mxw/vim-jsx'                          "js
     " Plug 'jelera/vim-javascript-syntax'         "js
 "shou
+    " Plug 'https://github.com/Quramy/tsuquyomi'    "ts
     " Plug 'prabirshrestha/asyncomplete.vim'
     Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }                    "目录树
         Plug 'kristijanhusak/defx-git'
     Plug 'Shougo/denite.nvim'
-"---------------------------deop
-    " if has('nvim')
+"---------------------------Omni-completion
+    if has('nvim')
         Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    " else
-    "     Plug 'Shougo/deoplete.nvim'
-    " endif
+    else
+        Plug 'Shougo/deoplete.nvim'
+    endif
 
-    " Plug 'Shougo/neosnippet.vim'
-    " Plug 'Shougo/neosnippet-snippets'
+    Plug 'Shougo/neosnippet.vim'
+    Plug 'Shougo/neosnippet-snippets'
     "
     " Plug 'Shougo/echodoc.vim'
     Plug 'Shougo/neocomplete.vim'
@@ -114,16 +116,26 @@ call plug#begin('~/.vim/plugged')
         " Plug 'deoplete-plugins/deoplete-lsp'          "server
         Plug 'Shougo/neco-syntax'                       "def
         Plug 'Shougo/neco-vim'                          "VimLang
-        Plug 'deoplete-plugins/deoplete-jedi'           "python
+        " Plug 'deoplete-plugins/deoplete-jedi'           "python
         " Plug 'mhartington/nvim-typescript', {'do': 'sh ~/.vim/plugged/nvim-typescript/install.sh'}              "typescript
             " Plug 'HerringtonDarkholme/yats.vim'   "for type: syntax file
-        Plug 'racer-rust/vim-racer'                     "rust
+        " Plug 'racer-rust/vim-racer'                     "rust
         " Plug 'wokalski/autocomplete-flow'             "js
-        Plug 'carlitux/deoplete-ternjs', { 'do': ':yarn add global tern', 'for': ['javascript', 'javascript.jsx']}       "js
+        " Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn add global tern'}       "js
+        " Plug 'carlitux/deoplete-ternjs'
         " Plug 'deoplete-plugins/deoplete-go'            "go
 
 " wait for version 0.5 -------------|
 
+    if has('nvim-0.5')
+        Plug 'Shougo/deoplete-lsp'                                  " Autocompletion
+        Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+        Plug 'neovim/nvim-lspconfig'
+        Plug 'RRethy/vim-illuminate'                                " Highlight the same word as under cursor
+        Plug 'glepnir/indent-guides.nvim'                           " Indentation Guides
+        Plug 'nvim-lua/plenary.nvim'                                " Utilities for LUA
+        Plug 'lewis6991/gitsigns.nvim'                              " Gitgutter
+    endif
     " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
         " Plug 'nvim-treesitter/playground'
     " Plug 'neovim/nvim-lspconfig'                                                                                                            

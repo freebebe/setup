@@ -1,5 +1,5 @@
-"________________________________________________________________________
-"                                                                   neo
+"_______________________________________________________________________________
+"                                                                       neo{{{
 "
 " call neocompletelock
 " Avoids conflicts with vim-multiple-cursors plugin
@@ -17,7 +17,7 @@ function! Multiple_cursors_after()
   endif
 endfunction
 
-
+let g:neosnippet#enable_completed_snippet = 1                       
 let g:deoplete_enable_camel_case_completion = 1
 let g:deoplete_enable_underbar_completion   = 1
 let g:deoplete_enable_smart_case            = 1
@@ -32,3 +32,5 @@ let g:deoplete#auto_completion_start_length = 2
 " " This makes sure we use neocomplcache completefunc instead of
 " " the one in rails.vim, otherwise this plugin will crap out
 let g:deoplete_force_overwrite_completefunc = 1
+
+" }}}___________________________________________________________________________

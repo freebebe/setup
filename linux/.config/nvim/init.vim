@@ -1,6 +1,6 @@
-"======================================
-"                   LINK
-"======================================
+"______________________________________________________________________________
+"                                                                       LINK{{{
+"
 source $HOME/.config/nvim/gogo/brain/eyes/polyglot.vim
 "
 source $HOME/.config/nvim/function/plug.vim
@@ -16,15 +16,17 @@ colo whiteBlue      "local color
 " colo dicul
 " colo approid
 
-"====================================
-"               Link : Plug          
-"====================================
+"______________________________________________________________________________
+"                                                                 Link : Plug{{{
+"
+
 source $HOME/.config/nvim/function/screwdriver.vim
 source $HOME/.config/nvim/function/screws.vim
 "==============================ShouGo-Link
 " source $HOME/.config/nvim/gogo/finger/deoplete_rc.vim
+" source $HOME/.config/nvim/gogo/finger/deo-neo.vim
+source $HOME/.config/nvim/gogo/finger/deo-neo_rc.vim
 source $HOME/.config/nvim/gogo/finger/deoRc.vim
-source $HOME/.config/nvim/gogo/finger/deo-neo.vim
 source $HOME/.config/nvim/gogo/finger/denite.vim
 source $HOME/.config/nvim/gogo/finger/defx.vim
 " source $HOME/.config/nvim/gogo/finger/deoXcomplete.vim
@@ -39,12 +41,13 @@ source $HOME/.config/nvim/gogo/brain/fzf.vim
 source $HOME/.config/nvim/gogo/brain/neomake.vim
 
 source $HOME/.config/nvim/gogo/hands/lightline.vim
+" source $HOME/.config/nvim/gogo/hands/openbrowser_rc.vim
 
 
 
-"===================================
-"               color              >
-"===================================
+"______________________________________________________________________________
+"                                                                      color{{{
+"
 
 ">>>>>>
 "color    for outside

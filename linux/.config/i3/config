@@ -211,8 +211,8 @@
     # bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
 
 # Screen brightness controls with notification
-    bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'" 
-    bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
+    # bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'" 
+    # bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
 
     bindsym XF86AudioPlay exec playerctl play
     bindsym XF86AudioPause exec playerctl pause
@@ -364,7 +364,8 @@ bar {
         # position top
         # font Monaco:h10 noanti 6, icons 6
         # font pango: 7, icons 7
-        font pango:Source Code Pro 7, Icons 7
+        font Terminus (TTF) 15px
+        # font pango:Source Code Pro 7, Icons 7
             # font pango:DejaVu Sans Mono 8, Icons 9
         # font pango:Ubuntu Nomo 8, Icons 8
         colors {

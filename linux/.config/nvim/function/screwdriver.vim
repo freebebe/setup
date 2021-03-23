@@ -17,6 +17,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
 "_______________________________________________________________________________
 "															emmet-html&css->deful        
 "                                                                       (C=ctrl-)
+
 " let g:user_emmet_install_global = 0
 " autocmd FileType html,css EmmetInstall          "只在html,css作用
 "
@@ -78,15 +79,15 @@ let g:matchup_matchparen_offscreen = {}
 "                                                                     surround
 
 "                                           可视模式
-"|----------------------------------------------------------------------------------------------|
-"|    | 命令            | 说明 + 示例                                                           |
-"|---:|:----------------|:----------------------------------------------------------------------|
-"|    | S               | 选中的括起来                                                          |
-"| 例 | 选中world: S(   | Hello world! => Hello (world)!                                        |
-"|---:|:----------------|:----------------------------------------------------------------------|
-"|    | gS              | 选中的括起来，括号内文本做新一行                                      |
-"| 例 | 选中world: gS{  | Hello world! => Hello { world }!                                      |
-"|----------------------------------------------------------------------------------------------|
+"|-----------------------------------------------------------------------------|
+"|    | 命令            | 说明 + 示例                                          |
+"|---:|:----------------|:-----------------------------------------------------|
+"|    | S               | 选中的括起来                                         |
+"| 例 | 选中world: S(   | Hello world! => Hello (world)!                       |
+"|---:|:----------------|:-----------------------------------------------------|
+"|    | gS              | 选中的括起来，括号内文本做新一行                     |
+"| 例 | 选中world: gS{  | Hello world! => Hello { world }!                     |
+"|-----------------------------------------------------------------------------|
 
 "_______________________________________________________________________________
 "                                                                           ack
@@ -115,7 +116,7 @@ let g:livepreview_engine = 'pdflatex'
 "_______________________________________________________________________________
 "                                                                       auto_save
 
-let g:auto_save = 1             " enable AutoSave on Vim startup
+let g:auto_save = 1                             " enable AutoSave on Vim startup
 let g:auto_save_events = ["InsertLeave", "TextChanged"]
 let g:auto_save_silent = 1
 
@@ -123,7 +124,9 @@ let g:auto_save_silent = 1
 "                                                                       Markdown
 
 " let g:instant_markdown_slow = 1
-" let g:instant_markdown_autostart = 0            "':InstantMarkdownPreview' or 'InstantMarkdownStop'
+" let g:instant_markdown_autostart = 0              "':InstantMarkdownPreview' 
+"                                                                           or 
+"                                                       'InstantMarkdownStop'
 
 "_______________________________________________________________________________
 "                                                                           Wiki
@@ -136,7 +139,8 @@ let g:auto_save_silent = 1
 "_______________________________________________________________________________
 "																			fzf
 set rtp+=~/.fzf
-"
+
+"_______________________________________________________________________________
 "                                                                  clang-format
 
 " autocmd FileType javascript ClangFormatAutoEnable          
@@ -172,3 +176,12 @@ let g:UltiSnipsRemoveSelectModeMappings = 0
 let g:ale_linters = {'javacript': [], 'vue': [], 'css': [], 'typerscript': []}
 " let g:ale_fixers = {'ruby': ['rubocop']}
 let g:ale_lint_delay = 1000
+
+"_______________________________________________________________________________
+"                                                                       neomake
+"
+" neomake errors {{{
+  highlight link NeomakeError DiffDelete
+  highlight link NeomakeWarning Question
+  highlight NeomakeErrorSign cterm=none ctermbg=none ctermfg=red
+"}}}

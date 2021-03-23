@@ -11,30 +11,31 @@ set termguicolors
 "配置同步
 " autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
-"run utf-8 (all)
+" run utf-8 (all)
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,big5,euc-jp,euc-kr
-"文件格式
+" 文件格式
 set matchpairs=(:),[:],{:}
 set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md,.rb,.tsx,.ts,.jpg,.jpeg,.gif,.png,.vim
 autocmd FileType coffee setlocal shiftwidth=2 tabstop=2
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType css,sass,scss setlocal omnifunc=csscomplete#CompleteCSS
+autocmd Filetype javascript setlocal sw=2 sts=2 expandtab
 
     " JavaScript
     au BufNewFile,BufRead *.es6 setf javascript
     " TypeScript
     au BufNewFile,BufRead *.tsx setf typescript
     " Markdown
-    " au BufNewFile,BufRead *.md set filetype=markdown
+    au BufNewFile,BufRead *.md set filetype=markdown
     " Flow
     au BufNewFile,BufRead *.flow set filetype=javascript
 
-"格式
-"inside_be_wiki-PLUG   |  set nocompatible            "设置不兼容
+" 格式
+" inside_be_wiki-PLUG   |  set nocompatible            "设置不兼容
 set smarttab                "Use 'shiftwidth' when using <Tab> 
                             "in front of a line. By default 
                             "it's used only for shift commands (<, >).
@@ -77,9 +78,7 @@ set emoji
 
 set updatetime=100          "异步时间
 
-
-
-"缩进
+" 缩进
 filetype indent on          "自适应语言的智能缩进
 set shiftwidth=4
 " set tabstop=2
@@ -123,6 +122,7 @@ set colorcolumn=80          "警示線
 set nofixendofline
 set cursorcolumn
 set cursorline
+
 " }}}___________________________________________________________________________
 
 "_______________________________________________________________________________
@@ -205,8 +205,8 @@ set formatoptions+=r
         "                                    Highlight all instances of 
         "                                    word under cursor, when idle. {{{
 "
-                    " Useful when studying strange source code.
-                " Type z/ to toggle highlighting on/off.
+                                    " Useful when studying strange source code.
+                                    " Type z/ to toggle highlighting on/off.
             " http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
@@ -231,9 +231,9 @@ function! AutoHighlightToggle()
 "                                                                   !!!error!!
 "                               " Clean all useless whitespace清理所有无用空白
 autocmd BufWritePre *
-    \ if !exists('g:skip_clean_whitespace') && !exists('b:skip_clean_whitespace')|
-    \   call lib#WithSavedState('%s/\s\+$//e')|
-    \ endif
+        \ if !exists('g:skip_clean_whitespace') && !exists('b:skip_clean_whitespace')|
+        \   call lib#WithSavedState('%s/\s\+$//e')|
+        \ endif
 
 " }}}___________________________________________________________________________
 

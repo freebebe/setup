@@ -1,7 +1,8 @@
 "_______________________________________________________________________________
-"                                                       plugin configuration {{{
+"                                                           plugin configuration
 
 let g:deoplete#enable_at_startup=1
+let g:deoplete#auto_completion_start_length = 1
 let g:deoplete#custom#option=({
     \ 'auto_complete_delay': 200,
     \ 'enable_smart_case': 1,
@@ -27,24 +28,28 @@ call deoplete#custom#source('_', 'matchers',
 call deoplete#custom#source('denite', 'matchers',
       \ ['matcher_full_fuzzy', 'matcher_length'])
 
-" }}}___________________________________________________________________________
-
 "_______________________________________________________________________________
-"                                                                       Plug {{{
-
-"---------------------------- ternjs {{
+"                                                                           Plug
+" filetype plugin indent on
+let g:deoplete#sources#ternjs#docs = 1
 let g:deoplete#sources#ternjs#types = 1
-    " Whether to include the types of the completions in the result data. Default: 0
+"     " Whether to include the types of the completions in the result data. Default: 0
 let g:deoplete#sources#ternjs#filetypes = [
                 \ 'jsx',
                 \ 'javascript.jsx',
-                \ 'vue',
-                \ '...'
+                \ 'vue'
                 \ ]
-"}}-----------------------------------
-"---------------------------- Rust {{
+" use tern_for_vim.
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+"}-----------------------------------
+"
+"---------------------------- Rust {
 " let g:racer_cmd = "/home/user/.cargo/bin/racer"
 " let g:racer_experimental_completer = 1
-"}}----------------------------------
-
-"}}}_______________________________________________________________________________
+"}----------------------------------
+"
+"---------------------------- ternjs {
+let g:deoplete#sources#jedi#server_timeout=100
+let g:deoplete#sources#jedi#statement_length=100
+let g:jedi#completions_enabled = 0
