@@ -2,14 +2,21 @@
 "---------plug-backup----------
 "------------------------------
     "syntax-snd
-        " Plug 'hail2u/vim-css3-syntax'               "css
-        " Plug 'leafgarland/typescript-vim'           "typescript
-        " Plug 'pangloss/vim-javascript'              "javascript
-            " Plug 'jparise/vim-graphql'                  "gatsby
-        " Plug 'slim-template/vim-slim'               "sy for vim
-        " Plug 'rust-lang/rust.vim'                   "rust
-        " Plug 'aliou/bats.vim'                       "bash
-        " Plug 'aklt/plantuml-syntax'                 "plantuml-----> mindMap
+    " Plug 'jparise/vim-graphql'                  "gatsby
+    " Plug 'slim-template/vim-slim'               "sy for vim
+    " " Plug 'JuliaEditorSupport/julia-vim'         , { 'for': 'julia' }
+    " Plug 'tbastos/vim-lua'                      , { 'for': 'lua' }
+    " Plug 'tpope/vim-liquid'                     , { 'for': 'html' }
+    " Plug 'rstacruz/sparkup'                     , { 'for': 'html', 'rtp': 'vim'}
+    " Plug 'posva/vim-vue'                        "vue
+    " Plug 'hail2u/vim-css3-syntax'               , { 'for': ['css', 'sass', 'scss', 'less', 'styl'] }     " css
+    " Plug 'leafgarland/typescript-vim'           , { 'for': 'typescript' }               "typescript
+    " Plug 'pangloss/vim-javascript'              , { 'for': 'javascript' }              "javascript
+    " Plug 'rust-lang/rust.vim'                   , { 'for': 'rust' }                     "rust
+    " Plug 'tmhedberg/SimpylFold'                 , { 'for': 'python' }
+    "
+    " Plug 'aliou/bats.vim'                       "bash
+    " Plug 'aklt/plantuml-syntax'                 "plantuml-----> mindMap
     "Plug 'davidhalter/jedi'                    "PYTHON
                                                 "python不全/字典:    https://github.com/davidhalter/jedi
     "Plug 'ctrlpvim/ctrlp.vim'                   "模糊搜索

@@ -1,21 +1,6 @@
 call plug#begin('~/.vim/plugged')
     Plug 'sheerun/vim-polyglot'                 "字典 to heavy
 "--------syntax | language
-    " Plug 'jparise/vim-graphql'                  "gatsby
-    " Plug 'slim-template/vim-slim'               "sy for vim
-    " " Plug 'JuliaEditorSupport/julia-vim'         , { 'for': 'julia' }
-    " Plug 'tbastos/vim-lua'                      , { 'for': 'lua' }
-    " Plug 'tpope/vim-liquid'                     , { 'for': 'html' }
-    " Plug 'rstacruz/sparkup'                     , { 'for': 'html', 'rtp': 'vim'}
-    " Plug 'posva/vim-vue'                        "vue
-    " Plug 'hail2u/vim-css3-syntax'               , { 'for': ['css', 'sass', 'scss', 'less', 'styl'] }     " css
-    " Plug 'leafgarland/typescript-vim'           , { 'for': 'typescript' }               "typescript
-    " Plug 'pangloss/vim-javascript'              , { 'for': 'javascript' }              "javascript
-    " Plug 'rust-lang/rust.vim'                   , { 'for': 'rust' }                     "rust
-    " Plug 'tmhedberg/SimpylFold'                 , { 'for': 'python' }
-
-    " Plug 'aliou/bats.vim'                       "bash
-    " Plug 'aklt/plantuml-syntax'                 "plantuml-----> mindMap
 " 士巴拿
     Plug 'preservim/tagbar'                     "预览大纲
     Plug 'rhysd/accelerated-jk'                 " speed j, k
@@ -24,9 +9,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'romainl/vim-cool'                     " Clear Search Highlights automatically
     Plug 'rhysd/clever-f.vim'                   " Improvement to 'f' and 'F', 't', and 'T'
     Plug 'tomtom/tcomment_vim'                  "注释
-            "gc | gcc | gC | 
+            "gc | gcc | gC |
     Plug 'mg979/vim-visual-multi'		            "批量修改: {v+[C-N]}
-    Plug 'kana/vim-operator-user' 
+    Plug 'kana/vim-operator-user'
         Plug 'rhysd/vim-operator-surround'      "test --()> (test)
             "sa (add)/| sd (delete)/| sr (rename)/
     Plug 'airblade/vim-gitgutter'               "git修改记录-异步
@@ -45,9 +30,9 @@ call plug#begin('~/.vim/plugged')
             " :CloseTagEnableBuffer
             " :CloseTagDisableBuffer
     Plug 'andymass/vim-matchup'                 "Paren/def&end highlighting
-    Plug 'christoomey/vim-tmux-navigator'       "tmux lunach
+    " Plug 'christoomey/vim-tmux-navigator'       "tmux lunach
     Plug 'mbbill/undotree'                      "undo history: [F5]
-    " Plug 'tpope/vim-eunuch'                     "filemanger ->  /:move//:mkdir//:rename//:delete//
+    Plug 'tpope/vim-eunuch'                     "filemanger ->  /:move//:mkdir//:rename//:delete//
     " Plug 'jreybert/vimagit'
     Plug 'wannesm/wmgraphviz.vim'				        "mind map
     " Plug 'lervag/vimtex'
@@ -60,7 +45,7 @@ call plug#begin('~/.vim/plugged')
     " Plug 'norcalli/nvim-colorizer.lua'          "css color
     Plug 'ap/vim-css-color'			            "css-color
 "new tag
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }           
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
                                                 " File finder, text finder, buffer finder
     Plug 'junegunn/fzf.vim'
     " Plug 'liuchengxu/vim-clap'
@@ -68,7 +53,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'godlygeek/tabular'                    "useful to line up text
     Plug 'Raimondi/delimitMate'                 "前后括制对齐
     Plug 'tyru/open-browser.vim'
-        Plug 'tyru/open-browser-github.vim'                    
+        Plug 'tyru/open-browser-github.vim'
     Plug 'turbio/bracey.vim'                    "live local-server
     " Plug 'jaxbot/browserlink.vim'
 "热熔胶
@@ -81,10 +66,9 @@ call plug#begin('~/.vim/plugged')
    "schemes
     " Plug '$HOME/.config/nvim/colors'
 "规程
-    " Plug 'dense-analysis/ale'                   , {'for': ['javascript.jsx', 'javascript', 'jsx', 'rust', 'css']} "异步语法检查: https://github.com/dense-analysis/ale
-    Plug 'neomake/neomake'                      "Ale-fastVersion
-    " Plug 'SirVer/ultisnips'                     "PYTHON补全
-      " Plug 'honza/vim-snippets'
+    " Plug 'dense-analysis/ale', {'for': ['javascript.jsx', 'javascript', 'jsx', 'rust', 'css']} "异步语法检查: https://github.com/dense-analysis/ale
+    Plug 'dense-analysis/ale'
+    " Plug 'neomake/neomake'                      "Ale-fastVersion
 "兔洞
     " Plug 'mileszs/ack.vim'                      "文本搜索：设置里并用t.s.s
 "server
@@ -106,7 +90,9 @@ call plug#begin('~/.vim/plugged')
     endif
 
     Plug 'Shougo/neosnippet.vim'
-    Plug 'Shougo/neosnippet-snippets'
+    " Plug 'SirVer/ultisnips'                     "PYTHON补全
+        Plug 'Shougo/neosnippet-snippets'
+        " Plug 'honza/vim-snippets'
     "
     " Plug 'Shougo/echodoc.vim'
     Plug 'Shougo/neocomplete.vim'
@@ -116,13 +102,12 @@ call plug#begin('~/.vim/plugged')
         " Plug 'deoplete-plugins/deoplete-lsp'          "server
         Plug 'Shougo/neco-syntax'                       "def
         Plug 'Shougo/neco-vim'                          "VimLang
-        " Plug 'deoplete-plugins/deoplete-jedi'           "python
+        Plug 'deoplete-plugins/deoplete-jedi'           "python
         " Plug 'mhartington/nvim-typescript', {'do': 'sh ~/.vim/plugged/nvim-typescript/install.sh'}              "typescript
             " Plug 'HerringtonDarkholme/yats.vim'   "for type: syntax file
-        " Plug 'racer-rust/vim-racer'                     "rust
-        " Plug 'wokalski/autocomplete-flow'             "js
+        Plug 'racer-rust/vim-racer'                     "rust
+        Plug 'wokalski/autocomplete-flow'             "js
         " Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn add global tern'}       "js
-        " Plug 'carlitux/deoplete-ternjs'
         " Plug 'deoplete-plugins/deoplete-go'            "go
 
 " wait for version 0.5 -------------|
@@ -138,7 +123,7 @@ call plug#begin('~/.vim/plugged')
     endif
     " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
         " Plug 'nvim-treesitter/playground'
-    " Plug 'neovim/nvim-lspconfig'                                                                                                            
+    " Plug 'neovim/nvim-lspconfig'
     " Plug 'nvim-lua/completion-nvim'
     " Plug 'hrsh7th/vim-vsnip"
 

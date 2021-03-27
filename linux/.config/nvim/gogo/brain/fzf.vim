@@ -1,7 +1,7 @@
 " let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore-vcs --hidden -g "!{node_modules,.git,tmp,storage}"'
 
-nnoremap <silent><c-g> :RG<cr>
-nnoremap <silent><c-f> :Files<CR>
+" nnoremap <silent><c-g> :RG<cr>
+" nnoremap <silent><c-f> :Files<CR>
 
 command! -bang -nargs=? -complete=dir Files
 \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--layout=reverse', '--margin=1,2']}), <bang>0)

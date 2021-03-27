@@ -55,11 +55,11 @@ set statusline+=%{GitStatus()}
 "
 "======================================When writing a buffer.                                                                                                                                                                   
 "-----------------------------------------------------------
-call neomake#configure#automake('w')                                                                                                                                                       
-" When writing a buffer, and on normal mode changes (after 750ms).                                                                                                                         
-call neomake#configure#automake('nw', 750)                                                                                                                                                 
-" When reading a buffer (after 1s), and when writing.                                                                                                                                      
-call neomake#configure#automake('rw', 1000)   
+" call neomake#configure#automake('w')                                                                                                                                                       
+" " When writing a buffer, and on normal mode changes (after 750ms).                                                                                                                         
+" call neomake#configure#automake('nw', 750)                                                                                                                                                 
+" " When reading a buffer (after 1s), and when writing.                                                                                                                                      
+" call neomake#configure#automake('rw', 1000)   
 
 
 "_______________________________________________________________________________
@@ -180,8 +180,4 @@ let g:ale_lint_delay = 1000
 "_______________________________________________________________________________
 "                                                                       neomake
 "
-" neomake errors {{{
-  highlight link NeomakeError DiffDelete
-  highlight link NeomakeWarning Question
-  highlight NeomakeErrorSign cterm=none ctermbg=none ctermfg=red
 "}}}

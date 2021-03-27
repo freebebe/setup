@@ -32,7 +32,7 @@ function! s:initialize_neocomplete()
   let dict.rust     = $HOME . '/.config/nvim/dict/rust.dict'
   let dict.js       = $HOME . '/.config/nvim/dict/js.dict'
   let dict.python   = $HOME . '/.config/nvim/dict/python.dict'
-  " let dict.lua      = $HOME . '/.config/nvim/dict/lua.dict'
+  let dict.lua      = $HOME . '/.config/nvim/ict/lua.dict'
   let dict.vim      = $HOME . '/.config/nvim/dict/vim.dict'
 
   "let g:neocomplete#sources#omni#input_patterns.ruby = '[^. *\t]\.\w*\'

@@ -35,7 +35,7 @@ nmap [a <Plug>(ale_previous_wrap)
 " nnoremap <silent><f8> :call AleFixResetView()<cr>
 
 "_______________________________________________________________________________
-"                                                                           tagbar
+"                                                                       tagbar
 nmap <F8> :TagbarToggle<CR>
 
 
@@ -52,23 +52,29 @@ endfunction
 "                                          <TAB>: completion.
 "------------------------------------------------------------
 
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ deoplete#manual_complete()
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ deoplete#manual_complete()
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 "                                    <S-TAB>: completion back.
 "------------------------------------------------------------
 
-" inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
 "
-" inoremap <expr><C-g>       deoplete#refresh()
-" inoremap <expr><C-e>       deoplete#cancel_popup()
-" inoremap <silent><expr><C-l>       deoplete#complete_common_string()
+inoremap <silent><expr><C-g>       deoplete#manual_complete('tabnine')
+inoremap <silent><expr><C-e>       deoplete#cancel_popup()
+inoremap <silent><expr><C-l>       deoplete#complete_common_string()
+
+"================<CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+  return pumvisible() ? deoplete#close_popup()."\<CR>" : "\<CR>"
+endfunction
 
 " call deoplete#custom#option('candidate_marks',
 "       \ ['A', 'S', 'D', 'F', 'G'])
@@ -86,3 +92,10 @@ imap <expr><C-l> pumvisible() ?
       \ : "<Plug>(neosnippet_expand_or_jump)"
 "imap <C-l> <Plug>(neosnippet_expand_or_jump)
 smap <C-l> <Plug>(neosnippet_expand_or_jump)
+
+"_______________________________________________________________________________
+"                                                                           fzf
+"
+nnoremap <silent><c-g> :RG<cr>
+nnoremap <silent><c-f> :Files<CR>
+

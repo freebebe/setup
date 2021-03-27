@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/home/goy0/Desktop/class/vue/vite/1/docs/views'
 let g:netrw_dirhist_2='/home/goy0/.config/nvim'
 let g:netrw_dirhist_1='/home/goy0/.config/nvim/function'
 let g:netrw_dirhist_0='/home/goy0/.config/i3'
@@ -8,5 +9,4 @@ let g:netrw_dirhist_8='/home/goy0/.config/i3status'
 let g:netrw_dirhist_7='/home/goy0/.ssh'
 let g:netrw_dirhist_6='/home/goy0/git/system/setup/tips'
 let g:netrw_dirhist_5='/home/goy0/.config/nvim/gogo'
-let g:netrw_dirhist_4='/home/goy0/.config/nvim/gogo/brain'
-let g:netrw_dirhist_3='/home/goy0/.config/i3/i3status'
+let g:netrw_dirhist_4='/home/goy0/.config/nvim/snippets'
