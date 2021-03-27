@@ -79,6 +79,7 @@ call plug#begin('~/.vim/plugged')
 "shou
     " Plug 'https://github.com/Quramy/tsuquyomi'    "ts
     " Plug 'prabirshrestha/asyncomplete.vim'
+    " Plug 'nvim-lua/completion-nvim'               "deoplete -> LuaVersion
     Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }                    "目录树
         Plug 'kristijanhusak/defx-git'
     Plug 'Shougo/denite.nvim'
@@ -89,13 +90,15 @@ call plug#begin('~/.vim/plugged')
         Plug 'Shougo/deoplete.nvim'
     endif
 
+    Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/vim-vsnip-integ'
     Plug 'Shougo/neosnippet.vim'
     " Plug 'SirVer/ultisnips'                     "PYTHON补全
         Plug 'Shougo/neosnippet-snippets'
         " Plug 'honza/vim-snippets'
     "
     " Plug 'Shougo/echodoc.vim'
-    Plug 'Shougo/neocomplete.vim'
+    " Plug 'Shougo/neocomplete.vim'
     Plug 'Shougo/context_filetype.vim'
 "---------------------------pakage
         " Plug 'autozimu/LanguageClient-neovim'           "server
@@ -106,7 +109,7 @@ call plug#begin('~/.vim/plugged')
         " Plug 'mhartington/nvim-typescript', {'do': 'sh ~/.vim/plugged/nvim-typescript/install.sh'}              "typescript
             " Plug 'HerringtonDarkholme/yats.vim'   "for type: syntax file
         Plug 'racer-rust/vim-racer'                     "rust
-        Plug 'wokalski/autocomplete-flow'             "js
+        " Plug 'wokalski/autocomplete-flow'             "js
         " Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn add global tern'}       "js
         " Plug 'deoplete-plugins/deoplete-go'            "go
 
