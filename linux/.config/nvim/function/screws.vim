@@ -29,6 +29,7 @@ map <silent>sr <Plug>(operator-surround-replace)
 
 "_______________________________________________________________________________
 "                                                                           ale
+" nmap <Leader>al <Plug>(ale_next)
 nnoremap <silent><f9> :ALEFix<cr>
 nmap ]a <Plug>(ale_next_wrap)
 nmap [a <Plug>(ale_previous_wrap)

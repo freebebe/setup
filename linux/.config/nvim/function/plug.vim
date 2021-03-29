@@ -67,7 +67,7 @@ call plug#begin('~/.vim/plugged')
     " Plug '$HOME/.config/nvim/colors'
 "规程
     " Plug 'dense-analysis/ale', {'for': ['javascript.jsx', 'javascript', 'jsx', 'rust', 'css']} "异步语法检查: https://github.com/dense-analysis/ale
-    Plug 'dense-analysis/ale'
+    " Plug 'dense-analysis/ale'
     " Plug 'neomake/neomake'                      "Ale-fastVersion
 "兔洞
     " Plug 'mileszs/ack.vim'                      "文本搜索：设置里并用t.s.s
@@ -76,6 +76,11 @@ call plug#begin('~/.vim/plugged')
     " Plug 'Quramy/tsuquyomi'                     "ts
     " Plug 'mxw/vim-jsx'                          "js
     " Plug 'jelera/vim-javascript-syntax'         "js
+"---------------------------lsp
+    Plug 'prabirshrestha/vim-lsp'
+    Plug 'mattn/vim-lsp-settings'
+    Plug 'lighttiger2505/deoplete-vim-lsp'
+
 "shou
     " Plug 'https://github.com/Quramy/tsuquyomi'    "ts
     " Plug 'prabirshrestha/asyncomplete.vim'
@@ -90,10 +95,10 @@ call plug#begin('~/.vim/plugged')
         Plug 'Shougo/deoplete.nvim'
     endif
 
-    Plug 'hrsh7th/vim-vsnip'
-    Plug 'hrsh7th/vim-vsnip-integ'
+    " Plug 'hrsh7th/vim-vsnip'
+    " Plug 'hrsh7th/vim-vsnip-integ'
     Plug 'Shougo/neosnippet.vim'
-    " Plug 'SirVer/ultisnips'                     "PYTHON补全
+    " Plug 'SirVer/ultisnips'                     "snippets -> neosnippet-BKUP
         Plug 'Shougo/neosnippet-snippets'
         " Plug 'honza/vim-snippets'
     "
@@ -103,12 +108,12 @@ call plug#begin('~/.vim/plugged')
 "---------------------------pakage
         " Plug 'autozimu/LanguageClient-neovim'           "server
         " Plug 'deoplete-plugins/deoplete-lsp'          "server
-        Plug 'Shougo/neco-syntax'                       "def
-        Plug 'Shougo/neco-vim'                          "VimLang
-        Plug 'deoplete-plugins/deoplete-jedi'           "python
+        " Plug 'Shougo/neco-syntax'                       "def
+        " Plug 'Shougo/neco-vim'                          "VimLang
+        " Plug 'deoplete-plugins/deoplete-jedi'           "python
         " Plug 'mhartington/nvim-typescript', {'do': 'sh ~/.vim/plugged/nvim-typescript/install.sh'}              "typescript
             " Plug 'HerringtonDarkholme/yats.vim'   "for type: syntax file
-        Plug 'racer-rust/vim-racer'                     "rust
+        " Plug 'racer-rust/vim-racer'                     "rust
         " Plug 'wokalski/autocomplete-flow'             "js
         " Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn add global tern'}       "js
         " Plug 'deoplete-plugins/deoplete-go'            "go

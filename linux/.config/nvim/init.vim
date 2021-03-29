@@ -18,7 +18,7 @@ source $HOME/.config/nvim/function/screws.vim
 "==============================ShouGo-Link
 " source $HOME/.config/nvim/gogo/finger/deoplete_rc.vim
 " source $HOME/.config/nvim/gogo/finger/deo-neo.vim
-source $HOME/.config/nvim/gogo/finger/deo-neo_rc.vim
+" source $HOME/.config/nvim/gogo/finger/deo-neo_rc.vim
 source $HOME/.config/nvim/gogo/finger/deoRc.vim
 source $HOME/.config/nvim/gogo/finger/denite.vim
 source $HOME/.config/nvim/gogo/finger/defx.vim
@@ -33,8 +33,8 @@ source $HOME/.config/nvim/gogo/finger/defx.vim
 
 " luafile $HOME/.config/nvim/lua/plug/fzf.lua
 source $HOME/.config/nvim/gogo/brain/fzf.vim
-" source $HOME/.config/nvim/gogo/brain/ale.vim
 " source $HOME/.config/nvim/gogo/brain/neomake.vim
+" source $HOME/.config/nvim/gogo/brain/ale.vim
 
 source $HOME/.config/nvim/gogo/hands/lightline.vim
 source $HOME/.config/nvim/gogo/hands/openbrowser_rc.vim
