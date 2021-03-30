@@ -358,13 +358,15 @@
 exec -no-startup-id xrandr --outpu eDP-1 --primary      
 bar {
         i3bar_command i3bar
+        # status_command i3blocks
+        # status_command py3status -c $HOME/.config/i3status/config
         status_command i3status --config $HOME/.config/i3status/config
             status_command exec $HOME/.config/i3status/contrib/net-speed.sh
         # status_command py3status -c $HOME/.config/py3status/config
         # output eDP-1
         tray_output eDP-1 
         # tray_output primary 
-        position top
+        # position top
         # font Monaco:h10 noanti 6, icons 6
         # font pango: 10px
         font Terminus (TTF) 20px

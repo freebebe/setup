@@ -48,9 +48,10 @@ source $HOME/.config/nvim/gogo/hands/openbrowser_rc.vim
 ">>>>>>
 " set background=dark
   " let g:lightline = {'colorscheme': 'iceberg'}
-colo whiteBlue      "local color 
+" colo whiteBlue      "local color 
 " colo dicul
-" colo approid
+colo approid
+" colo codedark
 
 ">>>>>>
 "color    for outside

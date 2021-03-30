@@ -1,6 +1,18 @@
 call plug#begin('~/.vim/plugged')
-    Plug 'sheerun/vim-polyglot'                 "字典 to heavy
+    " Plug 'sheerun/vim-polyglot'                 "字典 to heavy
 "--------syntax | language
+    Plug 'jparise/vim-graphql'                  "gatsby
+    Plug 'slim-template/vim-slim'               "sy for vim
+    " Plug 'JuliaEditorSupport/julia-vim'         , { 'for': 'julia' }
+    Plug 'tbastos/vim-lua'                      , { 'for': 'lua' }
+    Plug 'tpope/vim-liquid'                     , { 'for': 'html' }
+    Plug 'rstacruz/sparkup'                     , { 'for': 'html', 'rtp': 'vim'}
+    Plug 'posva/vim-vue'                        "vue
+    Plug 'hail2u/vim-css3-syntax'               , { 'for': ['css', 'sass', 'scss', 'less', 'styl'] }     " css
+    Plug 'leafgarland/typescript-vim'           , { 'for': 'typescript' }               "typescript
+    Plug 'pangloss/vim-javascript'              , { 'for': 'javascript' }              "javascript
+    Plug 'rust-lang/rust.vim'                   , { 'for': 'rust' }                     "rust
+    Plug 'tmhedberg/SimpylFold'                 , { 'for': 'python' }
 " 士巴拿
     Plug 'preservim/tagbar'                     "预览大纲
     Plug 'rhysd/accelerated-jk'                 " speed j, k
