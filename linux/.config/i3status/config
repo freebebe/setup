@@ -81,7 +81,7 @@ battery 0 {
     # status_chr = "⚡"
     # status_bat = ""
     # status_full = "☻"
-        low_threshold = 18
+    low_threshold = 25
     threshold_type = time
 }
 
@@ -150,5 +150,4 @@ wireless wlan0 {
 run_watch DHCP {
     pidfile = "/var/run/dhclient*.pid"
 }
-
 

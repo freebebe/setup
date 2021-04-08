@@ -17,6 +17,7 @@
     "
     " Plug 'aliou/bats.vim'                       "bash
     " Plug 'aklt/plantuml-syntax'                 "plantuml-----> mindMap
+    " Plug 'mileszs/ack.vim'                      "文本搜索：设置里并用t.s.s
     "Plug 'davidhalter/jedi'                    "PYTHON
                                                 "python不全/字典:    https://github.com/davidhalter/jedi
     "Plug 'ctrlpvim/ctrlp.vim'                   "模糊搜索

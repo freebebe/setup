@@ -14,13 +14,6 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 nnoremap <F5> :UndotreeToggle<CR>
 
 "_______________________________________________________________________________
-"                                                                 accelerated-jk
-" nmap j <Plug>(accelerated_jk_gj)
-" nmap k <Plug>(accelerated_jk_gk)
-nmap j <Plug>(accelerated_jk_gj_position)
-nmap k <Plug>(accelerated_jk_gk_position)
-
-"_______________________________________________________________________________
 "                                                               operator-surround
 " operator mappings
 map <silent>sa <Plug>(operator-surround-append)
@@ -38,7 +31,6 @@ nmap [a <Plug>(ale_previous_wrap)
 "_______________________________________________________________________________
 "                                                                       tagbar
 nmap <F8> :TagbarToggle<CR>
-
 
 "_______________________________________________________________________________
 "                                                                       deoplete
@@ -84,6 +76,15 @@ endfunction
 " inoremap <expr>D       pumvisible() ? deoplete#insert_candidate(2) : 'D'
 " inoremap <expr>F       pumvisible() ? deoplete#insert_candidate(3) : 'F'
 " inoremap <expr>G       pumvisible() ? deoplete#insert_candidate(4) : 'G'
+
+"_______________________________________________________________________________
+"                                                                           def
+"
+" nnoremap <silent> :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+nnoremap vs :vs<CR>
+            \:<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+nnoremap sp :sp<CR>
+            \:<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
 
 "_______________________________________________________________________________
 "                                                                       neosnippet

@@ -34,7 +34,9 @@ autocmd Filetype javascript setlocal sw=2 sts=2 expandtab
     " Flow
     au BufNewFile,BufRead *.flow set filetype=javascript
 
-" 格式
+"_______________________________________________________________________________
+"                                                                   format
+
 " inside_be_wiki-PLUG   |  set nocompatible            "设置不兼容
 set smarttab                "Use 'shiftwidth' when using <Tab> 
                             "in front of a line. By default 
@@ -82,6 +84,9 @@ set updatetime=100          "异步时间
 filetype indent on          "自适应语言的智能缩进
 set shiftwidth=4
 " set tabstop=2
+
+set list
+" set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 " }}}___________________________________________________________________________
 
 "_______________________________________________________________________________
@@ -204,7 +209,6 @@ set formatoptions+=r
 "_______________________________________________________________________________
         "                                    Highlight all instances of 
         "                                    word under cursor, when idle. {{{
-"
                                     " Useful when studying strange source code.
                                     " Type z/ to toggle highlighting on/off.
             " http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
@@ -230,11 +234,11 @@ function! AutoHighlightToggle()
 
 "                                                                   !!!error!!
 "                               " Clean all useless whitespace清理所有无用空白
-autocmd BufWritePre *
-        \ if !exists('g:skip_clean_whitespace') && !exists('b:skip_clean_whitespace')|
-        \   call lib#WithSavedState('%s/\s\+$//e')|
-        \ endif
-
+" autocmd BufWritePre *
+"         \ if !exists('g:skip_clean_whitespace') && !exists('b:skip_clean_whitespace')|
+"         \   call lib#WithSavedState('%s/\s\+$//e')|
+"         \ endif
+"
 " }}}___________________________________________________________________________
 
 "_______________________________________________________________________________

@@ -12,6 +12,9 @@ cp $HOME/.config/nvim/init.vim $HOME/git/vag_setup/setup/.config/nvim/
 cp -r $HOME/.config/nvim/gogo/ $HOME/git/vag_setup/setup/.config/nvim/
 cp -r $HOME/.config/nvim/function/ $HOME/git/vag_setup/setup/.config/nvim/
 cp -r $HOME/.config/nvim/colors $HOME/git/vag_setup/setup/.config/nvim/
+cp -r $HOME/.config/nvim/lua $HOME/git/vag_setup/setup/.config/nvim/
+cp -r $HOME/.config/nvim/snippets $HOME/git/vag_setup/setup/.config/nvim/
+cp -r $HOME/.config/nvim/dict $HOME/git/vag_setup/setup/.config/nvim/
 
 # config package
 cp 

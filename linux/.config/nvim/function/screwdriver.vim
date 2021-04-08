@@ -92,7 +92,7 @@ let g:matchup_matchparen_offscreen = {}
 "_______________________________________________________________________________
 "                                                                           ack
 
-let g:ackprg = 'ag --nogroup --nocolor --column'
+" let g:ackprg = 'ag --nogroup --nocolor --column'
 "let g:ackprg = 'ag --vimgrep'  (相同作用)
 
 "_______________________________________________________________________________

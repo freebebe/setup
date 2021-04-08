@@ -1,21 +1,9 @@
 call plug#begin('~/.vim/plugged')
-    " Plug 'sheerun/vim-polyglot'                 "字典 to heavy
-"--------syntax | language
-    Plug 'jparise/vim-graphql'                  "gatsby
-    Plug 'slim-template/vim-slim'               "sy for vim
-    " Plug 'JuliaEditorSupport/julia-vim'         , { 'for': 'julia' }
-    Plug 'tbastos/vim-lua'                      , { 'for': 'lua' }
-    Plug 'tpope/vim-liquid'                     , { 'for': 'html' }
-    Plug 'rstacruz/sparkup'                     , { 'for': 'html', 'rtp': 'vim'}
-    Plug 'posva/vim-vue'                        "vue
-    Plug 'hail2u/vim-css3-syntax'               , { 'for': ['css', 'sass', 'scss', 'less', 'styl'] }     " css
-    Plug 'leafgarland/typescript-vim'           , { 'for': 'typescript' }               "typescript
-    Plug 'pangloss/vim-javascript'              , { 'for': 'javascript' }              "javascript
-    Plug 'rust-lang/rust.vim'                   , { 'for': 'rust' }                     "rust
-    Plug 'tmhedberg/SimpylFold'                 , { 'for': 'python' }
+    Plug 'sheerun/vim-polyglot'                 "字典 to heavy
+"---------syntax | language
 " 士巴拿
     Plug 'preservim/tagbar'                     "预览大纲
-    Plug 'rhysd/accelerated-jk'                 " speed j, k
+    " Plug 'rhysd/accelerated-jk'                 " speed j, k
     Plug 'wincent/ferret'                       " Enhanced Multi-file search and replace 光标下字符简易全局替换
     Plug 'tommcdo/vim-lion'                     " Align characters across lines 对齐运算符
     Plug 'romainl/vim-cool'                     " Clear Search Highlights automatically
@@ -46,7 +34,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'mbbill/undotree'                      "undo history: [F5]
     Plug 'tpope/vim-eunuch'                     "filemanger ->  /:move//:mkdir//:rename//:delete//
     " Plug 'jreybert/vimagit'
-    Plug 'wannesm/wmgraphviz.vim'				        "mind map
+    Plug 'wannesm/wmgraphviz.vim'                "mind map
     " Plug 'lervag/vimtex'
     " Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }         "online
     Plug 'Vimjas/vim-python-pep8-indent'        "自动/定义缩进
@@ -54,8 +42,8 @@ call plug#begin('~/.vim/plugged')
     " Plug 'RRethy/vim-illuminate'                "高亮方标所在目标全文位置
     Plug 'itchyny/vim-cursorword'               "smpo
     Plug 'mhinz/vim-signify'                    "verion diff
-    " Plug 'norcalli/nvim-colorizer.lua'          "css color
-    Plug 'ap/vim-css-color'			            "css-color
+    Plug 'norcalli/nvim-colorizer.lua'          "css color
+    " Plug 'ap/vim-css-color'			            "css-color
 "new tag
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
                                                 " File finder, text finder, buffer finder
@@ -74,15 +62,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'editorconfig/editorconfig-vim'        "team统一风格
 "油漆
     Plug 'itchyny/lightline.vim'			    "状态
-    Plug 'junegunn/goyo.vim'                    "简化阅读
+    " Plug 'junegunn/goyo.vim'                    "简化阅读
    "schemes
     " Plug '$HOME/.config/nvim/colors'
 "规程
     " Plug 'dense-analysis/ale', {'for': ['javascript.jsx', 'javascript', 'jsx', 'rust', 'css']} "异步语法检查: https://github.com/dense-analysis/ale
     " Plug 'dense-analysis/ale'
     " Plug 'neomake/neomake'                      "Ale-fastVersion
-"兔洞
-    " Plug 'mileszs/ack.vim'                      "文本搜索：设置里并用t.s.s
 "server
     " Plug 'rust-lang/cargo'                      "rust
     " Plug 'Quramy/tsuquyomi'                     "ts
@@ -127,10 +113,12 @@ call plug#begin('~/.vim/plugged')
             " Plug 'HerringtonDarkholme/yats.vim'   "for type: syntax file
         " Plug 'racer-rust/vim-racer'                     "rust
         " Plug 'wokalski/autocomplete-flow'             "js
-        " Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn add global tern'}       "js
+        " Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn install -g tern'}       "js
         " Plug 'deoplete-plugins/deoplete-go'            "go
 
-" wait for version 0.5 -------------|
+"   ＿人人人人人人人人人人人＿
+"   ＞ wait for version 0.5 ＜
+"   ￣Y^Y^Y^Y^Y^Y^Y^Y^Y^Y^Y ￣
 
     if has('nvim-0.5')
         Plug 'Shougo/deoplete-lsp'                                  " Autocompletion

@@ -1,4 +1,32 @@
-" 调色器
+scriptencoding utf-8
+
+set background=dark
+hi clear
+if exists("syntax_on")
+    syntax reset
+endif
+let g:colors_name="codedark"
+
+if &t_Co >= 256
+    let g:codedark_term256=1
+elseif !exists("g:codedark_term256")
+    let g:codedark_term256=0
+endif
+fun! <sid>hi(group, fg, bg, attr, sp)
+  if !empty(a:fg)
+    exec "hi " . a:group . " guifg=" . a:fg.gui . " ctermfg=" . (g:codedark_term256 ? a:fg.cterm256 : a:fg.cterm)
+  endif
+  if !empty(a:bg)
+    exec "hi " . a:group . " guibg=" . a:bg.gui . " ctermbg=" . (g:codedark_term256 ? a:bg.cterm256 : a:bg.cterm)
+  endif
+  if a:attr != ""
+    exec "hi " . a:group . " gui=" . a:attr . " cterm=" . a:attr
+  endif
+  if !empty(a:sp)
+    exec "hi " . a:group . " guisp=" . a:sp.gui
+  endif
+endfun
+"
 " Default GUI Colours
 let s:foreground = "222222"
 let s:background = "ffffff"
@@ -17,6 +45,17 @@ let s:window     = "efefef"
 set background=light
 hi clear
 syntax reset
+
+" Syntax colors:
+
+if !exists("g:codedark_conservative")
+    let g:codedark_conservative=0
+endif
+
+" Legacy groups for official git.vim and diff.vim syntax
+hi! link diffAdded DiffAdd
+hi! link diffChanged DiffChange
+hi! link diffRemoved DiffDelete
 
 " let g:colors_name = "light-delight"
 let g:colors_name = "whileBlue"

@@ -38,11 +38,11 @@ call deoplete#custom#source('denite', 'matchers',
 " filetype plugin indent on
 " let g:deoplete#sources#ternjs#docs = 1
 " let g:deoplete#sources#ternjs#types = 1
-" " "     " Whether to include the types of the completions in the result data. Default: 0
-" call ternjs#Enable()
-"
+" " " "     " Whether to include the types of the completions in the result data. Default: 0
+" " call ternjs#Enable()
+" "
 " let g:deoplete#sources#ternjs#tern_bin = get(g:, 'deoplete#sources#ternjs#tern_bin', 'tern')
-"
+" "
 " if !exists('g:tern#filetypes')
 " let g:tern#filetypes = [
 "             \ 'jsx',

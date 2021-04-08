@@ -38,7 +38,8 @@
 # font
     # font pango:Source Code Pro 9
     # font pango:Ubuntu Nomo 12px
-    font Terminus (TTF)
+    # font pango:Roboto 9
+    font pango:Terminus (TTF) 9
 
 # bakcground
     exec --no-startup-id feh --bg-fill $HOME/Pictures/bkground/background_bg2.png
@@ -52,7 +53,7 @@
 #}}}____________________________________________________________________________
 
 #_______________________________________________________________________________
-#                                                               Window-manager{{{
+#                                                              Window-manager{{{
 #
 
 # Move workspace to another display
@@ -245,7 +246,7 @@
 #kill_GUI
     bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 #xpad
-    # bindsym $mod+F1 --no-startup-id xpad
+    bindsym $mod+F1 exec --no-startup-id xpad -t
 #ranger->file
     # bindsym $mod+F3 exec konsole  -- ranger path/to/Documents/uni2019-20
     # bindsym $mod+F4 exec thunar path/to/Documents/uni2019-20
@@ -278,8 +279,8 @@
     # for_window [class="VirtualBox"] resize set 800 600
     # for_window [class="konsole"] floating enable
     # for_window [class="konsole"] resize set 600 400
-    # for_window [class="kitty"] floating enable
-    # for_window [class="kitty"] resize set 800 480
+    for_window [class="kitty"] floating enable
+    for_window [class="kitty"] resize set 800 480
     for_window [class="yakuake"] floating enable
     for_window [class="systemsettings"] floating enable
     for_window [class="keepassxc"] floating enable
@@ -351,15 +352,15 @@
 #}}}____________________________________________________________________________
 
 
-#_______________________________________________________________________________                             
+#_______________________________________________________________________________
 #                                                                       bar{{{
 #
 
-exec -no-startup-id xrandr --outpu eDP-1 --primary      
+exec -no-startup-id xrandr --outpu eDP-1 --primary
 bar {
         i3bar_command i3bar
-        # status_command i3blocks
-        # status_command py3status -c $HOME/.config/i3status/config
+        # status_command i3blocks -c $HOME/.config/i3blocks/config
+        # status_command py3status -c $HOME/.config/i3status/i3pystauts.conf
         status_command i3status --config $HOME/.config/i3status/config
             status_command exec $HOME/.config/i3status/contrib/net-speed.sh
         # status_command py3status -c $HOME/.config/py3status/config
@@ -369,13 +370,15 @@ bar {
         # position top
         # font Monaco:h10 noanti 6, icons 6
         # font pango: 10px
-        font Terminus (TTF) 20px
+        font pango: Terminus (TTF) 8
+        # font pango:Roboto 12px
         # font pango:Source Code Pro 7, Icons 7
             # font pango:DejaVu Sans Mono 8, Icons 9
         # font pango:Ubuntu Nomo 8, Icons 8
         # font pango:Ubuntu Nomo 12px
         colors {
-            # background       #131313
+            # background       #171e2e
+            statusline          #e6e6e6
             urgent_workspace #ffffff #ff0000
         }
 }

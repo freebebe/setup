@@ -39,7 +39,8 @@ bindsym $mod+c layout toggle split
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:DejaVu Sans Mono 8
-font pango:Source Code Pro 8
+# font pango:Source Code Pro 8
+font pango:Terminus (TTF) 9
 
 #bakcground
 # exec --no-startup-id feh --bg-fill $HOME/Pictures/bkground/background.png
@@ -354,7 +355,8 @@ bar {
         # output eDP-1
         # tray_output eDP-1
         # position top
-        font pango:Source Code Pro 8, Icons 8
+        # font pango:Source Code Pro 8, Icons 8
+        font pango: Terminus (TTF) 10
             # font pango:DejaVu Sans Mono 9, Icons 9
         # font pango:Ubuntu Nomo 8, Icons 8
         colors {
