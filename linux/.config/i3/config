@@ -1,8 +1,16 @@
 #_______________________________________________________________________________
+#                                                                       unkwon
+    workspace_auto_back_and_forth yes
+    force_display_urgency_hint 0 ms
+    focus_on_window_activation urgent
+
+    floating_minimum_size -1 x -1
+    floating_maximum_size -1 x -1
+
+#_______________________________________________________________________________
 #                                                                   Variables{{{
-#
 # (No) Title Bars
-    for_window [class="^.*"] border pixel 1
+    for_window [class="^.*"] border pixel 3
 
     # $mod = super
     # mod1 = alt
@@ -16,7 +24,7 @@
     # hide_edge_borders none
     default_border pixel 2 
     # default_floating_border none
-    # workspace_layout stacking
+    workspace_layout stacking
 
     #new_window_option
     #default_orientation horizontal|vertical|auto
@@ -27,10 +35,8 @@
     # bindsym $mod+o border 1pixel
     bindsym $mod+b border toggle
 
-# lock screen
-    # bindsym $mod+l exec --no-startup-id xsecurelock
-
 # foucus follows mouse(cursor)
+    focus_follows_mouse yes
 
 # change container layout (stacked, tabbed, toggle split)
     bindsym $mod+c layout toggle split
@@ -39,7 +45,7 @@
     # font pango:Source Code Pro 9
     # font pango:Ubuntu Nomo 12px
     # font pango:Roboto 9
-    font pango:Terminus (TTF) 9
+    font pango:Terminus (TTF) 10
 
 # bakcground
     exec --no-startup-id feh --bg-fill $HOME/Pictures/bkground/background_bg2.png
@@ -48,7 +54,7 @@
     floating_modifier mod1
 
 # toupad -> at more size with someGithub link setup
-    # exec --no-startup-id synclient TapButton0=0 
+    exec --no-startup-id synclient TapButton0=0 
 
 #}}}____________________________________________________________________________
 
@@ -103,6 +109,24 @@
 
 # switch to workspace with urgent window automatically
     for_window [urgent=latest] focus
+
+# Set shut down, restart and locking features
+    bindsym $mod+Shift+Ctrl+0 mode "$mode_system"
+    set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+    mode "$mode_system" {
+        bindsym l exec --no-startup-id i3exit lock, mode "default"
+        bindsym s exec --no-startup-id i3exit suspend, mode "default"
+        bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+        bindsym e exec --no-startup-id i3exit logout, mode "default"
+        bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+        bindsym r exec --no-startup-id i3exit reboot, mode "default"
+        bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+        # exit system mode: "Enter" or "Escape"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+
 
 #}}}____________________________________________________________________________
 
@@ -185,9 +209,9 @@
 
 # focus the child container
     #bindsym $mod+d focus child
-
+#
 #}}}____________________________________________________________________________
-
+#
 #_______________________________________________________________________________
 #                                                               key_building{{{
 #
@@ -202,7 +226,7 @@
 
 # start dmenu (a program launcher)
     # bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "glue_pro_blue" -font "mono 15"
-    bindsym $mod+d exec --no-startup-id rofi -show drun -location 1 -width 100 -lines 10 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Source Code Pro 9" -theme "$HOME/.config/rofi/nixpulvis.rasi" -show-icons
+    bindsym $mod+d exec --no-startup-id rofi -show drun -location 1 -width 100 -lines 10 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Terminus (TTF) 10" -theme "$HOME/.config/rofi/nixpulvis.rasi" -show-icons
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
@@ -215,8 +239,8 @@
     # bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
 
 # Screen brightness controls with notification
-    # bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'" 
-    # bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
+    bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'"
+    bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
 
     bindsym XF86AudioPlay exec playerctl play
     bindsym XF86AudioPause exec playerctl pause
@@ -231,77 +255,106 @@
     bindsym $mod+e exec --no-startup-id dolphin
 # ranger with konsole
 # bindsym $mod+Shift+e konsole -e ranger
-#image_key
+# image_key
     bindsym Print exec --no-startup-id flameshot gui    #flameshot
 #
     bindsym $mod+alt+t exec --no-startup-id compton -b
 # drop down terminal
     bindsym $mod+Return exec --no-startup-id yakuake
-#WMonky
+# WMonky
     bindsym $mod+F6 exec /opt/writemonkey3/nw
-#firefox
+# firefox
     bindsym $mod+F2 exec ~/.qStart/firefox_firejail.sh
-#dmenu(backup) 
+# dmenu(backup) 
 # bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-#kill_GUI
+# kill_GUI
     bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-#xpad
+# xpad
     bindsym $mod+F1 exec --no-startup-id xpad -t
-#ranger->file
+# ranger->file
     # bindsym $mod+F3 exec konsole  -- ranger path/to/Documents/uni2019-20
     # bindsym $mod+F4 exec thunar path/to/Documents/uni2019-20
     # bindsym $mod+F1 exec thunar ~/Downloads
+
+# lock screen
+    bindsym $mod+l exec --no-startup-id xsecurelock
+
+# sleep
+    bindsym $mod+Shift+Ctrl+l exec --no-startup-id $HOME/.config/i3/tools/sleep.sh
+# external screen
+
+# both
+    bindsym $mod+Shift+b exec --no-startup-id $HOME/.config/i3/screenlayouts/externalRight.sh
+# #my
+    bindsym $mod+Shift+m exec --no-startup-id $HOME/.config/i3/screenlayouts/only.sh
+# #only ext
+    bindsym $mod+Shift+n exec --no-startup-id $HOME/.config/i3/screenlayouts/only_top.sh
 
 #}}}____________________________________________________________________________
 
 #_______________________________________________________________________________
 #                                                               applications{{{
-#                                                               
+#
 
     # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
     exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-    # exec --no-startup-id xmodmap ~/.Xmodmap
-    # exec --no-startup-id xpad
+    exec --no-startup-id xpad
     # exec --no-startup-id dropbox
+    exec --no-startup-id dropbox stop && dbus-launch dropbox start -i
     exec --no-startup-id flameshot              # face_your_screen_face
     exec --no-startup-id i3-confg-wizard
-    exec_always dropbox
+    # exec_always dropbox
     # exec --no-startup-id conky
     # exec --no-startup-id volumeicon
     exec --no-startup-id dunst                  # Notification
+
+    exec --no-startup-id nm-applet
+    exec --no-startup-id blueman-applet
+    exec --no-startup-id clipit                       #copy_data
+    # exec_always xfce4-power-manager
+    exec --no-startup-id xfce4-power-manager
+
+#_____________________________
+#                       run'ap
+#
+    # exec --no-startup-id xmodmap $HOME/.Xmodmap
+    exec xmodmap $HOME/.Xmodmap
+    exec $HOME/.config/i3/tools/blockWIFI.sh
 
 #______________________app_win_manger{{{
 
 # Applications behaving as "pop ups" are set to be always floating
 #  i.e. popup, do stuff, close
 # To get WM_CLASS and WM_TITLE values, on X run "xprop"
+    for_window [window_role="pop-up"] floating enable
     # for_window [class="VirtualBox"] floating enable
     # for_window [class="VirtualBox"] resize set 800 600
     # for_window [class="konsole"] floating enable
     # for_window [class="konsole"] resize set 600 400
-    for_window [class="kitty"] floating enable
-    for_window [class="kitty"] resize set 800 480
+    # for_window [class="kitty"] floating enable
+    # for_window [class="kitty"] resize set 800 480
+    for_window [class="(?i)blueman"] floating enable
     for_window [class="yakuake"] floating enable
     for_window [class="systemsettings"] floating enable
     for_window [class="keepassxc"] floating enable
-    for_window [class="Thunar"] floating enable 
+    for_window [class="Thunar"] floating enable
     for_window [class="uget"] floating enable
     for_window [class="Blueman-manager"] floating enable 
-    for_window [class="vlc"] floating enable 
-    for_window [class="mpv"] floating enable 
+    for_window [class="vlc"] floating enable
+    for_window [class="mpv"] floating enable
     for_window [class="mpv"] resize set 600 400
     for_window [class="mpv"] $FLOAT-noborder
     for_window [class="eog"] floating enable 
     for_window [class="Timeset-gui"] floating enable border normal
     for_window [class="xpad"] floating enable 
-    for_window [class="Zathura"] floating enable 
+    for_window [class="Zathura"] floating enable
     for_window [class="feh"] floating enable
     for_window [class="feh"] $FLOAT-noborder
     for_window [class="feh"] resize set 600 400
-    for_window [class="eog"] floating enable 
-    for_window [class="chromium"] floating enable 
-    for_window [class="Okular"] floating enable 
-    for_window [class="Gpick"] floating enable 
+    for_window [class="eog"] floating enable
+    for_window [class="chromium"] floating enable
+    for_window [class="Okular"] floating enable
+    for_window [class="Gpick"] floating enable
 
 #w>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     for_window [class="GParted"] floating enable border normal
@@ -309,48 +362,8 @@
 #>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # for_window [class="Pamac-manager"] floating enable                            #for arch&&manjaro system softeware manager
     for_window [class="Xfburn"] floating enable
-    for_window [class="Zotero"] floating enable 
-
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-# i3    +   KDE-Plasma     >>>>>>>>>>>
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-## Avoid tiling popups, dropdown windows from plasma
-# for the first time, manually resize them, i3 will remember the setting for floating windows
-    for_window [class="plasmashell"] floating enable
-    for_window [class="Plasma"] floating enable, border none
-    for_window [title="plasma-desktop"] floating enable, border none
-    for_window [title="plasma-desktop-appletsrc"] floating enable, border none
-    for_window [title="win7"] floating enable, border none
-    for_window [class="krunner"] floating enable, border no
-    for_window [class="Kmix"] floating enable, border none
-    for_window [class="Klipper"] floating enable, border none
-    for_window [class="Plasmoidviewer"] floating enable, border none
-    for_window [class="dolphin"] floating enable, border none
-    for_window [class="KWin"] floating enable, border none
-
-#########################
-# Plasma Integration
-# Try to kill the wallpaper set by Plasma (it takes up the entire workspace and hides everythiing)
-    exec --no-startup-id wmctrl -c Plasma
-    for_window [title="Desktop — Plasma"] kill, floating enable, border none
-    for_window [title="Bureau — Plasma"] kill, floating enable, border none
-# for_window [title="plasmashell"] kill, floating enable, border none
-
-##workspace_vitual
-    force_display_urgency_hint 0 ms
-    focus_on_window_activation urgent
-#---( focus related )---)
-
-# focus_follows_mouse no        #鼠标窗口焦点跟踪
-
-    no_focus [class="plasmashell"]
-    no_focus [window_role="pop-up"]
-    no_focus [window_type="notification"]
-
-    focus_on_window_activation none
-
+    for_window [class="Zotero"] floating enable
 #}}}____________________________________________________________________________
-
 
 #_______________________________________________________________________________
 #                                                                       bar{{{
@@ -365,17 +378,18 @@ bar {
             status_command exec $HOME/.config/i3status/contrib/net-speed.sh
         # status_command py3status -c $HOME/.config/py3status/config
         # output eDP-1
-        tray_output eDP-1 
+        tray_output eDP-1
         # tray_output primary 
         # position top
         # font Monaco:h10 noanti 6, icons 6
         # font pango: 10px
-        font pango: Terminus (TTF) 8
+        font pango: Terminus (TTF) 10
         # font pango:Roboto 12px
         # font pango:Source Code Pro 7, Icons 7
             # font pango:DejaVu Sans Mono 8, Icons 9
         # font pango:Ubuntu Nomo 8, Icons 8
         # font pango:Ubuntu Nomo 12px
+        # separator_symbol "-"
         colors {
             # background       #171e2e
             statusline          #e6e6e6

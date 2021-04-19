@@ -54,7 +54,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'Raimondi/delimitMate'                 "前后括制对齐
     Plug 'tyru/open-browser.vim'
         Plug 'tyru/open-browser-github.vim'
-    Plug 'turbio/bracey.vim'                    "live local-server
+    " Plug 'turbio/bracey.vim'                    "live local-server
     " Plug 'jaxbot/browserlink.vim'
 "热熔胶
     Plug 'rhysd/vim-clang-format'               "pinkup the function be it just function 自动整理间距
@@ -78,6 +78,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'prabirshrestha/vim-lsp'
     Plug 'mattn/vim-lsp-settings'
     Plug 'lighttiger2505/deoplete-vim-lsp'
+    Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/vim-vsnip-integ'
 
 "shou
     " Plug 'https://github.com/Quramy/tsuquyomi'    "ts
@@ -133,6 +135,5 @@ call plug#begin('~/.vim/plugged')
         " Plug 'nvim-treesitter/playground'
     " Plug 'neovim/nvim-lspconfig'
     " Plug 'nvim-lua/completion-nvim'
-    " Plug 'hrsh7th/vim-vsnip"
 
 call plug#end()

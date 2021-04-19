@@ -1,4 +1,4 @@
-#   funstion list
+#   Funstion List
 ├── package.json                 
 ├── README.md                    
 ├── gulpfile.js                  // gulp 配置文件

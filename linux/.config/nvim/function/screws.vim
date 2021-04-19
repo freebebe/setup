@@ -14,6 +14,15 @@ nmap <Leader>C :ClangFormatAutoToggle<CR>
 nnoremap <F5> :UndotreeToggle<CR>
 
 "_______________________________________________________________________________
+"                                                                       emmet
+" let g:user_emmet_leader_key='C-y'
+" autocmd filetype *html* imap <c-_> <c-y>/
+" autocmd filetype *html* map <c-_> <c-y>/
+"
+let g:user_emmet_expandabbr_key = '<F2>'
+let g:user_emmet_leader_key= '<C-e>'
+
+"_______________________________________________________________________________
 "                                                               operator-surround
 " operator mappings
 map <silent>sa <Plug>(operator-surround-append)
@@ -126,3 +135,8 @@ nnoremap <silent><c-f> :Files<CR>
 " nmap        S   <Plug>(vsnip-cut-text)
 " xmap        S   <Plug>(vsnip-cut-text)
 "
+
+" _______________________________________________________________________________
+"                                                                       close-tap
+"
+" let g:closetag_shortcut = '<F3>'

@@ -15,18 +15,12 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
 " let javascript_enable_domhtmlcss = 1
 
 "_______________________________________________________________________________
-"															emmet-html&css->deful        
+"															emmet-html&css->deful
 "                                                                       (C=ctrl-)
 
 " let g:user_emmet_install_global = 0
 " autocmd FileType html,css EmmetInstall          "只在html,css作用
 "
-" let g:user_emmet_leader_key='C-y'
-" autocmd filetype *html* imap <c-_> <c-y>/
-" autocmd filetype *html* map <c-_> <c-y>/
-"
-let g:user_emmet_expandabbr_key = '<F2>'
-let g:user_emmet_leader_key= '<C-e>'
 
 " let g:user_emmet_mode='n'    "only enable normal mode functions.
 " let g:user_emmet_mode='inv'  "enable all functions, which is equal to
