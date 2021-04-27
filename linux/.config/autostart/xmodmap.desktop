@@ -1,7 +1,6 @@
 [Desktop Entry]
 Comment=
 Exec=xmodmap ~/.xmodmap
-Hidden=true
 Name[en_AU]=xmod
 Name=xmod
 NoDisplay=false

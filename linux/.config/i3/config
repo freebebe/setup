@@ -1,12 +1,12 @@
 #_______________________________________________________________________________
 #                                                                       unkwon
-    workspace_auto_back_and_forth yes
-    force_display_urgency_hint 0 ms
-    focus_on_window_activation urgent
-
-    floating_minimum_size -1 x -1
-    floating_maximum_size -1 x -1
-
+    # workspace_auto_back_and_forth yes
+    # force_display_urgency_hint 0 ms
+    # focus_on_window_activation urgent
+    #
+    # floating_minimum_size -1 x -1
+    # floating_maximum_size -1 x -1
+    #
 #_______________________________________________________________________________
 #                                                                   Variables{{{
 # (No) Title Bars
@@ -16,6 +16,11 @@
     # mod1 = alt
     set $mod Mod4
 
+    set $left h
+    set $down j
+    set $up k
+    set $right l
+
 # windows border
     new_window none
     new_float normal
@@ -24,7 +29,7 @@
     # hide_edge_borders none
     default_border pixel 2 
     # default_floating_border none
-    workspace_layout stacking
+    # workspace_layout stacking
 
     #new_window_option
     #default_orientation horizontal|vertical|auto
@@ -46,9 +51,10 @@
     # font pango:Ubuntu Nomo 12px
     # font pango:Roboto 9
     font pango:Terminus (TTF) 10
+    # font pango:comfortaa 10
 
 # bakcground
-    exec --no-startup-id feh --bg-fill $HOME/Pictures/bkground/background_bg2.png
+    exec --no-startup-id feh --bg-fill $HOME/Pictures/bkground/kawsThink.png
 
 # Use Mouse+$mod to drag floating windows to their wanted position
     floating_modifier mod1
@@ -56,7 +62,8 @@
 # toupad -> at more size with someGithub link setup
     exec --no-startup-id synclient TapButton0=0 
 
-#}}}____________________________________________________________________________
+#}}}
+#_______________________________________________________________________________
 
 #_______________________________________________________________________________
 #                                                              Window-manager{{{
@@ -106,6 +113,11 @@
     bindsym $mod+Shift+9 move container to workspace number $ws9
     bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# Open applications on specific workspaces
+    assign [class="Zathura"] $ws1
+    assign [class="firefox"] $ws2
+    assign [class="Chromium"] $ws4
+    assign [class="VirtualBox"] $ws10
 
 # switch to workspace with urgent window automatically
     for_window [urgent=latest] focus
@@ -128,10 +140,11 @@
     }
 
 
-#}}}____________________________________________________________________________
+#}}}
+#_______________________________________________________________________________
 
 #_______________________________________________________________________________
-#                                                               Layout stuff{{{
+#                                                           Layout key stuff{{{
 #
 # reload the configuration file
     bindsym $mod+Shift+c reload
@@ -185,10 +198,10 @@
     bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-    bindsym $mod+Shift+h split h
+    bindsym $mod+Shift+h split h;exec notify-send 'tile horizontally'
 
 # split in vertical orientation
-    bindsym $mod+Shift+v split v
+    bindsym $mod+Shift+v split v;exec notify-send 'tile vertically'
 
 # enter fullscreen mode for the focused container
     bindsym $mod+f fullscreen toggle
@@ -210,10 +223,11 @@
 # focus the child container
     #bindsym $mod+d focus child
 #
-#}}}____________________________________________________________________________
+#}}}
+#_______________________________________________________________________________
 #
 #_______________________________________________________________________________
-#                                                               key_building{{{
+#                                                   applications_key_building{{{
 #
 
 # start a terminal
@@ -226,7 +240,8 @@
 
 # start dmenu (a program launcher)
     # bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "glue_pro_blue" -font "mono 15"
-    bindsym $mod+d exec --no-startup-id rofi -show drun -location 1 -width 100 -lines 10 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Terminus (TTF) 10" -theme "$HOME/.config/rofi/nixpulvis.rasi" -show-icons
+    # bindsym $mod+d exec --no-startup-id rofi -show drun -location 1 -width 100  -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Terminus (TTF) 10" -theme "$HOME/.config/rofi/nixpulvis.rasi" -show-icons
+    bindsym $mod+d exec --no-startup-id rofi -show drun -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Terminus (TTF) 11" -theme "$HOME/.config/rofi/nixpulvis.rasi" -show-icons
 
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
@@ -256,7 +271,7 @@
 # ranger with konsole
 # bindsym $mod+Shift+e konsole -e ranger
 # image_key
-    bindsym Print exec --no-startup-id flameshot gui    #flameshot
+    bindsym $mod+w exec --no-startup-id flameshot gui    #flameshot
 #
     bindsym $mod+alt+t exec --no-startup-id compton -b
 # drop down terminal
@@ -264,13 +279,13 @@
 # WMonky
     bindsym $mod+F6 exec /opt/writemonkey3/nw
 # firefox
-    bindsym $mod+F2 exec ~/.qStart/firefox_firejail.sh
+    bindsym $mod+F2 exec $HOME/.qStart/firefox_firejail.sh
 # dmenu(backup) 
 # bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 # kill_GUI
     bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 # xpad
-    bindsym $mod+F1 exec --no-startup-id xpad -t
+    bindsym $mod+F1 exec --no-startup-id xpad -t -N
 # ranger->file
     # bindsym $mod+F3 exec konsole  -- ranger path/to/Documents/uni2019-20
     # bindsym $mod+F4 exec thunar path/to/Documents/uni2019-20
@@ -280,7 +295,7 @@
     bindsym $mod+l exec --no-startup-id xsecurelock
 
 # sleep
-    bindsym $mod+Shift+Ctrl+l exec --no-startup-id $HOME/.config/i3/tools/sleep.sh
+    bindsym $mod+F12 exec --no-startup-id $HOME/.config/i3/tools/sleep.sh
 # external screen
 
 # both
@@ -290,11 +305,21 @@
 # #only ext
     bindsym $mod+Shift+n exec --no-startup-id $HOME/.config/i3/screenlayouts/only_top.sh
 
-#}}}____________________________________________________________________________
+#}}}
+#_______________________________________________________________________________
 
 #_______________________________________________________________________________
 #                                                               applications{{{
 #
+
+#_____________________________/autoStart
+    
+    exec --no-startup-id nm-applet
+    exec --no-startup-id blueman-applet
+    exec --no-startup-id clipit                       #copy_data
+    # exec_always xfce4-power-manager
+    # exec --no-startup-id xfce4-power-manager
+    exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/org_kde_powerdevil
 
     # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
     exec --no-startup-id nitrogen --restore; sleep 1; compton -b
@@ -308,20 +333,16 @@
     # exec --no-startup-id volumeicon
     exec --no-startup-id dunst                  # Notification
 
-    exec --no-startup-id nm-applet
-    exec --no-startup-id blueman-applet
-    exec --no-startup-id clipit                       #copy_data
-    # exec_always xfce4-power-manager
-    exec --no-startup-id xfce4-power-manager
-
-#_____________________________
-#                       run'ap
-#
     # exec --no-startup-id xmodmap $HOME/.Xmodmap
-    exec xmodmap $HOME/.Xmodmap
+    exec $HOME/.config/i3/tools/xmodmap.sh
     exec $HOME/.config/i3/tools/blockWIFI.sh
 
-#______________________app_win_manger{{{
+    # touch pad speed
+    exec --no-startup-id  xinput set-prop 16 'libinput Accel Speed' 0.5 
+
+    # suspend lock
+
+#_____________________________/app_win_manger
 
 # Applications behaving as "pop ups" are set to be always floating
 #  i.e. popup, do stuff, close
@@ -352,50 +373,71 @@
     for_window [class="feh"] $FLOAT-noborder
     for_window [class="feh"] resize set 600 400
     for_window [class="eog"] floating enable
+    for_window [class="dolphin"] floating enable
     for_window [class="chromium"] floating enable
     for_window [class="Okular"] floating enable
     for_window [class="Gpick"] floating enable
+    for_window [class="calamares"] floating enable border normal
+    for_window [class="Nitrogen"] floating enable sticky enable border normal
+    # for_window [class="(?i)virtualbox"] floating enable border normal
 
-#w>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     for_window [class="GParted"] floating enable border normal
     for_window [class="Pavucontrol"] floating enable
-#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 # for_window [class="Pamac-manager"] floating enable                            #for arch&&manjaro system softeware manager
     for_window [class="Xfburn"] floating enable
     for_window [class="Zotero"] floating enable
-#}}}____________________________________________________________________________
+#}}}
+#_______________________________________________________________________________
 
 #_______________________________________________________________________________
 #                                                                       bar{{{
 #
+# bar {
+#     # status_command exec $HOME/.config/i3status/contrib/xtitle.sh
+#     # status_command i3blocks -c $HOME/.config/i3blocks/config
+#     # status_command echo '{"version:1"}[[], '; xtitle -s -f '[{"full_text": "%s"}],'
+#     # status_command exec $HOME/.config/i3status/contrib/xtitle.sh
+#     workspace_buttons no
+#     tray_output no
+#     mode hide
+#     font pango: Terminus (TTF)   10
+# }
 
 exec -no-startup-id xrandr --outpu eDP-1 --primary
 bar {
-        i3bar_command i3bar
-        # status_command i3blocks -c $HOME/.config/i3blocks/config
-        # status_command py3status -c $HOME/.config/i3status/i3pystauts.conf
-        status_command i3status --config $HOME/.config/i3status/config
-            status_command exec $HOME/.config/i3status/contrib/net-speed.sh
-        # status_command py3status -c $HOME/.config/py3status/config
-        # output eDP-1
-        tray_output eDP-1
-        # tray_output primary 
-        # position top
-        # font Monaco:h10 noanti 6, icons 6
-        # font pango: 10px
-        font pango: Terminus (TTF) 10
+    # i3bar_command i3bar
+    # status_command i3blocks -c $HOME/.config/i3blocks/config
+    # status_command py3status -c $HOME/.config/i3status/i3pystauts.conf
+    status_command i3status --config $HOME/.config/i3status/config
+        status_command exec $HOME/.config/i3status/contrib/net-speed.sh
+        # status_command exec $HOME/.config/i3status/contrib/xtitle.sh
+    # status_command py3status -c $HOME/.config/py3status/config
+    # output eDP-1
+    tray_output eDP-1
+    # tray_output primary 
+    # position top
+    # separator_symbol "-"
+    #mode hide
+    #_____________________________font_bar {
+        # font pango: Monaco h10 noanti 9, icons 9
+        # font pango: 10
+        font pango: Terminus (TTF)   10
+        # font pango: comfortaa   10
+        # font pango: tex gyre adventor   10
         # font pango:Roboto 12px
-        # font pango:Source Code Pro 7, Icons 7
+        # font pango:Source Code Pro 10, Icons 10
             # font pango:DejaVu Sans Mono 8, Icons 9
         # font pango:Ubuntu Nomo 8, Icons 8
         # font pango:Ubuntu Nomo 12px
-        # separator_symbol "-"
-        colors {
-            # background       #171e2e
-            statusline          #e6e6e6
-            urgent_workspace #ffffff #ff0000
-        }
+    #}
+    colors {
+        # background        #171e2e
+        # statusline        #e6e6e6
+        urgent_workspace    #ffffff #ff0000
+    }
 }
+
 
 # theme colors
 #   class                   border | backgr | text | indicator
@@ -403,4 +445,5 @@ bar {
     client.unfocused       #16404B  #16404B  #2ECC71 #222222
     client.urgent          #274D01  #900000  #FFFFFF #900000
 
-#}}}____________________________________________________________________________
+#}}}
+#_______________________________________________________________________________

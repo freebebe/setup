@@ -29,18 +29,12 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
 "map <F3> <C-\>
 
 "_______________________________________________________________________________
-"																	        emmet
-
-"_______________________________________________________________________________
 "																	vim-gitgutter
 function! GitStatus()
     let [a,m,r] = GitGutterGetHunkSummary()
     return printf('+%d ~%d -%d', a, m, r)
 endfunction
 set statusline+=%{GitStatus()}
-
-"_______________________________________________________________________________
-"																		graphviz
 
 "_______________________________________________________________________________
 "																		neomake
@@ -131,7 +125,7 @@ let g:auto_save_silent = 1
 " let g:vimwiki_global_ext   = 0
 
 "_______________________________________________________________________________
-"																			fzf
+"                                                                           fzf
 set rtp+=~/.fzf
 
 "_______________________________________________________________________________
@@ -162,16 +156,12 @@ let g:UltiSnipsJumpBackwardTrigger  = "<c-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
 "_______________________________________________________________________________
-"																		deoplete
+"                                                                       deoplete
 
 "_______________________________________________________________________________
 "                                                                           ale
 
-let g:ale_linters = {'javacript': [], 'vue': [], 'css': [], 'typerscript': []}
-" let g:ale_fixers = {'ruby': ['rubocop']}
-let g:ale_lint_delay = 1000
+" let g:ale_linters = {'javacript': [], 'vue': [], 'css': [], 'typerscript': []}
+" " let g:ale_fixers = {'ruby': ['rubocop']}
+" let g:ale_lint_delay = 1000
 
-"_______________________________________________________________________________
-"                                                                       neomake
-"
-"}}}

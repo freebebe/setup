@@ -53,6 +53,7 @@ colo whiteBlue      "local color
 " colo dicul
 " " colo approid
 " colo codedark
+"set background=light
 
 ">>>>>>
 "color    for outside

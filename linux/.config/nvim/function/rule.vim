@@ -207,8 +207,8 @@ set formatoptions+=r
 " }}}___________________________________________________________________________
 
 "_______________________________________________________________________________
-        "                                    Highlight all instances of 
-        "                                    word under cursor, when idle. {{{
+                                    " Highlight all instances of 
+                                    " word under cursor, when idle. {{{
                                     " Useful when studying strange source code.
                                     " Type z/ to toggle highlighting on/off.
             " http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
