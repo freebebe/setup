@@ -1,0 +1,1 @@
+      div(class='🔴' style=`--i: ${i}`)

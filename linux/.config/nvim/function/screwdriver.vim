@@ -1,5 +1,5 @@
 "______________________________________________________________________________
-"																            goyo
+"                                                                           goyo
 " :Goyo            "toggle Goyo
 " :Goyo[demension]
 " :Goyo!            "off
@@ -7,15 +7,15 @@
 " let	go:goyo_margin_bottom = 2
 
 "______________________________________________________________________________
-"																    indentline
+"                                                                   indentline
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
 
 "_______________________________________________________________________________
-"															javascript-highlight
+"                                                           javascript-highlight
 " let javascript_enable_domhtmlcss = 1
 
 "_______________________________________________________________________________
-"															emmet-html&css->deful
+"                                                           emmet-html&css->deful
 "                                                                       (C=ctrl-)
 
 " let g:user_emmet_install_global = 0
@@ -29,7 +29,7 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']"
 "map <F3> <C-\>
 
 "_______________________________________________________________________________
-"																	vim-gitgutter
+"                                                                   vim-gitgutter
 function! GitStatus()
     let [a,m,r] = GitGutterGetHunkSummary()
     return printf('+%d ~%d -%d', a, m, r)
@@ -37,7 +37,7 @@ endfunction
 set statusline+=%{GitStatus()}
 
 "_______________________________________________________________________________
-"																		neomake
+"                                                                       neomake
 " let g:neomake_open_list = 2
 " let g:neomake_verbose = 0
 "
@@ -150,13 +150,10 @@ let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
 "                                                                       utilsnips
 " From ncm2-utilsnips, and also for utilsnips
 " c-j c-k for moving in snippet, in practice <TAB> works
-let g:UltiSnipsExpandTrigger        = "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger   = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger  = "<c-k>"
-let g:UltiSnipsRemoveSelectModeMappings = 0
-
-"_______________________________________________________________________________
-"                                                                       deoplete
+" let g:UltiSnipsExpandTrigger        = "<Plug>(ultisnips_expand)"
+" let g:UltiSnipsJumpForwardTrigger   = "<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger  = "<c-k>"
+" let g:UltiSnipsRemoveSelectModeMappings = 0
 
 "_______________________________________________________________________________
 "                                                                           ale

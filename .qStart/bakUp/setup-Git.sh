@@ -13,6 +13,7 @@ cp -r $HOME/.config/Code/User/ $HOME/git/system/setup/linux/.config/Code
 cp -r $HOME/.config/zathura/ $HOME/git/system/setup/linux/.config
 cp -r $HOME/.config/rclone/ $HOME/git/system/setup/linux/.config
 cp -r $HOME/.config/i3/ $HOME/git/system/setup/linux/.config
+cp -r $HOME/.config/sway/ $HOME/git/system/setup/linux/.config
 cp -r $HOME/.config/i3status/ $HOME/git/system/setup/linux/.config
 cp -r $HOME/.config/autostart/ $HOME/git/system/setup/linux/.config
 cp -r $HOME/.config/nvim/ $HOME/git/system/setup/linux/.config

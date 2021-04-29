@@ -3,7 +3,8 @@
 ###################
 
 general {
-    output_format = "i3bar"
+    output_format = "xmobar"
+    separator = " "
     colors = true
     interval = 1
     # color_good = "#BBBBBB"

@@ -1,12 +1,12 @@
 #_______________________________________________________________________________
 #                                                                       unkwon
-    # workspace_auto_back_and_forth yes
-    # force_display_urgency_hint 0 ms
-    # focus_on_window_activation urgent
-    #
-    # floating_minimum_size -1 x -1
-    # floating_maximum_size -1 x -1
-    #
+    workspace_auto_back_and_forth yes
+    force_display_urgency_hint 0 ms
+    focus_on_window_activation urgent
+
+    floating_minimum_size -1 x -1
+    floating_maximum_size -1 x -1
+
 #_______________________________________________________________________________
 #                                                                   Variables{{{
 # (No) Title Bars
@@ -123,21 +123,21 @@
     for_window [urgent=latest] focus
 
 # Set shut down, restart and locking features
-    bindsym $mod+Shift+Ctrl+0 mode "$mode_system"
-    set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-    mode "$mode_system" {
-        bindsym l exec --no-startup-id i3exit lock, mode "default"
-        bindsym s exec --no-startup-id i3exit suspend, mode "default"
-        bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-        bindsym e exec --no-startup-id i3exit logout, mode "default"
-        bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-        bindsym r exec --no-startup-id i3exit reboot, mode "default"
-        bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-
-        # exit system mode: "Enter" or "Escape"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-    }
+    # bindsym $mod+Shift+Ctrl+0 mode "$mode_system"
+    # set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+    # mode "$mode_system" {
+    #     bindsym l exec --no-startup-id i3exit lock, mode "default"
+    #     bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    #     bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    #     bindsym e exec --no-startup-id i3exit logout, mode "default"
+    #     bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    #     bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    #     bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+    #
+    #     # exit system mode: "Enter" or "Escape"
+    #     bindsym Return mode "default"
+    #     bindsym Escape mode "default"
+    # }
 
 
 #}}}
@@ -222,6 +222,10 @@
 
 # focus the child container
     #bindsym $mod+d focus child
+
+#navigate workspaces next / previous
+    bindsym $mod+Ctrl+Right workspace next
+    bindsym $mod+Ctrl+Left workspace prev
 #
 #}}}
 #_______________________________________________________________________________
@@ -254,8 +258,8 @@
     # bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
 
 # Screen brightness controls with notification
-    bindsym XF86MonBrightnessUp exec "light -A 5; notify-send 'brightness up'"
-    bindsym XF86MonBrightnessDown exec "light -U 5; notify-send 'brightness down'"
+    bindsym XF86MonBrightnessUp exec light -A 10% # increase screen brightness
+    bindsym XF86MonBrightnessDown exec light -U 10% # decrease screen brightness
 
     bindsym XF86AudioPlay exec playerctl play
     bindsym XF86AudioPause exec playerctl pause
@@ -310,16 +314,14 @@
 
 #_______________________________________________________________________________
 #                                                               applications{{{
-#
 
 #_____________________________/autoStart
-    
     exec --no-startup-id nm-applet
     exec --no-startup-id blueman-applet
     exec --no-startup-id clipit                       #copy_data
     # exec_always xfce4-power-manager
-    # exec --no-startup-id xfce4-power-manager
-    exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/org_kde_powerdevil
+    exec --no-startup-id xfce4-power-manager
+    # exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/org_kde_powerdevil
 
     # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
     exec --no-startup-id nitrogen --restore; sleep 1; compton -b
@@ -333,9 +335,12 @@
     # exec --no-startup-id volumeicon
     exec --no-startup-id dunst                  # Notification
 
+    # lockscreen
+    exec --no-startup-id xss-lock -l $HOME/.config/i3/tools/transfer-sleep-lock-generic-delay.sh
+
     # exec --no-startup-id xmodmap $HOME/.Xmodmap
     exec $HOME/.config/i3/tools/xmodmap.sh
-    exec $HOME/.config/i3/tools/blockWIFI.sh
+    exec $HOME/.config/i3/tools/ACorPOWER.sh
 
     # touch pad speed
     exec --no-startup-id  xinput set-prop 16 'libinput Accel Speed' 0.5 
@@ -394,14 +399,15 @@
 #                                                                       bar{{{
 #
 # bar {
+    #
 #     # status_command exec $HOME/.config/i3status/contrib/xtitle.sh
 #     # status_command i3blocks -c $HOME/.config/i3blocks/config
-#     # status_command echo '{"version:1"}[[], '; xtitle -s -f '[{"full_text": "%s"}],'
+    # status_command echo '{"version:1"}[[], '; xtitle -s -f '[{"full_text": "%s"}],'
 #     # status_command exec $HOME/.config/i3status/contrib/xtitle.sh
-#     workspace_buttons no
-#     tray_output no
+    # workspace_buttons no
+    # tray_output no
 #     mode hide
-#     font pango: Terminus (TTF)   10
+    # font pango: Terminus (TTF)   10
 # }
 
 exec -no-startup-id xrandr --outpu eDP-1 --primary
@@ -416,9 +422,11 @@ bar {
     # output eDP-1
     tray_output eDP-1
     # tray_output primary 
-    # position top
+    position top
     # separator_symbol "-"
     #mode hide
+    # workspace_buttons no
+    # tray_output no
     #_____________________________font_bar {
         # font pango: Monaco h10 noanti 9, icons 9
         # font pango: 10
@@ -432,7 +440,7 @@ bar {
         # font pango:Ubuntu Nomo 12px
     #}
     colors {
-        # background        #171e2e
+        background          #020206
         # statusline        #e6e6e6
         urgent_workspace    #ffffff #ff0000
     }
