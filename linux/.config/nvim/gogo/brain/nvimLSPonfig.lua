@@ -97,30 +97,30 @@ lspconfig.efm.setup {
     },
     filetypes = {
   -------------------------- nots
-      "json",
+        "json",
         "jsonc",
-      "lua",
-      "yml"
+        "lua",
+        "yml",
         "yaml",
-      "markdown",
+        "markdown",
   -------------------------- backSever
-      "go",
-      "php",
-      "java",
+        "go",
+        "php",
+        "java",
         "graphql",
-      "ruby",
+        "ruby",
   -------------------------- web_dev
-      "css",
-      "scss",
-      "html",
-      "javascript",
+        "css",
+        "scss",
+        "html",
+        "javascript",
         "javascriptreact",
         "javascript.jsx",
-      "typescript",
+        "typescript",
         "typescript.tsx",
         "typescriptreact",
-      "rust",
-      "vue"
+        "rust",
+        "vue"
   -------------------------- 
     }
 }

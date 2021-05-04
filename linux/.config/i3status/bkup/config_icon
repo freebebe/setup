@@ -5,7 +5,7 @@
 general {
     output_format = "i3bar"
     colors = true
-    interval = 1
+    interval = 5
     # color_good = "#BBBBBB"
     # color_bad = "#CC1616"
     # color_degraded = "#55858E"
@@ -21,71 +21,53 @@ order += "wireless wlan0"
 order += "cpu_temperature 0"
 order += "cpu_usage"
 order += "memory"
-# order += "sysdata"
 order += "disk /"
-order += "backlight"
 order += "volume master"
 order += "battery 0"
 order += "time"
 order += "load"
 
-
 ###################
 # SENSORS SETTING #
 ###################
 
-# sysdata {
-#         format = "[\?color=cpu \uf0e4 {cpu_usage}] [\?color=mem \uf2db {mem_used_percent}]/[\?color=swap {swap_used_percent}]"
-# }
-
-# sysdata {
-#     format = "[\?color=cpu {cpu_usage}% ][\?color=mem {mem_used_percent}% ][\?color=temp {cpu_temp}°C]"
-#     thresholds = {
-#         'cpu': [(0, "good"), (15, "degraded"), (50, "bad")],
-#         'mem': [(0, "good"), (60, "degraded"), (80, "bad")],
-#         'temp': [(0, "good"), (50, "degraded"), (80, "bad")]
-#     }
-# }
-
 ## CPU temperature
 cpu_temperature 0 {
-        format = "Temp %degrees°C"
+        format = " %degrees°C"
         path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp2_input"
         # path = "/sys/devices/platform/coretemp.0/hwmon/hwmon6/temp2_input"
-        max_threshold = "60"
 }
 
 ## CPU sensor
 cpu_usage {
-    format = "Cpu %usage"
+    # format = " %usage"
+    format = "Ʉ %usage"
     # format = "Cpu: %usage [%cpu0-%cpu1-%cpu2-%cpu3-%cpu4-%cpu5-%cpu6-%cpu7]"
     # format = " Cpu: %usage "
-    max_threshold = "71"
 }
 
 ## system load sensor
 load {
     # format = "Load: %1min>%5min>%15min"
-    format = "Load %5min"
-    max_threshold = "2"
+    format = "🗘 %5min"
 }
 
 ## Mem 
 memory {
-    format = "Ram: %used / %available"
-    threshold_degraded = "1G"
-    format_degraded = "Ram < %available"
+        format = " %used"
+        threshold_degraded = "1G"
+        format_degraded = " < %available"
 }
 
 ## NET
 wireless _first_ {
         # format_up = "W: (%quality at %essid) %ip"
-        format_up = "W: (%quality at %essid)"
-        format_down = "W: down"
+        format_up = " : (%quality at %essid)"
+        format_down = "睊: down"
 }
 ethernet _first_ {
-        format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+        format_up = " : %ip (%speed)"
+        format_down = " : down"
 }
 
 ## Battery
@@ -95,9 +77,11 @@ battery 0 {
     format_down = " NO battery "
     last_full_capacity = true
     integer_battery_capacity = true
-    status_chr = "⚡"
-    status_bat = "Bat"
-    status_full = "Power"
+    status_chr = ""
+    status_bat = " "
+    status_unk = " "
+#   status_full = " "
+    status_full = "🔌"
     # status_chr = "⚡"
     #status_bat = "🔋 BAT"
     # status_full = "☻"
@@ -110,7 +94,7 @@ battery 0 {
 disk / {
 #forma = " hdd %avail "
     # format  = " ℃ %avail "
-    format  = "Disk %avail"
+    format  = "🖴 %avail"
     # format  = " '/home' %avail "
 }
 # disk "/" {
@@ -124,8 +108,8 @@ disk / {
 ## audio volume sensor
 volume master {
     # format = "♪: %volume"
-    format = "Vol %volume"
-    format_muted = "Vol muted(%volume)"
+    format = "🕪 %volume"
+    format_muted = "muted(%volume)"
     device = "default"
     mixer = "Master"
     mixer_idx = 0

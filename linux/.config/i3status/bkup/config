@@ -21,38 +21,21 @@ order += "wireless wlan0"
 order += "cpu_temperature 0"
 order += "cpu_usage"
 order += "memory"
-# order += "sysdata"
 order += "disk /"
-order += "backlight"
 order += "volume master"
 order += "battery 0"
 order += "time"
 order += "load"
 
-
 ###################
 # SENSORS SETTING #
 ###################
 
-# sysdata {
-#         format = "[\?color=cpu \uf0e4 {cpu_usage}] [\?color=mem \uf2db {mem_used_percent}]/[\?color=swap {swap_used_percent}]"
-# }
-
-# sysdata {
-#     format = "[\?color=cpu {cpu_usage}% ][\?color=mem {mem_used_percent}% ][\?color=temp {cpu_temp}°C]"
-#     thresholds = {
-#         'cpu': [(0, "good"), (15, "degraded"), (50, "bad")],
-#         'mem': [(0, "good"), (60, "degraded"), (80, "bad")],
-#         'temp': [(0, "good"), (50, "degraded"), (80, "bad")]
-#     }
-# }
-
 ## CPU temperature
 cpu_temperature 0 {
-        format = "Temp %degrees°C"
+        format = "TempC %degrees°C"
         path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp2_input"
         # path = "/sys/devices/platform/coretemp.0/hwmon/hwmon6/temp2_input"
-        max_threshold = "60"
 }
 
 ## CPU sensor
@@ -60,21 +43,19 @@ cpu_usage {
     format = "Cpu %usage"
     # format = "Cpu: %usage [%cpu0-%cpu1-%cpu2-%cpu3-%cpu4-%cpu5-%cpu6-%cpu7]"
     # format = " Cpu: %usage "
-    max_threshold = "71"
 }
 
 ## system load sensor
 load {
     # format = "Load: %1min>%5min>%15min"
     format = "Load %5min"
-    max_threshold = "2"
 }
 
 ## Mem 
 memory {
-    format = "Ram: %used / %available"
-    threshold_degraded = "1G"
-    format_degraded = "Ram < %available"
+        format = "Mem %used"
+        threshold_degraded = "1G"
+        format_degraded = "Mem < %available"
 }
 
 ## NET

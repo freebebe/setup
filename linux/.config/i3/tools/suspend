@@ -1,0 +1,4 @@
+#!/bin/bash
+xautolock -time 1 -locker xsecurelock -notify 20 -notifier 'xset dpms force off' &
+# xautolock -time 6 -locker fuzzy_lock -notify 20 &
+xautolock -time 1 -locker "systemctl suspend" &

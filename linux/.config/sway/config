@@ -5,10 +5,11 @@
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
-#
+
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 set $term kitty
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -44,7 +45,7 @@ exec swayidle -w \
         timeout 300 'swaylock -f -c 000000' \
         # timeout 300 'swaymsg "output * dpms off"' \
         #     resume 'swaymsg "output * dpms on"' \
-        timeout 301 'systemctl suspend ' \
+        timeout 388 'systemctl suspend ' \
         before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -233,6 +234,19 @@ exec swayidle -w \
         bindsym Escape mode "default"
     }
     bindsym $mod+r mode "resize"
+
+#_____________________________App
+
+    bindsym $mod+w exec  flameshot gui    #flameshot
+#
+    bindsym $mod+alt+t exec --no-startup-id compton -b
+# drop down terminal
+    bindsym $mod+Return exec --no-startup-id yakuake
+# WMonky
+    # bindsym $mod+F6 exec /opt/writemonkey3/nw
+# firefox
+    bindsym $mod+F2 exec --no-startup-id $HOME/.qStart/firefox_firejail.sh
+
 #}}}
 #_______________________________________________________________________________
 
@@ -259,7 +273,7 @@ exec swayidle -w \
     exec nm-applet
     exec blueman-applet
     # exec --no-startup-id clipit                       #copy_data
-    exec ibus-wayland
+    #exec ibus-wayland
     # exec_always xfce4-power-manager
     # exec --no-startup-id xfce4-power-manager
     # exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/org_kde_powerdevil
@@ -281,7 +295,6 @@ exec swayidle -w \
 
     # touch pad speed
     # exec --no-startup-id  xinput set-prop 16 'libinput Accel Speed' 0.5 
-
     # suspend lock
 
 #_____________________________/app_win_manger
@@ -338,12 +351,14 @@ exec swayidle -w \
 bar {
         # status_command i3blocks -c $HOME/.config/i3blocks/config
         # status_command py3status -c $HOME/.config/i3status/i3pystauts.conf
+        #status_command waybar -c $HOME/.config/waybar/config
         status_command i3status --config $HOME/.config/i3status/config
-            status_command exec $HOME/.config/i3status/contrib/net-speed.sh
+             status_command exec $HOME/.config/i3status/contrib/net-speed.sh
             # status_command exec $HOME/.config/i3status/contrib/xtitle.sh
         # status_command py3status -c $HOME/.config/py3status/config
         # output eDP-1
-        tray_output eDP-1
+        position top
+        # tray_output eDP-1
         font pango: Terminus (TTF)   10
         colors {
             statusline          #ffffff
@@ -354,12 +369,5 @@ bar {
 
 #_______________________________________________________________________________
 #                                                                           gaps
-    set $default_gaps_inner 5
-    set $default_gaps_outer 5
-    gaps inner $default_gaps_inner
-    gaps outer $default_gaps_outer
-    gaps top 0
-    # gaps bottom 10
-    smart_gaps on
 
 include /etc/sway/config.d/*

@@ -62,7 +62,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'editorconfig/editorconfig-vim'        "team统一风格
 "油漆
     Plug 'itchyny/lightline.vim'			    "状态
-    " Plug 'junegunn/goyo.vim'                    "简化阅读
+    Plug 'junegunn/goyo.vim'                    "简化阅读
    "schemes
     " Plug '$HOME/.config/nvim/colors'
 "规程

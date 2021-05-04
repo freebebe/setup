@@ -7,6 +7,9 @@
     floating_minimum_size -1 x -1
     floating_maximum_size -1 x -1
 
+    # xautolock -time 5 -locker fuzzy_lock -notify 20 -notifier 'xset dpms force off' &
+    # xautolock -time 7 -locker "systemctl suspend" &
+
 #_______________________________________________________________________________
 #                                                                   Variables{{{
 # (No) Title Bars
@@ -16,10 +19,10 @@
     # mod1 = alt
     set $mod Mod4
 
-    set $left h
-    set $down j
-    set $up k
-    set $right l
+    # set $left h
+    # set $down j
+    # set $up k
+    # set $right l
 
 # windows border
     new_window none
@@ -50,11 +53,12 @@
     # font pango:Source Code Pro 9
     # font pango:Ubuntu Nomo 12px
     # font pango:Roboto 9
-    font pango:Terminus (TTF) 10
+    # font pango:Terminus (TTF) 10
+    font pango: Tamzen 11
     # font pango:comfortaa 10
 
 # bakcground
-    exec --no-startup-id feh --bg-fill $HOME/Pictures/bkground/kawsThink.png
+    # exec --no-startup-id feh --bg-fill $HOME/Pictures/bkground/kawsThink.png
 
 # Use Mouse+$mod to drag floating windows to their wanted position
     floating_modifier mod1
@@ -123,22 +127,34 @@
     for_window [urgent=latest] focus
 
 # Set shut down, restart and locking features
-    # bindsym $mod+Shift+Ctrl+0 mode "$mode_system"
-    # set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-    # mode "$mode_system" {
-    #     bindsym l exec --no-startup-id i3exit lock, mode "default"
-    #     bindsym s exec --no-startup-id i3exit suspend, mode "default"
-    #     bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-    #     bindsym e exec --no-startup-id i3exit logout, mode "default"
-    #     bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-    #     bindsym r exec --no-startup-id i3exit reboot, mode "default"
-    #     bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-    #
-    #     # exit system mode: "Enter" or "Escape"
-    #     bindsym Return mode "default"
-    #     bindsym Escape mode "default"
-    # }
+    bindsym $mod+Shift+Ctrl+0 mode "$mode_system"
+    set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+    mode "$mode_system" {
+        bindsym l exec --no-startup-id $HOME/.config/i3/i3exit lock, mode "default"
+        bindsym s exec --no-startup-id $HOME/.config/i3/i3exit suspend, mode "default"
+        bindsym u exec --no-startup-id $HOME/.config/i3/i3exit switch_user, mode "default"
+        bindsym e exec --no-startup-id $HOME/.config/i3/i3exit logout, mode "default"
+        bindsym h exec --no-startup-id $HOME/.config/i3/i3exit hibernate, mode "default"
+        bindsym r exec --no-startup-id $HOME/.config/i3/i3exit reboot, mode "default"
+        bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
 
+        # exit system mode: "Enter" or "Escape"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+
+# choose xrandr displaymode
+    bindsym $mod+Shift+Ctrl+p mode "$mode_display"
+    set $mode_display Display mode (d) dualRight, (h) HDMI, (l) laptop
+    mode "$mode_display" {
+        bindsym d exec --no-startup-id sh $HOME/.config/i3/screenlayouts/display dualRight, mode "default"
+        bindsym m exec --no-startup-id sh $HOME/.config/i3/screenlayouts/display HDMI, mode "default"
+        bindsym l exec --no-startup-id sh $HOME/.config/i3/screenlayouts/display laptop, mode "default"
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
 
 #}}}
 #_______________________________________________________________________________
@@ -236,7 +252,7 @@
 
 # start a terminal
     #bindsym $mod+Return exec i3-sensible-terminal
-    bindsym $mod+Ctrl+t exec kitty
+    bindsym $mod+Ctrl+t exec kitty --single-instance
     bindsym $mod+Ctrl+Shift+t exec i3-sensible-terminal
 
 # kill focused window
@@ -258,8 +274,12 @@
     # bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
 
 # Screen brightness controls with notification
-    bindsym XF86MonBrightnessUp exec light -A 10% # increase screen brightness
-    bindsym XF86MonBrightnessDown exec light -U 10% # decrease screen brightness
+    bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5% # increase screen brightness
+    bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5% # decrease screen brightness
+    # bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+    # bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+    # bindsym $mod+Shift+Ctrl+Up exec xbacklight -inc 10 # increase screen brightness
+    # bindsym $mod+Shift+Ctrl+Down exec xbacklight -dec 10 # decrease screen brightness
 
     bindsym XF86AudioPlay exec playerctl play
     bindsym XF86AudioPause exec playerctl pause
@@ -269,9 +289,9 @@
 # launch categorized menu
     bindsym $mod+z exec --no-startup-id morc_menu
 
-
 # GUI file manager -- thunar
     bindsym $mod+e exec --no-startup-id dolphin
+
 # ranger with konsole
 # bindsym $mod+Shift+e konsole -e ranger
 # image_key
@@ -281,9 +301,9 @@
 # drop down terminal
     bindsym $mod+Return exec --no-startup-id yakuake
 # WMonky
-    bindsym $mod+F6 exec /opt/writemonkey3/nw
+    # bindsym $mod+F6 exec /opt/writemonkey3/nw
 # firefox
-    bindsym $mod+F2 exec $HOME/.qStart/firefox_firejail.sh
+    bindsym $mod+F2 exec --no-startup-id $HOME/.qStart/firefox_firejail.sh
 # dmenu(backup) 
 # bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 # kill_GUI
@@ -299,15 +319,15 @@
     bindsym $mod+l exec --no-startup-id xsecurelock
 
 # sleep
-    bindsym $mod+F12 exec --no-startup-id $HOME/.config/i3/tools/sleep.sh
+    # bindsym $mod+F12 exec --no-startup-id $HOME/.config/i3/tools/sleep.sh
 # external screen
 
 # both
-    bindsym $mod+Shift+b exec --no-startup-id $HOME/.config/i3/screenlayouts/externalRight.sh
-# #my
-    bindsym $mod+Shift+m exec --no-startup-id $HOME/.config/i3/screenlayouts/only.sh
-# #only ext
-    bindsym $mod+Shift+n exec --no-startup-id $HOME/.config/i3/screenlayouts/only_top.sh
+    # bindsym $mod+Shift+b exec --no-startup-id $HOME/.config/i3/screenlayouts/externalRight.sh
+#my
+    # bindsym $mod+Shift+m exec --no-startup-id $HOME/.config/i3/screenlayouts/only.sh
+#only ext
+    # bindsym $mod+Shift+n exec --no-startup-id $HOME/.config/i3/screenlayouts/only_top.sh
 
 #}}}
 #_______________________________________________________________________________
@@ -318,29 +338,38 @@
 #_____________________________/autoStart
     exec --no-startup-id nm-applet
     exec --no-startup-id blueman-applet
-    exec --no-startup-id clipit                       #copy_data
+    # exec --no-startup-id clipit                       #copy_data
     # exec_always xfce4-power-manager
-    exec --no-startup-id xfce4-power-manager
+    # exec_always --no-startup-id xfce4-power-manager
     # exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/org_kde_powerdevil
 
     # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-    exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-    exec --no-startup-id xpad
+    # exec --no-startup-id nitrogen --restore; sleep 1; compton -b            # background-image chenage for fee time
+    # exec --no-startup-id xpad
     # exec --no-startup-id dropbox
     exec --no-startup-id dropbox stop && dbus-launch dropbox start -i
     exec --no-startup-id flameshot              # face_your_screen_face
-    exec --no-startup-id i3-confg-wizard
+    # exec --no-startup-id i3-confg-wizard
     # exec_always dropbox
     # exec --no-startup-id conky
     # exec --no-startup-id volumeicon
     exec --no-startup-id dunst                  # Notification
 
     # lockscreen
-    exec --no-startup-id xss-lock -l $HOME/.config/i3/tools/transfer-sleep-lock-generic-delay.sh
+    exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+    exec_always --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock -- xset dpms 333 555
+    # 
+    # exec --no-startup-id xset dpms 365 1357 6789
+    # exec --no-startup-id xset dpms 365 1357
+    # exec_always --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock 
+    # exec_always --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
+    # exec_always --no-startup-id xautolock -time 553 -locker fuzzy_lock -notify 20 -notifier 'xset dpms force off' &
+    # exec_always --no-startup-id xautolock -time 555 -locker "systemctl suspend" &
 
     # exec --no-startup-id xmodmap $HOME/.Xmodmap
-    exec $HOME/.config/i3/tools/xmodmap.sh
-    exec $HOME/.config/i3/tools/ACorPOWER.sh
+    exec_always xmodmap $HOME/.Xmodmap
+    exec --no-startup-id $HOME/.config/i3/screenlayouts/externalRight.sh
+    # exec $HOME/.config/i3/tools/ACorPOWER.sh
 
     # touch pad speed
     exec --no-startup-id  xinput set-prop 16 'libinput Accel Speed' 0.5 
@@ -352,7 +381,7 @@
 # Applications behaving as "pop ups" are set to be always floating
 #  i.e. popup, do stuff, close
 # To get WM_CLASS and WM_TITLE values, on X run "xprop"
-    for_window [window_role="pop-up"] floating enable
+    # for_window [window_role="pop-up"] floating enable
     # for_window [class="VirtualBox"] floating enable
     # for_window [class="VirtualBox"] resize set 800 600
     # for_window [class="konsole"] floating enable
@@ -424,13 +453,15 @@ bar {
     # tray_output primary 
     position top
     # separator_symbol "-"
-    #mode hide
+    # mode hide
     # workspace_buttons no
     # tray_output no
     #_____________________________font_bar {
         # font pango: Monaco h10 noanti 9, icons 9
         # font pango: 10
-        font pango: Terminus (TTF)   10
+        # font pango: Terminus (TTF)   11
+        font pango: Tamzen 11
+        # font pango:IPAGothic 11, DejaVu Sans Mono 10
         # font pango: comfortaa   10
         # font pango: tex gyre adventor   10
         # font pango:Roboto 12px

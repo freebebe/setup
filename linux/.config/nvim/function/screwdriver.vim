@@ -162,3 +162,5 @@ let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
 " " let g:ale_fixers = {'ruby': ['rubocop']}
 " let g:ale_lint_delay = 1000
 
+"_______________________________________________________________________________
+"                                                                       Graphviz
