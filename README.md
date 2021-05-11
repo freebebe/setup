@@ -4,11 +4,19 @@ default-bascs
 ==========
 ```
 sudo apt update && apt upgrade -y
-sudo apt install neovim vim curl wget aria2 tree tmux python3 python3-dev python3-pip pipx python3-gpg python3-setuptools eog tlp net-tools zathura psensor ncdu fonts-font-awesome preload ranger uget flameshot xfburn wmctrl fzf rclone testdisk shellcheck qrencode peek dolphin fish proxychains4 texlive-full dolphin firejail lnav pandoc httpie vagrant entr playerctl kdenlive zplug gpick xournal rustc golang rbenv newsboat universal-ctags xtitle xbacklight -y
+sudo apt install neovim vim curl wget aria2 tree tmux python3 python3-dev python3-pip pipx python3-gpg python3-setuptools eog tlp net-tools zathura psensor ncdu fonts-font-awesome preload ranger uget flameshot xfburn wmctrl fzf rclone testdisk shellcheck qrencode peek proxychains4 dolphin firejail lnav pandoc httpie vagrant entr playerctl kdenlive gpick xournal rustc golang rbenv newsboat universal-ctags xtitle xbacklight keepassxc libinput-tools pavucontrol -y
 
-tird-tools
+```
 ```
 sudo apt install fail2ban
+sudo apt install texlive-full
+```
+
+## image && icon && video
+```
+sudo apt install gimp -y
+sudo apt install inkscape -y
+sudo apt install blender -y
 ```
 ```
 wm-install
@@ -20,13 +28,16 @@ sudo apt install bspwm i3 dmenu rofi xsecurelock xss-lock terminator thunar blue
 sudo apt install sy***(version && -dev)
 
 ```
-`pandoc` -> .doc等文档转译
+
+pandoc -> .doc等文档转译
 
  <strong>lockscreen-xsecurelock</strong>
+
 ```
 xset s 300 5
 xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
 ```
+
 #sys manage (for_gnome_blackscreen)
 ###cpu
   只针对intel处理器中SandyBridge（含IvyBridge）及更新的构架的CPU。intel构架列表：List of Intel CPU microarchitectures。援引：

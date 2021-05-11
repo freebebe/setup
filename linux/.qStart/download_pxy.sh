@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 
-cd /opt/v_download
+cd /opt/vvv
 firejail ./v2ray

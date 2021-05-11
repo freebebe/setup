@@ -49,7 +49,7 @@ order += "load"
 
 ## CPU temperature
 cpu_temperature 0 {
-        format = "Temp %degrees°C"
+        format = "%degrees°C"
         path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp2_input"
         # path = "/sys/devices/platform/coretemp.0/hwmon/hwmon6/temp2_input"
         max_threshold = "60"
@@ -57,7 +57,7 @@ cpu_temperature 0 {
 
 ## CPU sensor
 cpu_usage {
-    format = "Cpu %usage"
+    format = "%usage"
     # format = "Cpu: %usage [%cpu0-%cpu1-%cpu2-%cpu3-%cpu4-%cpu5-%cpu6-%cpu7]"
     # format = " Cpu: %usage "
     max_threshold = "71"
@@ -66,13 +66,13 @@ cpu_usage {
 ## system load sensor
 load {
     # format = "Load: %1min>%5min>%15min"
-    format = "Load %5min"
+    format = "%5min"
     max_threshold = "2"
 }
 
 ## Mem 
 memory {
-    format = "Ram: %used / %available"
+    format = "%used / %available"
     threshold_degraded = "1G"
     format_degraded = "Ram < %available"
 }
@@ -95,13 +95,13 @@ battery 0 {
     format_down = " NO battery "
     last_full_capacity = true
     integer_battery_capacity = true
-    status_chr = "⚡"
-    status_bat = "Bat"
-    status_full = "Power"
+    status_chr = ""
+    status_bat = "B"
+    status_full = "P"
     # status_chr = "⚡"
     #status_bat = "🔋 BAT"
     # status_full = "☻"
-    low_threshold = 25
+    low_threshold = 50
     threshold_type = time
 }
 
@@ -110,7 +110,7 @@ battery 0 {
 disk / {
 #forma = " hdd %avail "
     # format  = " ℃ %avail "
-    format  = "Disk %avail"
+    format  = "~/ %avail"
     # format  = " '/home' %avail "
 }
 # disk "/" {
@@ -124,8 +124,8 @@ disk / {
 ## audio volume sensor
 volume master {
     # format = "♪: %volume"
-    format = "Vol %volume"
-    format_muted = "Vol muted(%volume)"
+    format = " %volume"
+    format_muted = "muted(%volume)"
     device = "default"
     mixer = "Master"
     mixer_idx = 0
@@ -133,7 +133,7 @@ volume master {
 
 ## time format
 time {
-    format = "%d.%m.%Y:%M"
+    format = "%d.%m.%Y %H:%M"
     # format = "%Y-%m-%d %a %H:%M:%S"
 }
 

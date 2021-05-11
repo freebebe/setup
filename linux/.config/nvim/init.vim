@@ -39,7 +39,7 @@ luafile $HOME/.config/nvim/lua/plug/goyo.lua
 " source $HOME/.config/nvim/gogo/brain/ale.vim
 
 source $HOME/.config/nvim/gogo/hands/lightLine2.vim
-source $HOME/.config/nvim/gogo/hands/openbrowser_rc.vim
+"source $HOME/.config/nvim/gogo/hands/openbrowser_rc.vim
 
 
 "______________________________________________________________________________

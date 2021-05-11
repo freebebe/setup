@@ -801,7 +801,7 @@ esac
 true
 
 # TheFuck
-eval $(thefuck --alias)
+#eval $(thefuck --alias)
 
 # npm
 export NPM_CONFIG_PREFIX=~/.npm-global

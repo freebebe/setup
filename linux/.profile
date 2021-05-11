@@ -1,5 +1,3 @@
-#_______________________________________________________________________________
-#                                                                       def{{{
 # ~/.profile: executed by the command interpreter for login shells.
 # This file is not read by bash(1), if ~/.bash_profile or ~/.bash_login
 # exists.
@@ -27,25 +25,3 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-
-# ibus-kitty[terminal]
-export GLFW_IM_MODULE=ibus
-# ssh-kitty[terminal] 
-alias ssh="kitty +kitten ssh"
-# pip
-# export PIP_REQUIRE_VIRTUALENV=true
-#}}}
-#_______________________________________________________________________________
-
-#_______________________________________________________________________________
-#                                                                   system{{{
-#________________________/key
-#exec xmodmap ~/.Xmodmap
-#________________________/wayland
-# export QT_QPA_PLATFORM=xcb    # notworking
-#}}
-
-#________________________/standard environment variables
-export EDITOR="nvim"
-export READER="zathura"
-______________________________________________________________________________

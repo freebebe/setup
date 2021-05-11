@@ -75,11 +75,11 @@ call plug#begin('~/.vim/plugged')
     " Plug 'mxw/vim-jsx'                          "js
     " Plug 'jelera/vim-javascript-syntax'         "js
 "---------------------------lsp
-    Plug 'prabirshrestha/vim-lsp'
-    Plug 'mattn/vim-lsp-settings'
-    Plug 'lighttiger2505/deoplete-vim-lsp'
-    Plug 'hrsh7th/vim-vsnip'
-    Plug 'hrsh7th/vim-vsnip-integ'
+    " Plug 'prabirshrestha/vim-lsp'
+    " Plug 'mattn/vim-lsp-settings'
+    " Plug 'lighttiger2505/deoplete-vim-lsp'
+    " Plug 'hrsh7th/vim-vsnip'
+    " Plug 'hrsh7th/vim-vsnip-integ'
 
 "shou
     " Plug 'https://github.com/Quramy/tsuquyomi'    "ts
