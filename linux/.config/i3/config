@@ -57,8 +57,8 @@
     font pango: Tamzen 11
     # font pango:comfortaa 10
 
-# bakcground
-    # exec --no-startup-id feh --bg-fill $HOME/Pictures/bkground/kawsThink.png
+# background
+    exec --no-startup-id feh --bg-fill $HOME/Pictures/background/lightBlue.png
 
 # Use Mouse+$mod to drag floating windows to their wanted position
     floating_modifier mod1
@@ -357,7 +357,7 @@
 
     # lockscreen
     # exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-    exec_always --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock --nofork
+    # exec_always --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock --nofork
     # exec_always --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock -- xset dpms 333 555
     exec_always --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
     # 
@@ -451,7 +451,7 @@ bar {
     # output eDP-1
     tray_output eDP-1
     # tray_output primary 
-    position top
+    # position top
     # separator_symbol "-"
     # mode hide
     # workspace_buttons no
@@ -460,7 +460,7 @@ bar {
         # font pango: Monaco h10 noanti 9, icons 9
         # font pango: 10
         # font pango: Terminus (TTF)   11
-        font pango: Tamzen 11
+        font pango: Tamzen 9
         # font pango:IPAGothic 11, DejaVu Sans Mono 10
         # font pango: comfortaa   10
         # font pango: tex gyre adventor   10

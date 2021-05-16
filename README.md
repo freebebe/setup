@@ -4,12 +4,15 @@ default-bascs
 ==========
 ```
 sudo apt update && apt upgrade -y
-sudo apt install neovim vim curl wget aria2 tree tmux python3 python3-dev python3-pip pipx python3-gpg python3-setuptools eog tlp net-tools zathura psensor ncdu fonts-font-awesome preload ranger uget flameshot xfburn wmctrl fzf rclone testdisk shellcheck qrencode peek proxychains4 dolphin firejail lnav pandoc httpie vagrant entr playerctl kdenlive gpick xournal rustc golang rbenv newsboat universal-ctags xtitle xbacklight keepassxc libinput-tools pavucontrol -y
+sudo apt install neovim vim curl wget aria2 tree tmux python3 python3-dev python3-pip pipx python3-gpg python3-setuptools eog tlp net-tools zathura psensor ncdu fonts-font-awesome preload ranger uget flameshot xfburn wmctrl fzf rclone testdisk shellcheck qrencode peek proxychains4 dolphin firejail lnav pandoc httpie vagrant entr playerctl gpick xournal rustc golang rbenv newsboat universal-ctags xtitle xbacklight keepassxc libinput-tools pavucontrol -y
 
 ```
 ```
 sudo apt install fail2ban
 sudo apt install texlive-full
+
+## file connect
+apt list ricochet
 ```
 
 ## image && icon && video
@@ -18,6 +21,7 @@ sudo apt install gimp -y
 sudo apt install inkscape -y
 sudo apt install blender -y
 ```
+sudo apt isntall kdenlive -y
 ```
 wm-install
 ```

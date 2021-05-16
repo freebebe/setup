@@ -385,9 +385,9 @@ if [ -n "$BASH_VERSION" ]; then
     export PS1='\u@\h:\w\$ '
 else
     if [ "$UID" -eq 0 ]; then
-        export PROMPT='%f%n@%m:%~%# '
+        export PROMPT='[%f%n@%m]:%~%# '
     else
-        export PROMPT='%f%n@%m:%~\$ '
+        export PROMPT='[%f%n@%m]:%~\$ '
     fi
 fi
 
@@ -429,20 +429,20 @@ zmodload zsh/mathfunc
 # フロー制御の無効化
 stty -ixon
 
-# rbenv
-if hash rbenv 2> /dev/null; then
-    # initialize rbenv
-    eval "$(rbenv init -)"
-    # rehash rbenv executable file database at [un]installation
-    function gem(){
-        "$HOME/.rbenv/shims/gem" $*
-        if [ "$1" = "install" ] || [ "$1" = "i" ] || [ "$1" = "uninstall" ] || [ "$1" = "uni" ]
-        then
-            rbenv rehash
-            rehash
-        fi
-    }
-fi
+# rbenv = ruby
+# if hash rbenv 2> /dev/null; then
+#     # initialize rbenv
+#     eval "$(rbenv init -)"
+#     # rehash rbenv executable file database at [un]installation
+#     function gem(){
+#         "$HOME/.rbenv/shims/gem" $*
+#         if [ "$1" = "install" ] || [ "$1" = "i" ] || [ "$1" = "uninstall" ] || [ "$1" = "uni" ]
+#         then
+#             rbenv rehash
+#             rehash
+#         fi
+#     }
+# fi
 
 # PWD を移動するごとにディレクトリ内のファイルを表示
 # ただし，ファイルが多すぎるときは省略する
@@ -800,17 +800,20 @@ esac
 # Prevent a dog from crying at start up!
 true
 
+# ibus-kitty[terminal]
+export GLFW_IM_MODULE=ibus
+
 # TheFuck
 #eval $(thefuck --alias)
 
 # npm
-export NPM_CONFIG_PREFIX=~/.npm-global
-export PATH=$PATH:~/.npm-global/bin
+# export NPM_CONFIG_PREFIX=~/.npm-global
+# export PATH=$PATH:~/.npm-global/bin
 
 # Ruby & rbenv                                                                   
-export PATH="$HOME/.rbenv/bin:$PATH"                                             
-eval "$(rbenv init -)"                                                           
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+# export PATH="$HOME/.rbenv/bin:$PATH"                                             
+# eval "$(rbenv init -)"                                                           
+# export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
 # sway -> firefox == xwayland(windows manages)
 # export MOZ_ENABLE_WAYLAND=1

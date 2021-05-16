@@ -19,7 +19,7 @@ cp -r $HOME/.config/nvim/dict $HOME/Documents/git/system/vag_setup/setup/.config
 # config package
 
 #Up
-cd $HOME/git/vag_setup/ 
+cd $HOME/Documents/git/vag_setup/ 
 git add . 
 git commit -m 'autobakup' 
 git pull origin main 

@@ -26,6 +26,14 @@ UUID=724B-246D  /boot/efi       vfat    umask=0077      0       1
 /mnt/swap			swap	swap		defaults    0	    0	
 ~~~
 
-
-#####################demo
->   q
+#____________________________/LVM
+```
+# create the logical volume
+$ sudo lvcreate -L 8G -n swap local-lvm
+# format the volume as swap
+$ sudo mkswap /dev/local-lvm/swap
+# add a line to fstab to mount at boot
+$ echo '/dev/local-lvm/swap swap swap defaults 0 0' | sudo tee -a /etc/fstab
+# turn on swap right now
+$ sudo swapon -v /dev/local-lvm/swap`
+```

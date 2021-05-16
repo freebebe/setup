@@ -18,16 +18,16 @@ general {
 order += "wireless _first_"
 order += "ethernet _first_"
 order += "wireless wlan0"
+order += "volume master"
 order += "cpu_temperature 0"
 order += "cpu_usage"
 order += "memory"
 # order += "sysdata"
 order += "disk /"
 order += "backlight"
-order += "volume master"
+order += "load"
 order += "battery 0"
 order += "time"
-order += "load"
 
 
 ###################
@@ -74,18 +74,19 @@ load {
 memory {
     format = "%used / %available"
     threshold_degraded = "1G"
-    format_degraded = "Ram < %available"
+    format_degraded = " < %available"
 }
 
 ## NET
 wireless _first_ {
         # format_up = "W: (%quality at %essid) %ip"
-        format_up = "W: (%quality at %essid)"
-        format_down = "W: down"
+        format_up = "W: (%quality %essid)"
+        format_down = "W: X"
 }
 ethernet _first_ {
-        format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+        format_up = "E: %ip"
+        # format_up = "E: %ip (%speed)"
+        format_down = "E: X"
 }
 
 ## Battery
@@ -124,7 +125,7 @@ disk / {
 ## audio volume sensor
 volume master {
     # format = "♪: %volume"
-    format = " %volume"
+    format = "%volume"
     format_muted = "muted(%volume)"
     device = "default"
     mixer = "Master"
@@ -133,7 +134,7 @@ volume master {
 
 ## time format
 time {
-    format = "%d.%m.%Y %H:%M"
+    format = "%d/%m/%Y %H:%M"
     # format = "%Y-%m-%d %a %H:%M:%S"
 }
 
@@ -156,7 +157,7 @@ run_watch VPN {
 ## wlan sensor
 wireless wlan0 {
     format_up = "W: (%quality at %essid) %ip"
-    format_down = "W: down"
+    format_down = "W: X"
 }
 
 
