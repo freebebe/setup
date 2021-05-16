@@ -21,7 +21,7 @@ cp -r $HOME/.config/nvim/ $HOME/Documents/git/system/setup/linux/.config
 cp -r $HOME/.config/kitty/ $HOME/Documents/git/system/setup/linux/.config
 
 ## brower
-cp -r $HOME/.mozilla $HOME/Documents/git/system/setup/linux/
+cp -r $HOME/.mozilla/firefox/l0gvz3le.default-release/prefs.js $HOME/Documents/git/system/setup/linux/
 ## for ubuntu-desk-i3
 cp -r $HOME/.config/gtk-3.0/ $HOME/Documents/git/system/setup/ubuntuDesktop/.config
 cp -r $HOME/.Xresources $HOME/Documents/git/system/setup/ubuntuDesktop/
