@@ -39,4 +39,4 @@ git pull origin master
 git push -u origin master
 # git push -u origin main
 #
-cd
+exit 0

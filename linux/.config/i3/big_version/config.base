@@ -1,52 +1,31 @@
 #_______________________________________________________________________________
-#                                                                       unkwon
-    workspace_auto_back_and_forth yes
-    force_display_urgency_hint 0 ms
-    focus_on_window_activation urgent
-
-    floating_minimum_size -1 x -1
-    floating_maximum_size -1 x -1
-
-    # xautolock -time 5 -locker fuzzy_lock -notify 20 -notifier 'xset dpms force off' &
-    # xautolock -time 7 -locker "systemctl suspend" &
-
-#_______________________________________________________________________________
 #                                                                   Variables{{{
-# (No) Title Bars
-    for_window [class="^.*"] border pixel 3
 
-    # $mod = super
-    # mod1 = alt
+# $mod = super
+# mod1 = alt
+
     set $mod Mod4
     set $term kitty
     set $menu "rofi -show drun  -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -show-icons -theme 'glue_pro_blue' -font 'mono 15'"
 
-    # set $left h
-    # set $down j
-    # set $up k
-    # set $right l
+# set $left h
+# set $down j
+# set $up k
+# set $right l
 
-# windows border
-    new_window none
-    new_float normal
-    hide_edge_borders both
-    focus_follows_mouse yes
-    # hide_edge_borders none
-    default_border pixel 2 
-    # default_floating_border none
-    # workspace_layout stacking
+#____________________________________________________________________________}}}
 
-    #new_window_option
-    #default_orientation horizontal|vertical|auto
+#_______________________________________________________________________________
+#                                                                   windows{{{
+
+
+#____________________________________________________________________________}}}
 
 # change border style
     # bindsym $mod+u border none
     # bindsym $mod+n border normal
     # bindsym $mod+o border 1pixel
     bindsym $mod+b border toggle
-
-# foucus follows mouse(cursor)
-    focus_follows_mouse yes
 
 # change container layout (stacked, tabbed, toggle split)
     bindsym $mod+c layout toggle split
@@ -56,11 +35,8 @@
     # font pango:Ubuntu Nomo 12px
     # font pango:Roboto 9
     # font pango:Terminus (TTF) 10
-    font pango: Tamzen 11
     # font pango:comfortaa 10
 
-# background
-    exec --no-startup-id feh --bg-fill $HOME/Pictures/background/lightBlue.png
 
 # Use Mouse+$mod to drag floating windows to their wanted position
     floating_modifier mod1
@@ -68,12 +44,31 @@
 # toupad -> at more size with someGithub link setup
     exec --no-startup-id synclient TapButton0=0 
 
-#}}}
-#_______________________________________________________________________________
+#____________________________________________________________________________}}}
 
 #_______________________________________________________________________________
 #                                                              Window-manager{{{
 #
+
+# (No) Title Bars
+    for_window [class="^.*"] border pixel 3
+
+# windows border
+#new_window none
+#new_float normal
+
+    hide_edge_borders both
+    focus_follows_mouse yes
+
+# hide_edge_borders none
+#default_border pixel 2 
+# default_floating_border none
+# workspace_layout stacking
+
+#new_window_option
+#default_orientation horizontal|vertical|auto
+
+#_____________________________/manager_Key
 
 # Move workspace to another display
     bindsym $mod+x move workspace to output right
@@ -83,27 +78,28 @@
     bindsym $mod+Shift+Tab workspace prev
 
 # Switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+    bindsym $mod+1 workspace 1
+    bindsym $mod+2 workspace 2
+    bindsym $mod+3 workspace 3
+    bindsym $mod+4 workspace 4
+    bindsym $mod+5 workspace 5
+    bindsym $mod+6 workspace 6
+    bindsym $mod+7 workspace 7
+    bindsym $mod+8 workspace 8
+    bindsym $mod+9 workspace 9
+    bindsym $mod+0 workspace 10
+
 # Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+    bindsym $mod+Shift+1 move container to workspace 1
+    bindsym $mod+Shift+2 move container to workspace 2
+    bindsym $mod+Shift+3 move container to workspace 3
+    bindsym $mod+Shift+4 move container to workspace 4
+    bindsym $mod+Shift+5 move container to workspace 5
+    bindsym $mod+Shift+6 move container to workspace 6
+    bindsym $mod+Shift+7 move container to workspace 7
+    bindsym $mod+Shift+8 move container to workspace 8
+    bindsym $mod+Shift+9 move container to workspace 9
+    bindsym $mod+Shift+0 move container to workspace 10
 
 # Open applications on specific workspaces
     assign [class="Zathura"] workspace 1
@@ -130,55 +126,17 @@ bindsym $mod+Shift+0 move container to workspace 10
         bindsym Escape mode "default"
     }
 
-# choose xrandr displaymode
-    bindsym $mod+Shift+Ctrl+p mode "$mode_display"
-    set $mode_display Display mode (d) dualRight, (h) HDMI, (l) laptop
-    mode "$mode_display" {
-        bindsym d exec --no-startup-id sh $HOME/.config/i3/screenlayouts/display dualRight, mode "default"
-        bindsym m exec --no-startup-id sh $HOME/.config/i3/screenlayouts/display HDMI, mode "default"
-        bindsym l exec --no-startup-id sh $HOME/.config/i3/screenlayouts/display laptop, mode "default"
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-    }
-
-#}}}
-#_______________________________________________________________________________
+#____________________________________________________________________________}}}
 
 #_______________________________________________________________________________
 #                                                           Layout key stuff{{{
 #
-# reload the configuration file
-    bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-    bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-    bindsym $mod+shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
     bindsym $mod+Shift+h splith
     bindsym $mod+Shift+v splitv
-
-# alternatively, you can use the cursor keys:
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
-
-# move focused window
-    bindsym $mod+Shift+j move left
-    bindsym $mod+Shift+k move down
-    bindsym $mod+Shift+l move up
-    bindsym $mod+Shift+semicolon move right
-
-# alternatively, you can use the cursor keys:
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
 
     # Switch the current container between different layout styles
     # bindsym $mod+Shift+s layout stacking
@@ -200,6 +158,26 @@ bindsym $mod+Shift+0 move container to workspace 10
     #navigate workspaces next / previous
     bindsym $mod+Ctrl+Right workspace next
     bindsym $mod+Ctrl+Left workspace prev
+
+    # alternatively, you can use the cursor keys:
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # move focused window
+    bindsym $mod+Shift+j move left
+    bindsym $mod+Shift+k move down
+    bindsym $mod+Shift+l move up
+    bindsym $mod+Shift+semicolon move right
+
+    # alternatively, you can use the cursor keys:
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+
+
 #_____________________________Resizing containers
     mode "resize" {
         # left will shrink the containers width
@@ -223,8 +201,7 @@ bindsym $mod+Shift+0 move container to workspace 10
     }
     bindsym $mod+r mode "resize"
 
-#}}}
-#_______________________________________________________________________________
+#____________________________________________________________________________}}}
 #
 #_______________________________________________________________________________
 #                                                   applications_key_building{{{
@@ -254,6 +231,7 @@ bindsym $mod+Shift+0 move container to workspace 10
     # bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks 
     # bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
     # bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
+
     bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
     bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
     bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -261,6 +239,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 # Screen brightness controls with notification
     bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5% # increase screen brightness
     bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5% # decrease screen brightness
+
     # bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
     # bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
     # bindsym $mod+Shift+Ctrl+Up exec xbacklight -inc 10 # increase screen brightness
@@ -271,94 +250,9 @@ bindsym $mod+Shift+0 move container to workspace 10
     # bindsym XF86AudioNext exec playerctl next
     # bindsym XF86AudioPrev exec playerctl previous
 
-# launch categorized menu
-    bindsym $mod+z exec --no-startup-id morc_menu
 
-# GUI file manager -- thunar
-    bindsym $mod+e exec --no-startup-id dolphin
+#____________________________________________________________________________}}}
 
-# ranger with konsole
-# bindsym $mod+Shift+e konsole -e ranger
-# image_key
-    bindsym $mod+w exec --no-startup-id flameshot gui    #flameshot
-#
-    # bindsym $mod+alt+t exec --no-startup-id compton -b
-# drop down terminal
-    # bindsym $mod+Return exec --no-startup-id yakuake
-# WMonky
-    # bindsym $mod+F6 exec /opt/writemonkey3/nw
-# firefox
-    bindsym $mod+F2 exec --no-startup-id $HOME/.qStart/firefox_firejail.sh
-# dmenu(backup) 
-# bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
-# kill_GUI
-    bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
-# xpad
-    bindsym $mod+F1 exec --no-startup-id xpad -t -N
-# ranger->file
-    # bindsym $mod+F4 exec thunar path/to/Documents/uni2019-20
-    # bindsym $mod+F1 exec thunar ~/Downloads
-
-# lock screen
-    bindsym $mod+l exec --no-startup-id xsecurelock
-
-# sleep
-    # bindsym $mod+F12 exec --no-startup-id $HOME/.config/i3/tools/sleep.sh
-# external screen
-
-# both
-    # bindsym $mod+Shift+b exec --no-startup-id $HOME/.config/i3/screenlayouts/externalRight.sh
-#my
-    # bindsym $mod+Shift+m exec --no-startup-id $HOME/.config/i3/screenlayouts/only.sh
-#only ext
-    # bindsym $mod+Shift+n exec --no-startup-id $HOME/.config/i3/screenlayouts/only_top.sh
-
-#}}}
-#_______________________________________________________________________________
-
-#_______________________________________________________________________________
-#                                                               applications{{{
-
-#_____________________________/autoStart
-    exec --no-startup-id nm-applet
-    exec --no-startup-id blueman-applet
-    # exec --no-startup-id clipit                       #copy_data
-    # exec_always xfce4-power-manager
-    exec_always --no-startup-id xfce4-power-manager
-    # exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/org_kde_powerdevil
-
-    # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-    # exec --no-startup-id nitrogen --restore; sleep 1; compton -b            # background-image chenage for fee time
-    # exec --no-startup-id xpad
-    # exec --no-startup-id dropbox
-    exec --no-startup-id dropbox stop && dbus-launch dropbox start -i
-    exec --no-startup-id flameshot              # face_your_screen_face
-    # exec --no-startup-id i3-confg-wizard
-    # exec_always dropbox
-    # exec --no-startup-id conky
-    # exec --no-startup-id volumeicon
-    exec --no-startup-id dunst                  # Notification
-
-    # lockscreen
-    # exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-    # exec_always --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock --nofork
-    # exec_always --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock -- xset dpms 333 555
-    exec_always --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
-    # 
-    # exec --no-startup-id xset dpms 365 1357 6789
-    # exec --no-startup-id xset dpms 365 1357
-    # exec_always --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock 
-    # exec_always --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
-    # exec_always --no-startup-id xautolock -time 553 -locker fuzzy_lock -notify 20 -notifier 'xset dpms force off' &
-    # exec_always --no-startup-id xautolock -time 555 -locker "systemctl suspend" &
-
-    # exec --no-startup-id xmodmap $HOME/.Xmodmap
-    exec_always xmodmap $HOME/.Xmodmap
-    exec --no-startup-id $HOME/.config/i3/screenlayouts/externalRight.sh
-    # exec $HOME/.config/i3/tools/ACorPOWER.sh
-
-    # touch pad speed
-    exec --no-startup-id  xinput set-prop 16 'libinput Accel Speed' 0.5 
 
 #_____________________________/app_win_manger
 
@@ -405,8 +299,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 # for_window [class="Pamac-manager"] floating enable                            #for arch&&manjaro system softeware manager
     for_window [class="Xfburn"] floating enable
     for_window [class="Zotero"] floating enable
-#}}}
-#_______________________________________________________________________________
+
+#____________________________________________________________________________}}}
 
 #_______________________________________________________________________________
 #                                                                       bar{{{
@@ -460,13 +354,4 @@ bar {
         urgent_workspace    #ffffff #ff0000
     }
 }
-
-
-# theme colors
-#   class                   border | backgr | text | indicator
-    client.focused         #383838  #383838  #CCCCCC #2ECC71
-    client.unfocused       #16404B  #16404B  #2ECC71 #222222
-    client.urgent          #274D01  #900000  #FFFFFF #900000
-
-#}}}
-#_______________________________________________________________________________
+#____________________________________________________________________________}}}

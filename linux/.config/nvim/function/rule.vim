@@ -15,7 +15,7 @@ set termguicolors
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,ucs-bom,gb18030,big5,euc-jp,euc-kr
+set fileencodings=utf-8,ucs-bom,gb18030,big5,euc-jp,euc-kr,euc-tw
 " 文件格式
 set matchpairs=(:),[:],{:}
 set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md,.rb,.tsx,.ts,.jpg,.jpeg,.gif,.png,.vim

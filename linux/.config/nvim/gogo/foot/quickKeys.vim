@@ -1,6 +1,6 @@
 "_______________________________________________________________________________
 "                                                                   quick quie
-inoremap <C-U> <C-G>u<C-U>          "挡c-U
+inoremap <C-U> <C-G>u<C-U>
     nnoremap q :<C-u>q<CR>
     " nnoremap Q :<C-u>qa!<CR>
     " save
