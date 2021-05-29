@@ -102,7 +102,7 @@ user_pref("distribution.iniFile.exists.value", true);
 user_pref("doh-rollout.balrog-migration-done", true);
 user_pref("doh-rollout.doneFirstRun", true);
 user_pref("dom.event.clipboardevents.enabled", false);
-user_pref("dom.push.userAgentID", "77b2dbaff82f4953bd3697548804458a");
+user_pref("dom.push.userAgentID", "6f95a408717e407b8313f93f9751c9ba");
 user_pref("dom.security.https_only_mode", true);
 user_pref("dom.security.https_only_mode_ever_enabled", true);
 user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org");
