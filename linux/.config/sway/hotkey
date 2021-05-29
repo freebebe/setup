@@ -1,0 +1,11 @@
+set $nag exec swaynagmode
+mode "nag" {
+  bindsym {
+    Ctrl+d      mode "default"
+
+    capslock+h  $nag --select Left
+    capslock+l  $nag --select Right
+
+    capslock+k  $nag --select Up
+    capslock+j  $nag --select Down
+  }

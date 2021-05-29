@@ -17,7 +17,7 @@
     # exec --no-startup-id dropbox stop && dbus-launch dropbox start -i
     # exec --no-startup-id flameshot              # face_your_screen_face
     # exec --no-startup-id i3-confg-wizard
-    exec_always dropbox
+    #exec_always dropbox
     # exec --no-startup-id conky
     # exec --no-startup-id volumeicon
     exec --no-startup-id dunst                  # Notification

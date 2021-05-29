@@ -1,0 +1,191 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 20,
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode",
+        "sway/window"
+    ],
+    
+    "modules-center": [
+        "mpd"
+    ],
+    
+    "modules-right": [
+        "network",
+        "temperature",
+        "cpu",
+        "memory",
+        "disk",
+        "pulseaudio",
+        "backlight",
+        "battery",
+        "custom/cet",
+        "custom/eastern",
+        "custom/pst",
+        "tray",
+        "custom/power"
+    ],
+
+    "sway/workspaces": {
+        "format": "{name}"
+    },
+    
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    
+    "sway/window": {
+      "format": "{}",
+      "max-length": 50
+    },
+    
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+    
+    "disk": {
+        "interval": 30,
+        "format": "{path}: {free}",
+        "path": "/"
+    },
+    
+    "custom/kubectx": {
+        "format": "\u2638{}",
+        "exec": "kubectl config current-context",
+        "interval": 1
+    },
+    
+    "custom/eastern": {
+        "format": "{}",
+        "exec": "TZ=America/Montreal date +'%H:%M %Z'",
+        "interval": 60
+    },
+
+    "custom/pst": {
+        "format": "{}",
+        "exec": "TZ=PST8PDT date +'%H:%M %Z'",
+        "interval": 60
+    },
+
+    "custom/cet": {
+        "format": "{}",
+        "exec": "TZ=CET date +'%H:%M %Z'",
+        "interval": 60
+    },
+
+    "cpu": {
+        "format": "{usage}%",
+        "states": {
+            "warning": 50,
+            "critical": 78
+        }
+    },
+
+    "memory": {
+        "format": "{}%",
+        "states": {
+            "warning": 50,
+            "critical": 78
+        }
+    },
+
+    "temperature": {
+        "thermal-zone": "2",
+        "interval": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon*/temp1_input",
+        // "hwmon-path": "/sys/class/thermal/thermal_zone*/temp",
+        "critical-threshold": 60,
+        "format": "{temperatureC}°C",
+        // "format": "{temperatureC}°C"
+        "on-click": "psensor"
+    },
+
+    "backlight": {
+        "format": "{icon}",
+        "format-alt": "{percent}% {icon}",
+        "format-alt-click": "click-right",
+        "format-icons": ["", ""],
+        "on-scroll-down": "light -A 1",
+        "on-scroll-up": "light -U 1"
+    },
+
+    "battery": {
+        //"tooltip": false,
+        "bat": "BAT0",
+        "interval": 30,
+        "states": {
+            "full": 100,
+            "normal": 90,
+            "warning": 50,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}% - {time}",
+        "format-time": "{H}h{M}m",
+        "format-charging": " {capacity}%",
+        "format-discharging": "BAT {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "on-click": "gnome-power-statistics"
+    },
+
+    "network": {
+        "format": "{bandwidthUpBits} {bandwidthDownBits}",
+        "format-wifi": "{essid} ({signalStrength}%)",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": "⚠ Disconnected"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format-bluetooth-muted": " {format_source}",
+        "format-muted": "{format_source}",
+        "format-source": "/ {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                "",
+                "",
+                ""
+            ]
+        },
+        "scroll-step": 5,
+        "on-click": "pavucontrol",
+        "on-click-right": "blueman-manager"
+    },
+
+    "mpd": {
+        "format": "{stateIcon} {title}",
+        "format-stopped": " STOPPED",
+        "tooltip-format": "{artist} - {album} - {title} {singleIcon} {randomIcon}",
+        "state-icons": {
+            "playing": "",
+            "paused": ""
+        },
+        "random-icons": {"on": ""},
+        "single-icons": {"on": ""},
+        "max-length": 40
+    },
+
+    "custom/power": {
+        "format":"",
+        "on-click":"swaynag -t warning -m 'Power Menu Options' -b 'Logout' 'swaymsg exit' -b 'Suspend' 'swaymsg exec systemctl suspend' -b 'shutdown' 'swaymsg exec systemctl shutdown' -b 'reboot' 'swaymsg exec systemctl reboot'"
+    }
+}

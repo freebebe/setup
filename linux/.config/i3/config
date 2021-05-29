@@ -1,11 +1,11 @@
 #_______________________________________________________________________________
 #                                                                       unkwon
-    workspace_auto_back_and_forth yes
-    force_display_urgency_hint 0 ms
-    focus_on_window_activation urgent
-
-    floating_minimum_size -1 x -1
-    floating_maximum_size -1 x -1
+    # workspace_auto_back_and_forth yes
+    # force_display_urgency_hint 0 ms
+    # focus_on_window_activation urgent
+    #
+    # floating_minimum_size -1 x -1
+    # floating_maximum_size -1 x -1
 
     # xautolock -time 5 -locker fuzzy_lock -notify 20 -notifier 'xset dpms force off' &
     # xautolock -time 7 -locker "systemctl suspend" &
@@ -20,6 +20,10 @@
     set $mod Mod4
     set $term kitty
     set $menu "rofi -show drun  -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -show-icons -theme 'glue_pro_blue' -font 'mono 15'"
+    #          rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "glue_pro_blue" -font "mono 15"
+    #          rofi -show drun -location 1 -width 100  -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Terminus (TTF) 10" -theme "$HOME/.config/rofi/nixpulvis.rasi" -show-icons
+    #          rofi -show drun -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Terminus (TTF) 11" -theme "$HOME/.config/rofi/nixpulvis.rasi" -show-icons
+    #          rofi -show drun -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Terminus (TTF) 11" -theme "glue_pro_blue" -show-icons
 
     # set $left h
     # set $down j
@@ -239,10 +243,6 @@ bindsym $mod+Shift+0 move container to workspace 10
     bindsym $mod+Shift+Ctrl+w kill
 
 # start dmenu (a program launcher)
-    # bindsym $mod+d exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "glue_pro_blue" -font "mono 15"
-    # bindsym $mod+d exec --no-startup-id rofi -show drun -location 1 -width 100  -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Terminus (TTF) 10" -theme "$HOME/.config/rofi/nixpulvis.rasi" -show-icons
-    # bindsym $mod+d exec --no-startup-id rofi -show drun -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Terminus (TTF) 11" -theme "$HOME/.config/rofi/nixpulvis.rasi" -show-icons
-    # bindsym $mod+d exec --no-startup-id rofi -show drun -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Terminus (TTF) 11" -theme "glue_pro_blue" -show-icons
     bindsym $mod+d exec $menu
 
 # Use pactl to adjust volume in PulseAudio.
@@ -343,8 +343,8 @@ bindsym $mod+Shift+0 move container to workspace 10
     # exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
     # exec_always --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock --nofork
     # exec_always --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock -- xset dpms 333 555
-    exec_always --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
-    # 
+    exec_always --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- i3lock
+
     # exec --no-startup-id xset dpms 365 1357 6789
     # exec --no-startup-id xset dpms 365 1357
     # exec_always --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock 
@@ -373,6 +373,7 @@ bindsym $mod+Shift+0 move container to workspace 10
     # for_window [class="kitty"] floating enable
     # for_window [class="kitty"] resize set 800 480
     for_window [class="(?i)blueman"] floating enable
+    for_window [class="arduino"] floating enable
     for_window [class="yakuake"] floating enable
     for_window [class="systemsettings"] floating enable
     for_window [class="keepassxc"] floating enable
@@ -402,7 +403,7 @@ bindsym $mod+Shift+0 move container to workspace 10
     for_window [class="GParted"] floating enable border normal
     for_window [class="Pavucontrol"] floating enable
 
-# for_window [class="Pamac-manager"] floating enable                            #for arch&&manjaro system softeware manager
+    for_window [class="Pamac-manager"] floating enable                            #for arch&&manjaro system softeware manager
     for_window [class="Xfburn"] floating enable
     for_window [class="Zotero"] floating enable
 #}}}

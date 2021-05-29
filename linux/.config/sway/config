@@ -1,3 +1,6 @@
+#########################################
+# https://wiki.archlinux.org/title/Sway #
+#########################################
 # Default config for sway
 #
 # Copy this to ~/.config/sway/config and edit it to your liking.
@@ -9,14 +12,20 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 set $term kitty
+set $locker swaylock -f -c 000000 -e -l
+# set $menu wofi -I --show drun,run
+set $menu rofi -show drun -show combi -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -show-icons -theme 'glue_pro_blue' -font 'mono 15' | xargs swaymsg exec --
+
+seat seat0 xcursor_theme DMZ-Black 16
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
+# set $menu wofi -I --show drun,run
+# set $menu wofi --show drun,run -sho | xargs swaymsg exec --
 # set $menu dmenu_run | dmenu| xargs swaymsg exec --
-# set $menu wofi --show drun,run -show-icons | xargs swaymsg exec --
-# set $menu "rofi -combi-modi window,drun,ssh,run -show combi -show-icons"
-set $menu "rofi -combi-modi window,drun,ssh,run -show combi -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -show-icons -theme 'glue_pro_blue' -font 'mono 15'"
+#  set $menu "rofi -combi-modi window,drun,ssh,run -show combi -show-icons"
+#set $menu "rofi -combi-modi window,drun,ssh,run -show combi -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -show-icons -theme 'glue_pro_blue' -font 'mono 15'"
 # set $menu rofi_run | rofi| xargs swaymsg exec --no-startup-id rofi -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Terminus (TTF) 11" -theme "$HOME/.config/rofi/nixpulvis.rasi" -show-icons
 # set $menu rofi_path | rofi | xargs swaymsg exec --no-startup-id  rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "glue_pro_blue" -font "mono 15"
 
@@ -42,11 +51,13 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # Example configuration:
 #
 exec swayidle -w \
-        timeout 300 'swaylock -f -c 000000' \
+        # timeout 987 "$locker" \
         # timeout 300 'swaymsg "output * dpms off"' \
         #     resume 'swaymsg "output * dpms on"' \
-        timeout 388 'systemctl suspend ' \
-        before-sleep 'swaylock -f -c 000000'
+        timeout 999 'swaymsg exec systemctl suspend' \
+        # before-sleep 'playerctl pause' \
+        before-sleep '$locker'
+        # before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -56,16 +67,34 @@ exec swayidle -w \
 #
 # Example configuration:
 #
-  input "2:14:SynPS/2_Synaptics_TouchPad" {
-      dwt enabled
-      tap enabled
-      natural_scroll enabled
-      middle_emulation enabled
-  }
-#
+input type:touchpad {
+    accel_profile adaptive
+    dwt enabled
+    tap enabled
+    # natural_scroll enabled
+    middle_emulation enabled
+    pointer_accel 0.3
+}
+
+input type:keyboard {
+    xkb_layout us
+    xkb_model "dell"
+    xkb_variant altgr-intl
+    xkb_options compose:ralt
+}
+
+
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+#_____________________________/Workaround for GTK apps hanging during init
+# > See https://github.com/swaywm/sway/wiki#gtk-applications-take-20-seconds-to-start
+# > See https://github.com/swaywm/sway/issues/5732
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+# exec dbus-update-activation-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec systemd-notify --ready
 
 #_______________________________________________________________________________
 #                                                                   Variables{{{
@@ -73,9 +102,9 @@ exec swayidle -w \
     # new_window none
     # new_float normal
     hide_edge_borders both
-    default_border pixel 2 
+    default_border pixel 3
 
-# foucus follows mouse(cursor)
+    # foucus follows mouse(cursor)
     focus_follows_mouse yes
 
     # (No) Title Bars
@@ -95,8 +124,10 @@ exec swayidle -w \
     # Start your launcher
     bindsym $mod+d exec $menu
 
+    bindsym $mod+e exec --no-startup-id dolphin
+
     # lock screen
-    bindsym $mod+l swaylock -f
+    bindsym $mod+l $locker
 
     # volume
     bindsym {
@@ -127,6 +158,22 @@ exec swayidle -w \
     # Restart the configuration file
     # bindsym $mod+Shift+r restart
     bindsym $mod+Shift+r exec 'swaymsg reload'
+
+    set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI
+    mode "$mode_system" {
+        bindsym l exec $lock, mode "default"
+        bindsym e exit
+        bindsym s exec --no-startup-id systemctl suspend, mode "default"
+        bindsym r exec --no-startup-id systemctl reboot, mode "default"
+        bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+        bindsym Shift+r exec --no-startup-id systemctl reboot --firmware-setup, mode "default"
+
+        # return to default mode
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+    bindsym $mod+Shift+Ctrl+0 mode "$mode_system"
+
 
 #_____________________________/Window-manager_Key
 
@@ -180,9 +227,9 @@ exec swayidle -w \
     # We just use 1-10 as the default.
 
     # Open applications on specific workspaces
-    assign [class="Zathura"] $ws1
-    assign [class="firefox"] $ws2
-    assign [class="VirtualBox"] $ws8
+    assign [class="Zathura"] workspace 1
+    assign [class="firefox"] workspace 2
+    assign [class="VirtualBox"] workspace 8
 
 #_____________________________Layout key stuff
 
@@ -270,22 +317,23 @@ exec swayidle -w \
 #
 
 #_____________________________/autoStart
-    exec nm-applet
-    exec blueman-applet
+    # exec_always ./import-gsettings
+    exec --no-startup-id nm-applet --indicator
+    exec --no-startup-id blueman-applet
     # exec --no-startup-id clipit                       #copy_data
-    #exec ibus-wayland
+    # exec --no-startup-id ibus-daemon --xim -d -r
     # exec_always xfce4-power-manager
     # exec --no-startup-id xfce4-power-manager
     # exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/org_kde_powerdevil
 
     # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-    exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+    # exec --no-startup-id nitrogen --restore; sleep 1; compton -b
     # exec --no-startup-id xpad
     # exec --no-startup-id dropbox
     # exec --no-startup-id dropbox stop && dbus-launch dropbox start -i
-    # exec --no-startup-id flameshot              # face_your_screen_face
+    exec --no-startup-id  flameshot              # face_your_screen_face
     # exec --no-startup-id i3-confg-wizard
-    exec_always dropbox
+    # exec_always dropbox
     # exec --no-startup-id conky
     # exec --no-startup-id volumeicon
     exec --no-startup-id dunst                  # Notification
@@ -293,29 +341,30 @@ exec swayidle -w \
     # exec --no-startup-id xmodmap $HOME/.Xmodmap
     exec $HOME/.config/i3/tools/ACorPOWER.sh
 
-    # touch pad speed
-    # exec --no-startup-id  xinput set-prop 16 'libinput Accel Speed' 0.5 
-    # suspend lock
-
 #_____________________________/app_win_manger
 
 # Applications behaving as "pop ups" are set to be always floating
 #  i.e. popup, do stuff, close
 # To get WM_CLASS and WM_TITLE values, on X run "xprop"
-    for_window [window_role="pop-up"] floating enable
+    # for_window [window_role="pop-up"] floating enable
     # for_window [class="VirtualBox"] floating enable
     # for_window [class="VirtualBox"] resize set 800 600
+    # for_window [class="(?i)VirtualBox" title="(?i)Manager"] floating enable
+    # for_window [class="(?i)VirtualBox"] floating enable
     # for_window [class="konsole"] floating enable
     # for_window [class="konsole"] resize set 600 400
     # for_window [class="kitty"] floating enable
     # for_window [class="kitty"] resize set 800 480
     for_window [class="(?i)blueman"] floating enable
+    for_window [class="pulseaudio"] floating enable
     for_window [class="yakuake"] floating enable
     for_window [class="systemsettings"] floating enable
     for_window [class="keepassxc"] floating enable
     for_window [class="Thunar"] floating enable
     for_window [class="uget"] floating enable
-    for_window [class="Blueman-manager"] floating enable 
+    for_window [class="(?i)dolphin"] floating enable
+    for_window [class="(?i)blueman"] floating enable
+    for_window [class="Blueman-manager"] floating enable
     for_window [class="vlc"] floating enable
     for_window [class="mpv"] floating enable
     for_window [class="mpv"] resize set 600 400
@@ -324,6 +373,9 @@ exec swayidle -w \
     for_window [class="Timeset-gui"] floating enable border normal
     for_window [class="xpad"] floating enable 
     for_window [class="Zathura"] floating enable
+    for_window [class="imv"] floating enable
+    for_window [class="imv"] $FLOAT-noborder
+    for_window [class="imv"] resize set 600 400
     for_window [class="feh"] floating enable
     for_window [class="feh"] $FLOAT-noborder
     for_window [class="feh"] resize set 600 400
@@ -351,14 +403,16 @@ exec swayidle -w \
 bar {
         # status_command i3blocks -c $HOME/.config/i3blocks/config
         # status_command py3status -c $HOME/.config/i3status/i3pystauts.conf
-        #status_command waybar -c $HOME/.config/waybar/config
+        # swaybar_command waybar
+        # swaybar_command i3status
         status_command i3status --config $HOME/.config/i3status/config
              status_command exec $HOME/.config/i3status/contrib/net-speed.sh
             # status_command exec $HOME/.config/i3status/contrib/xtitle.sh
         # status_command py3status -c $HOME/.config/py3status/config
         # output eDP-1
-        position top
+        position bottom
         # tray_output eDP-1
+        mode dock
         font pango: Terminus (TTF)   10
         colors {
             statusline          #ffffff
@@ -370,4 +424,5 @@ bar {
 #_______________________________________________________________________________
 #                                                                           gaps
 
+# include /etc/sway/config.d/*
 include /etc/sway/config.d/*

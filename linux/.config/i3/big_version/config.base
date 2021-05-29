@@ -267,6 +267,7 @@
     # for_window [class="kitty"] floating enable
     # for_window [class="kitty"] resize set 800 480
     for_window [class="(?i)blueman"] floating enable
+    for_window [class="arduino"] floating enable
     for_window [class="yakuake"] floating enable
     for_window [class="systemsettings"] floating enable
     for_window [class="keepassxc"] floating enable
@@ -296,7 +297,7 @@
     for_window [class="GParted"] floating enable border normal
     for_window [class="Pavucontrol"] floating enable
 
-# for_window [class="Pamac-manager"] floating enable                            #for arch&&manjaro system softeware manager
+    for_window [class="Pamac-manager"] floating enable                            #for arch&&manjaro system softeware manager
     for_window [class="Xfburn"] floating enable
     for_window [class="Zotero"] floating enable
 

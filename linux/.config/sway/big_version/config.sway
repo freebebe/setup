@@ -1,5 +1,4 @@
-#_______________________________________________________________________________
-#                                                   Applications_key_building{{{
+#_______________________________________________________________________________ #                                                   Applications_key_building{{{
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -27,6 +26,10 @@ input "2:14:SynPS/2_Synaptics_TouchPad" {
 }
 
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec dbus-update-activation-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec systemd-notify --ready
 
 #_______________________________________________________________________________
 #                                                           Layout key stuff{{{

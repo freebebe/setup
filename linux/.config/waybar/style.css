@@ -1,0 +1,88 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: Fira Mono, Arial;
+    font-size: 13px;
+    min-height: 0;
+  }
+  
+  #waybar {
+    background: #121212;
+    color: #ffffff;
+  }
+
+  #workspaces {
+  }
+
+  #workspaces button {
+    padding: 0 5px;
+    color: #ffffff;
+  }
+
+  #workspaces button.focused {
+    padding: 0 5px;
+    color: #ffffff;
+    background: #B0B0B0;
+  }
+
+  #workspaces button.urgent {
+    background: #e06c75;
+  }
+
+  #mode {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: #e06c75;
+  }
+
+  #window {
+    background: #B0B0B0;
+  }
+
+  #pulseaudio {
+  }
+
+  #pulseaudio.muted {
+    color: #be5046;
+  }
+  
+  #network {
+    color: #13FF00
+  }
+
+  #network.disconnected {
+    color: #be5046;
+  }
+
+
+  #battery {
+  }
+
+  #battery.warning,
+  #battery.warning:not(.charging) {
+    background: #d19a66;
+  }
+  
+  #battery.critical,
+  #battery.critical:not(.charging) {
+    background: #e06c75;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
+  #custom-cet,
+  #custom-eastern,
+  #custom-pst,
+  
+  #waybar > box:nth-child(2) > box:nth-child(3) > * > label {
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+

@@ -8,6 +8,10 @@ cp $HOME/.gitconfig $HOME/Documents/git/system/setup/linux
 cp $HOME/.zshrc $HOME/Documents/git/system/setup/linux
 cp $HOME/.curlrc $HOME/Documents/git/system/setup/linux
 cp $HOME/.profile $HOME/Documents/git/system/setup/linux
+cp $HOME/.pam_environment $HOME/Documents/git/system/setup/linux
+cp $HOME/.Xdefaults $HOME/Documents/git/system/setup/linux              # wayland
+cp $HOME/.Xresources $HOME/Documents/git/system/setup/linux             # x10
+
 #filepacker ->  /home/.config/
 ##-rf && r : skip question
 cp -r $HOME/.config/Code/User/ $HOME/Documents/git/system/setup/linux/.config/Code
@@ -19,6 +23,9 @@ cp -r $HOME/.config/i3status/ $HOME/Documents/git/system/setup/linux/.config
 cp -r $HOME/.config/autostart/ $HOME/Documents/git/system/setup/linux/.config
 cp -r $HOME/.config/nvim/ $HOME/Documents/git/system/setup/linux/.config
 cp -r $HOME/.config/kitty/ $HOME/Documents/git/system/setup/linux/.config
+cp -r $HOME/.config/gtk-3.0/ $HOME/Documents/git/system/setup/linux/.config
+cp -r $HOME/.config/environment.d/ $HOME/Documents/git/system/setup/linux/.config
+cp -r $HOME/.config/waybar/ $HOME/Documents/git/system/setup/linux/.config
 
 ## brower
 cp -r $HOME/.mozilla/firefox/l0gvz3le.default-release/prefs.js $HOME/Documents/git/system/setup/linux/

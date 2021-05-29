@@ -1,0 +1,22 @@
+snippet     main
+abbr        #{param}
+options     word
+  def main():
+      ${0}print("hello")
+    
+  if __name__ == '__main__':
+      main()
+
+snippet open
+options word
+  with open(${0}) as f:
+    s = f.read()
+
+snippet map
+options word
+  map(lambda x: ${1:x}, ${2})
+
+
+snippet filter
+options word
+  next(filter(lambda x: ${1:exp}, ${2:values}), None)
