@@ -17,6 +17,7 @@ cp -r $HOME/.config/nvim/snippets $HOME/Documents/git/system/vag_setup/setup/.co
 cp -r $HOME/.config/nvim/dict $HOME/Documents/git/system/vag_setup/setup/.config/nvim/
 
 # config package
+cp -r $HOME/.config/aria2 $HOME/Documents/git/system/vag_setup/setup/.config/nvim/
 
 #Up
 cd $HOME/Documents/git/vag_setup/ 
