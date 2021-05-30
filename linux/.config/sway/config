@@ -51,10 +51,11 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # Example configuration:
 #
 exec swayidle -w \
-        # timeout 987 "$locker" \
+        timeout 987 "$locker" \
         # timeout 300 'swaymsg "output * dpms off"' \
         #     resume 'swaymsg "output * dpms on"' \
-        timeout 999 'swaymsg exec systemctl suspend' \
+        timeout 999 'systemctl suspend' \
+        # timeout 999 'swaymsg exec systemctl suspend' \
         # before-sleep 'playerctl pause' \
         before-sleep '$locker'
         # before-sleep 'swaylock -f -c 000000'

@@ -38,7 +38,7 @@ call plug#begin('~/.vim/plugged')
     " Plug 'lervag/vimtex'
     " Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }         "online
     Plug 'Vimjas/vim-python-pep8-indent'        "自动/定义缩进
-    Plug '907th/vim-auto-save'                  "自动保存
+    " Plug '907th/vim-auto-save'
     " Plug 'RRethy/vim-illuminate'                "高亮方标所在目标全文位置
     Plug 'itchyny/vim-cursorword'               "smpo
     Plug 'mhinz/vim-signify'                    "verion diff

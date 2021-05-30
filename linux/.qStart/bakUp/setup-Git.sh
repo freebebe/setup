@@ -25,10 +25,11 @@ cp -r $HOME/.config/nvim/ $HOME/Documents/git/system/setup/linux/.config
 cp -r $HOME/.config/kitty/ $HOME/Documents/git/system/setup/linux/.config
 cp -r $HOME/.config/gtk-3.0/ $HOME/Documents/git/system/setup/linux/.config
 cp -r $HOME/.config/environment.d/ $HOME/Documents/git/system/setup/linux/.config
-cp -r $HOME/.config/waybar/ $HOME/Documents/git/system/setup/linux/.config
+cp -r $HOME/.config/aria2/ $HOME/Documents/git/system/setup/linux/.config
 
 ## brower
 cp -r $HOME/.mozilla/firefox/l0gvz3le.default-release/prefs.js $HOME/Documents/git/system/setup/linux/
+
 ## for ubuntu-desk-i3
 cp -r $HOME/.config/gtk-3.0/ $HOME/Documents/git/system/setup/ubuntuDesktop/.config
 cp -r $HOME/.Xresources $HOME/Documents/git/system/setup/ubuntuDesktop/
@@ -37,6 +38,8 @@ cp -r $HOME/.Xresources $HOME/Documents/git/system/setup/ubuntuDesktop/
 # cp -r $HOME/bkup/ $HOME/Documents/git/system/setup/
 cp -r $HOME/.qStart $HOME/Documents/git/system/setup/linux
 #
+# to flash
+
 # #upgrade_to_git_packge
 cd $HOME/Documents/git/system/setup/
 git add .

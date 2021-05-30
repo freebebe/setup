@@ -15,6 +15,7 @@ general {
 # START AND ORDER #
 ###################
 
+order += "run_watch DHCP"
 order += "wireless _first_"
 order += "ethernet _first_"
 order += "wireless wlan0"
@@ -80,11 +81,11 @@ memory {
 ## NET
 wireless _first_ {
         # format_up = "W: (%quality at %essid) %ip"
-        format_up = "W: (%quality %essid)"
+        format_up = "(%quality %essid)"
         format_down = "W: X"
 }
 ethernet _first_ {
-        format_up = "E: %ip"
+        format_up = "%ip"
         # format_up = "E: %ip (%speed)"
         format_down = "E: X"
 }
@@ -171,4 +172,3 @@ wireless wlan0 {
 run_watch DHCP {
     pidfile = "/var/run/dhclient*.pid"
 }
-
