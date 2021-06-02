@@ -11,12 +11,12 @@
 
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
-set $term kitty
+set $term alacritty
 set $locker swaylock -f -c 000000 -e -l
-# set $menu wofi -I --show drun,run
-set $menu rofi -show drun -show combi -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -show-icons -theme 'glue_pro_blue' -font 'mono 15' | xargs swaymsg exec --
+set $menu wofi -I --show drun,run
+#set $menu rofi -show drun -show combi -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -show-icons -theme 'glue_pro_blue' -font 'mono 15' | xargs swaymsg exec --
 
-seat seat0 xcursor_theme DMZ-Black 16
+#seat seat0 xcursor_theme DMZ-Black 16
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -261,6 +261,7 @@ exec systemd-notify --ready
     bindsym $mod+Ctrl+Right workspace next
     bindsym $mod+Ctrl+Left workspace prev
 #_____________________________Resizing containers
+
     mode "resize" {
         # left will shrink the containers width
         # right will grow the containers width
@@ -300,7 +301,7 @@ exec systemd-notify --ready
 
 #_______________________________________________________________________________
 #                                                                   Scratchpad{{{
-#
+
     # Sway has a "scratchpad", which is a bag of holding for windows.
     # You can send windows there and get them back later.
 
@@ -320,7 +321,7 @@ exec systemd-notify --ready
 #_____________________________/autoStart
     # exec_always ./import-gsettings
     exec --no-startup-id nm-applet --indicator
-    exec --no-startup-id blueman-applet
+    # exec --no-startup-id blueman-applet
     # exec --no-startup-id clipit                       #copy_data
     # exec --no-startup-id ibus-daemon --xim -d -r
     # exec_always xfce4-power-manager
@@ -332,7 +333,7 @@ exec systemd-notify --ready
     # exec --no-startup-id xpad
     # exec --no-startup-id dropbox
     # exec --no-startup-id dropbox stop && dbus-launch dropbox start -i
-    exec --no-startup-id  flameshot              # face_your_screen_face
+    # exec --no-startup-id  flameshot              # face_your_screen_face
     # exec --no-startup-id i3-confg-wizard
     # exec_always dropbox
     # exec --no-startup-id conky
@@ -358,11 +359,9 @@ exec systemd-notify --ready
     # for_window [class="kitty"] resize set 800 480
     for_window [class="(?i)blueman"] floating enable
     for_window [class="pulseaudio"] floating enable
-    for_window [class="yakuake"] floating enable
     for_window [class="systemsettings"] floating enable
-    for_window [class="keepassxc"] floating enable
+    for_window [class="(?i)keepassxc"] floating enable
     for_window [class="Thunar"] floating enable
-    for_window [class="uget"] floating enable
     for_window [class="(?i)dolphin"] floating enable
     for_window [class="(?i)blueman"] floating enable
     for_window [class="Blueman-manager"] floating enable
@@ -389,7 +388,7 @@ exec systemd-notify --ready
     # for_window [class="(?i)virtualbox"] floating enable border normal
 
     for_window [class="GParted"] floating enable border normal
-    for_window [class="Pavucontrol"] floating enable
+    for_window [class="(?i)pavucontrol"] floating enable
 
 # for_window [class="Pamac-manager"] floating enable                            #for arch&&manjaro system softeware manager
     for_window [class="Xfburn"] floating enable
@@ -406,8 +405,9 @@ bar {
         # status_command py3status -c $HOME/.config/i3status/i3pystauts.conf
         # swaybar_command waybar
         # swaybar_command i3status
-        status_command i3status --config $HOME/.config/i3status/config
-             status_command exec $HOME/.config/i3status/contrib/net-speed.sh
+        status_command i3status-rs $HOME/.config/i3status/status.toml
+        # status_command i3status --config $HOME/.config/i3status/config
+            # status_command exec $HOME/.config/i3status/contrib/net-speed.sh
             # status_command exec $HOME/.config/i3status/contrib/xtitle.sh
         # status_command py3status -c $HOME/.config/py3status/config
         # output eDP-1
@@ -415,11 +415,6 @@ bar {
         # tray_output eDP-1
         mode dock
         font pango: Terminus (TTF)   10
-        colors {
-            statusline          #ffffff
-            background          #020206
-            # inactive_workspace  #32323200 #32323200 #5c5c5c
-        }
 }
 
 #_______________________________________________________________________________

@@ -1,4 +1,4 @@
 #!/usr/bin/bash
 
-cd /opt/vvv
+cd /opt/downV
 firejail ./v2ray

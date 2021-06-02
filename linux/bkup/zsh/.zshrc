@@ -25,6 +25,28 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 # improved less option
 export LESS='--tabs=4 --no-init --LONG-PROMPT --ignore-case --quit-if-one-screen --RAW-CONTROL-CHARS'
 
+# ワード単位移動の挙動
+export WORDCHARS=
+
+if [ -d $HOME/.cargo/bin ]; then
+    export PATH=$HOME/.cargo/bin:$PATH
+fi
+
+if [ -d $HOME/.opam ]; then
+    export PATH=$HOME/.opam/system/bin:$PATH
+    # OPAM configuration
+    source ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+fi
+
+export DOTZSH=$HOME/.zsh
+if [ ! -d $DOTZSH ]; then
+    mkdir -p $DOTZSH
+fi
+
+# デフォルトで venv 以外で pip install できないようにする
+# グローバルでインストールしたい時は PIP_REQUIRE_VENV= pip install を使う
+export PIP_REQUIRE_VENV=true
+export PIP_REQUIRE_VIRTUALENV=false
 # }}}
 
 # for nvim-deoplete_tern
@@ -756,6 +778,9 @@ esac
 
 # Prevent a dog from crying at start up!
 true
+
+# ibus-kitty[terminal]
+export GLFW_IM_MODULE=ibus
 
 # TheFuck
 #eval $(thefuck --alias)
