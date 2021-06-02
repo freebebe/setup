@@ -1,9 +1,10 @@
-#[http]
-#    proxy=socks5://127.0.78.5:2659
-#[https]
-#    proxy=socks5://127.0.78.5:2659
+[http]
+    proxy=socks5://127.0.33.15:7781
+[https]
+    proxy=socks5://127.0.33.15:7781
 
 
 [user]
 	email = gogofreebebe@tutamail.com
 	name = freebebe
+
