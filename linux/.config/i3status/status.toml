@@ -17,6 +17,7 @@ idle_fg = "#ffffff"
 [[block]]
 block = "net"
 device = "enp0s31f6"
+device = "wlp2s0"
 format = "{ssid} {signal_strength} {speed_up;K*b} {speed_down;K*b}"
 interval = 5
 
