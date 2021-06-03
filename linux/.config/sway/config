@@ -51,10 +51,10 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # Example configuration:
 #
 exec swayidle -w \
-        timeout 987 "$locker" \
-        # timeout 300 'swaymsg "output * dpms off"' \
-        #     resume 'swaymsg "output * dpms on"' \
-        timeout 999 'systemctl suspend' \
+        # timeout 987 "$locker" \
+        timeout 996 'swaymsg "output * dpms off"' \
+             resume 'swaymsg "output * dpms on"' \
+        # timeout 999 'systemctl suspend' \
         # timeout 999 'swaymsg exec systemctl suspend' \
         # before-sleep 'playerctl pause' \
         before-sleep '$locker'
@@ -341,7 +341,7 @@ exec systemd-notify --ready
     exec --no-startup-id dunst                  # Notification
 
     # exec --no-startup-id xmodmap $HOME/.Xmodmap
-    exec $HOME/.config/i3/tools/ACorPOWER.sh
+    # exec $HOME/.config/i3/tools/ACorPOWER.sh
 
 #_____________________________/app_win_manger
 
@@ -355,8 +355,6 @@ exec systemd-notify --ready
     # for_window [class="(?i)VirtualBox"] floating enable
     # for_window [class="konsole"] floating enable
     # for_window [class="konsole"] resize set 600 400
-    # for_window [class="kitty"] floating enable
-    # for_window [class="kitty"] resize set 800 480
     for_window [class="(?i)blueman"] floating enable
     for_window [class="pulseaudio"] floating enable
     for_window [class="systemsettings"] floating enable
@@ -404,18 +402,16 @@ bar {
         # status_command i3blocks -c $HOME/.config/i3blocks/config
         # status_command py3status -c $HOME/.config/i3status/i3pystauts.conf
         # swaybar_command waybar
-        # swaybar_command i3status
         status_command i3status-rs $HOME/.config/i3status/status.toml
         # status_command i3status --config $HOME/.config/i3status/config
             # status_command exec $HOME/.config/i3status/contrib/net-speed.sh
-            # status_command exec $HOME/.config/i3status/contrib/xtitle.sh
-        # status_command py3status -c $HOME/.config/py3status/config
         # output eDP-1
         position bottom
         # tray_output eDP-1
         mode dock
-        font pango: Terminus (TTF)   10
+        font pango: Terminus (TTF)   9
 }
+
 
 #_______________________________________________________________________________
 #                                                                           gaps

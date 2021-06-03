@@ -89,9 +89,6 @@ zstyle ':completion:*' menu select=2
 # キャッシュ
 zstyle ':completion:*' use-cache true
 
-# git をエイリアス時にも補完できるようにする
-compdef _git g=git
-compdef _docker d=docker
 # }}}
 
 #####################################################################

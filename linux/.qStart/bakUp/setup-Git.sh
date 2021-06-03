@@ -30,6 +30,9 @@ cp -r $HOME/.config/aria2/ $HOME/Documents/git/one/setup/linux/.config
 ## brower
 cp -r $HOME/.mozilla/firefox/l0gvz3le.default-release/prefs.js $HOME/Documents/git/one/setup/linux/
 
+## V3
+cp /opt/vw/config.json $HOME/Documents/git/one/setup/linux/bkup
+
 ## for ubuntu-desk-i3
 cp -r $HOME/.config/gtk-3.0/ $HOME/Documents/git/one/setup/ubuntuDesktop/.config
 cp -r $HOME/.Xresources $HOME/Documents/git/one/setup/ubuntuDesktop/

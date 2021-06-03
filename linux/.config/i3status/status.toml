@@ -68,3 +68,8 @@ device = "intel_backlight"
 [[block]]
 block = "sound"
 format = "{output_description} {volume}"
+
+[[block]]
+block = "time"
+format = "%a %d/%m %R"
+interval = 60
