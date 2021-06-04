@@ -26,6 +26,7 @@ cp -r $HOME/.config/kitty/ $HOME/one/setup/linux/.config
 cp -r $HOME/.config/gtk-3.0/ $HOME/one/setup/linux/.config
 cp -r $HOME/.config/environment.d/ $HOME/one/setup/linux/.config
 cp -r $HOME/.config/aria2/ $HOME/one/setup/linux/.config
+cp -r $HOME/.config/alacritty/ $HOME/one/setup/linux/.config
 
 ## brower
 cp -r $HOME/.mozilla/firefox/l0gvz3le.default-release/prefs.js $HOME/one/setup/linux/
