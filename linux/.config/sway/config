@@ -51,13 +51,13 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # Example configuration:
 #
 exec swayidle -w \
-        # timeout 987 "$locker" \
+        timeout 987 "$locker" \
         timeout 996 'swaymsg "output * dpms off"' \
              resume 'swaymsg "output * dpms on"' \
         # timeout 999 'systemctl suspend' \
         # timeout 999 'swaymsg exec systemctl suspend' \
         # before-sleep 'playerctl pause' \
-        before-sleep '$locker'
+        # before-sleep '$locker'
         # before-sleep 'swaylock -f -c 000000'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -321,6 +321,7 @@ exec systemd-notify --ready
 #_____________________________/autoStart
     # exec_always ./import-gsettings
     exec --no-startup-id nm-applet --indicator
+    exec --no-startup-id mako
     # exec --no-startup-id blueman-applet
     # exec --no-startup-id clipit                       #copy_data
     # exec --no-startup-id ibus-daemon --xim -d -r
@@ -391,6 +392,9 @@ exec systemd-notify --ready
 # for_window [class="Pamac-manager"] floating enable                            #for arch&&manjaro system softeware manager
     for_window [class="Xfburn"] floating enable
     for_window [class="Zotero"] floating enable
+
+# gaps
+smart_gaps      off
 #}}}
 
 #
@@ -408,8 +412,9 @@ bar {
         # output eDP-1
         position bottom
         # tray_output eDP-1
+        tray_output false
         mode dock
-        font pango: Terminus (TTF)   9
+        font pango: Terminus (TTF)   10
 }
 
 
