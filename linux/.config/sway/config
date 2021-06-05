@@ -14,9 +14,9 @@ set $mod Mod4
 set $term alacritty
 set $locker swaylock -f -c 000000 -e -l
 set $menu wofi -I --show drun,run
-#set $menu rofi -show drun -show combi -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -show-icons -theme 'glue_pro_blue' -font 'mono 15' | xargs swaymsg exec --
+# set $menu rofi -show drun -show combi -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -show-icons -theme 'glue_pro_blue' -font 'mono 15' | xargs swaymsg exec --
 
-#seat seat0 xcursor_theme DMZ-Black 16
+# seat seat0 xcursor_theme DMZ-Black 16
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -55,7 +55,7 @@ exec swayidle -w \
         timeout 996 'swaymsg "output * dpms off"' \
              resume 'swaymsg "output * dpms on"' \
         # timeout 999 'systemctl suspend' \
-        # timeout 999 'swaymsg exec systemctl suspend' \
+        timeout 999 'swaymsg exec systemctl suspend' \
         # before-sleep 'playerctl pause' \
         # before-sleep '$locker'
         # before-sleep 'swaylock -f -c 000000'
@@ -100,16 +100,16 @@ exec systemd-notify --ready
 #_______________________________________________________________________________
 #                                                                   Variables{{{
 #
-    # new_window none
-    # new_float normal
-    hide_edge_borders both
-    default_border pixel 3
+# new_window none
+# new_float normal
+hide_edge_borders both
+default_border pixel 3
 
-    # foucus follows mouse(cursor)
-    focus_follows_mouse yes
+# foucus follows mouse(cursor)
+focus_follows_mouse yes
 
-    # (No) Title Bars
-    for_window [class="^.*"] border pixel 2
+# (No) Title Bars
+for_window [class="^.*"] border pixel 2
 
 
 #_______________________________________________________________________________
@@ -394,7 +394,7 @@ exec systemd-notify --ready
     for_window [class="Zotero"] floating enable
 
 # gaps
-smart_gaps      off
+    smart_gaps      off
 #}}}
 
 #
@@ -403,18 +403,15 @@ smart_gaps      off
 
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-        # status_command i3blocks -c $HOME/.config/i3blocks/config
-        # status_command py3status -c $HOME/.config/i3status/i3pystauts.conf
-        # swaybar_command waybar
-        status_command i3status-rs $HOME/.config/i3status/status.toml
-        # status_command i3status --config $HOME/.config/i3status/config
-            # status_command exec $HOME/.config/i3status/contrib/net-speed.sh
-        # output eDP-1
-        position bottom
-        # tray_output eDP-1
-        tray_output false
-        mode dock
-        font pango: Terminus (TTF)   10
+    status_command i3status-rs $HOME/.config/i3status/status.toml
+    # status_command i3status --config $HOME/.config/i3status/config
+        # status_command exec $HOME/.config/i3status/contrib/net-speed.sh
+    # output eDP-1
+    # position top
+    # tray_output eDP-1
+    tray_output false
+    mode dock
+    font pango: Terminus (TTF)   10
 }
 
 
