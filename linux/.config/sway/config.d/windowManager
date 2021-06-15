@@ -1,0 +1,80 @@
+#_______________________________________________________________________________
+#                                                                 Window_Manager
+
+    # new_window none
+    # new_float normal
+    hide_edge_borders both
+    default_border pixel 1
+
+    # foucus follows mouse(cursor)
+    focus_follows_mouse yes
+
+    # (No) Title Bars
+    for_window [class="^.*"] border pixel 1
+
+# Applications behaving as "pop ups" are set to be always floating
+#  i.e. popup, do stuff, close
+# To get WM_CLASS and WM_TITLE values, on X run "xprop"
+    # for_window [window_role="pop-up"] floating enable
+    # for_window [class="VirtualBox"] floating enable
+    # for_window [class="VirtualBox"] resize set 800 600
+    # for_window [class="(?i)VirtualBox" title="(?i)Manager"] floating enable
+    # for_window [class="(?i)VirtualBox"] floating enable
+    # for_window [class="konsole"] floating enable
+    # for_window [class="konsole"] resize set 600 400
+    for_window [class="(?i)blueman"] floating enable
+    for_window [class="pulseaudio"] floating enable
+    for_window [class="systemsettings"] floating enable
+    for_window [class="(?i)keepassxc"] floating enable
+    for_window [class="Thunar"] floating enable
+    for_window [class="(?i)dolphin"] floating enable
+    for_window [class="(?i)blueman"] floating enable
+    for_window [class="Blueman-manager"] floating enable
+    for_window [class="vlc"] floating enable
+    for_window [class="mpv"] floating enable
+    for_window [class="mpv"] resize set 600 400
+    for_window [class="mpv"] $FLOAT-noborder
+    for_window [class="eog"] floating enable 
+    for_window [class="Timeset-gui"] floating enable border normal
+    for_window [class="xpad"] floating enable 
+    for_window [class="Zathura"] floating enable
+    for_window [class="imv"] floating enable
+    for_window [class="imv"] $FLOAT-noborder
+    for_window [class="imv"] resize set 600 400
+    for_window [class="feh"] floating enable
+    for_window [class="feh"] $FLOAT-noborder
+    for_window [class="feh"] resize set 600 400
+    for_window [class="eog"] floating enable
+    for_window [class="chromium"] floating enable
+    for_window [class="Okular"] floating enable
+    for_window [class="Gpick"] floating enable
+    for_window [class="calamares"] floating enable border normal
+    for_window [class="Nitrogen"] floating enable sticky enable border normal
+    # for_window [class="(?i)virtualbox"] floating enable border normal
+
+    for_window [class="GParted"] floating enable border normal
+    for_window [class="(?i)pavucontrol"] floating enable
+
+# for_window [class="Pamac-manager"] floating enable                            #for arch&&manjaro system softeware manager
+    for_window [class="Xfburn"] floating enable
+    for_window [class="Zotero"] floating enable
+
+
+# Open applications on specific workspaces
+    assign [class="Zathura"] workspace 1
+    assign [class="firefox"] workspace 2
+    assign [class="VirtualBox"] workspace 8
+
+# gaps
+    smart_gaps      off
+    smart_borders   off
+    gaps inner      0
+    gaps outer      0
+
+# background
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+    output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+    # output * bg #000000 solid_color
+
+#}}}
+#_______________________________________________________________________________

@@ -55,7 +55,7 @@ default xkb_keycodes "evdev" {
 	<LFSH> = 50;
 	<AB01> = 52;
 	<AB02> = 53;
-	<AB03> = 54r
+	<AB03> = 54;
 	<AB04> = 55;
 	<AB05> = 56;
 	<AB06> = 57;
@@ -65,13 +65,13 @@ default xkb_keycodes "evdev" {
 	<AB10> = 61;
 	<RTSH> = 62;
 
-	<LALT> = 37;
-	<LCTL> = 133;
+	<LALT> = 133;
+	<LCTL> = 64;
 	<SPCE> = 65;
-	<RCTL> = 108;
-	<RALT> = 105;
+	<RCTL> = 105;
+	<RALT> = 108;
 	// Microsoft keyboard extra keys
-	<LWIN> = 64;
+	<LWIN> = 37;
 	<RWIN> = 134;
 	<COMP> = 135;
 	alias <MENU> = <COMP>;

@@ -1,10 +1,7 @@
-[theme]
-name = "native"
-
 [theme.overrides]
+separator = " "
 idle_fg = "#ffffff"
-warning_bg = "#de5833"
-warning_fg = "#ffffff"
+warning_fg = "#de5833"
 
 [[block]]
 block = "focused_window"
@@ -18,23 +15,24 @@ idle_fg = "#ffffff"
 block = "net"
 device = "enp0s31f6"
 device = "wlp2s0"
-format = "↑ {speed_up;K*b} ↓ {speed_down;K*b} - {ip} - {signal_strength} - {ssid}"
+format = "↓ {speed_down;K*b} ↑ {speed_up;K*b}  - {ip} - {signal_strength} - {ssid}"
 icons_format = ""
-interval = 5
+interval = 1
 
 [[block]]
 block = "temperature"
 collapsed = false
-interval = 10
-format = "{average}"
+interval = 1
+format = "{average}{max}"
 icons_format = ""
 chip = "*-isa-*"
-interval = 5
-warning = 55
+warning = 58
+[block.theme_overrides]
+info_fg = "#FCFF3D"
 
 [[block]]
 block = "cpu"
-interval = 2
+interval = 5
 format = "{utilization}"
 icons_format = ""
 warning = 38
@@ -47,7 +45,7 @@ format_swap = "{swap_used}/{swap_total}"
 display_type = "memory"
 icons_format = ""
 clickable = true
-interval = 5
+interval = 10
 warning_mem = 78
 critical_mem = 88
 
@@ -60,9 +58,9 @@ interval = 45
 
 [[block]]
 block = "load"
-format = "{1m}"
-icons_format = ">"
-interval = 3
+format = "{1m} {5m} {15m}"
+icons_format = ""
+interval = 5
 info = 4.5
 warning = 6
 critical = 8.5
@@ -76,10 +74,12 @@ device = "intel_backlight"
 block = "sound"
 icons_format = ""
 format = "{output_description} {volume}"
+on_click = "swaymsg exec 'pavucontrol'"
 
 [[block]]
 block = "battery"
 interval = 30
+driver = "sysfs"
 format = "{percentage} {time}"
 
 [[block]]
@@ -87,9 +87,4 @@ block = "time"
 icons_format = ""
 format = "%a %d/%m %R"
 interval = 60
-
-[[block]]
-block = "custom"
-command = "echo \uf011"
 on_click = "systemctl `echo -e 'suspend\npoweroff\nreboot' | dmenu`"
-interval = "once"

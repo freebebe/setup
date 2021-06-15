@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Maintained in linux-config.org
+
+lock() {
+    pidof swaylock || swaylock -f -i ~/Pictures/LockScreen/current -s fill -c 000000 &
+}
+
+lock_gpg_clear() {
+    [ "$1" = gpg_clear ] &&  (echo RELOADAGENT | gpg-connect-agent &>/dev/null )
+    lock
+}
+
+case "$1" in
+    lock)
+        lock
+        ;;
+    lock_gpg_clear)
+        lock_gpg_clear
+        ;;
+    logout)
+        swaymsg exit
+        ;;
+    suspend)
+        systemctl suspend && lock
+        ;;
+    hibernate)
+        systemctl hibernate && lock
+        ;;
+    reboot)
+        systemctl reboot
+        ;;
+    shutdown)
+        systemctl poweroff
+        ;;
+    blank)
+        sway-dpms off
+        ;;
+    unblank)
+        sway-dpms on
+        ;;
+    *)
+        lock
+        ;;
+esac
+
+exit 0

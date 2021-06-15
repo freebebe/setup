@@ -16,11 +16,9 @@ cp $HOME/.Xresources $HOME/one/setup/linux             # x10
 ##-rf && r : skip question
 cp -r $HOME/.config/Code/User/ $HOME/one/setup/linux/.config/Code
 cp -r $HOME/.config/zathura/ $HOME/one/setup/linux/.config
-cp -r $HOME/.config/rclone/ $HOME/one/setup/linux/.config
 cp -r $HOME/.config/i3/ $HOME/one/setup/linux/.config
 cp -r $HOME/.config/sway/ $HOME/one/setup/linux/.config
 cp -r $HOME/.config/i3status/ $HOME/one/setup/linux/.config
-cp -r $HOME/.config/autostart/ $HOME/one/setup/linux/.config
 cp -r $HOME/.config/nvim/ $HOME/one/setup/linux/.config
 cp -r $HOME/.config/kitty/ $HOME/one/setup/linux/.config
 cp -r $HOME/.config/gtk-3.0/ $HOME/one/setup/linux/.config
@@ -35,7 +33,6 @@ cp -r $HOME/.mozilla/firefox/l0gvz3le.default-release/prefs.js $HOME/one/setup/l
 cp /opt/vw/config.json $HOME/one/setup/linux/bkup
 
 ## for ubuntu-desk-i3
-cp -r $HOME/.config/gtk-3.0/ $HOME/one/setup/ubuntuDesktop/.config
 cp -r $HOME/.Xresources $HOME/one/setup/ubuntuDesktop/
 
 # #filepacker ->  /home/

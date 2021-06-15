@@ -1,0 +1,30 @@
+#_______________________________________________________________________________
+#                                                               applications{{{
+
+#_____________________________/autoStart
+    exec nm-applet
+    exec blueman-applet
+    # exec --no-startup-id clipit                       #copy_data
+    #exec ibus-wayland
+    # exec_always xfce4-power-manager
+    # exec --no-startup-id xfce4-power-manager
+    # exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/org_kde_powerdevil
+
+    # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+    exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+    # exec --no-startup-id xpad
+    # exec --no-startup-id dropbox
+    # exec --no-startup-id dropbox stop && dbus-launch dropbox start -i
+    # exec --no-startup-id flameshot              # face_your_screen_face
+    # exec --no-startup-id i3-confg-wizard
+    #exec_always dropbox
+    # exec --no-startup-id conky
+    # exec --no-startup-id volumeicon
+    exec --no-startup-id dunst                  # Notification
+
+    # exec --no-startup-id xmodmap $HOME/.Xmodmap
+    exec $HOME/.config/i3/tools/ACorPOWER.sh
+
+    # touch pad speed
+    # exec --no-startup-id  xinput set-prop 16 'libinput Accel Speed' 0.5 
+    # suspend lock
