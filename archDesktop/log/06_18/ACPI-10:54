@@ -1,0 +1,201 @@
+Jun 18 10:39:38 treex kernel: ACPI: EC: interrupt blocked
+Jun 18 10:39:38 treex kernel: ACPI: Preparing to enter system sleep state S3
+Jun 18 10:39:38 treex kernel: ACPI: EC: event blocked
+Jun 18 10:39:38 treex kernel: ACPI: EC: EC stopped
+Jun 18 10:39:38 treex kernel: ACPI: Low-level resume complete
+Jun 18 10:39:38 treex kernel: ACPI: EC: EC started
+Jun 18 10:39:38 treex kernel: ACPI: Waking up from system sleep state S3
+Jun 18 10:39:38 treex kernel: ACPI: EC: interrupt unblocked
+Jun 18 10:39:38 treex kernel: ACPI: EC: event unblocked
+Jun 18 10:39:38 treex kernel: ata3.00: ACPI cmd ef/10:06:00:00:00:00 (SET FEATURES) succeeded
+Jun 18 10:39:38 treex kernel: ata3.00: ACPI cmd f5/00:00:00:00:00:00 (SECURITY FREEZE LOCK) filtered out
+Jun 18 10:39:38 treex kernel: ata3.00: ACPI cmd b1/c1:00:00:00:00:00 (DEVICE CONFIGURATION OVERLAY) filtered out
+Jun 18 10:39:38 treex kernel: ata3.00: ACPI cmd ef/10:06:00:00:00:00 (SET FEATURES) succeeded
+Jun 18 10:39:38 treex kernel: ata3.00: ACPI cmd f5/00:00:00:00:00:00 (SECURITY FREEZE LOCK) filtered out
+Jun 18 10:39:38 treex kernel: ata3.00: ACPI cmd b1/c1:00:00:00:00:00 (DEVICE CONFIGURATION OVERLAY) filtered out
+Jun 18 10:39:38 treex root[6252]: ACPI action undefined: PNP0C0A:00
+Jun 18 10:54:18 archlinux kernel: BIOS-e820: [mem 0x00000000b9f6f000-0x00000000b9f6ffff] ACPI NVS
+Jun 18 10:54:18 archlinux kernel: BIOS-e820: [mem 0x00000000ca274000-0x00000000ca2bbfff] ACPI data
+Jun 18 10:54:18 archlinux kernel: BIOS-e820: [mem 0x00000000ca2bc000-0x00000000cac1dfff] ACPI NVS
+Jun 18 10:54:18 archlinux kernel: reserve setup_data: [mem 0x00000000b9f6f000-0x00000000b9f6ffff] ACPI NVS
+Jun 18 10:54:18 archlinux kernel: reserve setup_data: [mem 0x00000000ca274000-0x00000000ca2bbfff] ACPI data
+Jun 18 10:54:18 archlinux kernel: reserve setup_data: [mem 0x00000000ca2bc000-0x00000000cac1dfff] ACPI NVS
+Jun 18 10:54:18 archlinux kernel: efi: ACPI=0xca282000 ACPI 2.0=0xca282000 SMBIOS=0xf0000 SMBIOS 3.0=0xf0020 ESRT=0xcb0b4018 MEMATTR=0xc6403018 RNG=0xcae17f18
+Jun 18 10:54:18 archlinux kernel: ACPI: Early table checksum verification disabled
+Jun 18 10:54:18 archlinux kernel: ACPI: RSDP 0x00000000CA282000 000024 (v02 DELL  )
+Jun 18 10:54:18 archlinux kernel: ACPI: XSDT 0x00000000CA2820C0 000104 (v01 DELL   CBX3     01072009 AMI  00010013)
+Jun 18 10:54:18 archlinux kernel: ACPI: FACP 0x00000000CA2ACB60 00010C (v05 DELL   CBX3     01072009 AMI  00010013)
+Jun 18 10:54:18 archlinux kernel: ACPI: DSDT 0x00000000CA282258 02A908 (v02 DELL   CBX3     01072009 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: FACS 0x00000000CAC1B180 000040
+Jun 18 10:54:18 archlinux kernel: ACPI: UEFI 0x00000000CA2AD000 00063A (v01 INTEL  RstSataE 00000000 ??   00000000)
+Jun 18 10:54:18 archlinux kernel: ACPI: APIC 0x00000000CA2AD640 0000BC (v03 DELL   CBX3     01072009 AMI  00010013)
+Jun 18 10:54:18 archlinux kernel: ACPI: FPDT 0x00000000CA2AD700 000044 (v01 DELL   CBX3     01072009 AMI  00010013)
+Jun 18 10:54:18 archlinux kernel: ACPI: FIDT 0x00000000CA2AD748 0000AC (v01 DELL   CBX3     01072009 AMI  00010013)
+Jun 18 10:54:18 archlinux kernel: ACPI: MCFG 0x00000000CA2AD7F8 00003C (v01 DELL   CBX3     01072009 MSFT 00000097)
+Jun 18 10:54:18 archlinux kernel: ACPI: HPET 0x00000000CA2AD838 000038 (v01 DELL   CBX3     01072009 AMI. 0005000B)
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0x00000000CA2AD870 000359 (v01 SataRe SataTabl 00001000 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0x00000000CA2ADBD0 0012E0 (v02 SaSsdt SaSsdt   00003000 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: HPET 0x00000000CA2AEEB0 000038 (v01 INTEL  KBL-ULT  00000001 MSFT 0000005F)
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0x00000000CA2AEEE8 000BEE (v02 INTEL  xh_OEMBD 00000000 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: UEFI 0x00000000CA2AFAD8 000042 (v01                 00000000      00000000)
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0x00000000CA2AFB20 0017AE (v02 CpuRef CpuSsdt  00003000 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: LPIT 0x00000000CA2B12D0 000094 (v01 INTEL  KBL-ULT  00000000 MSFT 0000005F)
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0x00000000CA2B1368 000161 (v02 INTEL  HdaDsp   00000000 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0x00000000CA2B14D0 00029F (v02 INTEL  sensrhub 00000000 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0x00000000CA2B1770 003002 (v02 INTEL  PtidDevc 00001000 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0x00000000CA2B4778 000517 (v02 INTEL  TbtTypeC 00000000 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: DBGP 0x00000000CA2B4C90 000034 (v01 INTEL           00000002 MSFT 0000005F)
+Jun 18 10:54:18 archlinux kernel: ACPI: DBG2 0x00000000CA2B4CC8 000054 (v00 INTEL           00000002 MSFT 0000005F)
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0x00000000CA2B4D20 0007DD (v02 INTEL  UsbCTabl 00001000 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0x00000000CA2B5500 00531B (v02 DptfTa DptfTabl 00001000 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: SLIC 0x00000000CA2BA820 000176 (v03 DELL   CBX3     01072009 MSFT 00010013)
+Jun 18 10:54:18 archlinux kernel: ACPI: NHLT 0x00000000CA2BA998 00002D (v00 INTEL  EDK2     00000002      01000013)
+Jun 18 10:54:18 archlinux kernel: ACPI: UEFI 0x00000000CA2BA9C8 00005C (v01 INTEL  RstSataV 00000000 ??   00000000)
+Jun 18 10:54:18 archlinux kernel: ACPI: ASF! 0x00000000CA2BAA28 0000A0 (v32 INTEL   HCG     00000001 TFSM 000F4240)
+Jun 18 10:54:18 archlinux kernel: ACPI: DMAR 0x00000000CA2BAAC8 000138 (v01 INTEL  EDK2     00000001 INTL 00000001)
+Jun 18 10:54:18 archlinux kernel: ACPI: BGRT 0x00000000CA2BAC00 000038 (v00                 01072009 AMI  00010013)
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving FACP table memory at [mem 0xca2acb60-0xca2acc6b]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving DSDT table memory at [mem 0xca282258-0xca2acb5f]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving FACS table memory at [mem 0xcac1b180-0xcac1b1bf]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving UEFI table memory at [mem 0xca2ad000-0xca2ad639]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving APIC table memory at [mem 0xca2ad640-0xca2ad6fb]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving FPDT table memory at [mem 0xca2ad700-0xca2ad743]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving FIDT table memory at [mem 0xca2ad748-0xca2ad7f3]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving MCFG table memory at [mem 0xca2ad7f8-0xca2ad833]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving HPET table memory at [mem 0xca2ad838-0xca2ad86f]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving SSDT table memory at [mem 0xca2ad870-0xca2adbc8]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving SSDT table memory at [mem 0xca2adbd0-0xca2aeeaf]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving HPET table memory at [mem 0xca2aeeb0-0xca2aeee7]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving SSDT table memory at [mem 0xca2aeee8-0xca2afad5]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving UEFI table memory at [mem 0xca2afad8-0xca2afb19]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving SSDT table memory at [mem 0xca2afb20-0xca2b12cd]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving LPIT table memory at [mem 0xca2b12d0-0xca2b1363]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving SSDT table memory at [mem 0xca2b1368-0xca2b14c8]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving SSDT table memory at [mem 0xca2b14d0-0xca2b176e]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving SSDT table memory at [mem 0xca2b1770-0xca2b4771]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving SSDT table memory at [mem 0xca2b4778-0xca2b4c8e]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving DBGP table memory at [mem 0xca2b4c90-0xca2b4cc3]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving DBG2 table memory at [mem 0xca2b4cc8-0xca2b4d1b]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving SSDT table memory at [mem 0xca2b4d20-0xca2b54fc]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving SSDT table memory at [mem 0xca2b5500-0xca2ba81a]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving SLIC table memory at [mem 0xca2ba820-0xca2ba995]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving NHLT table memory at [mem 0xca2ba998-0xca2ba9c4]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving UEFI table memory at [mem 0xca2ba9c8-0xca2baa23]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving ASF! table memory at [mem 0xca2baa28-0xca2baac7]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving DMAR table memory at [mem 0xca2baac8-0xca2babff]
+Jun 18 10:54:18 archlinux kernel: ACPI: Reserving BGRT table memory at [mem 0xca2bac00-0xca2bac37]
+Jun 18 10:54:18 archlinux kernel: ACPI: Local APIC address 0xfee00000
+Jun 18 10:54:18 archlinux kernel: ACPI: PM-Timer IO Port: 0x1808
+Jun 18 10:54:18 archlinux kernel: ACPI: Local APIC address 0xfee00000
+Jun 18 10:54:18 archlinux kernel: ACPI: LAPIC_NMI (acpi_id[0x01] high edge lint[0x1])
+Jun 18 10:54:18 archlinux kernel: ACPI: LAPIC_NMI (acpi_id[0x02] high edge lint[0x1])
+Jun 18 10:54:18 archlinux kernel: ACPI: LAPIC_NMI (acpi_id[0x03] high edge lint[0x1])
+Jun 18 10:54:18 archlinux kernel: ACPI: LAPIC_NMI (acpi_id[0x04] high edge lint[0x1])
+Jun 18 10:54:18 archlinux kernel: ACPI: LAPIC_NMI (acpi_id[0x05] high edge lint[0x1])
+Jun 18 10:54:18 archlinux kernel: ACPI: LAPIC_NMI (acpi_id[0x06] high edge lint[0x1])
+Jun 18 10:54:18 archlinux kernel: ACPI: LAPIC_NMI (acpi_id[0x07] high edge lint[0x1])
+Jun 18 10:54:18 archlinux kernel: ACPI: LAPIC_NMI (acpi_id[0x08] high edge lint[0x1])
+Jun 18 10:54:18 archlinux kernel: ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+Jun 18 10:54:18 archlinux kernel: ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+Jun 18 10:54:18 archlinux kernel: ACPI: IRQ0 used by override.
+Jun 18 10:54:18 archlinux kernel: ACPI: IRQ9 used by override.
+Jun 18 10:54:18 archlinux kernel: Using ACPI (MADT) for SMP configuration information
+Jun 18 10:54:18 archlinux kernel: ACPI: HPET id: 0x8086a701 base: 0xfed00000
+Jun 18 10:54:18 archlinux kernel: ACPI: Core revision 20210105
+Jun 18 10:54:18 archlinux kernel: PM: Registering ACPI NVS region [mem 0xb9f6f000-0xb9f6ffff] (4096 bytes)
+Jun 18 10:54:18 archlinux kernel: PM: Registering ACPI NVS region [mem 0xca2bc000-0xcac1dfff] (9838592 bytes)
+Jun 18 10:54:18 archlinux kernel: ACPI: bus type PCI registered
+Jun 18 10:54:18 archlinux kernel: acpiphp: ACPI Hot Plug PCI Controller Driver version: 0.5
+Jun 18 10:54:18 archlinux kernel: ACPI: Added _OSI(Module Device)
+Jun 18 10:54:18 archlinux kernel: ACPI: Added _OSI(Processor Device)
+Jun 18 10:54:18 archlinux kernel: ACPI: Added _OSI(3.0 _SCP Extensions)
+Jun 18 10:54:18 archlinux kernel: ACPI: Added _OSI(Processor Aggregator Device)
+Jun 18 10:54:18 archlinux kernel: ACPI: Added _OSI(Linux-Dell-Video)
+Jun 18 10:54:18 archlinux kernel: ACPI: Added _OSI(Linux-Lenovo-NV-HDMI-Audio)
+Jun 18 10:54:18 archlinux kernel: ACPI: Added _OSI(Linux-HPI-Hybrid-Graphics)
+Jun 18 10:54:18 archlinux kernel: ACPI: 11 ACPI AML tables successfully acquired and loaded
+Jun 18 10:54:18 archlinux kernel: ACPI: [Firmware Bug]: BIOS _OSI(Linux) query ignored
+Jun 18 10:54:18 archlinux kernel: ACPI: Dynamic OEM Table Load:
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0xFFFF9DDB80BF2800 00058B (v02 PmRef  Cpu0Ist  00003000 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: \_PR_.PR00: _OSC native thermal LVT Acked
+Jun 18 10:54:18 archlinux kernel: ACPI: Dynamic OEM Table Load:
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0xFFFF9DDB812C5000 0003FF (v02 PmRef  Cpu0Cst  00003001 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: Dynamic OEM Table Load:
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0xFFFF9DDB80C41000 000D14 (v02 PmRef  ApIst    00003000 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: Dynamic OEM Table Load:
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0xFFFF9DDB812C2400 000317 (v02 PmRef  ApHwp    00003000 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: Dynamic OEM Table Load:
+Jun 18 10:54:18 archlinux kernel: ACPI: SSDT 0xFFFF9DDB812C3800 00030A (v02 PmRef  ApCst    00003000 INTL 20160422)
+Jun 18 10:54:18 archlinux kernel: ACPI: EC: EC started
+Jun 18 10:54:18 archlinux kernel: ACPI: EC: interrupt blocked
+Jun 18 10:54:18 archlinux kernel: ACPI: EC: EC_CMD/EC_SC=0x934, EC_DATA=0x930
+Jun 18 10:54:18 archlinux kernel: ACPI: \_SB_.PCI0.LPCB.ECDV: Boot DSDT EC used to handle transactions
+Jun 18 10:54:18 archlinux kernel: ACPI: Interpreter enabled
+Jun 18 10:54:18 archlinux kernel: ACPI: (supports S0 S3 S4 S5)
+Jun 18 10:54:18 archlinux kernel: ACPI: Using IOAPIC for interrupt routing
+Jun 18 10:54:18 archlinux kernel: PCI: Using host bridge windows from ACPI; if necessary, use "pci=nocrs" and report a bug
+Jun 18 10:54:18 archlinux kernel: ACPI: Enabled 7 GPEs in block 00 to 7F
+Jun 18 10:54:18 archlinux kernel: ACPI: PM: Power Resource [WRST] (on)
+Jun 18 10:54:18 archlinux kernel: ACPI: PCI Root Bridge [PCI0] (domain 0000 [bus 00-7e])
+Jun 18 10:54:18 archlinux kernel: ACPI: PCI Interrupt Link [LNKA] (IRQs 3 4 5 6 10 *11 12 14 15)
+Jun 18 10:54:18 archlinux kernel: ACPI: PCI Interrupt Link [LNKB] (IRQs 3 4 5 6 *10 11 12 14 15)
+Jun 18 10:54:18 archlinux kernel: ACPI: PCI Interrupt Link [LNKC] (IRQs 3 4 5 6 10 *11 12 14 15)
+Jun 18 10:54:18 archlinux kernel: ACPI: PCI Interrupt Link [LNKD] (IRQs 3 4 5 6 10 *11 12 14 15)
+Jun 18 10:54:18 archlinux kernel: ACPI: PCI Interrupt Link [LNKE] (IRQs 3 4 5 6 10 *11 12 14 15)
+Jun 18 10:54:18 archlinux kernel: ACPI: PCI Interrupt Link [LNKF] (IRQs 3 4 5 6 10 *11 12 14 15)
+Jun 18 10:54:18 archlinux kernel: ACPI: PCI Interrupt Link [LNKG] (IRQs 3 4 5 6 10 *11 12 14 15)
+Jun 18 10:54:18 archlinux kernel: ACPI: PCI Interrupt Link [LNKH] (IRQs 3 4 5 6 10 *11 12 14 15)
+Jun 18 10:54:18 archlinux kernel: ACPI: EC: interrupt unblocked
+Jun 18 10:54:18 archlinux kernel: ACPI: EC: event unblocked
+Jun 18 10:54:18 archlinux kernel: ACPI: EC: EC_CMD/EC_SC=0x934, EC_DATA=0x930
+Jun 18 10:54:18 archlinux kernel: ACPI: EC: GPE=0x6e
+Jun 18 10:54:18 archlinux kernel: ACPI: \_SB_.PCI0.LPCB.ECDV: Boot DSDT EC initialization complete
+Jun 18 10:54:18 archlinux kernel: ACPI: \_SB_.PCI0.LPCB.ECDV: EC: Used to handle transactions and events
+Jun 18 10:54:18 archlinux kernel: ACPI: bus type USB registered
+Jun 18 10:54:18 archlinux kernel: PCI: Using ACPI for IRQ routing
+Jun 18 10:54:18 archlinux kernel: pnp: PnP ACPI init
+Jun 18 10:54:18 archlinux kernel: system 00:00: Plug and Play ACPI device, IDs PNP0c02 (active)
+Jun 18 10:54:18 archlinux kernel: pnp 00:01: Plug and Play ACPI device, IDs PNP0b00 (active)
+Jun 18 10:54:18 archlinux kernel: system 00:02: Plug and Play ACPI device, IDs INT3f0d PNP0c02 (active)
+Jun 18 10:54:18 archlinux kernel: pnp 00:03: Plug and Play ACPI device, IDs PNP0303 (active)
+Jun 18 10:54:18 archlinux kernel: system 00:04: Plug and Play ACPI device, IDs PNP0c02 (active)
+Jun 18 10:54:18 archlinux kernel: system 00:05: Plug and Play ACPI device, IDs PNP0c02 (active)
+Jun 18 10:54:18 archlinux kernel: system 00:06: Plug and Play ACPI device, IDs PNP0c02 (active)
+Jun 18 10:54:18 archlinux kernel: system 00:07: Plug and Play ACPI device, IDs PNP0c02 (active)
+Jun 18 10:54:18 archlinux kernel: pnp: PnP ACPI: found 8 devices
+Jun 18 10:54:18 archlinux kernel: DMAR: ACPI device "device:6a" under DMAR at fed91000 as 00:15.0
+Jun 18 10:54:18 archlinux kernel: DMAR: ACPI device "device:6b" under DMAR at fed91000 as 00:15.1
+Jun 18 10:54:18 archlinux kernel: DMAR: ACPI device "device:6c" under DMAR at fed91000 as 00:15.2
+Jun 18 10:54:18 archlinux kernel: DMAR: ACPI device "device:6d" under DMAR at fed91000 as 00:15.3
+Jun 18 10:54:18 archlinux kernel: ACPI: AC: AC Adapter [AC] (on-line)
+Jun 18 10:54:18 archlinux kernel: ACPI: button: Lid Switch [LID0]
+Jun 18 10:54:18 archlinux kernel: ACPI: button: Power Button [PBTN]
+Jun 18 10:54:18 archlinux kernel: ACPI: button: Sleep Button [SBTN]
+Jun 18 10:54:18 archlinux kernel: ACPI: button: Power Button [PWRF]
+Jun 18 10:54:18 archlinux kernel: ACPI BIOS Error (bug): Could not resolve symbol [\_PR.PR00._CPC], AE_NOT_FOUND (20210105/psargs-330)
+Jun 18 10:54:18 archlinux kernel: ACPI Error: Aborting method \_PR.PR01._CPC due to previous error (AE_NOT_FOUND) (20210105/psparse-529)
+Jun 18 10:54:18 archlinux kernel: ACPI BIOS Error (bug): Could not resolve symbol [\_PR.PR00._CPC], AE_NOT_FOUND (20210105/psargs-330)
+Jun 18 10:54:18 archlinux kernel: ACPI Error: Aborting method \_PR.PR02._CPC due to previous error (AE_NOT_FOUND) (20210105/psparse-529)
+Jun 18 10:54:18 archlinux kernel: ACPI BIOS Error (bug): Could not resolve symbol [\_PR.PR00._CPC], AE_NOT_FOUND (20210105/psargs-330)
+Jun 18 10:54:18 archlinux kernel: ACPI Error: Aborting method \_PR.PR03._CPC due to previous error (AE_NOT_FOUND) (20210105/psparse-529)
+Jun 18 10:54:18 archlinux kernel: ACPI BIOS Error (bug): Could not resolve symbol [\_PR.PR00._CPC], AE_NOT_FOUND (20210105/psargs-330)
+Jun 18 10:54:18 archlinux kernel: ACPI Error: Aborting method \_PR.PR04._CPC due to previous error (AE_NOT_FOUND) (20210105/psparse-529)
+Jun 18 10:54:18 archlinux kernel: ACPI BIOS Error (bug): Could not resolve symbol [\_PR.PR00._CPC], AE_NOT_FOUND (20210105/psargs-330)
+Jun 18 10:54:18 archlinux kernel: ACPI Error: Aborting method \_PR.PR05._CPC due to previous error (AE_NOT_FOUND) (20210105/psparse-529)
+Jun 18 10:54:18 archlinux kernel: ACPI BIOS Error (bug): Could not resolve symbol [\_PR.PR00._CPC], AE_NOT_FOUND (20210105/psargs-330)
+Jun 18 10:54:18 archlinux kernel: ACPI Error: Aborting method \_PR.PR06._CPC due to previous error (AE_NOT_FOUND) (20210105/psparse-529)
+Jun 18 10:54:18 archlinux kernel: ACPI BIOS Error (bug): Could not resolve symbol [\_PR.PR00._CPC], AE_NOT_FOUND (20210105/psargs-330)
+Jun 18 10:54:18 archlinux kernel: ACPI Error: Aborting method \_PR.PR07._CPC due to previous error (AE_NOT_FOUND) (20210105/psparse-529)
+Jun 18 10:54:18 archlinux kernel: ACPI: thermal: Thermal Zone [THM] (25 C)
+Jun 18 10:54:18 archlinux kernel: ACPI: battery: Slot [BAT0] (battery present)
+Jun 18 10:54:18 archlinux kernel: ata3.00: ACPI cmd ef/10:06:00:00:00:00 (SET FEATURES) succeeded
+Jun 18 10:54:18 archlinux kernel: ata3.00: ACPI cmd f5/00:00:00:00:00:00 (SECURITY FREEZE LOCK) filtered out
+Jun 18 10:54:18 archlinux kernel: ata3.00: ACPI cmd b1/c1:00:00:00:00:00 (DEVICE CONFIGURATION OVERLAY) filtered out
+Jun 18 10:54:18 archlinux kernel: ata3.00: ACPI cmd ef/10:06:00:00:00:00 (SET FEATURES) succeeded
+Jun 18 10:54:18 archlinux kernel: ata3.00: ACPI cmd f5/00:00:00:00:00:00 (SECURITY FREEZE LOCK) filtered out
+Jun 18 10:54:18 archlinux kernel: ata3.00: ACPI cmd b1/c1:00:00:00:00:00 (DEVICE CONFIGURATION OVERLAY) filtered out
+Jun 18 10:54:23 treex kernel: ACPI Warning: \_SB.IETM._TRT: Return Package has no elements (empty) (20210105/nsprepkg-94)
+Jun 18 10:54:23 treex kernel: ACPI Warning: SystemMemory range 0x00000000FE028000-0x00000000FE0281FF conflicts with OpRegion 0x00000000FE028000-0x00000000FE028207 (\_SB.PCI0.GEXP.BAR0) (20210105/utaddress-204)
+Jun 18 10:54:23 treex kernel: ACPI: OSL: Resource conflict; ACPI support missing from driver?
+Jun 18 10:54:24 treex systemd[1]: Started ACPI event daemon
+Jun 18 10:54:24 treex kernel: ACPI: video: Video Device [GFX0] (multi-head: yes  rom: no  post: no)

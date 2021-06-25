@@ -3,8 +3,3 @@ env:
 
 live_config_reload: true
 
-colors:
-  primary:
-    background: '#000000'
-    foreground: '#ffffff'
-

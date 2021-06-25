@@ -8,21 +8,21 @@ block = "focused_window"
 max_width = 100
 show_marks = "visible"
 [block.theme_overrides]
-idle_bg = "#00223f"
+idle_bg = "#2A516F"
 idle_fg = "#ffffff"
 
 [[block]]
 block = "net"
 device = "enp0s31f6"
 device = "wlp2s0"
-format = "↓ {speed_down;K*b} ↑ {speed_up;K*b}  - {ip} - {signal_strength} - {ssid}"
+format = "↓ {speed_down;K*b} ↑ {speed_up;K*b} - {ip} - {ssid}({signal_strength})"
 icons_format = ""
 interval = 1
 
 [[block]]
 block = "temperature"
 collapsed = false
-interval = 1
+interval = 3
 format = "{average}{max}"
 icons_format = ""
 chip = "*-isa-*"
@@ -33,21 +33,22 @@ info_fg = "#FCFF3D"
 [[block]]
 block = "cpu"
 interval = 5
-format = "{utilization}"
+format = "{utilization}({frequency})"
 icons_format = ""
 warning = 38
 critical = 60
 
 [[block]]
 block = "memory"
-format_mem = "{mem_avail}/{mem_total}"
-format_swap = "{swap_used}/{swap_total}"
+format_mem = "{mem_avail}/{mem_total} & {swap_used}/{swap_total}"
 display_type = "memory"
 icons_format = ""
-clickable = true
+clickable = false
 interval = 10
 warning_mem = 78
 critical_mem = 88
+warning_swap = 30
+critical_swap = 50
 
 [[block]]
 block = "disk_space"
@@ -58,7 +59,7 @@ interval = 45
 
 [[block]]
 block = "load"
-format = "{1m} {5m} {15m}"
+format = "{1m}-{5m}-{15m}"
 icons_format = ""
 interval = 5
 info = 4.5
@@ -78,9 +79,12 @@ on_click = "swaymsg exec 'pavucontrol'"
 
 [[block]]
 block = "battery"
-interval = 30
+interval = 28
 driver = "sysfs"
 format = "{percentage} {time}"
+[block.theme_overrides]
+good_fg = "#ffffff"
+
 
 [[block]]
 block = "time"

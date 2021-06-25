@@ -24,14 +24,24 @@ sudo apt install blender -y
 sudo apt isntall kdenlive -y
 ```
 wm-install
+## i3
 ```
 sudo apt update && apt upgrade
 sudo apt install bspwm i3 dmenu rofi xsecurelock xss-lock terminator thunar blueman pm-utils xfce4-notifyd xfce4-power-manager
+/*Arch*/
+sudo pacman -S xorg-xinit xorg-server xorg-apps i3
+echo "exec i3" >> $HOME/.xinitrc
 
 /*for_touchpad*/
 sudo apt install sy***(version && -dev)
 
 ```
+## sway
+```
+sudo pacman -S xorg-xwayland sway swayidle swaylock i3status-rust
+```
+
+## 
 
 pandoc -> .doc等文档转译
 
@@ -82,6 +92,7 @@ wifi
   sudo service network-manager restart
   nmcli dev wifi list
   nmcli dev wifi con 'SSID' password 'wifi-passwd'
+  nmcli dev wifi con 'SSID' password 'wifi-passwd' hidden yes
 ```
 
 ~~~

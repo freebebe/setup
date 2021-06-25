@@ -22,6 +22,7 @@
     # for_window [class="(?i)VirtualBox"] floating enable
     # for_window [class="konsole"] floating enable
     # for_window [class="konsole"] resize set 600 400
+    for_window [class="alacritty"] floating enable
     for_window [class="(?i)blueman"] floating enable
     for_window [class="pulseaudio"] floating enable
     for_window [class="systemsettings"] floating enable
@@ -70,11 +71,6 @@
     smart_borders   off
     gaps inner      0
     gaps outer      0
-
-# background
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-    output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-    # output * bg #000000 solid_color
 
 #}}}
 #_______________________________________________________________________________

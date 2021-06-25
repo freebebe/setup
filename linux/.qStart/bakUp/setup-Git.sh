@@ -37,6 +37,7 @@ cp -r $HOME/.Xresources $HOME/one/setup/ubuntuDesktop/
 
 # #filepacker ->  /home/
 # cp -r $HOME/bkup/ $HOME/one/setup/
+cp -r $HOME/log/ $HOME/one/setup/archDesktop/
 cp -r $HOME/.qStart $HOME/one/setup/linux
 #
 # to flash

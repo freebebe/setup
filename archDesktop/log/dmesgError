@@ -1,0 +1,4 @@
+[    0.752964] RAS: Correctable Errors collector initialized.
+[   16.224280] intel-lpss: probe of INT3446:00 failed with error -16
+[   16.368337] ioremap error for 0xcabff000-0xcac00000, requested 0x2, got 0x0
+[   16.373485] ucsi_acpi: probe of USBC000:00 failed with error -12
