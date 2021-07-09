@@ -30,8 +30,8 @@ endfun
 " Default GUI Colours
 let s:foreground = "222222"
 let s:background = "ffffff"
-let s:selection  = "f8f8f8"
-let s:line       = "efefef"
+let s:selection  = "BCBBC4"
+let s:line       = "BCBBC4"
 let s:comment    = "858585"
 let s:red        = "731718"
 let s:orange     = "b3520e"
@@ -40,7 +40,7 @@ let s:green      = "006b1e"
 let s:aqua       = "005faf"
 let s:blue       = "000080"
 let s:purple     = "850075"
-let s:window     = "efefef"
+let s:window     = "dbdbdb"
 
 set background=light
 hi clear

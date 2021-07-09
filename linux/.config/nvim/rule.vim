@@ -6,9 +6,8 @@ set t_Co=256
 " Z4-bit color
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-set termguicolors
 
-"配置同步
+" 配置同步
 " autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " run utf-8 (all)
@@ -16,6 +15,7 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,big5,euc-jp,euc-kr,euc-tw
+
 " 文件格式
 set matchpairs=(:),[:],{:}
 set suffixesadd=.js,.es,.jsx,.json,.css,.less,.sass,.styl,.php,.py,.md,.rb,.tsx,.ts,.jpg,.jpeg,.gif,.png,.vim
@@ -25,14 +25,14 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType css,sass,scss setlocal omnifunc=csscomplete#CompleteCSS
 autocmd Filetype javascript setlocal sw=2 sts=2 expandtab
 
-    " JavaScript
-    au BufNewFile,BufRead *.es6 setf javascript
-    " TypeScript
-    au BufNewFile,BufRead *.tsx setf typescript
-    " Markdown
-    au BufNewFile,BufRead *.md set filetype=markdown
-    " Flow
-    au BufNewFile,BufRead *.flow set filetype=javascript
+" JavaScript
+au BufNewFile,BufRead *.es6 setf javascript
+" TypeScript
+au BufNewFile,BufRead *.tsx setf typescriptreact
+" Markdown
+au BufNewFile,BufRead *.md set filetype=markdown
+" Flow
+au BufNewFile,BufRead *.flow set filetype=javascript
 
 "_______________________________________________________________________________
 "                                                                   format
@@ -132,20 +132,22 @@ set cursorline
 
 "_______________________________________________________________________________
 "                                                                       colo {{{
-  " highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
+highlight Visual cterm=NONE ctermbg=236 ctermfg=NONE guibg=Grey40
+" |---set cursor line color on V mod
+highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
 
-  " highlight LineNr cterm=none ctermfg=240 guifg=#2b506e guibg=#000000
+set termguicolors
 
-    augroup BgHighlight
-        autocmd!
-        autocmd WinEnter * set cul
-        autocmd WinLeave * set nocul
-    augroup END
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * set cul
+    autocmd WinLeave * set nocul
+augroup END
 
-    if &term =~ "screen"
-        autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
-        autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
-    endif
+if &term =~ "screen"
+    autocmd BufEnter * if bufname("") !~ "^?[A-Za-z0-9?]*://" | silent! exe '!echo -n "\ek[`hostname`:`basename $PWD`/`basename %`]\e\\"' | endif
+    autocmd VimLeave * silent!  exe '!echo -n "\ek[`hostname`:`basename $PWD`]\e\\"'
+endif
 " }}}___________________________________________________________________________
 
 "_______________________________________________________________________________
@@ -185,7 +187,7 @@ autocmd BufWritePost ~/.Xdefaults call system('xrdb ~/.Xdefaults')
 " stop loading config if it's on tiny or small太小停滞加载
 if !1 | finish | endif
 
-" incremental substitution 增值替代 (neovim)
+" incremental substitution 递增 (neovim)
 if has('neovim')
     set inccommand=split
 endif
@@ -211,7 +213,7 @@ set formatoptions+=r
                                     " word under cursor, when idle. {{{
                                     " Useful when studying strange source code.
                                     " Type z/ to toggle highlighting on/off.
-            " http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
+                                    " http://vim.wikia.com/wiki/Auto_highlight_current_word_when_idle
 nnoremap z/ :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 function! AutoHighlightToggle()
     let @/ = ''
@@ -232,8 +234,9 @@ function! AutoHighlightToggle()
         endif
     endfunction
 
-"                                                                   !!!error!!
-"                               " Clean all useless whitespace清理所有无用空白
+"                           !!!error!!!
+"               Clean all useless whitespace清理所有无用空白
+"
 " autocmd BufWritePre *
 "         \ if !exists('g:skip_clean_whitespace') && !exists('b:skip_clean_whitespace')|
 "         \   call lib#WithSavedState('%s/\s\+$//e')|

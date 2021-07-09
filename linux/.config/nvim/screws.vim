@@ -1,17 +1,14 @@
 "_______________________________________________________________________________
-"                                                                   clang-format
-" map to <Leader> [f >>> j] in C++ code
-autocmd FileType c,cpp,objc nnoremap <buffer><Leader>fj :<C-u>ClangFormat<CR>
-autocmd FileType c,cpp,objc vnoremap <buffer><Leader>fj :ClangFormat<CR>
-" if you install vim-operator-user
-autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
-" Toggle auto formatting:
-nmap <Leader>C :ClangFormatAutoToggle<CR>
+"                                                                   completion
 
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-"_______________________________________________________________________________
-"                                                                       undotree
-nnoremap <F5> :UndotreeToggle<CR>
+let g:completion_confirm_key = ""
+imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
+                 \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
+
 
 "_______________________________________________________________________________
 "                                                                       emmet
@@ -30,63 +27,6 @@ map <silent>sd <Plug>(operator-surround-delete)
 map <silent>sr <Plug>(operator-surround-replace)
 
 "_______________________________________________________________________________
-"                                                                           ale
-" nmap <Leader>al <Plug>(ale_next)
-nnoremap <silent><f9> :ALEFix<cr>
-nmap ]a <Plug>(ale_next_wrap)
-nmap [a <Plug>(ale_previous_wrap)
-" nnoremap <silent><f8> :call AleFixResetView()<cr>
-
-"_______________________________________________________________________________
-"                                                                       tagbar
-nmap <F8> :TagbarToggle<CR>
-
-"_______________________________________________________________________________
-"                                                                       deoplete
-
-" <CR>: close popup and save indent.
-"----------------------------
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
-  return pumvisible() ? deoplete#close_popup()."\<CR>" : "\<CR>"
-endfunction
-
-"                                          <TAB>: completion.
-"------------------------------------------------------------
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ deoplete#manual_complete()
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-"                                    <S-TAB>: completion back.
-"------------------------------------------------------------
-
-inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-"
-inoremap <silent><expr><C-g>       deoplete#manual_complete('tabnine')
-inoremap <silent><expr><C-e>       deoplete#cancel_popup()
-inoremap <silent><expr><C-l>       deoplete#complete_common_string()
-
-"================<CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
-  return pumvisible() ? deoplete#close_popup()."\<CR>" : "\<CR>"
-endfunction
-
-" call deoplete#custom#option('candidate_marks',
-"       \ ['A', 'S', 'D', 'F', 'G'])
-" inoremap <expr>A       pumvisible() ? deoplete#insert_candidate(0) : 'A'
-" inoremap <expr>S       pumvisible() ? deoplete#insert_candidate(1) : 'S'
-" inoremap <expr>D       pumvisible() ? deoplete#insert_candidate(2) : 'D'
-" inoremap <expr>F       pumvisible() ? deoplete#insert_candidate(3) : 'F'
-" inoremap <expr>G       pumvisible() ? deoplete#insert_candidate(4) : 'G'
-
-"_______________________________________________________________________________
 "                                                                           def
 "
 " nnoremap <silent> :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
@@ -94,6 +34,87 @@ nnoremap vs :vs<CR>
             \:<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
 nnoremap sp :sp<CR>
             \:<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+
+nnoremap <silent>sf :<C-u>Defx -listed -resume
+      \ -columns=indent:mark:icon:icons:filename:git:size
+      \ -buffer-name=tab`tabpagenr()`
+      \ `expand('%:p:h')` -search=`expand('%:p')`<CR>
+nnoremap <silent>fi :<C-u>Defx -new 
+            \ -columns=indent:mark:icon:icons:filename:git:size
+            \`expand('%:p:h')` -search=`expand('%:p')`<CR>
+
+autocmd FileType defx call s:defx_my_settings()
+    function! s:defx_my_settings() abort
+        " Define mappings
+        nnoremap <silent><buffer><expr> <CR>
+        \ defx#do_action('open')
+        nnoremap <silent><buffer><expr> c
+        \ defx#do_action('copy')
+        nnoremap <silent><buffer><expr> m
+        \ defx#do_action('move')
+        nnoremap <silent><buffer><expr> p
+        \ defx#do_action('paste')
+        nnoremap <silent><buffer><expr> l
+        \ defx#do_action('open')
+        nnoremap <silent><buffer><expr> E
+        \ defx#do_action('open', 'vsplit')
+        nnoremap <silent><buffer><expr> P
+        \ defx#do_action('open', 'pedit')
+        nnoremap <silent><buffer><expr> o
+        \ defx#do_action('open_or_close_tree')
+        nnoremap <silent><buffer><expr> K
+        \ defx#do_action('new_directory')
+        nnoremap <silent><buffer><expr> N
+        \ defx#do_action('new_file')
+        nnoremap <silent><buffer><expr> M
+        \ defx#do_action('new_multiple_files')
+        nnoremap <silent><buffer><expr> C
+        \ defx#do_action('toggle_columns',
+        \                'mark:indent:icon:filename:type:size:time')
+        nnoremap <silent><buffer><expr> S
+        \ defx#do_action('toggle_sort', 'time')
+        nnoremap <silent><buffer><expr> d
+        \ defx#do_action('remove')
+        nnoremap <silent><buffer><expr> r
+        \ defx#do_action('rename')
+        nnoremap <silent><buffer><expr> !
+        \ defx#do_action('execute_command')
+        nnoremap <silent><buffer><expr> x
+        \ defx#do_action('execute_system')
+        nnoremap <silent><buffer><expr> yy
+        \ defx#do_action('yank_path')
+        nnoremap <silent><buffer><expr> .
+        \ defx#do_action('toggle_ignored_files')
+        nnoremap <silent><buffer><expr> ;
+        \ defx#do_action('repeat')
+        nnoremap <silent><buffer><expr> h
+        \ defx#do_action('cd', ['..'])
+        nnoremap <silent><buffer><expr> ~
+        \ defx#do_action('cd')
+        nnoremap <silent><buffer><expr> q
+        \ defx#do_action('quit')
+        nnoremap <silent><buffer><expr> <Space>
+        \ defx#do_action('toggle_select') . 'j'
+        nnoremap <silent><buffer><expr> *
+        \ defx#do_action('toggle_select_all')
+        nnoremap <silent><buffer><expr> j
+        \ line('.') == line('$') ? 'gg' : 'j'
+        nnoremap <silent><buffer><expr> k
+        \ line('.') == 1 ? 'G' : 'k'
+        nnoremap <silent><buffer><expr> <C-l>
+        \ defx#do_action('redraw')
+        nnoremap <silent><buffer><expr> <C-g>
+        \ defx#do_action('print')
+        nnoremap <silent><buffer><expr> cd
+        \ defx#do_action('change_vim_cwd')
+    endfunction
+
+"_______________________________________________________________________________
+""                                                                      telescope
+nnoremap <silent> ;f <cmd>Telescope find_files<cr>
+nnoremap <silent> ;r <cmd>Telescope live_grep<cr>
+nnoremap <silent> \\ <cmd>Telescope buffers<cr>
+nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 
 "_______________________________________________________________________________
 "                                                                       neosnippet
@@ -103,40 +124,3 @@ imap <expr><C-l> pumvisible() ?
       \ : "<Plug>(neosnippet_expand_or_jump)"
 "imap <C-l> <Plug>(neosnippet_expand_or_jump)
 smap <C-l> <Plug>(neosnippet_expand_or_jump)
-
-"_______________________________________________________________________________
-"                                                                           fzf
-"
-nnoremap <silent><c-g> :RG<cr>
-nnoremap <silent><c-f> :Files<CR>
-
-" _______________________________________________________________________________
-"                                                                           vsnip
-"
-" Expand
-" imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-" smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-"
-" " Expand or jump
-" imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-" smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-"
-" " Jump forward or backward
-" imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-" smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-" imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-" smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-"
-" " Select or cut text to use as $TM_SELECTED_TEXT in the next snippet.
-" " See https://github.com/hrsh7th/vim-vsnip/pull/50
-" nmap <expr> <Tab> <Plug>(vsnip-select-text)
-" xmap <expr> <Tab> <Plug>(vsnip-select-text)
-" xmap        s   <Plug>(vsnip-select-text)
-" nmap        S   <Plug>(vsnip-cut-text)
-" xmap        S   <Plug>(vsnip-cut-text)
-"
-
-" _______________________________________________________________________________
-"                                                                       close-tap
-"
-" let g:closetag_shortcut = '<F3>'
