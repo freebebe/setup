@@ -6,7 +6,7 @@ runtime ./plug.vim
 runtime ./rule.vim
 runtime ./quickKeys.vim
 runtime ./screws.vim
-" runtime ./theme.vim
+runtime ./theme.vim
 
 
 "______________________________________________________________________________
@@ -16,7 +16,7 @@ runtime ./screws.vim
 "                                                                      color{{{
 " colo darkBlue
 "
-" colo whiteBlue
+colo whiteBlue
 
 " if exists("&termguicolors") && exists("&winblend")
 "   let g:neosolarized_termtrans=1

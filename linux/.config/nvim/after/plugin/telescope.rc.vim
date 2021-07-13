@@ -8,13 +8,13 @@ local actions = require('telescope.actions')
 -- Global remapping
 ------------------------------
 require('telescope').setup{
-  defaults = {
-    mappings = {
-      n = {
-        ["q"] = actions.close
-      },
-    },
-  }
+    defaults = {
+        mappings = {
+            n = {
+                ["q"] = actions.close
+            },
+        },
+    }
 }
 
 EOF

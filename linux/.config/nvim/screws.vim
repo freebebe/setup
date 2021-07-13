@@ -119,8 +119,17 @@ nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 "_______________________________________________________________________________
 "                                                                       neosnippet
 "
-imap <expr><C-l> pumvisible() ?
-      \ "\<C-y><Plug>(neosnippet_expand_or_jump)"
-      \ : "<Plug>(neosnippet_expand_or_jump)"
-"imap <C-l> <Plug>(neosnippet_expand_or_jump)
-smap <C-l> <Plug>(neosnippet_expand_or_jump)
+
+" imap <expr><C-l>  <Plug>(deoppet_expand)
+" imap <C-l>  <Plug>(deoppet_jump_forward)
+" imap <C-y>  <Plug>(deoppet_jump_backward)
+" smap <C-l>  <Plug>(deoppet_jump_forward)
+" smap <C-y>  <Plug>(deoppet_jump_backward)
+imap <C-l>     <Plug>(neosnippet_expand_or_jump)
+smap <C-l>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-l>     <Plug>(neosnippet_expand_target)
+
+"_______________________________________________________________________________
+"                                                                   illuminate
+lua << EOF
+EOF
