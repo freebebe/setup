@@ -1,0 +1,35 @@
+# AppArmor profile for bluetoothd
+# Version of bluetoothd (bluez) profiled: 5.59
+# Homepage: https://github.com/krathalan/apparmor-profiles
+# Copyright 2019-2021 (C) krathalan; Licensed under GPLv3
+
+abi <abi/3.0>,
+include <tunables/global>
+
+profile bluetoothd /usr/lib/bluetooth/bluetoothd {
+  include <abstractions/base>
+  network unix stream,
+  network unix dgram,
+
+  capability net_admin,
+  capability net_bind_service,
+
+  # Networking
+  network alg seqpacket,
+  network bluetooth raw,
+  network bluetooth seqpacket,
+  network bluetooth stream,
+
+  # Device access
+  owner /dev/rfkill rw,
+  owner /dev/uinput rw,
+  owner @{sys}/devices/pci[0-9]*/[0-9]*/**/bluetooth/**/rfkill[0-9]/name r,
+  owner @{sys}/devices/platform/thinkpad_acpi/rfkill/rfkill[0-9]/name r,
+  owner @{sys}/devices/virtual/dmi/id/chassis_type r,
+
+  # Config
+  owner /etc/bluetooth/ r,
+  owner /etc/bluetooth/** r,
+  owner /var/lib/bluetooth/{,**} rw,
+}
+

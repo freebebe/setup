@@ -1,0 +1,42 @@
+abi <abi/3.0>,
+include <tunables/global>
+
+profile youtube-dl /usr/bin/youtube-dl {
+  include <abstractions/base>
+
+  # MPV uses youtube-dl to watch internet videos natively
+  signal receive set=kill peer=mpv,
+
+  # Executables
+  include <abstractions/python>
+  /usr/bin/ r,
+  /usr/bin/ffmpeg mrix,
+  /usr/bin/ffprobe mrix,
+  /usr/bin/python3.[0-9] r,
+  /usr/bin/youtube-dl r,
+
+  # Networking
+  include <abstractions/krathalans-networking>
+  network netlink raw,
+  network inet dgram,
+  network inet stream,
+  network inet6 dgram,
+  network inet6 stream,
+
+  # Needed to save files
+  include <abstractions/krathalans-downloads>
+  /usr/bin/file mrix,
+  @{system_share_dirs}/file/** r,
+  owner @{HOME}/.cache/youtube-dl/ rw,
+  owner @{HOME}/.cache/youtube-dl/** rw,
+
+  # System access
+  /etc/mime.types r,
+
+  # Silence unnecessary permissions
+  deny @{PROC}/*/fd/ r,
+  deny @{PROC}/*/mounts r,
+  deny /usr/bin/uname rx,
+  # ffmpeg?
+  deny @{sys}/devices/system/cpu/ r,
+}
