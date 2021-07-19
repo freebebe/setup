@@ -1,7 +1,7 @@
 > sysctls --- /etc/sysctl.conf && /etc/sysctl.d
 
 # 限制su
-edit `/etc/pam.d/su` | `/etc/pam.d/su-l`
+sudoedit `/etc/pam.d/su` | `/etc/pam.d/su-l`
 
 ```
 auth required pam_wheel.so use.uid
