@@ -1,8 +1,15 @@
+# sandbox
+## bubblewrap
+### GUI
+- Flatpak
+- XDG
+
 ## install xwayland
-pacman -S xorg   >>     Numb-45     >>  xorg-xwayland
+`pacman -S xorg`   >>     Numb-45     >>  xorg-xwayland
+`pacman -S xorg-xinit xorg-server`  >>  xorg-window
 
 ## update_driver [fwupd]
-pacman -S fwupd
+`pacman -S fwupd`
 
 
 # for first start
