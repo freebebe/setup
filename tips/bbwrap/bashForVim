@@ -1,0 +1,7 @@
+#!/bin/bash
+bwrap \
+--ro-bind / / \
+--bind $HOME/.local/share/nvim/ $HOME/.local/share/nvim/ \
+--bind $HOME/.cache/nvim/lsp.log $HOME/.cache/nvim/lsp.log  \
+--unshare-user --uid 256 --gid 512 \
+bash

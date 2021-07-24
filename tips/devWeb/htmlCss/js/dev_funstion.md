@@ -1,6 +1,6 @@
 #   Funstion List
-├── package.json                 
-├── README.md                    
+├── package.json
+├── README.md
 ├── gulpfile.js                  // gulp 配置文件
 ├── webpack.config.js            // webpack 配置文件
 ├── doc                          // doc  目录：放置应用文档
