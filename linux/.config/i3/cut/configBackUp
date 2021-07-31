@@ -19,8 +19,7 @@
     # mod1 = alt
     set $mod Mod1
     set $term alacritty
-    # set $menu dmenu_path | bemenu -fn "Terminus (TTF):pixelsize=28"
-    set $menu rofi -show drun -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Terminus (TTF) 11" -theme "glue_pro_blue" -show-icons
+    set $menu "rofi -show drun  -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -show-icons -theme 'glue_pro_blue' -font 'mono 15'"
     #          rofi -combi-modi window#drun -show combi -modi combi -show-icons -theme "glue_pro_blue" -font "mono 15"
     #          rofi -show drun -location 1 -width 100  -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Terminus (TTF) 10" -theme "$HOME/.config/rofi/nixpulvis.rasi" -show-icons
     #          rofi -show drun -width 80 -height 80 -lines 20 -columns 5 -hide-scrollbar -matching fuzzy -display-drun "fucK: " -font "Terminus (TTF) 11" -theme "$HOME/.config/rofi/nixpulvis.rasi" -show-icons
@@ -112,8 +111,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 # Open applications on specific workspaces
     assign [class="Zathura"] workspace 1
     assign [class="firefox"] workspace 2
-    assign [class="firefox-developer-edition"] workspace 10
-    assign [class="keePassXC"] workspace 6
+    assign [class="VirtualBox"] workspace 10
 
 # switch to workspace with urgent window automatically
     for_window [urgent=latest] focus
@@ -125,7 +123,7 @@ bindsym $mod+Shift+0 move container to workspace 10
         bindsym l exec --no-startup-id $HOME/.config/i3/i3exit lock, mode "default"
         bindsym s exec --no-startup-id $HOME/.config/i3/i3exit suspend, mode "default"
         bindsym u exec --no-startup-id $HOME/.config/i3/i3exit switch_user, mode "default"
-        bindsym e exit
+        bindsym e exec --no-startup-id $HOME/.config/i3/i3exit logout, mode "default"
         bindsym h exec --no-startup-id $HOME/.config/i3/i3exit hibernate, mode "default"
         bindsym r exec --no-startup-id $HOME/.config/i3/i3exit reboot, mode "default"
         bindsym Shift+s exec --no-startup-id $HOME/.config/i3/i3exit shutdown, mode "default"
@@ -237,14 +235,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # start a terminal
     # bindsym $mod+Return exec i3-sensible-terminal
-    bindsym $mod+Return exec \
-        GLFW_IM_MODULE=ibus \
-        XMODIFIERS=@im=ibus \
-        QT_IM_MODULE=xim \
-        $term
-    bindsym $mod+Ctrl+t exec \
-        GLFW_IM_MODULE=ibus \
-        kitty
+    bindsym $mod+Return exec $term
     # bindsym $mod+Ctrl+t exec $term --single-instance
     # bindsym $mod+Ctrl+Shift+t exec WAYLAND_DISPLAY=alacritty $term
 
@@ -289,7 +280,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 # ranger with konsole
 # bindsym $mod+Shift+e konsole -e ranger
 # image_key
-    bindsym $mod+w exec --no-startup-id bwrap --dev-bind / / flameshot gui    #flameshot
+    bindsym $mod+w exec --no-startup-id flameshot gui    #flameshot
 #
     # bindsym $mod+alt+t exec --no-startup-id compton -b
 # drop down terminal
@@ -303,7 +294,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 # kill_GUI
     bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 # xpad
-    bindsym $mod+F1 exec --no-startup-id bwrap --dev-bind / / xpad -t -N
+    bindsym $mod+F1 exec --no-startup-id xpad -t -N
 # ranger->file
     # bindsym $mod+F4 exec thunar path/to/Documents/uni2019-20
     # bindsym $mod+F1 exec thunar ~/Downloads
@@ -330,7 +321,7 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 #_____________________________/autoStart
     exec --no-startup-id nm-applet
-    exec --no-startup-id bwrap --dev-bind / / ibus-daemon --xim -d -r
+    exec --no-startup-id ibus-daemon --xim -d -r
     exec --no-startup-id xrandr -s 1360x768
     # exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/org_kde_powerdevil
 
@@ -434,9 +425,9 @@ bar {
     # status_command py3status -c $HOME/.config/py3status/config
     # output eDP-1
     # tray_output primary 
-    # position top
+    position top
     # separator_symbol "-"
-    # mode hide
+    mode hide
     # workspace_buttons no
     # tray_output no
     #_____________________________font_bar {

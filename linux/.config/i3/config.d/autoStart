@@ -1,0 +1,35 @@
+# toupad -> at more size with someGithub link setup
+    exec --no-startup-id synclient TapButton0=0 
+
+#_____________________________/appction
+    exec --no-startup-id xrandr -s 1360x768
+    # windows resize
+    exec --no-startup-id ibus-daemon --xim -d -r
+    # IME
+    exec --no-startup-id flameshot              # face_your_screen_face
+    exec --no-startup-id dunst                  # Notification
+
+    # exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/org_kde_powerdevil
+    # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+    # exec --no-startup-id nitrogen --restore; sleep 1; compton -b            # background-image chenage for fee time
+    # exec --no-startup-id xpad
+    # exec --no-startup-id dropbox
+    # exec --no-startup-id i3-confg-wizard
+    # exec_always dropbox
+    # exec --no-startup-id conky
+    # exec --no-startup-id volumeicon
+
+    # lockscreen
+    # exec_always --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+    # exec_always --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock --nofork exec_always --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock -- xset dpms 333 555
+    # exec --no-startup-id xset dpms 365 1357 6789
+    # exec --no-startup-id xset dpms 365 1357
+    # exec_always --no-startup-id xss-lock --transfer-sleep-lock -- xsecurelock 
+    # exec_always --no-startup-id xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
+    # exec_always --no-startup-id xautolock -time 553 -locker fuzzy_lock -notify 20 -notifier 'xset dpms force off' &
+    # exec_always --no-startup-id xautolock -time 555 -locker "systemctl suspend" &
+
+    # exec $HOME/.config/i3/tools/ACorPOWER.sh
+
+    # touch pad speed
+    exec --no-startup-id  xinput set-prop 16 'libinput Accel Speed' 0.5 
