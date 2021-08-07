@@ -1,6 +1,6 @@
 scriptencoding utf-8
 if exists('g:loaded_defx_icons')
-  finish
+    finish
 endif
 let g:loaded_defx_icons = 1
 

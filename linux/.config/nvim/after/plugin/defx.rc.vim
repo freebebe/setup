@@ -1,3 +1,5 @@
+if !exists('g:loaded_defx') | finish | endif
+
 " fi = tree open
 " sf = tree
 "    > h = backspace
@@ -7,6 +9,7 @@
 cnoreabbrev sf Defx -listed -new
     \ -columns=indent:mark:icon:icons:filename:git:size
     \ -buffer-name=tab`tabpagenr()`<CR>
+
 call defx#custom#option('_',{
     \ 'winwidth'  : 30,
     \ 'show_ignored_files': 0,

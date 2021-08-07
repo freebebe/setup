@@ -1,8 +1,9 @@
-if !exists('g:clorizer')
+if !exists('g:colorizer')
     finish
 endif
 
 lua << EOF
+
 -- Attaches to every FileType mode
 require 'colorizer'.setup()
 

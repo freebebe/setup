@@ -4,10 +4,11 @@
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" let g:completion_confirm_key = "\<C-l>"
 "
 " let g:completion_confirm_key = ""
-imap <expr> <cr>  pumvisible() ? complete_info()["selected"] != "-1" ?
-                 \ "\<Plug>(completion_confirm_completion)"  : "\<c-e>\<CR>" :  "\<CR>"
+
 
 
 "_______________________________________________________________________________
@@ -30,15 +31,16 @@ map <silent>sr <Plug>(operator-surround-replace)
 "                                                                           def
 "
 " nnoremap <silent> :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+
 nnoremap vs :vs<CR>
             \:<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
 nnoremap sp :sp<CR>
             \:<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
 
 nnoremap <silent>sf :<C-u>Defx -listed -resume
-      \ -columns=indent:mark:icon:icons:filename:git:size
-      \ -buffer-name=tab`tabpagenr()`
-      \ `expand('%:p:h')` -search=`expand('%:p')`<CR>
+            \ -columns=indent:mark:icon:icons:filename:git:size
+            \ -buffer-name=tab`tabpagenr()`
+            \ `expand('%:p:h')` -search=`expand('%:p')`<CR>
 nnoremap <silent>fi :<C-u>Defx -new 
             \ -columns=indent:mark:icon:icons:filename:git:size
             \`expand('%:p:h')` -search=`expand('%:p')`<CR>
@@ -47,7 +49,7 @@ autocmd FileType defx call s:defx_my_settings()
     function! s:defx_my_settings() abort
         " Define mappings
         nnoremap <silent><buffer><expr> <CR>
-        \ defx#do_action('open')
+                    \ defx#do_action('open')
         nnoremap <silent><buffer><expr> c
         \ defx#do_action('copy')
         nnoremap <silent><buffer><expr> m
@@ -129,3 +131,19 @@ imap <C-l>     <Plug>(neosnippet_expand_or_jump)
 smap <C-l>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-l>     <Plug>(neosnippet_expand_target)
 
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+"_______________________________________________________________________________
+"                                                                   snippts.nvim
+" inoremap <C-l> <cmd>lua return require'snippets'.expand_or_advance(1)<CR>
+"
+" inoremap <C-l> <cmd>lua return require'snippets'.advance_snippet(-1)<CR>
+
+"_______________________________________________________________________________
+"                                                                       lspsaga
+
+nnoremap <silent> <C-j> <Cmd>Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent>K <Cmd>Lspsaga hover_doc<CR>
+inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
+nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
