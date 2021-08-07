@@ -4,5 +4,6 @@ if exists("&termguicolors") && exists("&winblend")
    set pumblend=5
    set background=light
    runtime ./colors/whiteBlue.vim
+   " colorscheme default
    colorscheme whiteBlue
 endif

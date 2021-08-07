@@ -26,18 +26,18 @@ nnoremap k gk
 
 "_______________________________________________________________________________
 "                                                                           jump
-nnoremap H 20h
-nnoremap J 10j
-nnoremap K 10k
-nnoremap L 20l
-nnoremap zk 5H
-nnoremap zj 5L
-xnoremap H 20h
-xnoremap J 10j
-xnoremap K 10k
-xnoremap L 20l
-xnoremap zk 5H
-xnoremap zj 5L
+" nnoremap H 20h
+" nnoremap J 10j
+" nnoremap K 10k
+" nnoremap L 20l
+" nnoremap zk 5H
+" nnoremap zj 5L
+" xnoremap H 20h
+" xnoremap J 10j
+" xnoremap K 10k
+" xnoremap L 20l
+" xnoremap zk 5H
+" xnoremap zj 5L
 
 " nnoremap <expr> <C-f> <SID>scroll(+4)
 " nnoremap <expr> <C-u> <SID>scroll(-4)

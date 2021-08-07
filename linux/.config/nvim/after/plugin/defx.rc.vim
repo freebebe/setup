@@ -15,8 +15,6 @@ call defx#custom#option('_',{
     \ 'resume': 1,
     \ 'ignored_files': '*.pyc,*.pyd,*~,*.swo,*.swp,.git,.hg,.svn,.bzr,.DS_Store',
     \ })
-    " \ 'split'     : 'center',
-    "                 'vertical'
 
 
 call defx#custom#column('icon', {

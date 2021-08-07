@@ -17,7 +17,7 @@ local on_attach = function(client, bufnr)
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
     --Enable completion triggered by <c-x><c-o>
-    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+    -- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Mappings.
     local opts = { noremap=true, silent=true }
@@ -51,7 +51,7 @@ local on_attach = function(client, bufnr)
 
     require'completion'.on_attach(client, bufnr)
 
-  --protocol.SymbolKind = { }
+  protocol.SymbolKind = { }
   protocol.CompletionItemKind = {
     '', -- Text
     '', -- Method
@@ -85,21 +85,104 @@ nvim_lsp.flow.setup {
     on_attach = on_attach
 }
 
---nvim_lsp.tsserver.setup {
---    on_attach = on_attach,
---    filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
--- }
+nvim_lsp.tsserver.setup {
+   on_attach = on_attach,
+   -- filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx"}
+    -- filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
+}
 
 nvim_lsp.denols.setup {
     on_attach = on_attach,
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
+    -- filetypes = { "javascript", "javascriptreact", "javascript.jsx"}
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
 }
 
-nvim_lsp.cssls.setup {
-    on_attach = on_attach,
-    filetypes = { "css", "scss", "less" }
+--nvim_lsp.cssls.setup {
+--    on_attach = on_attach,
+--    filetypes = { "css", "scss", "less" }
+--}
+
+--nvim_lsp.rls.setup {
+--     on_attach = on_attach,
+--     filetypes = { "rust" }
+-- }
+
+--nvim_lsp.vuels.setup{
+--     on_attach = on_attach,
+--     filetypes = { "vue" }
+-- }
+
+nvim_lsp.diagnosticls.setup {
+  on_attach = on_attach,
+  -- filetypes = { 'javascript', 'javascriptreact', 'json', 'css', 'less', 'scss', 'markdown', 'pandoc' },
+  filetypes = { 'json', 'css', 'less', 'scss', 'markdown', 'pandoc' },
+  init_options = {
+    linters = {
+      eslint = {
+        command = 'eslint_d',
+        rootPatterns = { '.git' },
+        debounce = 100,
+        args = { '--stdin', '--stdin-filename', '%filepath', '--format', 'json' },
+        sourceName = 'eslint_d',
+        parseJson = {
+          errorsRoot = '[0].messages',
+          line = 'line',
+          column = 'column',
+          endLine = 'endLine',
+          endColumn = 'endColumn',
+          message = '[eslint] ${message} [${ruleId}]',
+          security = 'severity'
+        },
+        securities = {
+          [2] = 'error',
+          [1] = 'warning'
+        }
+      },
+    },
+    filetypes = {
+      javascript = 'eslint',
+      javascriptreact = 'eslint',
+      typescript = 'eslint',
+      typescriptreact = 'eslint',
+    },
+    formatters = {
+      eslint_d = {
+        command = 'eslint_d',
+        args = { '--stdin', '--stdin-filename', '%filename', '--fix-to-stdout' },
+        rootPatterns = { '.git' },
+      },
+      prettier = {
+        command = 'prettier',
+        args = { '--stdin-filepath', '%filename' }
+      }
+    },
+    formatFiletypes = {
+      css = 'prettier',
+      javascript = 'eslint_d',
+      javascriptreact = 'eslint_d',
+      json = 'prettier',
+      scss = 'prettier',
+      less = 'prettier',
+      typescript = 'eslint_d',
+      typescriptreact = 'eslint_d',
+      json = 'prettier',
+      markdown = 'prettier',
+    }
+  }
 }
 
 -- icon
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    -- This sets the spacing and the prefix, obviously.
+    virtual_text = {
+      spacing = 4,
+      prefix = ''
+    }
+  }
+)
+
 EOF
 
