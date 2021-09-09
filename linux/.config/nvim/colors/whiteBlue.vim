@@ -15,7 +15,9 @@ let s:window     = "efefef"
 
 set background=light
 hi clear
-syntax reset
+if exists("syntax_on")
+  syntax reset
+endif
 
 " let g:colors_name = "light-delight"
 let g:colors_name = "whiteBlue"

@@ -7,9 +7,25 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " let g:completion_confirm_key = "\<C-l>"
 "
-" let g:completion_confirm_key = ""
+let g:completion_confirm_key = ""
+let g:completion_chain_complete_list = {
+        \ 'default' : {
+        \   'default': [
+        \       {'complete_items': ['lsp', 'snippet', 'path']},
+        \       {'mode': '<c-p>'},
+        \       {'mode': '<c-n>'}],
+        \   'comment': []
+        \   }
+        \}
 
 
+"_______________________________________________________________________________
+"                                                                       lspsaga
+
+nnoremap <silent> <C-j> <Cmd>Lspsaga diagnostic_jump_next<CR>
+nnoremap <silent>K <Cmd>Lspsaga hover_doc<CR>
+inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
+nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
 
 "_______________________________________________________________________________
 "                                                                       emmet
@@ -31,6 +47,10 @@ map <silent>sr <Plug>(operator-surround-replace)
 "                                                                           def
 "
 " nnoremap <silent> :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+nnoremap tN :tabnew<CRlq
+            \ -columns=indent:mark:icon:icons:filename:git:size
+            \ -buffer-name=tab`tabpagenr()`
+            \:<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
 
 nnoremap vs :vs<CR>
             \:<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
@@ -130,9 +150,9 @@ nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 imap <C-l>     <Plug>(neosnippet_expand_or_jump)
 smap <C-l>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-l>     <Plug>(neosnippet_expand_target)
-
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" imap <C-l>  <Plug>(deoppet_expand)
+" imap <C-l>  <Plug>(deoppet_jump_forward)
+" smap <C-l>  <Plug>(deoppet_jump_forward)
 
 "_______________________________________________________________________________
 "                                                                   snippts.nvim
@@ -141,9 +161,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 " inoremap <C-l> <cmd>lua return require'snippets'.advance_snippet(-1)<CR>
 
 "_______________________________________________________________________________
-"                                                                       lspsaga
+"                                                                       vsnip
 
-nnoremap <silent> <C-j> <Cmd>Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent>K <Cmd>Lspsaga hover_doc<CR>
-inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
-nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
+" imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+" smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'

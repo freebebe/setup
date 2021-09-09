@@ -1,4 +1,4 @@
-if !exists('g:lspconfig')
+if !exists('g:lspconfig') 
     finish
 endif
 
@@ -86,25 +86,31 @@ nvim_lsp.flow.setup {
 }
 
 --nvim_lsp.tsserver.setup {
---     on_attach = on_attach,
---    -- filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
---     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
+    -- on_attach = on_attach,
+    -- filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
+    -- filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
+    -- filetypes = { "javascript", "javascriptreact", "javascript.jsx" }
 -- }
 
 nvim_lsp.denols.setup {
     on_attach = on_attach,
-    filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' }
+    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
     -- filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
 }
 
---nvim_lsp.cssls.setup {
+nvim_lsp.cssls.setup {
+    on_attach = on_attach,
+    filetypes = { "css", "scss", "less" }
+}
+
+nvim_lsp.html.setup {
+    on_attach = on_attach,
+    filetypes = { 'html' }
+}
+
+--nvim_lsp.jsonls.setup{
 --     on_attach = on_attach,
---     filetypes = { "css", "scss", "less" }
--- }
---
--- nvim_lsp.html.setup {
---     on_attach = on_attach,
---     filetypes = { 'html' }
+--     filetypes = { 'json' }
 -- }
 
 
@@ -114,58 +120,26 @@ nvim_lsp.denols.setup {
 -- }
 
 --nvim_lsp.vuels.setup{
-    -- on_attach = on_attach,
-    -- filetypes = { "vue" },
-    -- init_options = {
-    --   config = {
-    --     vetur = {
-    --       useWorkspaceDependencies = false,
-    --       validation = {
-    --         template = true,
-    --         style = true,
-    --         script = true,
-    --       },
-    --       completion = {
-    --         autoImport = false,
-    --         useScaffoldSnippets = false,
-    --         tagCasing = 'kebab',
-    --       },
-    --       format = {
-    --         defaultFormatter = {
-    --           js = 'none',
-    --           ts = 'none',
-    --         },
-    --         defaultFormatterOptions = {},
-    --         scriptInitialIndent = false,
-    --         styleInitialIndent = false,
-    --       },
-    --     },
-    --     css = {},
-    --     html = {
-    --       suggest = {},
-    --     },
-    --     javascript = {
-    --       format = {},
-    --     },
-    --     typescript = {
-    --       format = {},
-    --     },
-    --     emmet = {},
-    --     stylusSupremacy = {},
-    --   },
+--     on_attach = on_attach,
+--     filetypes = { "vue" },
+--     init_options = {
+--       config = {
+--         css = {},
+--         html = {
+--           suggest = {},
+--         },
+--         javascript = {
+--           format = {},
+--         },
+--         typescript = {
+--           format = {},
+--         },
+--         emmet = {},
+--         stylusSupremacy = {},
+--       },
+--     },
 -- }
 
--- icon
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        underline = true,
-        -- This sets the spacing and the prefix, obviously.
-        virtual_text = {
-            spacing = 4,
-            prefix = ''
-        }
-    }
-)
 
 EOF
 
