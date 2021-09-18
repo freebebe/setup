@@ -8,13 +8,13 @@ vim.fn.execute(
     'noautocmd set filetype=%s',
     vim.fn.substitute(vim.bo.filetype, 'javascriptreact', 'javascript.jsx', '')
   )
-)                                                       --reactJSX
+)                                                                               --reactJSX
 
 vim.fn.execute(
   string.format(
     'noautocmd set filetype=%s',
     vim.fn.substitute(vim.bo.filetype, 'typescriptreact', 'typescript.tsx', '')
   )
-)                                                       --reactTSX
+)                                                                               --reactTSX
 
 EOF

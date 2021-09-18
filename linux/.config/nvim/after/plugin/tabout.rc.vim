@@ -1,6 +1,4 @@
-if !exists('g: loaded_tabout')
-    finish
-endif
+if !exists('g: loaded_tabout') | finish | endif
 
 lua << EOF
 -- Lua
@@ -27,7 +25,7 @@ use {
 }
     end,
         wants = {'nvim-treesitter'}, -- or require if not used so far
-        after = {'completion-nvim'} -- if a completion plugin is using tabs load it before
+        after = {'nvim-cmp'} -- if a nvim-cmp plugin is using tabs load it before
 }
 
 require("tabout").setup({

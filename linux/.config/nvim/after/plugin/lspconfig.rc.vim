@@ -1,6 +1,6 @@
-if !exists('g:lspconfig') 
-    finish
-endif
+if !exists('g:lspconfig') | finish | endif
+
+set completeopt=menuone,noinsert,noselect
 
 lua << EOF
 --vim.lsp.set_log_level("debug")
@@ -49,7 +49,9 @@ local on_attach = function(client, bufnr)
         vim.api.nvim_command [[augroup END]]
     end
 
-    require'completion'.on_attach(client, bufnr)
+    -- nvim-cmp supports additional completion capabilities
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
     protocol.SymbolKind = { }
     protocol.CompletionItemKind = {
@@ -86,10 +88,10 @@ nvim_lsp.flow.setup {
 }
 
 --nvim_lsp.tsserver.setup {
-    -- on_attach = on_attach,
-    -- filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
-    -- filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
-    -- filetypes = { "javascript", "javascriptreact", "javascript.jsx" }
+--     on_attach = on_attach,
+--     -- filetypes = { "typescript", "typescriptreact", "typescript.tsx" }
+--     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
+--     -- filetypes = { "javascript", "javascriptreact", "javascript.jsx" }
 -- }
 
 nvim_lsp.denols.setup {

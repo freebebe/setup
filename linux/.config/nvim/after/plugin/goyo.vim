@@ -1,6 +1,4 @@
-if !exists('g: goyo')
-    finish
-endif
+if !exists('g: goyo') | finish | endif
 
 lua << EOF
 local fn = vim.fn

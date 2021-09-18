@@ -1,26 +1,5 @@
 "_______________________________________________________________________________
-"                                                                   completion
-
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" let g:completion_confirm_key = "\<C-l>"
-"
-let g:completion_confirm_key = ""
-let g:completion_chain_complete_list = {
-        \ 'default' : {
-        \   'default': [
-        \       {'complete_items': ['lsp', 'snippet', 'path']},
-        \       {'mode': '<c-p>'},
-        \       {'mode': '<c-n>'}],
-        \   'comment': []
-        \   }
-        \}
-
-
-"_______________________________________________________________________________
-"                                                                       lspsaga
+"                                                                        lspsaga
 
 nnoremap <silent> <C-j> <Cmd>Lspsaga diagnostic_jump_next<CR>
 nnoremap <silent>K <Cmd>Lspsaga hover_doc<CR>
@@ -28,7 +7,7 @@ inoremap <silent> <C-k> <Cmd>Lspsaga signature_help<CR>
 nnoremap <silent> gh <Cmd>Lspsaga lsp_finder<CR>
 
 "_______________________________________________________________________________
-"                                                                       emmet
+"                                                                          emmet
 " let g:user_emmet_leader_key='C-y'
 " autocmd filetype *html* imap <c-_> <c-y>/
 " autocmd filetype *html* map <c-_> <c-y>/
@@ -147,9 +126,9 @@ nnoremap <silent> ;; <cmd>Telescope help_tags<cr>
 " imap <C-y>  <Plug>(deoppet_jump_backward)
 " smap <C-l>  <Plug>(deoppet_jump_forward)
 " smap <C-y>  <Plug>(deoppet_jump_backward)
-imap <C-l>     <Plug>(neosnippet_expand_or_jump)
-smap <C-l>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-l>     <Plug>(neosnippet_expand_target)
+" imap <C-l>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-l>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-l>     <Plug>(neosnippet_expand_target)
 " imap <C-l>  <Plug>(deoppet_expand)
 " imap <C-l>  <Plug>(deoppet_jump_forward)
 " smap <C-l>  <Plug>(deoppet_jump_forward)
@@ -160,8 +139,3 @@ xmap <C-l>     <Plug>(neosnippet_expand_target)
 "
 " inoremap <C-l> <cmd>lua return require'snippets'.advance_snippet(-1)<CR>
 
-"_______________________________________________________________________________
-"                                                                       vsnip
-
-" imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-" smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
