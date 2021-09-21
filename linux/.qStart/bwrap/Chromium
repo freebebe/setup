@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 bwrap \
     --unshare-all \
     --share-net \
@@ -16,12 +16,10 @@ bwrap \
     --ro-bind /sys/devices /sys/devices \
     --ro-bind /run/dbus /run/dbus \
     --dir "/run/user/$(id -u)" \
-        --ro-bind "/run/user/$(id -u)/wayland-1" "/run/user/$(id -u)/wayland-0" \
-        --ro-bind "/run/user/$(id -u)/pipewire-0" "/run/user/$(id -u)/pipewire-0" \
-        --ro-bind "/run/user/$(id -u)/pulse" "/run/user/$(id -u)/pulse" \
+    --ro-bind "/run/user/$(id -u)/pipewire-0" "/run/user/$(id -u)/pipewire-0" \
+    --ro-bind "/run/user/$(id -u)/pulse" "/run/user/$(id -u)/pulse" \
     --tmpfs /tmp \
     --dir $HOME/.cache \
     --bind $HOME/.config/chromium $HOME/.config/chromium \
     --bind $HOME/Downloads $HOME/Downloads \
-/usr/bin/chromium --enable-features=UseOzonePlatform --ozone-platform=wayland
-# /usr/bin/firefox-developer-edition
+    /usr/bin/chromium --enable-features=UseOzonePlatform

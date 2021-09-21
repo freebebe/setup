@@ -17,14 +17,14 @@ set -euo pipefail
       --bind $HOME/.config/nvim /home/ZE/.config/nvim \
       --ro-bind $HOME/.config/yarn/global /home/ZE/.config/yarn/global \
       --ro-bind $HOME/.nvim/plugged /home/ZE/.nvim/plugged \
-      --ro-bind $HOME/box/.zshrc /home/ZE/.zshrc \
-      --ro-bind $HOME/box/.tmux.conf /home/ZE/.tmux.conf \
+      --bind $HOME/box/.zshrc /home/ZE/.zshrc \
+      --bind $HOME/.tmux.conf /home/ZE/.tmux.conf \
       --ro-bind $HOME/box/.yarn /home/ZE/.yarn \
       --ro-bind $HOME/box/.local/share/nvim/site/autoload /home/ZE/.local/share/nvim/site/autoload \
       --ro-bind $HOME/box/.local/share/nvim/rplugin.vim /home/ZE/.local/share/nvim/rplugin.vim \
       --ro-bind $HOME/box/machine-id /etc/machine-id \
       --bind $HOME/test /home/ZE/uat \
-      --bind $HOME/project /home/ZE/test/tmo \
+      --bind $HOME/project /home/ZE/tmo \
       --chdir / \
       --unshare-all \
       --share-net \
@@ -33,7 +33,7 @@ set -euo pipefail
       --hostname ZE \
       --setenv HOME /home/ZE \
       --setenv XDG_RUNTIME_DIR "/run/user/`id -u`" \
-      --setenv PS1 "noFish$ " \
+      --setenv PS1 "noShit$ " \
       --file 11 /etc/passwd \
       --file 12 /etc/group \
       /bin/sh) \

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+bwrap \
+  --bind $HOME/.mozilla $HOME/.mozilla \
+  --bind / / \
+  /usr/bin/firefox

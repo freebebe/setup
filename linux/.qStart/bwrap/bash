@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+bwrap \
+    --ro-bind / / \
+    --unshare-user \
+    --uid 256 \
+    --gid 512 \
+/usr/bin/bash
