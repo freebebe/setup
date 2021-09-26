@@ -25,8 +25,7 @@ set -euo pipefail
   --ro-bind "$HOME/box/.yarn" "/home/ZE/.yarn" \
   --ro-bind "$HOME/box/.local/share/nvim/site/autoload" "/home/ZE/.local/share/nvim/site/autoload" \
   --ro-bind "$HOME/box/machine-id" "/etc/machine-id" \
-  --ro-bind "$HOME/.config/nvim" "/home/ZE/.config/nvim" \
-  --ro-bind "$HOME/box/.local/share/nvim/rplugin.vim" "/home/ZE/.local/share/nvim/rplugin.vim" \
+  --bind "$HOME/box/.local/share/nvim/rplugin.vim" "/home/ZE/.local/share/nvim/rplugin.vim" \
   --proc "/proc" \
   --dev "/dev" \
   --tmpfs "/tmp" \
@@ -36,7 +35,8 @@ set -euo pipefail
   --setenv "USER" "/home/ZE" \
   --setenv "LOGNAME" "/home/ZE" \
   --bind "$HOME/test" "/home/ZE/uat" \
-  --bind "$HOME/project" "/home/ZE/tmo" \
+  --bind "$HOME/project" "/home/ZE/test/tmo" \
+  --bind "$HOME/.config/nvim" "/home/ZE/.config/nvim" \
   --hostname "dq-999" \
   --unshare-all \
 /bin/sh) \
