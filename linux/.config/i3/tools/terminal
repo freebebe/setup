@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [[ "$TERMINAL" == "kitty" ]]; then
-    kitty $@
-else
-    i3-sensible-terminal $@
-fi

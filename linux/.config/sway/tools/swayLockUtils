@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# Maintained in linux-config.org
-
-lock() {
-    pidof swaylock || swaylock -f -i -s fill -c 000000 &
-}
-
-exit 0

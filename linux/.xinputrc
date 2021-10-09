@@ -1,4 +1,0 @@
-# im-config(8) generated on Thu, 15 Oct 2020 18:32:03 +1100
-run_im ibus
-xmodmap ~/.xmodmap
-# im-config signature: 3bfe237cc0b9c313e948d8a4b67e208d  -
